@@ -33,31 +33,31 @@ class AppTheme {
 
     // Text theme (kid-friendly)
     // Note: Kalpurush font is used for Bangla text via fontFamily property
-    textTheme: const TextTheme(
-      headlineLarge: TextStyle(
-        fontSize: 26,
-        fontWeight: FontWeight.w700,
-        color: AppColors.textPrimary,
-        height: 1.3,
-      ),
-      headlineMedium: TextStyle(
-        fontSize: 22,
-        fontWeight: FontWeight.w600,
-        color: AppColors.textPrimary,
-        height: 1.3,
-      ),
-      bodyLarge: TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.w500,
-        color: AppColors.textPrimary,
-        height: 1.5,
-      ),
-      bodyMedium: TextStyle(
-        fontSize: 16,
-        color: AppColors.textSecondary,
-        height: 1.5,
-      ),
-    ),
+    // textTheme: const TextTheme(
+    //   headlineLarge: TextStyle(
+    //     fontSize: 26,
+    //     fontWeight: FontWeight.w700,
+    //     color: AppColors.textPrimary,
+    //     height: 1.3,
+    //   ),
+    //   headlineMedium: TextStyle(
+    //     fontSize: 22,
+    //     fontWeight: FontWeight.w600,
+    //     color: AppColors.textPrimary,
+    //     height: 1.3,
+    //   ),
+    //   bodyLarge: TextStyle(
+    //     fontSize: 18,
+    //     fontWeight: FontWeight.w500,
+    //     color: AppColors.textPrimary,
+    //     height: 1.5,
+    //   ),
+    //   bodyMedium: TextStyle(
+    //     fontSize: 16,
+    //     color: AppColors.textSecondary,
+    //     height: 1.5,
+    //   ),
+    // ),
 
     // Elevated buttons (main action)
     elevatedButtonTheme: ElevatedButtonThemeData(
