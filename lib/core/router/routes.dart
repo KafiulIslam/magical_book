@@ -7,8 +7,8 @@ class Routes {
   static const String arabic = '/arabic';
 
   //!======================== Route Names ========================
-  static const String banglaName = 'bangla';
-  static const String englishName = 'english';
-  static const String mathName = 'math';
-  static const String arabicName = 'arabic';
+  // static const String banglaName = 'bangla';
+  // static const String englishName = 'english';
+  // static const String mathName = 'math';
+  // static const String arabicName = 'arabic';
 }

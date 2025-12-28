@@ -19,17 +19,21 @@ class DashboardPage extends StatelessWidget {
   ];
 
   static final List<String> _titles = [
-    'বাংলা',
+    // 'বাংলা',
+    // 'English',
+    // 'Math',
+    // 'عربي',
+    'Bangla',
     'English',
     'Math',
-    'عربي',
+    'Arabic',
   ];
 
   static final List<IconData> _icons = [
     Icons.menu_book,
-    Icons.language,
+    Icons.font_download_outlined,
     Icons.calculate,
-    Icons.text_fields,
+    Icons.auto_stories_outlined,
   ];
 
   static int _getCurrentIndex(BuildContext context) {
