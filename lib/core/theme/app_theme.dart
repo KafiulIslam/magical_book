@@ -32,6 +32,7 @@ class AppTheme {
     ),
 
     // Text theme (kid-friendly)
+    // Note: Kalpurush font is used for Bangla text via fontFamily property
     textTheme: const TextTheme(
       headlineLarge: TextStyle(
         fontSize: 26,
@@ -80,7 +81,7 @@ class AppTheme {
     // Cards (surface usage)
     cardTheme: CardTheme(
       color: AppColors.surface,
-      elevation: 1,
+      elevation: 3,
       shadowColor: AppColors.shadow,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
