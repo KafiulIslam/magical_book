@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app_colors.dart';
+import '../../../../core/theme/app_typography.dart';
 import '../../models/bangla_category.dart';
-
 
 class BanglaCategoryCard extends StatelessWidget {
   final BanglaCategory category;
@@ -54,22 +54,14 @@ class BanglaCategoryCard extends StatelessWidget {
                 const SizedBox(height: 16),
                 Text(
                   category.title,
-
-                  style: TextStyle(
-                    fontFamily: 'Kalpurush',
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.textPrimary,
-                  ),
+                  style: BanglaTypo.headline1.copyWith(fontSize: 20),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 4),
+
                 Text(
                   category.subtitle,
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: AppColors.textSecondary,
-                  ),
+                  style: EnglishTypo.bodyMedium
+                      .copyWith(color: AppColors.textSecondary),
                   textAlign: TextAlign.center,
                 ),
               ],

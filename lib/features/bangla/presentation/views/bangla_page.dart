@@ -1,55 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:magical_book/core/theme/app_typography.dart';
+import 'package:magical_book/features/english/presentation/views/english_page.dart';
 import '../../../../core/constants/app_colors.dart';
-import '../../models/bangla_category.dart';
+import '../../../../core/constants/bangla_constants.dart';
 import '../widgets/bangla_category_card.dart';
 
 class BanglaPage extends StatelessWidget {
   const BanglaPage({super.key});
-
-  static final List<BanglaCategory> _categories = [
-    BanglaCategory(
-      title: 'বর্ণমালা',
-      subtitle: 'Alphabet',
-      icon: Icons.abc,
-      color: AppColors.primary,
-    ),
-    BanglaCategory(
-      title: 'ছড়া',
-      subtitle: 'Rhymes',
-      icon: Icons.music_note,
-      color: AppColors.action,
-    ),
-    BanglaCategory(
-      title: 'ফলের নাম',
-      subtitle: 'Fruit Names',
-      icon: Icons.apple,
-      color: AppColors.success,
-    ),
-    BanglaCategory(
-      title: 'ফুলের নাম',
-      subtitle: 'Flower Names',
-      icon: Icons.local_florist,
-      color: AppColors.reward,
-    ),
-    BanglaCategory(
-      title: 'রিতুর নাম',
-      subtitle: 'Season Names',
-      icon: Icons.wb_sunny,
-      color: AppColors.info,
-    ),
-    BanglaCategory(
-      title: 'মাসের নাম',
-      subtitle: 'Month Names',
-      icon: Icons.calendar_month,
-      color: AppColors.primary,
-    ),
-    BanglaCategory(
-      title: 'দিনের নাম',
-      subtitle: 'Day Names',
-      icon: Icons.today,
-      color: AppColors.action,
-    ),
-  ];
 
   int _getCrossAxisCount(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -76,26 +33,83 @@ class BanglaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: _getCrossAxisCount(context),
-              crossAxisSpacing: 8,
-              mainAxisSpacing: 8,
-              childAspectRatio: _getChildAspectRatio(context),
-            ),
-            itemCount: _categories.length,
-            itemBuilder: (context, index) {
-              final category = _categories[index];
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: _getCrossAxisCount(context),
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+            childAspectRatio: _getChildAspectRatio(context),
+          ),
+          itemCount: BanglaConstants.categories.length,
+          itemBuilder: (context, index) {
+            final category = BanglaConstants.categories[index];
+            if (index == 0) {
+              return _buildFirstCard();
+            } else {
               return BanglaCategoryCard(category: category);
-            },
+            }
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFirstCard() {
+    return Card(
+      elevation: 4,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: InkWell(
+        onTap: () {
+          // TODO: Navigate to category detail page
+        },
+        borderRadius: BorderRadius.circular(20),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                AppColors.primary.withOpacity(0.1),
+                AppColors.primary.withOpacity(0.05),
+              ],
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: AppColors.primary.withOpacity(0.15),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Text('অ/ক',
+                      style: BanglaTypo.headline1.copyWith(fontSize: 24)),
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  'বর্ণমালা',
+                  style: BanglaTypo.headline1.copyWith(fontSize: 20),
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  'Alphabet',
+                  style: EnglishTypo.bodyMedium
+                      .copyWith(color: AppColors.textSecondary),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 }
-
-
