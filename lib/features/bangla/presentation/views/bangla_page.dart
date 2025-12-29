@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:magical_book/core/theme/app_typography.dart';
-import 'package:magical_book/features/english/presentation/views/english_page.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/bangla_constants.dart';
+import '../../../../core/router/routes.dart';
 import '../widgets/bangla_category_card.dart';
 
 class BanglaPage extends StatelessWidget {
@@ -33,6 +34,12 @@ class BanglaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'বাংলা',
+          style: BanglaTypo.headline1.copyWith(fontSize: 24),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: GridView.builder(
@@ -46,7 +53,7 @@ class BanglaPage extends StatelessWidget {
           itemBuilder: (context, index) {
             final category = BanglaConstants.categories[index];
             if (index == 0) {
-              return _buildFirstCard();
+              return _buildFirstCard(context);
             } else {
               return BanglaCategoryCard(category: category);
             }
@@ -56,7 +63,7 @@ class BanglaPage extends StatelessWidget {
     );
   }
 
-  Widget _buildFirstCard() {
+  Widget _buildFirstCard(BuildContext context) {
     return Card(
       elevation: 4,
       shape: RoundedRectangleBorder(
@@ -64,7 +71,7 @@ class BanglaPage extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          // TODO: Navigate to category detail page
+          context.push(Routes.bornoMala);
         },
         borderRadius: BorderRadius.circular(20),
         child: Container(

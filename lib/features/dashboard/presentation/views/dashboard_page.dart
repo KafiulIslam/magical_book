@@ -58,18 +58,18 @@ class DashboardPage extends StatelessWidget {
     final currentTitle = _getCurrentTitle(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          currentTitle,
-          style: const TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: AppColors.textPrimary,
-          ),
-        ),
-        backgroundColor: AppColors.background,
-        elevation: 0,
-      ),
+      // appBar: AppBar(
+      //   title: Text(
+      //     currentTitle,
+      //     style: const TextStyle(
+      //       fontSize: 24,
+      //       fontWeight: FontWeight.bold,
+      //       color: AppColors.textPrimary,
+      //     ),
+      //   ),
+      //   backgroundColor: AppColors.background,
+      //   elevation: 0,
+      // ),
       body: child,
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(

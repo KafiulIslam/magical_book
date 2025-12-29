@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:magical_book/core/router/routes.dart';
 import '../../features/arabic/presentation/views/arabic_page.dart';
 import '../../features/bangla/presentation/views/bangla_page.dart';
+import '../../features/bangla/presentation/views/borno_mala_screen.dart';
 import '../../features/dashboard/presentation/views/dashboard_page.dart';
 import '../../features/english/presentation/views/english_page.dart';
 import '../../features/math/presentation/views/math_page.dart';
@@ -33,7 +34,14 @@ class AppRouter {
           GoRoute(
             path: Routes.bangla,
             builder: (context, state) => const BanglaPage(),
+            routes: [
+              GoRoute(
+                path: '/borno-mala',
+                builder: (context, state) => const BornoMalaScreen(),
+              ),
+            ]
           ),
+
           GoRoute(
             path: Routes.english,
             builder: (context, state) => const EnglishPage(),

@@ -50,7 +50,13 @@ class BanglaConstants {
     ),
   ];
 
-  // Add more Bangla-related constants and lists here as needed
+  /// List of Bangla shoroborno
+  static const List<String> banglaShorobornos = <String>[
+    'অ', 'আ', 'ই', 'ঈ', 'উ', 'ঊ', 'ঋ', 'এ', 'ঐ', 'ও', 'ঔ',
+  ];
+
+
+// Add more Bangla-related constants and lists here as needed
   // Example:
   // static const List<String> alphabetList = [...];
   // static const List<String> rhymesList = [...];
