@@ -119,4 +119,5 @@ class BanglaPage extends StatelessWidget {
       ),
     );
   }
+
 }

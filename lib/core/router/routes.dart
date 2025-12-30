@@ -8,5 +8,6 @@ class Routes {
 
   //!======================== Bangla Routes ========================
   static const String bornoMala = '$bangla/borno-mala';
+  static const String chora = '$bangla/chora';
 
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:magical_book/core/router/routes.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../features/bangla/models/bangla_category.dart';
 
@@ -12,42 +13,49 @@ class BanglaConstants {
       subtitle: 'Alphabet',
       icon: Icons.abc,
       color: AppColors.primary,
+      route: Routes.bornoMala,
     ),
     BanglaCategory(
       title: 'ছড়া',
       subtitle: 'Rhymes',
       icon: Icons.music_note,
       color: AppColors.action,
+      route: Routes.chora,
     ),
     BanglaCategory(
       title: 'ফলের নাম',
       subtitle: 'Fruit Names',
       icon: Icons.apple,
       color: AppColors.success,
+      route: Routes.chora,
     ),
     BanglaCategory(
       title: 'ফুলের নাম',
       subtitle: 'Flower Names',
       icon: Icons.local_florist,
       color: AppColors.reward,
+      route: Routes.chora,
     ),
     BanglaCategory(
       title: 'রিতুর নাম',
       subtitle: 'Season Names',
       icon: Icons.wb_sunny,
       color: AppColors.info,
+      route: Routes.chora,
     ),
     BanglaCategory(
       title: 'মাসের নাম',
       subtitle: 'Month Names',
       icon: Icons.calendar_month,
       color: AppColors.primary,
+      route: Routes.chora,
     ),
     BanglaCategory(
       title: 'দিনের নাম',
       subtitle: 'Day Names',
       icon: Icons.today,
       color: AppColors.action,
+      route: Routes.chora,
     ),
   ];
 

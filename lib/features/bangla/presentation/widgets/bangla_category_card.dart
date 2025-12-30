@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../models/bangla_category.dart';
@@ -19,7 +20,7 @@ class BanglaCategoryCard extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          // TODO: Navigate to category detail page
+          context.push(category.route);
         },
         borderRadius: BorderRadius.circular(20),
         child: Container(
@@ -57,7 +58,6 @@ class BanglaCategoryCard extends StatelessWidget {
                   style: BanglaTypo.headline1.copyWith(fontSize: 20),
                   textAlign: TextAlign.center,
                 ),
-
                 Text(
                   category.subtitle,
                   style: EnglishTypo.bodyMedium

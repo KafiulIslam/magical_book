@@ -5,8 +5,8 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/bangla_constants.dart';
 import '../../../../core/theme/app_typography.dart';
 
-class BornoMalaScreen extends StatelessWidget {
-  const BornoMalaScreen({super.key});
+class ChoraScreen extends StatelessWidget {
+  const ChoraScreen({super.key});
 
   int _getCrossAxisCount(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -24,7 +24,7 @@ class BornoMalaScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'বর্ণমালা',
+          'বাংলা ছড়া',
           style: BanglaTypo.headline1.copyWith(fontSize: 24),
         ),
         backgroundColor: AppColors.background,

@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:magical_book/core/router/routes.dart';
+import 'package:magical_book/features/bangla/presentation/views/chora_screen.dart';
 import '../../features/arabic/presentation/views/arabic_page.dart';
 import '../../features/bangla/presentation/views/bangla_page.dart';
 import '../../features/bangla/presentation/views/borno_mala_screen.dart';
@@ -38,6 +39,10 @@ class AppRouter {
               GoRoute(
                 path: '/borno-mala',
                 builder: (context, state) => const BornoMalaScreen(),
+              ),
+              GoRoute(
+                path: '/chora',
+                builder: (context, state) => const ChoraScreen(),
               ),
             ]
           ),
