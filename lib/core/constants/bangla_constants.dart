@@ -4,6 +4,7 @@ import '../../features/bangla/models/bangla_category.dart';
 
 /// Contains all constant values and lists related to Bangla feature
 class BanglaConstants {
+
   /// List of Bangla learning categories
   static const List<BanglaCategory> categories = [
     BanglaCategory(
@@ -50,15 +51,68 @@ class BanglaConstants {
     ),
   ];
 
-  /// List of Bangla shoroborno
+  /// List of Bangla shoroborno (Vowels)
   static const List<String> banglaShorobornos = <String>[
-    'অ', 'আ', 'ই', 'ঈ', 'উ', 'ঊ', 'ঋ', 'এ', 'ঐ', 'ও', 'ঔ',
+    'অ',
+    'আ',
+    'ই',
+    'ঈ',
+    'উ',
+    'ঊ',
+    'ঋ',
+    'এ',
+    'ঐ',
+    'ও',
+    'ঔ',
   ];
 
 
+  /// List of Bangla byanjonborno (Consonants)
+  static const List<String> banglaByanjonbornos = <String>[
+    'ক',
+    'খ',
+    'গ',
+    'ঘ',
+    'ঙ',
+    'চ',
+    'ছ',
+    'জ',
+    'ঝ',
+    'ঞ',
+    'ট',
+    'ঠ',
+    'ড',
+    'ঢ',
+    'ণ',
+    'ত',
+    'থ',
+    'দ',
+    'ধ',
+    'ন',
+    'প',
+    'ফ',
+    'ব',
+    'ভ',
+    'ম',
+    'য',
+    'র',
+    'ল',
+    'শ',
+    'ষ',
+    'স',
+    'হ',
+    'ড়',
+    'ঢ়',
+    'য়',
+    'ৎ',
+    'ং',
+    'ঃ',
+    'ঁ',
+  ];
+
 // Add more Bangla-related constants and lists here as needed
-  // Example:
-  // static const List<String> alphabetList = [...];
-  // static const List<String> rhymesList = [...];
-  // static const String appTitle = 'বাংলা শিখুন';
+// Example:
+// static const List<String> alphabetList = [...];
+// static const List<String> rhymesList = [...];
+// static const String appTitle = 'বাংলা শিখুন';
 }
