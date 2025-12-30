@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:magical_book/core/router/routes.dart';
 import 'package:magical_book/features/bangla/presentation/views/chora_screen.dart';
@@ -10,6 +11,20 @@ import '../../features/math/presentation/views/math_page.dart';
 
 class AppRouter {
   static GoRouter get router => _router;
+
+  /// Helper method to create a fade transition page
+  static Page<dynamic> fadeTransitionPage({
+    required GoRouterState state,
+    required Widget child,
+  }) {
+    return CustomTransitionPage(
+      key: state.pageKey,
+      child: child,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(opacity: animation, child: child);
+      },
+    );
+  }
 
   static final _router = GoRouter(
     initialLocation: Routes.dashboard,
@@ -24,7 +39,7 @@ class AppRouter {
     routes: [
       GoRoute(
         path: Routes.dashboard,
-        // name: 'dashboard',
+
         redirect: (context, state) => Routes.bangla,
       ),
       ShellRoute(
@@ -38,11 +53,17 @@ class AppRouter {
             routes: [
               GoRoute(
                 path: '/borno-mala',
-                builder: (context, state) => const BornoMalaScreen(),
+                pageBuilder: (context, state) => fadeTransitionPage(
+                  state: state,
+                  child: const BornoMalaScreen(),
+                ),
               ),
               GoRoute(
                 path: '/chora',
-                builder: (context, state) => const ChoraScreen(),
+                pageBuilder: (context, state) => fadeTransitionPage(
+                  state: state,
+                  child: const ChoraScreen(),
+                ),
               ),
             ]
           ),
@@ -64,3 +85,5 @@ class AppRouter {
     ],
   );
 }
+
+
