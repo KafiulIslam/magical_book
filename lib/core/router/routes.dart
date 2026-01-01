@@ -10,4 +10,5 @@ class Routes {
   static const String bornoMala = '$bangla/borno-mala';
   static const String chora = '$bangla/chora';
   static const String folerNam = '$bangla/foler-nam';
+  static const String fulerNam = '$bangla/fuler-nam';
 }

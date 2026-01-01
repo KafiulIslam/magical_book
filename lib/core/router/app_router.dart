@@ -6,6 +6,7 @@ import '../../features/arabic/presentation/views/arabic_page.dart';
 import '../../features/bangla/presentation/views/bangla_page.dart';
 import '../../features/bangla/presentation/views/borno_mala_screen.dart';
 import '../../features/bangla/presentation/views/bangla_fruit_screen.dart';
+import '../../features/bangla/presentation/views/bangla_flower_screen.dart';
 import '../../features/dashboard/presentation/views/dashboard_page.dart';
 import '../../features/english/presentation/views/english_page.dart';
 import '../../features/math/presentation/views/math_page.dart';
@@ -70,6 +71,13 @@ class AppRouter {
                   pageBuilder: (context, state) => fadeTransitionPage(
                     state: state,
                     child: const BanglaFruitScreen(),
+                  ),
+                ),
+                GoRoute(
+                  path: '/fuler-nam',
+                  pageBuilder: (context, state) => fadeTransitionPage(
+                    state: state,
+                    child: const BanglaFlowerScreen(),
                   ),
                 ),
               ]),

@@ -4,6 +4,7 @@ import 'package:magical_book/features/bangla/models/bangla_chora_model.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../features/bangla/models/bangla_category.dart';
 import '../../features/bangla/models/bangla_fol_model.dart';
+import '../../features/bangla/models/bangla_ful_model.dart';
 import 'asset_path.dart';
 
 /// Contains all constant values and lists related to Bangla feature
@@ -36,7 +37,7 @@ class BanglaConstants {
       subtitle: 'Flower Names',
       icon: Icons.local_florist,
       color: AppColors.reward,
-      route: Routes.chora,
+      route: Routes.fulerNam,
     ),
     BanglaCategory(
       title: 'রিতুর নাম',
@@ -170,4 +171,25 @@ class BanglaConstants {
     BanglaFolModel(
         id: 8, name: 'কাঁঠাল', image: AssetPath.jackFruit, audio: 'audio'),
   ];
+
+  // bangla foler nam
+  static List<BanglaFulModel> banglaFulerNam = [
+    BanglaFulModel(
+        id: 1, name: 'শাপলা', image: AssetPath.shapla, audio: 'audio'),
+    BanglaFulModel(
+        id: 2, name: 'গোলাপ', image: AssetPath.golap, audio: 'audio'),
+    BanglaFulModel(id: 3, name: 'জবা', image: AssetPath.joba, audio: 'audio'),
+    BanglaFulModel(
+        id: 4, name: 'গাঁদা', image: AssetPath.gadha, audio: 'audio'),
+    BanglaFulModel(
+        id: 5, name: 'সূর্যমুখী', image: AssetPath.surjo, audio: 'audio'),
+    // BanglaFulModel(id: 6, name: 'বেলি', image: AssetPath.surjo, audio: 'audio'),
+    BanglaFulModel(
+        id: 7, name: 'শিউলি', image: AssetPath.shuly, audio: 'audio'),
+    BanglaFulModel(
+        id: 8, name: 'বকুল', image: AssetPath.bokul, audio: 'audio'),
+    BanglaFulModel(
+        id: 9, name: 'কৃষ্ণচুড়া', image: AssetPath.krisnochura, audio: 'audio'),
+  ];
+
 }

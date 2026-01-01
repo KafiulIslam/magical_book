@@ -18,6 +18,15 @@ class AssetPath{
   static const grape = "assets/images/fruits/angur.webp";
   static const jackFruit = "assets/images/fruits/jack-fruit.jpeg";
 
+  // flowers
+  static const bokul = "assets/images/flowers/bokul.jpeg";
+  static const gadha = "assets/images/flowers/gadha.jpeg";
+  static const golap = "assets/images/flowers/golap.jpeg";
+  static const joba = "assets/images/flowers/joba.jpeg";
+  static const krisnochura = "assets/images/flowers/krisnocura.jpg";
+  static const shapla = "assets/images/flowers/shapla.jpeg";
+  static const shuly = "assets/images/flowers/shuly.jpeg";
+  static const surjo = "assets/images/flowers/surjo.jpeg";
 
 
 
