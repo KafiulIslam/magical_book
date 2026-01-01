@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 
 class BornoCard extends StatelessWidget {
@@ -63,14 +64,14 @@ class BornoCard extends StatelessWidget {
           child: Center(
             child: Text(
               shoroborno,
-              style: const TextStyle(
+              style: TextStyle(
                 fontFamily: 'Kalpurush',
-                fontSize: 72,
+                fontSize: 72.sp,
                 fontWeight: FontWeight.w900,
                 color: Colors.white,
                 height: 1.0,
                 letterSpacing: 0,
-                shadows: [
+                shadows: const [
                   Shadow(
                     color: Colors.black26,
                     blurRadius: 8,

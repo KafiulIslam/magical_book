@@ -1,102 +1,96 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../constants/app_colors.dart';
 
 class BanglaTypo {
-
-  static const TextStyle headline1 = TextStyle(
+  static TextStyle headline1 = TextStyle(
     fontFamily: 'Kalpurush',
-    fontSize: 28,
+    fontSize: 28.sp,
     fontWeight: FontWeight.bold,
     color: AppColors.textPrimary,
   );
 
-  static const TextStyle headline2 = TextStyle(
+  static TextStyle headline2 = TextStyle(
     fontFamily: 'Kalpurush',
-    fontSize: 24,
+    fontSize: 24.sp,
     fontWeight: FontWeight.w800,
     color: AppColors.textPrimary,
   );
 
-  static const TextStyle headline3 = TextStyle(
+  static TextStyle headline3 = TextStyle(
     fontFamily: 'Kalpurush',
-    fontSize: 20,
+    fontSize: 20.sp,
     fontWeight: FontWeight.w700,
     color: AppColors.textPrimary,
   );
 
-  static const TextStyle headline4 = TextStyle(
+  static TextStyle headline4 = TextStyle(
     fontFamily: 'Kalpurush',
-    fontSize: 18,
+    fontSize: 18.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.textPrimary,
   );
 
-
   // Body Text
-  static const TextStyle bodyLarge = TextStyle(
+  static TextStyle bodyLarge = TextStyle(
     fontFamily: 'Kalpurush',
-    fontSize: 16,
+    fontSize: 16.sp,
     fontWeight: FontWeight.w500,
     color: AppColors.textPrimary,
   );
 
-  static const TextStyle bodyMedium = TextStyle(
+  static TextStyle bodyMedium = TextStyle(
     fontFamily: 'Kalpurush',
-    fontSize: 14,
+    fontSize: 14.sp,
     color: AppColors.textPrimary,
   );
 
-  static const TextStyle bodySmall = TextStyle(
+  static TextStyle bodySmall = TextStyle(
     fontFamily: 'Kalpurush',
-    fontSize: 12,
+    fontSize: 12.sp,
     color: AppColors.textPrimary,
   );
-
 }
 
-
 class EnglishTypo {
-
-  static const TextStyle headline1 = TextStyle(
-    fontSize: 28,
+  static TextStyle headline1 = TextStyle(
+    fontSize: 28.sp,
     fontWeight: FontWeight.bold,
     color: AppColors.textPrimary,
   );
 
-  static const TextStyle headline2 = TextStyle(
-    fontSize: 24,
+  static TextStyle headline2 = TextStyle(
+    fontSize: 24.sp,
     fontWeight: FontWeight.w800,
     color: AppColors.textPrimary,
   );
 
-  static const TextStyle headline3 = TextStyle(
-    fontSize: 20,
+  static TextStyle headline3 = TextStyle(
+    fontSize: 20.sp,
     fontWeight: FontWeight.w700,
     color: AppColors.textPrimary,
   );
 
-  static const TextStyle headline4 = TextStyle(
-    fontSize: 18,
+  static TextStyle headline4 = TextStyle(
+    fontSize: 18.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.textPrimary,
   );
 
-
   // Body Text
-  static const TextStyle bodyLarge = TextStyle(
-    fontSize: 16,
+  static TextStyle bodyLarge = TextStyle(
+    fontSize: 16.sp,
     fontWeight: FontWeight.w500,
     color: AppColors.textPrimary,
   );
 
-  static const TextStyle bodyMedium = TextStyle(
-    fontSize: 14,
+  static TextStyle bodyMedium = TextStyle(
+    fontSize: 14.sp,
     color: AppColors.textPrimary,
   );
 
-  static const TextStyle bodySmall = TextStyle(
-    fontSize: 12,
+  static TextStyle bodySmall = TextStyle(
+    fontSize: 12.sp,
     color: AppColors.textPrimary,
   );
-
 }

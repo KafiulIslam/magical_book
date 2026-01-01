@@ -129,27 +129,27 @@ class BanglaConstants {
     const BanglaChoraModel(
         id: 2,
         title: 'আয় ছেলেরা আয় মেয়েরা',
-        image: AssetPath.ataGacheTotaPakhi,
+        image: AssetPath.ayCheleraAyMeyera,
         audio: 'audio'),
     const BanglaChoraModel(
         id: 1,
         title: 'হাট্টিমাটিম টিম',
-        image: AssetPath.ataGacheTotaPakhi,
+        image: AssetPath.hattiMatim,
         audio: 'audio'),
     const BanglaChoraModel(
         id: 1,
         title: 'আম পাতা জোড়া জোড়া',
-        image: AssetPath.ataGacheTotaPakhi,
+        image: AssetPath.amPataJoraJora,
         audio: 'audio'),
     const BanglaChoraModel(
         id: 1,
         title: 'বাক বাকুম পায়রা',
-        image: AssetPath.ataGacheTotaPakhi,
+        image: AssetPath.bakBakumPayra,
         audio: 'audio'),
     const BanglaChoraModel(
         id: 1,
         title: 'ঐ দেখা যায় তালগাছ',
-        image: AssetPath.ataGacheTotaPakhi,
+        image: AssetPath.talGach,
         audio: 'audio'),
   ];
 }
