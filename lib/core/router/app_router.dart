@@ -5,6 +5,7 @@ import 'package:magical_book/features/bangla/presentation/views/chora_screen.dar
 import '../../features/arabic/presentation/views/arabic_page.dart';
 import '../../features/bangla/presentation/views/bangla_page.dart';
 import '../../features/bangla/presentation/views/borno_mala_screen.dart';
+import '../../features/bangla/presentation/views/bangla_fruit_screen.dart';
 import '../../features/dashboard/presentation/views/dashboard_page.dart';
 import '../../features/english/presentation/views/english_page.dart';
 import '../../features/math/presentation/views/math_page.dart';
@@ -39,7 +40,6 @@ class AppRouter {
     routes: [
       GoRoute(
         path: Routes.dashboard,
-
         redirect: (context, state) => Routes.bangla,
       ),
       ShellRoute(
@@ -48,26 +48,31 @@ class AppRouter {
         },
         routes: [
           GoRoute(
-            path: Routes.bangla,
-            builder: (context, state) => const BanglaPage(),
-            routes: [
-              GoRoute(
-                path: '/borno-mala',
-                pageBuilder: (context, state) => fadeTransitionPage(
-                  state: state,
-                  child: const BornoMalaScreen(),
+              path: Routes.bangla,
+              builder: (context, state) => const BanglaPage(),
+              routes: [
+                GoRoute(
+                  path: '/borno-mala',
+                  pageBuilder: (context, state) => fadeTransitionPage(
+                    state: state,
+                    child: const BornoMalaScreen(),
+                  ),
                 ),
-              ),
-              GoRoute(
-                path: '/chora',
-                pageBuilder: (context, state) => fadeTransitionPage(
-                  state: state,
-                  child: const ChoraScreen(),
+                GoRoute(
+                  path: '/chora',
+                  pageBuilder: (context, state) => fadeTransitionPage(
+                    state: state,
+                    child: const ChoraScreen(),
+                  ),
                 ),
-              ),
-            ]
-          ),
-
+                GoRoute(
+                  path: '/foler-nam',
+                  pageBuilder: (context, state) => fadeTransitionPage(
+                    state: state,
+                    child: const BanglaFruitScreen(),
+                  ),
+                ),
+              ]),
           GoRoute(
             path: Routes.english,
             builder: (context, state) => const EnglishPage(),
@@ -85,5 +90,3 @@ class AppRouter {
     ],
   );
 }
-
-

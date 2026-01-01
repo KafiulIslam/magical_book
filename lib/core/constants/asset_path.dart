@@ -9,6 +9,15 @@ class AssetPath{
   static const bakBakumPayra = "assets/images/banglaChora/bak_bakum_payra.jpg";
   static const talGach = "assets/images/banglaChora/tal_gach.jpg";
 
+  // fruits
+  static const mango = "assets/images/fruits/mango.png";
+  static const banana = "assets/images/fruits/banana.jpg";
+  static const apple = "assets/images/fruits/apple.jpg";
+  static const orange = "assets/images/fruits/orange.jpeg";
+  static const waterMelon = "assets/images/fruits/water_melon.jpg";
+  static const grape = "assets/images/fruits/angur.webp";
+  static const jackFruit = "assets/images/fruits/jack-fruit.jpeg";
+
 
 
 
