@@ -6,6 +6,7 @@ import '../../features/bangla/models/bangla_category.dart';
 import '../../features/bangla/models/bangla_fol_model.dart';
 import '../../features/bangla/models/bangla_ful_model.dart';
 import '../../features/bangla/models/bangla_mas_model.dart';
+import '../../features/bangla/models/bangla_din_model.dart';
 import 'asset_path.dart';
 
 /// Contains all constant values and lists related to Bangla feature
@@ -59,7 +60,7 @@ class BanglaConstants {
       subtitle: 'Day Names',
       icon: Icons.today,
       color: AppColors.action,
-      route: Routes.chora,
+      route: Routes.dinerNam,
     ),
   ];
 
@@ -223,5 +224,16 @@ class BanglaConstants {
     BanglaMasModel(id: 10, name: 'মাঘ', audio: 'audio'),
     BanglaMasModel(id: 11, name: 'ফাল্গুন', audio: 'audio'),
     BanglaMasModel(id: 12, name: 'চৈত্র', audio: 'audio'),
+  ];
+
+  // bangla diner nam (Day Names)
+  static const List<BanglaDinModel> banglaDin = [
+    BanglaDinModel(id: 1, name: 'রবিবার', audio: 'audio'),
+    BanglaDinModel(id: 2, name: 'সোমবার', audio: 'audio'),
+    BanglaDinModel(id: 3, name: 'মঙ্গলবার', audio: 'audio'),
+    BanglaDinModel(id: 4, name: 'বুধবার', audio: 'audio'),
+    BanglaDinModel(id: 5, name: 'বৃহস্পতিবার', audio: 'audio'),
+    BanglaDinModel(id: 6, name: 'শুক্রবার', audio: 'audio'),
+    BanglaDinModel(id: 7, name: 'শনিবার', audio: 'audio'),
   ];
 }
