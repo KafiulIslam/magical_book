@@ -5,6 +5,7 @@ import '../../../core/constants/app_colors.dart';
 import '../../features/bangla/models/bangla_category.dart';
 import '../../features/bangla/models/bangla_fol_model.dart';
 import '../../features/bangla/models/bangla_ful_model.dart';
+import '../../features/bangla/models/bangla_mas_model.dart';
 import 'asset_path.dart';
 
 /// Contains all constant values and lists related to Bangla feature
@@ -44,14 +45,14 @@ class BanglaConstants {
       subtitle: 'Season Names',
       icon: Icons.wb_sunny,
       color: AppColors.info,
-      route: Routes.chora,
+      route: Routes.riturNam,
     ),
     BanglaCategory(
       title: 'মাসের নাম',
       subtitle: 'Month Names',
       icon: Icons.calendar_month,
       color: AppColors.primary,
-      route: Routes.chora,
+      route: Routes.maserNam,
     ),
     BanglaCategory(
       title: 'দিনের নাম',
@@ -186,10 +187,41 @@ class BanglaConstants {
     // BanglaFulModel(id: 6, name: 'বেলি', image: AssetPath.surjo, audio: 'audio'),
     BanglaFulModel(
         id: 7, name: 'শিউলি', image: AssetPath.shuly, audio: 'audio'),
-    BanglaFulModel(
-        id: 8, name: 'বকুল', image: AssetPath.bokul, audio: 'audio'),
+    BanglaFulModel(id: 8, name: 'বকুল', image: AssetPath.bokul, audio: 'audio'),
     BanglaFulModel(
         id: 9, name: 'কৃষ্ণচুড়া', image: AssetPath.krisnochura, audio: 'audio'),
   ];
 
+  // bangla foler nam
+  static List<BanglaFulModel> banglaRitu = [
+    BanglaFulModel(
+        id: 1, name: 'গ্রীষ্মকাল', image: AssetPath.summer, audio: 'audio'),
+    BanglaFulModel(
+        id: 2, name: 'বর্ষাকাল', image: AssetPath.rainy, audio: 'audio'),
+    BanglaFulModel(
+        id: 3, name: 'শরৎকাল', image: AssetPath.atumn, audio: 'audio'),
+    BanglaFulModel(
+        id: 4, name: 'হেমন্তকাল', image: AssetPath.hemonto, audio: 'audio'),
+    BanglaFulModel(
+        id: 5, name: 'শীতকাল', image: AssetPath.winter, audio: 'audio'),
+    // BanglaFulModel(id: 6, name: 'বেলি', image: AssetPath.surjo, audio: 'audio'),
+    BanglaFulModel(
+        id: 7, name: 'বসন্তকাল', image: AssetPath.spring, audio: 'audio'),
+  ];
+
+  // bangla maser nam (Month Names)
+  static const List<BanglaMasModel> banglaMas = [
+    BanglaMasModel(id: 1, name: 'বৈশাখ', audio: 'audio'),
+    BanglaMasModel(id: 2, name: 'জৈষ্ঠ্য', audio: 'audio'),
+    BanglaMasModel(id: 3, name: 'আষাঢ়', audio: 'audio'),
+    BanglaMasModel(id: 4, name: 'শ্রাবণ', audio: 'audio'),
+    BanglaMasModel(id: 5, name: 'ভাদ্র', audio: 'audio'),
+    BanglaMasModel(id: 6, name: 'আশ্বিন', audio: 'audio'),
+    BanglaMasModel(id: 7, name: 'কার্তিক', audio: 'audio'),
+    BanglaMasModel(id: 8, name: 'অগ্রহায়ণ', audio: 'audio'),
+    BanglaMasModel(id: 9, name: 'পৌষ', audio: 'audio'),
+    BanglaMasModel(id: 10, name: 'মাঘ', audio: 'audio'),
+    BanglaMasModel(id: 11, name: 'ফাল্গুন', audio: 'audio'),
+    BanglaMasModel(id: 12, name: 'চৈত্র', audio: 'audio'),
+  ];
 }

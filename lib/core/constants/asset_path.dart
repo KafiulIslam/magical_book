@@ -29,5 +29,14 @@ class AssetPath{
   static const surjo = "assets/images/flowers/surjo.jpeg";
 
 
+  // ritu
+  static const summer = "assets/images/ritu/summer.jpeg";
+  static const rainy = "assets/images/ritu/rainy.jpg";
+  static const atumn = "assets/images/ritu/atumn.jpg";
+  static const hemonto = "assets/images/ritu/hemonto.jpeg";
+  static const winter = "assets/images/ritu/winter.png";
+  static const spring = "assets/images/ritu/spring.jpeg";
+
+
 
 }

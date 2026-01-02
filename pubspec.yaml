@@ -53,6 +53,7 @@ flutter:
     - assets/images/banglaChora/
     - assets/images/fruits/
     - assets/images/flowers/
+    - assets/images/ritu/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
