@@ -160,21 +160,21 @@ class BanglaConstants {
   // bangla foler nam
   static List<BanglaFolModel> banglaFolerNam = [
     BanglaFolModel(id: 1, name: 'আম', image: AssetPath.mango, audio: 'audio'),
-    BanglaFolModel(id: 2, name: 'কলা', image: AssetPath.banana, audio: 'audio'),
     BanglaFolModel(id: 3, name: 'আপেল', image: AssetPath.apple, audio: 'audio'),
+    BanglaFolModel(id: 2, name: 'কলা', image: AssetPath.banana, audio: 'audio'),
     BanglaFolModel(
         id: 4, name: 'কমলা', image: AssetPath.orange, audio: 'audio'),
     BanglaFolModel(
         id: 5, name: 'তরমুজ', image: AssetPath.waterMelon, audio: 'audio'),
     BanglaFolModel(
-        id: 6, name: 'আনারস', image: AssetPath.mango, audio: 'audio'),
+        id: 6, name: 'আনারস', image: AssetPath.pineApple, audio: 'audio'),
     BanglaFolModel(
         id: 7, name: 'আঙ্গুর', image: AssetPath.grape, audio: 'audio'),
     BanglaFolModel(
         id: 8, name: 'কাঁঠাল', image: AssetPath.jackFruit, audio: 'audio'),
   ];
 
-  // bangla foler nam
+  // bangla fuler nam
   static List<BanglaFulModel> banglaFulerNam = [
     BanglaFulModel(
         id: 1, name: 'শাপলা', image: AssetPath.shapla, audio: 'audio'),
@@ -193,7 +193,7 @@ class BanglaConstants {
         id: 9, name: 'কৃষ্ণচুড়া', image: AssetPath.krisnochura, audio: 'audio'),
   ];
 
-  // bangla foler nam
+  // bangla ritur nam
   static List<BanglaFulModel> banglaRitu = [
     BanglaFulModel(
         id: 1, name: 'গ্রীষ্মকাল', image: AssetPath.summer, audio: 'audio'),

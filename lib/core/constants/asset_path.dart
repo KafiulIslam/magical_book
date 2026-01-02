@@ -11,12 +11,13 @@ class AssetPath{
 
   // fruits
   static const mango = "assets/images/fruits/mango.png";
-  static const banana = "assets/images/fruits/banana.jpg";
-  static const apple = "assets/images/fruits/apple.jpg";
-  static const orange = "assets/images/fruits/orange.jpeg";
-  static const waterMelon = "assets/images/fruits/water_melon.jpg";
-  static const grape = "assets/images/fruits/angur.webp";
-  static const jackFruit = "assets/images/fruits/jack-fruit.jpeg";
+  static const banana = "assets/images/fruits/banana.png";
+  static const apple = "assets/images/fruits/apple.png";
+  static const orange = "assets/images/fruits/orange.png";
+  static const waterMelon = "assets/images/fruits/water.png";
+  static const grape = "assets/images/fruits/angur.png";
+  static const jackFruit = "assets/images/fruits/jack-frut.png";
+  static const pineApple = "assets/images/fruits/pine-apple.png";
 
   // flowers
   static const bokul = "assets/images/flowers/bokul.jpeg";
@@ -27,7 +28,6 @@ class AssetPath{
   static const shapla = "assets/images/flowers/shapla.jpeg";
   static const shuly = "assets/images/flowers/shuly.jpeg";
   static const surjo = "assets/images/flowers/surjo.jpeg";
-
 
   // ritu
   static const summer = "assets/images/ritu/summer.jpeg";
