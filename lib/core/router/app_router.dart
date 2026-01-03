@@ -12,6 +12,7 @@ import '../../features/bangla/presentation/views/bangla_month_screen.dart';
 import '../../features/bangla/presentation/views/bangla_day_screen.dart';
 import '../../features/dashboard/presentation/views/dashboard_page.dart';
 import '../../features/english/presentation/views/english_page.dart';
+import '../../features/english/presentation/views/english_alphabet_screen.dart';
 import '../../features/math/presentation/views/math_page.dart';
 
 class AppRouter {
@@ -108,6 +109,15 @@ class AppRouter {
           GoRoute(
             path: Routes.english,
             builder: (context, state) => const EnglishPage(),
+            routes: [
+              GoRoute(
+                path: '/alphabet',
+                pageBuilder: (context, state) => fadeTransitionPage(
+                  state: state,
+                  child: const EnglishAlphabetScreen(),
+                ),
+              ),
+            ],
           ),
           GoRoute(
             path: Routes.math,

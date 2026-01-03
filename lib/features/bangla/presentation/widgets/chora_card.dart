@@ -35,6 +35,8 @@ class ChoraCard extends StatelessWidget {
         // TODO: Navigate to chora detail screen or play audio
       },
       child: Container(
+        width: 120.w,
+       // height: 130.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           gradient: LinearGradient(
@@ -46,32 +48,23 @@ class ChoraCard extends StatelessWidget {
         child: Row(
           children: [
             // Image
-            Container(
-              width: 120.w,
-              height: 110.h,
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(12),
-                  bottomLeft: Radius.circular(12),
-                ),
-                color: Colors.white.withOpacity(0.2),
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(12),
+                bottomLeft: Radius.circular(12),
               ),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(12),
-                  bottomLeft: Radius.circular(12),
-                ),
-                child: Image.asset(
-                  chora.image,
-                  fit: BoxFit.fill,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Icon(
-                      Icons.music_note,
-                      size: 50.sp,
-                      color: Colors.white.withOpacity(0.7),
-                    );
-                  },
-                ),
+              child: Image.asset(
+                chora.image,
+                width: 120.w,
+                height: 125.h,
+                fit: BoxFit.fill,
+                errorBuilder: (context, error, stackTrace) {
+                  return Icon(
+                    Icons.music_note,
+                    size: 50.sp,
+                    color: Colors.white.withOpacity(0.7),
+                  );
+                },
               ),
             ),
 

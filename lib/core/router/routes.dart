@@ -14,4 +14,16 @@ class Routes {
   static const String riturNam = '$bangla/ritur-nam';
   static const String maserNam = '$bangla/maser-nam';
   static const String dinerNam = '$bangla/diner-nam';
+
+  //!======================== English Routes ========================
+  static const String englishAlphabet = '$english/alphabet';
+  static const String englishRhymes = '$english/rhymes';
+  static const String englishFruits = '$english/fruits';
+  static const String englishFlowers = '$english/flowers';
+  static const String englishFigures = '$english/figures';
+  static const String englishBodyParts = '$english/body-parts';
+  static const String englishDays = '$english/days';
+  static const String englishMonths = '$english/months';
+  static const String englishAnimals = '$english/animals';
+  static const String englishBirds = '$english/birds';
 }
