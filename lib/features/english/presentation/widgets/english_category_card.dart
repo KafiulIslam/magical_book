@@ -9,7 +9,7 @@ import '../../../bangla/models/bangla_category.dart';
 class EnglishCategoryCard extends StatelessWidget {
   final BanglaCategory category;
 
-  const EnglishCategoryCard({
+  const EnglishCategoryCard({super.key,
     required this.category,
   });
 

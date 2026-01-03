@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:magical_book/core/router/routes.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../features/bangla/models/bangla_category.dart';
+import '../../features/bangla/models/bangla_chora_model.dart';
+import '../../features/english/model/rhymes_model.dart';
+import 'asset_path.dart';
 
 /// Contains all constant values and lists related to English feature
 class EnglishConstants {
+
   /// List of English learning categories
   static const List<BanglaCategory> englishCategories = [
     BanglaCategory(
@@ -108,4 +112,25 @@ class EnglishConstants {
     'Y',
     'Z',
   ];
+
+  // English Rhymes
+  static List<RhymesModel> englishRhymes = [
+    const RhymesModel(
+        id: 1,
+        title: 'আতা গাছে তোতা পাখী',
+        image: AssetPath.ataGacheTotaPakhi,
+        audio: 'audio'),
+    const RhymesModel(
+        id: 2,
+        title: 'আয় ছেলেরা আয় মেয়েরা',
+        image: AssetPath.ayCheleraAyMeyera,
+        audio: 'audio'),
+    const RhymesModel(
+        id: 1,
+        title: 'হাট্টিমাটিম টিম',
+        image: AssetPath.hattiMatim,
+        audio: 'audio'),
+
+  ];
+
 }
