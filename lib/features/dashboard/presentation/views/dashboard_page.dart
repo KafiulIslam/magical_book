@@ -40,8 +40,13 @@ class DashboardPage extends StatelessWidget {
 
   static int _getCurrentIndex(BuildContext context) {
     final currentPath = GoRouterState.of(context).uri.path;
-    final index = _routes.indexOf(currentPath);
-    return index >= 0 ? index : 0;
+    // Check if current path starts with any route (for nested routes)
+    for (int i = 0; i < _routes.length; i++) {
+      if (currentPath == _routes[i] || currentPath.startsWith('${_routes[i]}/')) {
+        return i;
+      }
+    }
+    return 0; // Default to first index if no match
   }
 
   static String _getCurrentTitle(BuildContext context) {
@@ -57,7 +62,6 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentIndex = _getCurrentIndex(context);
-    final currentTitle = _getCurrentTitle(context);
 
     return Scaffold(
       body: child,
