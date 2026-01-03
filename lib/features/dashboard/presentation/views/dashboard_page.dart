@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/router/routes.dart';
+import '../../../../core/theme/app_typography.dart';
 
 class DashboardPage extends StatelessWidget {
   final Widget child;
@@ -58,18 +60,6 @@ class DashboardPage extends StatelessWidget {
     final currentTitle = _getCurrentTitle(context);
 
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(
-      //     currentTitle,
-      //     style: const TextStyle(
-      //       fontSize: 24,
-      //       fontWeight: FontWeight.bold,
-      //       color: AppColors.textPrimary,
-      //     ),
-      //   ),
-      //   backgroundColor: AppColors.background,
-      //   elevation: 0,
-      // ),
       body: child,
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
@@ -87,14 +77,9 @@ class DashboardPage extends StatelessWidget {
           type: BottomNavigationBarType.fixed,
           selectedItemColor: AppColors.primary,
           unselectedItemColor: AppColors.textSecondary,
-          selectedLabelStyle: const TextStyle(
-            fontWeight: FontWeight.w600,
-            fontSize: 12,
-          ),
-          unselectedLabelStyle: const TextStyle(
-            fontWeight: FontWeight.w400,
-            fontSize: 12,
-          ),
+          selectedLabelStyle: EnglishTypo.headline3.copyWith(fontSize: 12.sp),
+          unselectedLabelStyle: EnglishTypo.headline4.copyWith(fontSize: 12.sp),
+          iconSize: 20.sp,
           backgroundColor: AppColors.surface,
           elevation: 0,
           items: List.generate(
