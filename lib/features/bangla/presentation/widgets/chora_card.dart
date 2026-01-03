@@ -67,7 +67,7 @@ class ChoraCard extends StatelessWidget {
                   errorBuilder: (context, error, stackTrace) {
                     return Icon(
                       Icons.music_note,
-                      size: 50,
+                      size: 50.sp,
                       color: Colors.white.withOpacity(0.7),
                     );
                   },
@@ -109,23 +109,20 @@ class ChoraCard extends StatelessWidget {
                         color: Colors.white.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child:   Row(
+                      child: Row(
                         // mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Icon(
+                          Icon(
                             Icons.play_circle_filled,
                             color: Colors.white,
-                            size: 24,
+                            size: 24.sp,
                           ),
                           const Gap(6),
                           Text(
                             'Play',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w700,
-                            ),
+                            style: EnglishTypo.headline3
+                                .copyWith(color: Colors.white, fontSize: 16.sp),
                           ),
                         ],
                       ),
