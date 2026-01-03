@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:magical_book/core/theme/app_typography.dart';
 import '../../../../core/constants/app_colors.dart';
@@ -37,7 +38,7 @@ class BanglaPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'বাংলা',
-          style: BanglaTypo.headline1.copyWith(fontSize: 24),
+          style: BanglaTypo.headline1.copyWith(fontSize: 24.sp),
         ),
       ),
       body: Padding(
@@ -98,12 +99,12 @@ class BanglaPage extends StatelessWidget {
                     shape: BoxShape.circle,
                   ),
                   child: Text('অ/ক',
-                      style: BanglaTypo.headline1.copyWith(fontSize: 24)),
+                      style: BanglaTypo.headline1.copyWith(fontSize: 20.sp)),
                 ),
                 const SizedBox(height: 16),
                 Text(
                   'বর্ণমালা',
-                  style: BanglaTypo.headline1.copyWith(fontSize: 20),
+                  style: BanglaTypo.headline1.copyWith(fontSize: 20.sp),
                   textAlign: TextAlign.center,
                 ),
                 Text(

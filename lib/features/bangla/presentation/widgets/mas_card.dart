@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../models/bangla_mas_model.dart';
@@ -72,7 +73,7 @@ class MasCard extends StatelessWidget {
                 child: Text(
                   mas.name,
                   style: BanglaTypo.headline1.copyWith(
-                    fontSize: 28,
+                    fontSize: 28.sp,
                     fontWeight: FontWeight.w900,
                     color: Colors.white,
                     shadows: const [

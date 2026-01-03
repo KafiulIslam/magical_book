@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../constants/app_colors.dart';
+
 
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
@@ -24,12 +25,12 @@ class AppTheme {
     ),
 
     // AppBar
-    appBarTheme: const AppBarTheme(
+    appBarTheme: AppBarTheme(
         backgroundColor: AppColors.background,
         foregroundColor: AppColors.background,
         elevation: 0,
         centerTitle: true,
-        iconTheme: IconThemeData(color: Colors.black,size: 20)),
+        iconTheme: IconThemeData(color: Colors.black,size: 20.sp)),
 
     // Elevated buttons (main action)
     elevatedButtonTheme: ElevatedButtonThemeData(

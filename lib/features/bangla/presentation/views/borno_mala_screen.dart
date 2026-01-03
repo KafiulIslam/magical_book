@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:magical_book/features/bangla/presentation/widgets/borno_card.dart';
 import '../../../../core/constants/app_colors.dart';
@@ -25,7 +26,7 @@ class BornoMalaScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'বর্ণমালা',
-          style: BanglaTypo.headline1.copyWith(fontSize: 24),
+          style: BanglaTypo.headline1.copyWith(fontSize: 24.sp),
         ),
         backgroundColor: AppColors.background,
         elevation: 0,
@@ -97,7 +98,7 @@ class BornoMalaScreen extends StatelessWidget {
           Text(
             title,
             style: BanglaTypo.headline2.copyWith(
-              fontSize: 26,
+              fontSize: 26.sp,
               fontWeight: FontWeight.w900,
               color: Colors.white,
               shadows: [
@@ -109,23 +110,19 @@ class BornoMalaScreen extends StatelessWidget {
               ],
             ),
           ),
-          const Gap(  4),
-          Text(
-            subtitle,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-              shadows: [
-                Shadow(
-                  color: Colors.black26,
-                  blurRadius: 4,
-                  offset: Offset(1, 1),
-                ),
-              ],
-            ),
-          ),
+          const Gap(4),
+          Text(subtitle,
+              textAlign: TextAlign.center,
+              style: EnglishTypo.bodyLarge.copyWith(
+                color: Colors.white,
+                shadows: [
+                  const Shadow(
+                    color: Colors.black26,
+                    blurRadius: 4,
+                    offset: Offset(1, 1),
+                  ),
+                ],
+              )),
         ],
       ),
     );

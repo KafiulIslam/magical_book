@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../models/bangla_fol_model.dart';
@@ -108,7 +109,7 @@ class FolCard extends StatelessWidget {
                         Text(
                           fruit.name,
                           style: BanglaTypo.headline2.copyWith(
-                            fontSize: 22,
+                            fontSize: 22.sp,
                             fontWeight: FontWeight.w900,
                             color: Colors.white,
                             shadows: [

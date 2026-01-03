@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/bangla_constants.dart';
@@ -25,7 +26,7 @@ class ChoraScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'বাংলা ছড়া',
-          style: BanglaTypo.headline1.copyWith(fontSize: 24),
+          style: BanglaTypo.headline1.copyWith(fontSize: 24.sp),
         ),
         backgroundColor: AppColors.background,
         elevation: 0,
