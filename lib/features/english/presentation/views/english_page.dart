@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/english_constant.dart';
-import '../../../../core/router/routes.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../bangla/presentation/widgets/bangla_category_card.dart';
 import '../widgets/english_category_card.dart';
 
 class EnglishPage extends StatelessWidget {
@@ -62,5 +59,4 @@ class EnglishPage extends StatelessWidget {
       ),
     );
   }
-
 }

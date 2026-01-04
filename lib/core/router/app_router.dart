@@ -13,6 +13,7 @@ import '../../features/bangla/presentation/views/bangla_day_screen.dart';
 import '../../features/dashboard/presentation/views/dashboard_page.dart';
 import '../../features/english/presentation/views/english_page.dart';
 import '../../features/english/presentation/views/english_alphabet_screen.dart';
+import '../../features/english/presentation/views/english_rhymes_screen.dart';
 import '../../features/math/presentation/views/math_page.dart';
 
 class AppRouter {
@@ -115,6 +116,13 @@ class AppRouter {
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const EnglishAlphabetScreen(),
+                ),
+              ),
+              GoRoute(
+                path: '/rhymes',
+                pageBuilder: (context, state) => fadeTransitionPage(
+                  state: state,
+                  child: const EnglishRhymesScreen(),
                 ),
               ),
             ],

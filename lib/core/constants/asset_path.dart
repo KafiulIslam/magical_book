@@ -37,6 +37,15 @@ class AssetPath{
   static const winter = "assets/images/ritu/winter.png";
   static const spring = "assets/images/ritu/spring.jpeg";
 
-
+  //rhymes
+  static const rainRain = "assets/images/rhymes/rain-rain.jpg";
+  static const blueBoy = "assets/images/rhymes/blue-boy.jpg";
+  static const brush = "assets/images/rhymes/brush-brush.jpg";
+  static const jackJill = "assets/images/rhymes/jack-jill.jpg";
+  static const pussyCat = "assets/images/rhymes/pussy-cat.png";
+  static const rainbowFish = "assets/images/rhymes/rainbow-fish.jpg";
+  static const redRose = "assets/images/rhymes/red-rose.png";
+  static const teddy = "assets/images/rhymes/teddy.png";
+  static const wiseOwl = "assets/images/rhymes/wise-owl.png";
 
 }

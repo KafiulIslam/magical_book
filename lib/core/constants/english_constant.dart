@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:magical_book/core/router/routes.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../features/bangla/models/bangla_category.dart';
-import '../../features/bangla/models/bangla_chora_model.dart';
 import '../../features/english/model/rhymes_model.dart';
 import 'asset_path.dart';
 
 /// Contains all constant values and lists related to English feature
 class EnglishConstants {
-
   /// List of English learning categories
   static const List<BanglaCategory> englishCategories = [
     BanglaCategory(
@@ -117,20 +115,45 @@ class EnglishConstants {
   static List<RhymesModel> englishRhymes = [
     const RhymesModel(
         id: 1,
-        title: 'আতা গাছে তোতা পাখী',
-        image: AssetPath.ataGacheTotaPakhi,
+        title: 'Rain Rain Go Away',
+        image: AssetPath.rainRain,
         audio: 'audio'),
     const RhymesModel(
         id: 2,
-        title: 'আয় ছেলেরা আয় মেয়েরা',
-        image: AssetPath.ayCheleraAyMeyera,
+        title: 'Brush, Brush, Brush Your Teeth',
+        image: AssetPath.brush,
         audio: 'audio'),
     const RhymesModel(
-        id: 1,
-        title: 'হাট্টিমাটিম টিম',
-        image: AssetPath.hattiMatim,
+        id: 3, title: 'Pussy Cat', image: AssetPath.pussyCat, audio: 'audio'),
+    const RhymesModel(
+        id: 4,
+        title: 'Rainbow Fish',
+        image: AssetPath.rainbowFish,
         audio: 'audio'),
-
+    const RhymesModel(
+        id: 5,
+        title: 'Roses are red',
+        image: AssetPath.redRose,
+        audio: 'audio'),
+    const RhymesModel(
+        id: 6,
+        title: 'Teddy Bear, Teddy Bear',
+        image: AssetPath.teddy,
+        audio: 'audio'),
+    const RhymesModel(
+        id: 7,
+        title: 'A wise old owl',
+        image: AssetPath.wiseOwl,
+        audio: 'audio'),
+    const RhymesModel(
+        id: 8,
+        title: 'Little boy blue',
+        image: AssetPath.blueBoy,
+        audio: 'audio'),
+    const RhymesModel(
+        id: 9,
+        title: 'Jack and jill',
+        image: AssetPath.jackJill,
+        audio: 'audio'),
   ];
-
 }
