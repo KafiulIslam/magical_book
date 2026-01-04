@@ -3,6 +3,7 @@ import 'package:magical_book/core/router/routes.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../features/bangla/models/bangla_category.dart';
 import '../../features/bangla/models/bangla_fol_model.dart';
+import '../../features/bangla/models/bangla_ful_model.dart';
 import '../../features/english/model/rhymes_model.dart';
 import 'asset_path.dart';
 
@@ -176,4 +177,24 @@ class EnglishConstants {
     BanglaFolModel(
         id: 8, name: 'Jack Fruit', image: AssetPath.jackFruit, audio: 'audio'),
   ];
+
+  // flowers
+  static List<BanglaFulModel> flowers = [
+    BanglaFulModel(
+        id: 1, name: 'Water Lily', image: AssetPath.shapla, audio: 'audio'),
+    BanglaFulModel(
+        id: 2, name: 'Rose', image: AssetPath.golap, audio: 'audio'),
+    BanglaFulModel(id: 3, name: 'Hibiscus', image: AssetPath.joba, audio: 'audio'),
+    BanglaFulModel(
+        id: 4, name: 'Marigold', image: AssetPath.gadha, audio: 'audio'),
+    BanglaFulModel(
+        id: 5, name: 'Sun Flower', image: AssetPath.surjo, audio: 'audio'),
+    // BanglaFulModel(id: 6, name: 'বেলি', image: AssetPath.surjo, audio: 'audio'),
+    BanglaFulModel(
+        id: 7, name: 'Parijat', image: AssetPath.shuly, audio: 'audio'),
+    BanglaFulModel(id: 8, name: 'Spanish Cherry', image: AssetPath.bokul, audio: 'audio'),
+    BanglaFulModel(
+        id: 9, name: 'Flamboyant', image: AssetPath.krisnochura, audio: 'audio'),
+  ];
+
 }
