@@ -36,7 +36,8 @@ class EnglishRhymesCard extends StatelessWidget {
         // TODO: Navigate to rhyme detail screen or play audio
       },
       child: Container(
-        width: 120.w,
+        //width: 120.w,
+       // height: 135.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           gradient: LinearGradient(
@@ -55,8 +56,8 @@ class EnglishRhymesCard extends StatelessWidget {
               ),
               child: Image.asset(
                 rhyme.image,
-                width: 120.w,
-                height: 125.h,
+                width: 130.w,
+                height: 140.h,
                 fit: BoxFit.fill,
                 errorBuilder: (context, error, stackTrace) {
                   return Icon(
