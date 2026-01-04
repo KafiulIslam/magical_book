@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:magical_book/core/router/routes.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../features/bangla/models/bangla_category.dart';
+import '../../features/bangla/models/bangla_fol_model.dart';
 import '../../features/english/model/rhymes_model.dart';
 import 'asset_path.dart';
 
 /// Contains all constant values and lists related to English feature
 class EnglishConstants {
+
+
   /// List of English learning categories
   static const List<BanglaCategory> englishCategories = [
     BanglaCategory(
@@ -155,5 +158,22 @@ class EnglishConstants {
         title: 'Jack and jill',
         image: AssetPath.jackJill,
         audio: 'audio'),
+  ];
+
+  // fruits name
+  static List<BanglaFolModel> fruitsName = [
+    BanglaFolModel(id: 1, name: 'Mango', image: AssetPath.mango, audio: 'audio'),
+    BanglaFolModel(id: 3, name: 'Apple', image: AssetPath.apple, audio: 'audio'),
+    BanglaFolModel(id: 2, name: 'Banana', image: AssetPath.banana, audio: 'audio'),
+    BanglaFolModel(
+        id: 4, name: 'Orange', image: AssetPath.orange, audio: 'audio'),
+    BanglaFolModel(
+        id: 5, name: 'Water Melon', image: AssetPath.waterMelon, audio: 'audio'),
+    BanglaFolModel(
+        id: 6, name: 'Pine Apple', image: AssetPath.pineApple, audio: 'audio'),
+    BanglaFolModel(
+        id: 7, name: 'Grapes', image: AssetPath.grape, audio: 'audio'),
+    BanglaFolModel(
+        id: 8, name: 'Jack Fruit', image: AssetPath.jackFruit, audio: 'audio'),
   ];
 }
