@@ -48,4 +48,23 @@ class AssetPath{
   static const teddy = "assets/images/rhymes/teddy.png";
   static const wiseOwl = "assets/images/rhymes/wise-owl.png";
 
+
+  // body parts
+  static const arm = "assets/images/bodyParts/arm.png";
+  static const belly = "assets/images/bodyParts/belly.png";
+  static const ear = "assets/images/bodyParts/ear.png";
+  static const eye = "assets/images/bodyParts/eye.png";
+  static const feet = "assets/images/bodyParts/feet.png";
+  static const finger = "assets/images/bodyParts/finger.png";
+  static const forehead = "assets/images/bodyParts/forehead.png";
+  static const hair = "assets/images/bodyParts/hair.png";
+  static const hand = "assets/images/bodyParts/hand.png";
+  static const head = "assets/images/bodyParts/head.png";
+  static const knee = "assets/images/bodyParts/knee.png";
+  static const leg = "assets/images/bodyParts/leg.png";
+  static const mouth = "assets/images/bodyParts/mouth.png";
+  static const nose = "assets/images/bodyParts/nose.png";
+  static const tongue = "assets/images/bodyParts/tongue.png";
+
+
 }

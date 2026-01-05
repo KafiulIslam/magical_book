@@ -7,11 +7,11 @@ import '../../features/bangla/models/bangla_ful_model.dart';
 import '../../features/english/model/rhymes_model.dart';
 import 'asset_path.dart';
 
-/// Contains all constant values and lists related to English feature
+ // Contains all constant values and lists related to English feature
 class EnglishConstants {
 
 
-  /// List of English learning categories
+  // List of English learning categories
   static const List<BanglaCategory> englishCategories = [
     BanglaCategory(
       title: 'Alphabet',
@@ -85,7 +85,7 @@ class EnglishConstants {
     ),
   ];
 
-  /// List of English alphabet (A to Z)
+  // List of English alphabet (A to Z)
   static const List<String> englishAlphabet = <String>[
     'A',
     'B',
@@ -195,6 +195,38 @@ class EnglishConstants {
     BanglaFulModel(id: 8, name: 'Spanish Cherry', image: AssetPath.bokul, audio: 'audio'),
     BanglaFulModel(
         id: 9, name: 'Flamboyant', image: AssetPath.krisnochura, audio: 'audio'),
+  ];
+
+
+  // flowers
+  static List<BanglaFulModel> humanBody = [
+    BanglaFulModel(
+        id: 1, name: 'Head', image: AssetPath.head, audio: 'audio'),
+    BanglaFulModel(
+        id: 2, name: 'Eye', image: AssetPath.eye, audio: 'audio'),
+    BanglaFulModel(id: 3, name: 'Ear', image: AssetPath.ear, audio: 'audio'),
+    BanglaFulModel(
+        id: 3, name: 'Hand', image: AssetPath.hand, audio: 'audio'),
+    BanglaFulModel(
+        id: 4, name: 'Mouth', image: AssetPath.mouth, audio: 'audio'),
+
+    BanglaFulModel(
+        id: 5, name: 'Nose', image: AssetPath.nose, audio: 'audio'),
+    BanglaFulModel(id: 8, name: 'Leg', image: AssetPath.leg, audio: 'audio'),
+    BanglaFulModel(
+        id: 6, name: 'Feet', image: AssetPath.feet, audio: 'audio'),
+    BanglaFulModel(
+        id: 7, name: 'Arm', image: AssetPath.arm, audio: 'audio'),
+    BanglaFulModel(id: 8, name: 'Hair', image: AssetPath.hair, audio: 'audio'),
+    BanglaFulModel(
+        id: 8, name: 'Forehead', image: AssetPath.forehead, audio: 'audio'),
+    BanglaFulModel(
+        id: 9, name: 'Finger', image: AssetPath.finger, audio: 'audio'),
+    BanglaFulModel(id: 10, name: 'Knee', image: AssetPath.knee, audio: 'audio'),
+    BanglaFulModel(
+        id: 11, name: 'Belly', image: AssetPath.belly, audio: 'audio'),
+    BanglaFulModel(
+        id: 12, name: 'Tongue', image: AssetPath.tongue, audio: 'audio'),
   ];
 
 }
