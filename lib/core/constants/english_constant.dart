@@ -81,7 +81,7 @@ class EnglishConstants {
     BanglaCategory(
       title: 'Birds',
       subtitle: 'Bird Names',
-      icon: Icons.forest,
+      icon: Icons.air_outlined,
       color: AppColors.action,
       route: Routes.englishBirds,
     ),
@@ -199,7 +199,6 @@ class EnglishConstants {
         id: 9, name: 'Flamboyant', image: AssetPath.krisnochura, audio: 'audio'),
   ];
 
-
   // flowers
   static List<BanglaFulModel> humanBody = [
     BanglaFulModel(
@@ -256,6 +255,28 @@ class EnglishConstants {
     BanglaMasModel(id: 10, name: 'October', audio: 'audio'),
     BanglaMasModel(id: 11, name: 'November', audio: 'audio'),
     BanglaMasModel(id: 12, name: 'December', audio: 'audio'),
+  ];
+
+  // Animals
+  static const List<BanglaMasModel> animals = [
+    BanglaMasModel(id: 1, name: 'Fox', audio: 'audio'),
+    BanglaMasModel(id: 2, name: 'Panda', audio: 'audio'),
+    BanglaMasModel(id: 3, name: 'Zebra', audio: 'audio'),
+    BanglaMasModel(id: 4, name: 'Monkey', audio: 'audio'),
+    BanglaMasModel(id: 5, name: 'Kangaroo', audio: 'audio'),
+    BanglaMasModel(id: 6, name: 'Bear', audio: 'audio'),
+    BanglaMasModel(id: 7, name: 'Tiger', audio: 'audio'),
+    BanglaMasModel(id: 8, name: 'Lion', audio: 'audio'),
+  ];
+
+
+  // Animals
+  static const List<BanglaMasModel> birds = [
+    BanglaMasModel(id: 1, name: 'Peacock', audio: 'audio'),
+    BanglaMasModel(id: 2, name: 'Magpie', audio: 'audio'),
+    BanglaMasModel(id: 3, name: 'Vulture', audio: 'audio'),
+    BanglaMasModel(id: 4, name: 'Crow', audio: 'audio'),
+    BanglaMasModel(id: 5, name: 'Eagle', audio: 'audio'),
   ];
 
 }
