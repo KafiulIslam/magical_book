@@ -4,6 +4,8 @@ import '../../../core/constants/app_colors.dart';
 import '../../features/bangla/models/bangla_category.dart';
 import '../../features/bangla/models/bangla_fol_model.dart';
 import '../../features/bangla/models/bangla_ful_model.dart';
+import '../../features/bangla/models/bangla_din_model.dart';
+import '../../features/bangla/models/bangla_mas_model.dart';
 import '../../features/english/model/rhymes_model.dart';
 import 'asset_path.dart';
 
@@ -227,6 +229,33 @@ class EnglishConstants {
         id: 11, name: 'Belly', image: AssetPath.belly, audio: 'audio'),
     BanglaFulModel(
         id: 12, name: 'Tongue', image: AssetPath.tongue, audio: 'audio'),
+  ];
+
+  // English Days
+  static const List<BanglaDinModel> englishDays = [
+    BanglaDinModel(id: 1, name: 'Sunday', audio: 'audio'),
+    BanglaDinModel(id: 2, name: 'Monday', audio: 'audio'),
+    BanglaDinModel(id: 3, name: 'Tuesday', audio: 'audio'),
+    BanglaDinModel(id: 4, name: 'Wednesday', audio: 'audio'),
+    BanglaDinModel(id: 5, name: 'Thursday', audio: 'audio'),
+    BanglaDinModel(id: 6, name: 'Friday', audio: 'audio'),
+    BanglaDinModel(id: 7, name: 'Saturday', audio: 'audio'),
+  ];
+
+  // English Months
+  static const List<BanglaMasModel> englishMonths = [
+    BanglaMasModel(id: 1, name: 'January', audio: 'audio'),
+    BanglaMasModel(id: 2, name: 'February', audio: 'audio'),
+    BanglaMasModel(id: 3, name: 'March', audio: 'audio'),
+    BanglaMasModel(id: 4, name: 'April', audio: 'audio'),
+    BanglaMasModel(id: 5, name: 'May', audio: 'audio'),
+    BanglaMasModel(id: 6, name: 'June', audio: 'audio'),
+    BanglaMasModel(id: 7, name: 'July', audio: 'audio'),
+    BanglaMasModel(id: 8, name: 'August', audio: 'audio'),
+    BanglaMasModel(id: 9, name: 'September', audio: 'audio'),
+    BanglaMasModel(id: 10, name: 'October', audio: 'audio'),
+    BanglaMasModel(id: 11, name: 'November', audio: 'audio'),
+    BanglaMasModel(id: 12, name: 'December', audio: 'audio'),
   ];
 
 }

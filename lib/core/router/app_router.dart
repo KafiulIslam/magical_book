@@ -17,6 +17,8 @@ import '../../features/english/presentation/views/english_rhymes_screen.dart';
 import '../../features/english/presentation/views/english_fruit_screen.dart';
 import '../../features/english/presentation/views/english_flower_screen.dart';
 import '../../features/english/presentation/views/english_body_part_screen.dart';
+import '../../features/english/presentation/views/english_day_screen.dart';
+import '../../features/english/presentation/views/english_month_screen.dart';
 import '../../features/math/presentation/views/math_page.dart';
 
 class AppRouter {
@@ -147,6 +149,20 @@ class AppRouter {
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const EnglishBodyPartScreen(),
+                ),
+              ),
+              GoRoute(
+                path: '/days',
+                pageBuilder: (context, state) => fadeTransitionPage(
+                  state: state,
+                  child: const EnglishDayScreen(),
+                ),
+              ),
+              GoRoute(
+                path: '/months',
+                pageBuilder: (context, state) => fadeTransitionPage(
+                  state: state,
+                  child: const EnglishMonthScreen(),
                 ),
               ),
             ],
