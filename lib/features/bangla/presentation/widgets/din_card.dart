@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../models/bangla_din_model.dart';
+import '../../models/day_month_model.dart';
 
 class DinCard extends StatelessWidget {
-  final BanglaDinModel din;
+  final DayMonthModel din;
   final int index;
 
   const DinCard({

@@ -3,8 +3,7 @@ import 'package:magical_book/core/router/routes.dart';
 import 'package:magical_book/features/bangla/models/common_content_model.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../features/bangla/models/category.dart';
-import '../../features/bangla/models/bangla_din_model.dart';
-import '../../features/bangla/models/bangla_mas_model.dart';
+import '../../features/bangla/models/day_month_model.dart';
 import '../../features/english/model/rhymes_model.dart';
 import 'asset_path.dart';
 
@@ -231,30 +230,30 @@ class EnglishConstants {
   ];
 
   // English Days
-  static const List<BanglaDinModel> englishDays = [
-    BanglaDinModel(id: 1, name: 'Sunday', audio: 'audio'),
-    BanglaDinModel(id: 2, name: 'Monday', audio: 'audio'),
-    BanglaDinModel(id: 3, name: 'Tuesday', audio: 'audio'),
-    BanglaDinModel(id: 4, name: 'Wednesday', audio: 'audio'),
-    BanglaDinModel(id: 5, name: 'Thursday', audio: 'audio'),
-    BanglaDinModel(id: 6, name: 'Friday', audio: 'audio'),
-    BanglaDinModel(id: 7, name: 'Saturday', audio: 'audio'),
+  static const List<DayMonthModel> englishDays = [
+    DayMonthModel(id: 1, name: 'Sunday', audio: 'audio'),
+    DayMonthModel(id: 2, name: 'Monday', audio: 'audio'),
+    DayMonthModel(id: 3, name: 'Tuesday', audio: 'audio'),
+    DayMonthModel(id: 4, name: 'Wednesday', audio: 'audio'),
+    DayMonthModel(id: 5, name: 'Thursday', audio: 'audio'),
+    DayMonthModel(id: 6, name: 'Friday', audio: 'audio'),
+    DayMonthModel(id: 7, name: 'Saturday', audio: 'audio'),
   ];
 
   // English Months
-  static const List<BanglaMasModel> englishMonths = [
-    BanglaMasModel(id: 1, name: 'January', audio: 'audio'),
-    BanglaMasModel(id: 2, name: 'February', audio: 'audio'),
-    BanglaMasModel(id: 3, name: 'March', audio: 'audio'),
-    BanglaMasModel(id: 4, name: 'April', audio: 'audio'),
-    BanglaMasModel(id: 5, name: 'May', audio: 'audio'),
-    BanglaMasModel(id: 6, name: 'June', audio: 'audio'),
-    BanglaMasModel(id: 7, name: 'July', audio: 'audio'),
-    BanglaMasModel(id: 8, name: 'August', audio: 'audio'),
-    BanglaMasModel(id: 9, name: 'September', audio: 'audio'),
-    BanglaMasModel(id: 10, name: 'October', audio: 'audio'),
-    BanglaMasModel(id: 11, name: 'November', audio: 'audio'),
-    BanglaMasModel(id: 12, name: 'December', audio: 'audio'),
+  static const List<DayMonthModel> englishMonths = [
+    DayMonthModel(id: 1, name: 'January', audio: 'audio'),
+    DayMonthModel(id: 2, name: 'February', audio: 'audio'),
+    DayMonthModel(id: 3, name: 'March', audio: 'audio'),
+    DayMonthModel(id: 4, name: 'April', audio: 'audio'),
+    DayMonthModel(id: 5, name: 'May', audio: 'audio'),
+    DayMonthModel(id: 6, name: 'June', audio: 'audio'),
+    DayMonthModel(id: 7, name: 'July', audio: 'audio'),
+    DayMonthModel(id: 8, name: 'August', audio: 'audio'),
+    DayMonthModel(id: 9, name: 'September', audio: 'audio'),
+    DayMonthModel(id: 10, name: 'October', audio: 'audio'),
+    DayMonthModel(id: 11, name: 'November', audio: 'audio'),
+    DayMonthModel(id: 12, name: 'December', audio: 'audio'),
   ];
 
   // Animals

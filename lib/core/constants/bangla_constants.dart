@@ -3,8 +3,7 @@ import 'package:magical_book/core/router/routes.dart';
 import 'package:magical_book/features/bangla/models/common_content_model.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../features/bangla/models/category.dart';
-import '../../features/bangla/models/bangla_mas_model.dart';
-import '../../features/bangla/models/bangla_din_model.dart';
+import '../../features/bangla/models/day_month_model.dart';
 import 'asset_path.dart';
 
 /// Contains all constant values and lists related to Bangla feature
@@ -217,29 +216,29 @@ class BanglaConstants {
   ];
 
   // bangla maser nam (Month Names)
-  static const List<BanglaMasModel> banglaMas = [
-    BanglaMasModel(id: 1, name: 'বৈশাখ', audio: 'audio'),
-    BanglaMasModel(id: 2, name: 'জৈষ্ঠ্য', audio: 'audio'),
-    BanglaMasModel(id: 3, name: 'আষাঢ়', audio: 'audio'),
-    BanglaMasModel(id: 4, name: 'শ্রাবণ', audio: 'audio'),
-    BanglaMasModel(id: 5, name: 'ভাদ্র', audio: 'audio'),
-    BanglaMasModel(id: 6, name: 'আশ্বিন', audio: 'audio'),
-    BanglaMasModel(id: 7, name: 'কার্তিক', audio: 'audio'),
-    BanglaMasModel(id: 8, name: 'অগ্রহায়ণ', audio: 'audio'),
-    BanglaMasModel(id: 9, name: 'পৌষ', audio: 'audio'),
-    BanglaMasModel(id: 10, name: 'মাঘ', audio: 'audio'),
-    BanglaMasModel(id: 11, name: 'ফাল্গুন', audio: 'audio'),
-    BanglaMasModel(id: 12, name: 'চৈত্র', audio: 'audio'),
+  static const List<DayMonthModel> banglaMas = [
+    DayMonthModel(id: 1, name: 'বৈশাখ', audio: 'audio'),
+    DayMonthModel(id: 2, name: 'জৈষ্ঠ্য', audio: 'audio'),
+    DayMonthModel(id: 3, name: 'আষাঢ়', audio: 'audio'),
+    DayMonthModel(id: 4, name: 'শ্রাবণ', audio: 'audio'),
+    DayMonthModel(id: 5, name: 'ভাদ্র', audio: 'audio'),
+    DayMonthModel(id: 6, name: 'আশ্বিন', audio: 'audio'),
+    DayMonthModel(id: 7, name: 'কার্তিক', audio: 'audio'),
+    DayMonthModel(id: 8, name: 'অগ্রহায়ণ', audio: 'audio'),
+    DayMonthModel(id: 9, name: 'পৌষ', audio: 'audio'),
+    DayMonthModel(id: 10, name: 'মাঘ', audio: 'audio'),
+    DayMonthModel(id: 11, name: 'ফাল্গুন', audio: 'audio'),
+    DayMonthModel(id: 12, name: 'চৈত্র', audio: 'audio'),
   ];
 
   // bangla diner nam (Day Names)
-  static const List<BanglaDinModel> banglaDin = [
-    BanglaDinModel(id: 1, name: 'রবিবার', audio: 'audio'),
-    BanglaDinModel(id: 2, name: 'সোমবার', audio: 'audio'),
-    BanglaDinModel(id: 3, name: 'মঙ্গলবার', audio: 'audio'),
-    BanglaDinModel(id: 4, name: 'বুধবার', audio: 'audio'),
-    BanglaDinModel(id: 5, name: 'বৃহস্পতিবার', audio: 'audio'),
-    BanglaDinModel(id: 6, name: 'শুক্রবার', audio: 'audio'),
-    BanglaDinModel(id: 7, name: 'শনিবার', audio: 'audio'),
+  static const List<DayMonthModel> banglaDin = [
+    DayMonthModel(id: 1, name: 'রবিবার', audio: 'audio'),
+    DayMonthModel(id: 2, name: 'সোমবার', audio: 'audio'),
+    DayMonthModel(id: 3, name: 'মঙ্গলবার', audio: 'audio'),
+    DayMonthModel(id: 4, name: 'বুধবার', audio: 'audio'),
+    DayMonthModel(id: 5, name: 'বৃহস্পতিবার', audio: 'audio'),
+    DayMonthModel(id: 6, name: 'শুক্রবার', audio: 'audio'),
+    DayMonthModel(id: 7, name: 'শনিবার', audio: 'audio'),
   ];
 }

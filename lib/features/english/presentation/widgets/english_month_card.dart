@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magical_book/features/bangla/models/day_month_model.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../bangla/models/bangla_mas_model.dart';
 
 class EnglishMonthCard extends StatelessWidget {
-  final BanglaMasModel month;
+  final DayMonthModel month;
   final int index;
 
   const EnglishMonthCard({
