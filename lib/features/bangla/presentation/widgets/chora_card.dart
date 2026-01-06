@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../models/bangla_chora_model.dart';
+import '../../models/common_content_model.dart';
 
 class ChoraCard extends StatelessWidget {
-  final BanglaChoraModel chora;
+  final CommonContentModel chora;
   final int index;
 
   const ChoraCard({

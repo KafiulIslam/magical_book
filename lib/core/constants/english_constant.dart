@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:magical_book/core/router/routes.dart';
 import '../../../core/constants/app_colors.dart';
-import '../../features/bangla/models/bangla_category.dart';
+import '../../features/bangla/models/category.dart';
 import '../../features/bangla/models/bangla_fol_model.dart';
 import '../../features/bangla/models/bangla_ful_model.dart';
 import '../../features/bangla/models/bangla_din_model.dart';
@@ -12,71 +12,71 @@ import 'asset_path.dart';
 // Contains all constant values and lists related to English feature
 class EnglishConstants {
   // List of English learning categories
-  static const List<BanglaCategory> englishCategories = [
-    BanglaCategory(
+  static const List<Category> englishCategories = [
+    Category(
       title: 'Alphabet',
       subtitle: 'English Alphabet',
       icon: Icons.abc,
       color: AppColors.primary,
       route: Routes.englishAlphabet,
     ),
-    BanglaCategory(
+    Category(
       title: 'Rhymes',
       subtitle: 'English Rhymes',
       icon: Icons.music_note,
       color: AppColors.action,
       route: Routes.englishRhymes,
     ),
-    BanglaCategory(
+    Category(
       title: 'Fruits',
       subtitle: 'Fruit Names',
       icon: Icons.apple,
       color: AppColors.success,
       route: Routes.englishFruits,
     ),
-    BanglaCategory(
+    Category(
       title: 'Flowers',
       subtitle: 'Flower Names',
       icon: Icons.local_florist,
       color: AppColors.reward,
       route: Routes.englishFlowers,
     ),
-    BanglaCategory(
+    Category(
       title: 'Figures',
       subtitle: 'Figures & Shapes',
       icon: Icons.looks,
       color: AppColors.info,
       route: Routes.englishFigures,
     ),
-    BanglaCategory(
+    Category(
       title: 'Body Parts',
       subtitle: 'Body Parts',
       icon: Icons.accessibility,
       color: AppColors.primary,
       route: Routes.englishBodyParts,
     ),
-    BanglaCategory(
+    Category(
       title: 'Days',
       subtitle: 'Day Names',
       icon: Icons.today,
       color: AppColors.action,
       route: Routes.englishDays,
     ),
-    BanglaCategory(
+    Category(
       title: 'Months',
       subtitle: 'Month Names',
       icon: Icons.calendar_month,
       color: AppColors.action,
       route: Routes.englishMonths,
     ),
-    BanglaCategory(
+    Category(
       title: 'Animals',
       subtitle: 'Animal Names',
       icon: Icons.pets,
       color: AppColors.action,
       route: Routes.englishAnimals,
     ),
-    BanglaCategory(
+    Category(
       title: 'Birds',
       subtitle: 'Bird Names',
       icon: Icons.air_outlined,
@@ -277,16 +277,16 @@ class EnglishConstants {
 
   // Birds
   static List<BanglaFulModel> birds = [
-    BanglaFulModel(id: 1, name: 'Peacock', image: AssetPath.fox, audio: 'audio'),
     BanglaFulModel(
-        id: 2, name: 'Magpie', image: AssetPath.panda, audio: 'audio'),
+        id: 1, name: 'Peacock', image: AssetPath.peacock, audio: 'audio'),
     BanglaFulModel(
-        id: 3, name: 'Vulture', image: AssetPath.zebra, audio: 'audio'),
+        id: 2, name: 'Magpie', image: AssetPath.magpie, audio: 'audio'),
     BanglaFulModel(
-        id: 4, name: 'Crow', image: AssetPath.monkey, audio: 'audio'),
+        id: 3, name: 'Vulture', image: AssetPath.vulture, audio: 'audio'),
+    BanglaFulModel(id: 4, name: 'Crow', image: AssetPath.crow, audio: 'audio'),
     BanglaFulModel(
-        id: 5, name: 'Eagle', image: AssetPath.kangaroo, audio: 'audio'),
-    BanglaFulModel(id: 6, name: 'Pigeon', image: AssetPath.bear, audio: 'audio'),
+        id: 5, name: 'Eagle', image: AssetPath.eagle, audio: 'audio'),
+    BanglaFulModel(
+        id: 6, name: 'Pigeon', image: AssetPath.pigeon, audio: 'audio'),
   ];
-
 }

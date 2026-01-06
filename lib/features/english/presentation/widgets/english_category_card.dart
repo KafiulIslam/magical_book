@@ -4,10 +4,10 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../bangla/models/bangla_category.dart';
+import '../../../bangla/models/category.dart';
 
 class EnglishCategoryCard extends StatelessWidget {
-  final BanglaCategory category;
+  final Category category;
 
   const EnglishCategoryCard({super.key,
     required this.category,

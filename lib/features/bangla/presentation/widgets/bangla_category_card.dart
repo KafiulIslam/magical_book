@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../models/bangla_category.dart';
+import '../../models/category.dart';
 
 class BanglaCategoryCard extends StatelessWidget {
-  final BanglaCategory category;
+  final Category category;
 
   const BanglaCategoryCard({
     required this.category,

@@ -1,29 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:magical_book/features/bangla/models/common_content_model.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../models/bangla_fol_model.dart';
+import '../../../bangla/models/bangla_ful_model.dart';
 
-class FolCard extends StatelessWidget {
-  final CommonContentModel fruit;
+class EnglishBirdCard extends StatelessWidget {
+  final BanglaFulModel bird;
   final int index;
 
-  const FolCard({
-    required this.fruit,
+  const EnglishBirdCard({
+    super.key,
+    required this.bird,
     required this.index,
   });
 
   List<Color> _getCardColors(int index) {
     final colors = [
+      [AppColors.primary, AppColors.info],
+      [AppColors.action, AppColors.reward],
       [AppColors.success, AppColors.primary],
       [AppColors.reward, AppColors.action],
-      [AppColors.primary, AppColors.info],
-      [AppColors.action, AppColors.success],
-      [AppColors.info, AppColors.reward],
-      [AppColors.success, AppColors.action],
-      [AppColors.primary, AppColors.reward],
-      [AppColors.action, AppColors.primary],
+      [AppColors.info, AppColors.success],
+      [AppColors.primary, AppColors.action],
     ];
     return colors[index % colors.length];
   }
@@ -48,7 +46,7 @@ class FolCard extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: () {
-            // TODO: Play audio or show fruit details
+            // TODO: Play audio or show bird details
           },
           borderRadius: BorderRadius.circular(24),
           child: Container(
@@ -67,7 +65,7 @@ class FolCard extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Fruit Image
+                // Bird Image
                 Expanded(
                   flex: 3,
                   child: Container(
@@ -85,11 +83,11 @@ class FolCard extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(18),
                         child: Image.asset(
-                          fruit.image,
+                          bird.image,
                           fit: BoxFit.contain,
                           errorBuilder: (context, error, stackTrace) {
                             return Icon(
-                              Icons.apple,
+                              Icons.air_outlined,
                               size: 60,
                               color: Colors.white.withOpacity(0.7),
                             );
@@ -99,49 +97,30 @@ class FolCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Fruit Name
-                Expanded(
+                // Bird Name
+                Flexible(
                   flex: 1,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          fruit.title,
-                          style: BanglaTypo.headline2.copyWith(
-                            fontSize: 22.sp,
-                            fontWeight: FontWeight.w900,
-                            color: Colors.white,
-                            shadows: [
-                              const Shadow(
-                                color: Colors.black26,
-                                blurRadius: 6,
-                                offset: Offset(2, 2),
-                              ),
-                            ],
-                          ),
-                          textAlign: TextAlign.center,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                    child: Center(
+                      child: Text(
+                        bird.name,
+                        style: EnglishTypo.headline2.copyWith(
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.white,
+                          shadows: const [
+                            Shadow(
+                              color: Colors.black26,
+                              blurRadius: 6,
+                              offset: Offset(2, 2),
+                            ),
+                          ],
                         ),
-                        // const SizedBox(height: 8),
-                        // Container(
-                        //   padding: const EdgeInsets.symmetric(
-                        //     horizontal: 12,
-                        //     vertical: 6,
-                        //   ),
-                        //   decoration: BoxDecoration(
-                        //     color: Colors.white.withOpacity(0.3),
-                        //     borderRadius: BorderRadius.circular(16),
-                        //   ),
-                        //   child: const Icon(
-                        //     Icons.volume_up,
-                        //     color: Colors.white,
-                        //     size: 20,
-                        //   ),
-                        // ),
-                      ],
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                   ),
                 ),
@@ -153,3 +132,4 @@ class FolCard extends StatelessWidget {
     );
   }
 }
+

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:magical_book/core/router/routes.dart';
-import 'package:magical_book/features/bangla/models/bangla_chora_model.dart';
+import 'package:magical_book/features/bangla/models/common_content_model.dart';
 import '../../../core/constants/app_colors.dart';
-import '../../features/bangla/models/bangla_category.dart';
+import '../../features/bangla/models/category.dart';
 import '../../features/bangla/models/bangla_fol_model.dart';
 import '../../features/bangla/models/bangla_ful_model.dart';
 import '../../features/bangla/models/bangla_mas_model.dart';
@@ -11,51 +11,51 @@ import 'asset_path.dart';
 
 /// Contains all constant values and lists related to Bangla feature
 class BanglaConstants {
-  /// List of Bangla learning categories
-  static const List<BanglaCategory> categories = [
-    BanglaCategory(
+  // List of Bangla learning categories
+  static const List<Category> categories = [
+    Category(
       title: 'বর্ণমালা',
       subtitle: 'Alphabet',
       icon: Icons.abc,
       color: AppColors.primary,
       route: Routes.bornoMala,
     ),
-    BanglaCategory(
+    Category(
       title: 'ছড়া',
       subtitle: 'Rhymes',
       icon: Icons.music_note,
       color: AppColors.action,
       route: Routes.chora,
     ),
-    BanglaCategory(
+    Category(
       title: 'ফলের নাম',
       subtitle: 'Fruit Names',
       icon: Icons.apple,
       color: AppColors.success,
       route: Routes.folerNam,
     ),
-    BanglaCategory(
+    Category(
       title: 'ফুলের নাম',
       subtitle: 'Flower Names',
       icon: Icons.local_florist,
       color: AppColors.reward,
       route: Routes.fulerNam,
     ),
-    BanglaCategory(
+    Category(
       title: 'রিতুর নাম',
       subtitle: 'Season Names',
       icon: Icons.wb_sunny,
       color: AppColors.info,
       route: Routes.riturNam,
     ),
-    BanglaCategory(
+    Category(
       title: 'মাসের নাম',
       subtitle: 'Month Names',
       icon: Icons.calendar_month,
       color: AppColors.primary,
       route: Routes.maserNam,
     ),
-    BanglaCategory(
+    Category(
       title: 'দিনের নাম',
       subtitle: 'Day Names',
       icon: Icons.today,
@@ -65,7 +65,7 @@ class BanglaConstants {
   ];
 
   // bangla borno mala
-  /// List of Bangla shoroborno (Vowels)
+  // List of Bangla shoroborno (Vowels)
   static const List<String> banglaShorobornos = <String>[
     'অ',
     'আ',
@@ -80,7 +80,7 @@ class BanglaConstants {
     'ঔ',
   ];
 
-  /// List of Bangla byanjonborno (Consonants)
+  // List of Bangla byanjonborno (Consonants)
   static const List<String> banglaByanjonbornos = <String>[
     'ক',
     'খ',
@@ -124,33 +124,33 @@ class BanglaConstants {
   ];
 
   // bangla chora
-  static List<BanglaChoraModel> banglaChora = [
-    const BanglaChoraModel(
+  static List<CommonContentModel> banglaChora = [
+    const CommonContentModel(
         id: 1,
         title: 'আতা গাছে তোতা পাখী',
         image: AssetPath.ataGacheTotaPakhi,
         audio: 'audio'),
-    const BanglaChoraModel(
+    const CommonContentModel(
         id: 2,
         title: 'আয় ছেলেরা আয় মেয়েরা',
         image: AssetPath.ayCheleraAyMeyera,
         audio: 'audio'),
-    const BanglaChoraModel(
+    const CommonContentModel(
         id: 1,
         title: 'হাট্টিমাটিম টিম',
         image: AssetPath.hattiMatim,
         audio: 'audio'),
-    const BanglaChoraModel(
+    const CommonContentModel(
         id: 1,
         title: 'আম পাতা জোড়া জোড়া',
         image: AssetPath.amPataJoraJora,
         audio: 'audio'),
-    const BanglaChoraModel(
+    const CommonContentModel(
         id: 1,
         title: 'বাক বাকুম পায়রা',
         image: AssetPath.bakBakumPayra,
         audio: 'audio'),
-    const BanglaChoraModel(
+    const CommonContentModel(
         id: 1,
         title: 'ঐ দেখা যায় তালগাছ',
         image: AssetPath.talGach,
@@ -158,20 +158,23 @@ class BanglaConstants {
   ];
 
   // bangla foler nam
-  static List<BanglaFolModel> banglaFolerNam = [
-    BanglaFolModel(id: 1, name: 'আম', image: AssetPath.mango, audio: 'audio'),
-    BanglaFolModel(id: 3, name: 'আপেল', image: AssetPath.apple, audio: 'audio'),
-    BanglaFolModel(id: 2, name: 'কলা', image: AssetPath.banana, audio: 'audio'),
-    BanglaFolModel(
-        id: 4, name: 'কমলা', image: AssetPath.orange, audio: 'audio'),
-    BanglaFolModel(
-        id: 5, name: 'তরমুজ', image: AssetPath.waterMelon, audio: 'audio'),
-    BanglaFolModel(
-        id: 6, name: 'আনারস', image: AssetPath.pineApple, audio: 'audio'),
-    BanglaFolModel(
-        id: 7, name: 'আঙ্গুর', image: AssetPath.grape, audio: 'audio'),
-    BanglaFolModel(
-        id: 8, name: 'কাঁঠাল', image: AssetPath.jackFruit, audio: 'audio'),
+  static const List<CommonContentModel> banglaFolerNam = [
+    CommonContentModel(
+        id: 1, title: 'আম', image: AssetPath.mango, audio: 'audio'),
+    CommonContentModel(
+        id: 3, title: 'আপেল', image: AssetPath.apple, audio: 'audio'),
+    CommonContentModel(
+        id: 2, title: 'কলা', image: AssetPath.banana, audio: 'audio'),
+    CommonContentModel(
+        id: 4, title: 'কমলা', image: AssetPath.orange, audio: 'audio'),
+    CommonContentModel(
+        id: 5, title: 'তরমুজ', image: AssetPath.waterMelon, audio: 'audio'),
+    CommonContentModel(
+        id: 6, title: 'আনারস', image: AssetPath.pineApple, audio: 'audio'),
+    CommonContentModel(
+        id: 7, title: 'আঙ্গুর', image: AssetPath.grape, audio: 'audio'),
+    CommonContentModel(
+        id: 8, title: 'কাঁঠাল', image: AssetPath.jackFruit, audio: 'audio'),
   ];
 
   // bangla fuler nam

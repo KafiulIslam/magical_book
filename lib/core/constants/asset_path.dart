@@ -77,5 +77,13 @@ class AssetPath{
   static const tiger = "assets/images/animal/tiger.png";
   static const zebra = "assets/images/animal/zebra.png";
 
+  // birds
+  static const crow = "assets/images/birds/crow.png";
+  static const eagle = "assets/images/birds/eagle.png";
+  static const magpie = "assets/images/birds/magpie.png";
+  static const peacock = "assets/images/birds/peacock.png";
+  static const pigeon = "assets/images/birds/pigeon.png";
+  static const vulture = "assets/images/birds/vulture.png";
+
 
 }
