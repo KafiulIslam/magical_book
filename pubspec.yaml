@@ -56,6 +56,7 @@ flutter:
     - assets/images/ritu/
     - assets/images/rhymes/
     - assets/images/bodyParts/
+    - assets/images/animal/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -9,10 +9,8 @@ import '../../features/bangla/models/bangla_mas_model.dart';
 import '../../features/english/model/rhymes_model.dart';
 import 'asset_path.dart';
 
- // Contains all constant values and lists related to English feature
+// Contains all constant values and lists related to English feature
 class EnglishConstants {
-
-
   // List of English learning categories
   static const List<BanglaCategory> englishCategories = [
     BanglaCategory(
@@ -165,13 +163,19 @@ class EnglishConstants {
 
   // fruits name
   static List<BanglaFolModel> fruitsName = [
-    BanglaFolModel(id: 1, name: 'Mango', image: AssetPath.mango, audio: 'audio'),
-    BanglaFolModel(id: 3, name: 'Apple', image: AssetPath.apple, audio: 'audio'),
-    BanglaFolModel(id: 2, name: 'Banana', image: AssetPath.banana, audio: 'audio'),
+    BanglaFolModel(
+        id: 1, name: 'Mango', image: AssetPath.mango, audio: 'audio'),
+    BanglaFolModel(
+        id: 3, name: 'Apple', image: AssetPath.apple, audio: 'audio'),
+    BanglaFolModel(
+        id: 2, name: 'Banana', image: AssetPath.banana, audio: 'audio'),
     BanglaFolModel(
         id: 4, name: 'Orange', image: AssetPath.orange, audio: 'audio'),
     BanglaFolModel(
-        id: 5, name: 'Water Melon', image: AssetPath.waterMelon, audio: 'audio'),
+        id: 5,
+        name: 'Water Melon',
+        image: AssetPath.waterMelon,
+        audio: 'audio'),
     BanglaFolModel(
         id: 6, name: 'Pine Apple', image: AssetPath.pineApple, audio: 'audio'),
     BanglaFolModel(
@@ -184,9 +188,9 @@ class EnglishConstants {
   static List<BanglaFulModel> flowers = [
     BanglaFulModel(
         id: 1, name: 'Water Lily', image: AssetPath.shapla, audio: 'audio'),
+    BanglaFulModel(id: 2, name: 'Rose', image: AssetPath.golap, audio: 'audio'),
     BanglaFulModel(
-        id: 2, name: 'Rose', image: AssetPath.golap, audio: 'audio'),
-    BanglaFulModel(id: 3, name: 'Hibiscus', image: AssetPath.joba, audio: 'audio'),
+        id: 3, name: 'Hibiscus', image: AssetPath.joba, audio: 'audio'),
     BanglaFulModel(
         id: 4, name: 'Marigold', image: AssetPath.gadha, audio: 'audio'),
     BanglaFulModel(
@@ -194,30 +198,27 @@ class EnglishConstants {
     // BanglaFulModel(id: 6, name: 'বেলি', image: AssetPath.surjo, audio: 'audio'),
     BanglaFulModel(
         id: 7, name: 'Parijat', image: AssetPath.shuly, audio: 'audio'),
-    BanglaFulModel(id: 8, name: 'Spanish Cherry', image: AssetPath.bokul, audio: 'audio'),
     BanglaFulModel(
-        id: 9, name: 'Flamboyant', image: AssetPath.krisnochura, audio: 'audio'),
+        id: 8, name: 'Spanish Cherry', image: AssetPath.bokul, audio: 'audio'),
+    BanglaFulModel(
+        id: 9,
+        name: 'Flamboyant',
+        image: AssetPath.krisnochura,
+        audio: 'audio'),
   ];
 
   // flowers
   static List<BanglaFulModel> humanBody = [
-    BanglaFulModel(
-        id: 1, name: 'Head', image: AssetPath.head, audio: 'audio'),
-    BanglaFulModel(
-        id: 2, name: 'Eye', image: AssetPath.eye, audio: 'audio'),
+    BanglaFulModel(id: 1, name: 'Head', image: AssetPath.head, audio: 'audio'),
+    BanglaFulModel(id: 2, name: 'Eye', image: AssetPath.eye, audio: 'audio'),
     BanglaFulModel(id: 3, name: 'Ear', image: AssetPath.ear, audio: 'audio'),
-    BanglaFulModel(
-        id: 3, name: 'Hand', image: AssetPath.hand, audio: 'audio'),
+    BanglaFulModel(id: 3, name: 'Hand', image: AssetPath.hand, audio: 'audio'),
     BanglaFulModel(
         id: 4, name: 'Mouth', image: AssetPath.mouth, audio: 'audio'),
-
-    BanglaFulModel(
-        id: 5, name: 'Nose', image: AssetPath.nose, audio: 'audio'),
+    BanglaFulModel(id: 5, name: 'Nose', image: AssetPath.nose, audio: 'audio'),
     BanglaFulModel(id: 8, name: 'Leg', image: AssetPath.leg, audio: 'audio'),
-    BanglaFulModel(
-        id: 6, name: 'Feet', image: AssetPath.feet, audio: 'audio'),
-    BanglaFulModel(
-        id: 7, name: 'Arm', image: AssetPath.arm, audio: 'audio'),
+    BanglaFulModel(id: 6, name: 'Feet', image: AssetPath.feet, audio: 'audio'),
+    BanglaFulModel(id: 7, name: 'Arm', image: AssetPath.arm, audio: 'audio'),
     BanglaFulModel(id: 8, name: 'Hair', image: AssetPath.hair, audio: 'audio'),
     BanglaFulModel(
         id: 8, name: 'Forehead', image: AssetPath.forehead, audio: 'audio'),
@@ -258,25 +259,34 @@ class EnglishConstants {
   ];
 
   // Animals
-  static const List<BanglaMasModel> animals = [
-    BanglaMasModel(id: 1, name: 'Fox', audio: 'audio'),
-    BanglaMasModel(id: 2, name: 'Panda', audio: 'audio'),
-    BanglaMasModel(id: 3, name: 'Zebra', audio: 'audio'),
-    BanglaMasModel(id: 4, name: 'Monkey', audio: 'audio'),
-    BanglaMasModel(id: 5, name: 'Kangaroo', audio: 'audio'),
-    BanglaMasModel(id: 6, name: 'Bear', audio: 'audio'),
-    BanglaMasModel(id: 7, name: 'Tiger', audio: 'audio'),
-    BanglaMasModel(id: 8, name: 'Lion', audio: 'audio'),
+  static List<BanglaFulModel> animals = [
+    BanglaFulModel(id: 1, name: 'Fox', image: AssetPath.fox, audio: 'audio'),
+    BanglaFulModel(
+        id: 2, name: 'Panda', image: AssetPath.panda, audio: 'audio'),
+    BanglaFulModel(
+        id: 3, name: 'Zebra', image: AssetPath.zebra, audio: 'audio'),
+    BanglaFulModel(
+        id: 4, name: 'Monkey', image: AssetPath.monkey, audio: 'audio'),
+    BanglaFulModel(
+        id: 5, name: 'Kangaroo', image: AssetPath.kangaroo, audio: 'audio'),
+    BanglaFulModel(id: 6, name: 'Bear', image: AssetPath.bear, audio: 'audio'),
+    BanglaFulModel(
+        id: 7, name: 'Tiger', image: AssetPath.tiger, audio: 'audio'),
+    BanglaFulModel(id: 8, name: 'Lion', image: AssetPath.lion, audio: 'audio'),
   ];
 
-
-  // Animals
-  static const List<BanglaMasModel> birds = [
-    BanglaMasModel(id: 1, name: 'Peacock', audio: 'audio'),
-    BanglaMasModel(id: 2, name: 'Magpie', audio: 'audio'),
-    BanglaMasModel(id: 3, name: 'Vulture', audio: 'audio'),
-    BanglaMasModel(id: 4, name: 'Crow', audio: 'audio'),
-    BanglaMasModel(id: 5, name: 'Eagle', audio: 'audio'),
+  // Birds
+  static List<BanglaFulModel> birds = [
+    BanglaFulModel(id: 1, name: 'Peacock', image: AssetPath.fox, audio: 'audio'),
+    BanglaFulModel(
+        id: 2, name: 'Magpie', image: AssetPath.panda, audio: 'audio'),
+    BanglaFulModel(
+        id: 3, name: 'Vulture', image: AssetPath.zebra, audio: 'audio'),
+    BanglaFulModel(
+        id: 4, name: 'Crow', image: AssetPath.monkey, audio: 'audio'),
+    BanglaFulModel(
+        id: 5, name: 'Eagle', image: AssetPath.kangaroo, audio: 'audio'),
+    BanglaFulModel(id: 6, name: 'Pigeon', image: AssetPath.bear, audio: 'audio'),
   ];
 
 }

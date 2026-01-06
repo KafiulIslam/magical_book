@@ -67,4 +67,15 @@ class AssetPath{
   static const tongue = "assets/images/bodyParts/tongue.png";
 
 
+  // animals
+  static const bear = "assets/images/animal/bear.png";
+  static const fox = "assets/images/animal/fox.png";
+  static const kangaroo = "assets/images/animal/kangaroo.png";
+  static const lion = "assets/images/animal/lion.png";
+  static const monkey = "assets/images/animal/monkey.png";
+  static const panda = "assets/images/animal/panda.png";
+  static const tiger = "assets/images/animal/tiger.png";
+  static const zebra = "assets/images/animal/zebra.png";
+
+
 }
