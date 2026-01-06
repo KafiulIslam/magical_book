@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:magical_book/features/bangla/models/common_content_model.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../models/bangla_fol_model.dart';
 
 class FolCard extends StatelessWidget {
   final CommonContentModel fruit;

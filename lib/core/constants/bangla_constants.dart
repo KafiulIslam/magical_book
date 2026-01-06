@@ -3,8 +3,6 @@ import 'package:magical_book/core/router/routes.dart';
 import 'package:magical_book/features/bangla/models/common_content_model.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../features/bangla/models/category.dart';
-import '../../features/bangla/models/bangla_fol_model.dart';
-import '../../features/bangla/models/bangla_ful_model.dart';
 import '../../features/bangla/models/bangla_mas_model.dart';
 import '../../features/bangla/models/bangla_din_model.dart';
 import 'asset_path.dart';
@@ -178,39 +176,44 @@ class BanglaConstants {
   ];
 
   // bangla fuler nam
-  static List<BanglaFulModel> banglaFulerNam = [
-    BanglaFulModel(
-        id: 1, name: 'শাপলা', image: AssetPath.shapla, audio: 'audio'),
-    BanglaFulModel(
-        id: 2, name: 'গোলাপ', image: AssetPath.golap, audio: 'audio'),
-    BanglaFulModel(id: 3, name: 'জবা', image: AssetPath.joba, audio: 'audio'),
-    BanglaFulModel(
-        id: 4, name: 'গাঁদা', image: AssetPath.gadha, audio: 'audio'),
-    BanglaFulModel(
-        id: 5, name: 'সূর্যমুখী', image: AssetPath.surjo, audio: 'audio'),
+  static const List<CommonContentModel> banglaFulerNam = [
+    CommonContentModel(
+        id: 1, title: 'শাপলা', image: AssetPath.shapla, audio: 'audio'),
+    CommonContentModel(
+        id: 2, title: 'গোলাপ', image: AssetPath.golap, audio: 'audio'),
+    CommonContentModel(
+        id: 3, title: 'জবা', image: AssetPath.joba, audio: 'audio'),
+    CommonContentModel(
+        id: 4, title: 'গাঁদা', image: AssetPath.gadha, audio: 'audio'),
+    CommonContentModel(
+        id: 5, title: 'সূর্যমুখী', image: AssetPath.surjo, audio: 'audio'),
     // BanglaFulModel(id: 6, name: 'বেলি', image: AssetPath.surjo, audio: 'audio'),
-    BanglaFulModel(
-        id: 7, name: 'শিউলি', image: AssetPath.shuly, audio: 'audio'),
-    BanglaFulModel(id: 8, name: 'বকুল', image: AssetPath.bokul, audio: 'audio'),
-    BanglaFulModel(
-        id: 9, name: 'কৃষ্ণচুড়া', image: AssetPath.krisnochura, audio: 'audio'),
+    CommonContentModel(
+        id: 7, title: 'শিউলি', image: AssetPath.shuly, audio: 'audio'),
+    CommonContentModel(
+        id: 8, title: 'বকুল', image: AssetPath.bokul, audio: 'audio'),
+    CommonContentModel(
+        id: 9,
+        title: 'কৃষ্ণচুড়া',
+        image: AssetPath.krisnochura,
+        audio: 'audio'),
   ];
 
   // bangla ritur nam
-  static List<BanglaFulModel> banglaRitu = [
-    BanglaFulModel(
-        id: 1, name: 'গ্রীষ্মকাল', image: AssetPath.summer, audio: 'audio'),
-    BanglaFulModel(
-        id: 2, name: 'বর্ষাকাল', image: AssetPath.rainy, audio: 'audio'),
-    BanglaFulModel(
-        id: 3, name: 'শরৎকাল', image: AssetPath.atumn, audio: 'audio'),
-    BanglaFulModel(
-        id: 4, name: 'হেমন্তকাল', image: AssetPath.hemonto, audio: 'audio'),
-    BanglaFulModel(
-        id: 5, name: 'শীতকাল', image: AssetPath.winter, audio: 'audio'),
+  static const List<CommonContentModel> banglaRitu = [
+    CommonContentModel(
+        id: 1, title: 'গ্রীষ্মকাল', image: AssetPath.summer, audio: 'audio'),
+    CommonContentModel(
+        id: 2, title: 'বর্ষাকাল', image: AssetPath.rainy, audio: 'audio'),
+    CommonContentModel(
+        id: 3, title: 'শরৎকাল', image: AssetPath.atumn, audio: 'audio'),
+    CommonContentModel(
+        id: 4, title: 'হেমন্তকাল', image: AssetPath.hemonto, audio: 'audio'),
+    CommonContentModel(
+        id: 5, title: 'শীতকাল', image: AssetPath.winter, audio: 'audio'),
     // BanglaFulModel(id: 6, name: 'বেলি', image: AssetPath.surjo, audio: 'audio'),
-    BanglaFulModel(
-        id: 7, name: 'বসন্তকাল', image: AssetPath.spring, audio: 'audio'),
+    CommonContentModel(
+        id: 7, title: 'বসন্তকাল', image: AssetPath.spring, audio: 'audio'),
   ];
 
   // bangla maser nam (Month Names)

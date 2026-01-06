@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magical_book/features/bangla/models/common_content_model.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../bangla/models/bangla_ful_model.dart';
 
 class EnglishBodyPartCard extends StatelessWidget {
-  final BanglaFulModel bodyPart;
+  final CommonContentModel bodyPart;
   final int index;
 
   const EnglishBodyPartCard({
@@ -107,7 +107,7 @@ class EnglishBodyPartCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   child: Text(
-                    bodyPart.name,
+                    bodyPart.title,
                     style: EnglishTypo.headline2.copyWith(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w900,

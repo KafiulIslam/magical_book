@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magical_book/features/bangla/models/common_content_model.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../models/bangla_ful_model.dart';
 
 class RituCard extends StatelessWidget {
-  final BanglaFulModel ritu;
+  final CommonContentModel ritu;
   final int index;
 
   const RituCard({
@@ -106,7 +106,7 @@ class RituCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          ritu.name,
+                          ritu.title,
                           style: BanglaTypo.headline2.copyWith(
                             fontSize: 22.sp,
                             fontWeight: FontWeight.w900,

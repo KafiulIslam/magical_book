@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magical_book/features/bangla/models/common_content_model.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../bangla/models/bangla_fol_model.dart';
 
 class EnglishFruitCard extends StatelessWidget {
-  final BanglaFolModel fruit;
+  final CommonContentModel fruit;
   final int index;
 
   const EnglishFruitCard({
@@ -103,10 +103,11 @@ class EnglishFruitCard extends StatelessWidget {
                 Flexible(
                   flex: 1,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                     child: Center(
                       child: Text(
-                        fruit.name,
+                        fruit.title,
                         style: EnglishTypo.headline2.copyWith(
                           fontSize: 20.sp,
                           fontWeight: FontWeight.w900,
@@ -134,4 +135,3 @@ class EnglishFruitCard extends StatelessWidget {
     );
   }
 }
-

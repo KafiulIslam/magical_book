@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magical_book/features/bangla/models/common_content_model.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../models/bangla_ful_model.dart';
+
 
 class FulCard extends StatelessWidget {
-  final BanglaFulModel flower;
+  final CommonContentModel flower;
   final int index;
 
   const FulCard({
@@ -108,7 +109,7 @@ class FulCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          flower.name,
+                          flower.title,
                           style: BanglaTypo.headline2.copyWith(
                             fontSize: 22.sp,
                             fontWeight: FontWeight.w900,

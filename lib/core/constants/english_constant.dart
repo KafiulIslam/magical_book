@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:magical_book/core/router/routes.dart';
+import 'package:magical_book/features/bangla/models/common_content_model.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../features/bangla/models/category.dart';
-import '../../features/bangla/models/bangla_fol_model.dart';
-import '../../features/bangla/models/bangla_ful_model.dart';
 import '../../features/bangla/models/bangla_din_model.dart';
 import '../../features/bangla/models/bangla_mas_model.dart';
 import '../../features/english/model/rhymes_model.dart';
@@ -162,73 +161,73 @@ class EnglishConstants {
   ];
 
   // fruits name
-  static List<BanglaFolModel> fruitsName = [
-    BanglaFolModel(
-        id: 1, name: 'Mango', image: AssetPath.mango, audio: 'audio'),
-    BanglaFolModel(
-        id: 3, name: 'Apple', image: AssetPath.apple, audio: 'audio'),
-    BanglaFolModel(
-        id: 2, name: 'Banana', image: AssetPath.banana, audio: 'audio'),
-    BanglaFolModel(
-        id: 4, name: 'Orange', image: AssetPath.orange, audio: 'audio'),
-    BanglaFolModel(
+  static const List<CommonContentModel> fruitsName = [
+    CommonContentModel(
+        id: 1, title: 'Mango', image: AssetPath.mango, audio: 'audio'),
+    CommonContentModel(
+        id: 3, title: 'Apple', image: AssetPath.apple, audio: 'audio'),
+    CommonContentModel(
+        id: 2, title: 'Banana', image: AssetPath.banana, audio: 'audio'),
+    CommonContentModel(
+        id: 4, title: 'Orange', image: AssetPath.orange, audio: 'audio'),
+    CommonContentModel(
         id: 5,
-        name: 'Water Melon',
+        title: 'Water Melon',
         image: AssetPath.waterMelon,
         audio: 'audio'),
-    BanglaFolModel(
-        id: 6, name: 'Pine Apple', image: AssetPath.pineApple, audio: 'audio'),
-    BanglaFolModel(
-        id: 7, name: 'Grapes', image: AssetPath.grape, audio: 'audio'),
-    BanglaFolModel(
-        id: 8, name: 'Jack Fruit', image: AssetPath.jackFruit, audio: 'audio'),
+    CommonContentModel(
+        id: 6, title: 'Pine Apple', image: AssetPath.pineApple, audio: 'audio'),
+    CommonContentModel(
+        id: 7, title: 'Grapes', image: AssetPath.grape, audio: 'audio'),
+    CommonContentModel(
+        id: 8, title: 'Jack Fruit', image: AssetPath.jackFruit, audio: 'audio'),
   ];
 
   // flowers
-  static List<BanglaFulModel> flowers = [
-    BanglaFulModel(
-        id: 1, name: 'Water Lily', image: AssetPath.shapla, audio: 'audio'),
-    BanglaFulModel(id: 2, name: 'Rose', image: AssetPath.golap, audio: 'audio'),
-    BanglaFulModel(
-        id: 3, name: 'Hibiscus', image: AssetPath.joba, audio: 'audio'),
-    BanglaFulModel(
-        id: 4, name: 'Marigold', image: AssetPath.gadha, audio: 'audio'),
-    BanglaFulModel(
-        id: 5, name: 'Sun Flower', image: AssetPath.surjo, audio: 'audio'),
+  static const List<CommonContentModel> flowers = [
+    CommonContentModel(
+        id: 1, title: 'Water Lily', image: AssetPath.shapla, audio: 'audio'),
+    CommonContentModel(id: 2, title: 'Rose', image: AssetPath.golap, audio: 'audio'),
+    CommonContentModel(
+        id: 3, title: 'Hibiscus', image: AssetPath.joba, audio: 'audio'),
+    CommonContentModel(
+        id: 4, title: 'Marigold', image: AssetPath.gadha, audio: 'audio'),
+    CommonContentModel(
+        id: 5, title: 'Sun Flower', image: AssetPath.surjo, audio: 'audio'),
     // BanglaFulModel(id: 6, name: 'বেলি', image: AssetPath.surjo, audio: 'audio'),
-    BanglaFulModel(
-        id: 7, name: 'Parijat', image: AssetPath.shuly, audio: 'audio'),
-    BanglaFulModel(
-        id: 8, name: 'Spanish Cherry', image: AssetPath.bokul, audio: 'audio'),
-    BanglaFulModel(
+    CommonContentModel(
+        id: 7, title: 'Parijat', image: AssetPath.shuly, audio: 'audio'),
+    CommonContentModel(
+        id: 8, title: 'Spanish Cherry', image: AssetPath.bokul, audio: 'audio'),
+    CommonContentModel(
         id: 9,
-        name: 'Flamboyant',
+        title: 'Flamboyant',
         image: AssetPath.krisnochura,
         audio: 'audio'),
   ];
 
   // flowers
-  static List<BanglaFulModel> humanBody = [
-    BanglaFulModel(id: 1, name: 'Head', image: AssetPath.head, audio: 'audio'),
-    BanglaFulModel(id: 2, name: 'Eye', image: AssetPath.eye, audio: 'audio'),
-    BanglaFulModel(id: 3, name: 'Ear', image: AssetPath.ear, audio: 'audio'),
-    BanglaFulModel(id: 3, name: 'Hand', image: AssetPath.hand, audio: 'audio'),
-    BanglaFulModel(
-        id: 4, name: 'Mouth', image: AssetPath.mouth, audio: 'audio'),
-    BanglaFulModel(id: 5, name: 'Nose', image: AssetPath.nose, audio: 'audio'),
-    BanglaFulModel(id: 8, name: 'Leg', image: AssetPath.leg, audio: 'audio'),
-    BanglaFulModel(id: 6, name: 'Feet', image: AssetPath.feet, audio: 'audio'),
-    BanglaFulModel(id: 7, name: 'Arm', image: AssetPath.arm, audio: 'audio'),
-    BanglaFulModel(id: 8, name: 'Hair', image: AssetPath.hair, audio: 'audio'),
-    BanglaFulModel(
-        id: 8, name: 'Forehead', image: AssetPath.forehead, audio: 'audio'),
-    BanglaFulModel(
-        id: 9, name: 'Finger', image: AssetPath.finger, audio: 'audio'),
-    BanglaFulModel(id: 10, name: 'Knee', image: AssetPath.knee, audio: 'audio'),
-    BanglaFulModel(
-        id: 11, name: 'Belly', image: AssetPath.belly, audio: 'audio'),
-    BanglaFulModel(
-        id: 12, name: 'Tongue', image: AssetPath.tongue, audio: 'audio'),
+  static const List<CommonContentModel> humanBody = [
+    CommonContentModel(id: 1, title: 'Head', image: AssetPath.head, audio: 'audio'),
+    CommonContentModel(id: 2, title: 'Eye', image: AssetPath.eye, audio: 'audio'),
+    CommonContentModel(id: 3, title: 'Ear', image: AssetPath.ear, audio: 'audio'),
+    CommonContentModel(id: 3, title: 'Hand', image: AssetPath.hand, audio: 'audio'),
+    CommonContentModel(
+        id: 4, title: 'Mouth', image: AssetPath.mouth, audio: 'audio'),
+    CommonContentModel(id: 5, title: 'Nose', image: AssetPath.nose, audio: 'audio'),
+    CommonContentModel(id: 8, title: 'Leg', image: AssetPath.leg, audio: 'audio'),
+    CommonContentModel(id: 6, title: 'Feet', image: AssetPath.feet, audio: 'audio'),
+    CommonContentModel(id: 7, title: 'Arm', image: AssetPath.arm, audio: 'audio'),
+    CommonContentModel(id: 8, title: 'Hair', image: AssetPath.hair, audio: 'audio'),
+    CommonContentModel(
+        id: 8, title: 'Forehead', image: AssetPath.forehead, audio: 'audio'),
+    CommonContentModel(
+        id: 9, title: 'Finger', image: AssetPath.finger, audio: 'audio'),
+    CommonContentModel(id: 10, title: 'Knee', image: AssetPath.knee, audio: 'audio'),
+    CommonContentModel(
+        id: 11, title: 'Belly', image: AssetPath.belly, audio: 'audio'),
+    CommonContentModel(
+        id: 12, title: 'Tongue', image: AssetPath.tongue, audio: 'audio'),
   ];
 
   // English Days
@@ -259,34 +258,34 @@ class EnglishConstants {
   ];
 
   // Animals
-  static List<BanglaFulModel> animals = [
-    BanglaFulModel(id: 1, name: 'Fox', image: AssetPath.fox, audio: 'audio'),
-    BanglaFulModel(
-        id: 2, name: 'Panda', image: AssetPath.panda, audio: 'audio'),
-    BanglaFulModel(
-        id: 3, name: 'Zebra', image: AssetPath.zebra, audio: 'audio'),
-    BanglaFulModel(
-        id: 4, name: 'Monkey', image: AssetPath.monkey, audio: 'audio'),
-    BanglaFulModel(
-        id: 5, name: 'Kangaroo', image: AssetPath.kangaroo, audio: 'audio'),
-    BanglaFulModel(id: 6, name: 'Bear', image: AssetPath.bear, audio: 'audio'),
-    BanglaFulModel(
-        id: 7, name: 'Tiger', image: AssetPath.tiger, audio: 'audio'),
-    BanglaFulModel(id: 8, name: 'Lion', image: AssetPath.lion, audio: 'audio'),
+  static const  List<CommonContentModel> animals = [
+    CommonContentModel(id: 1, title: 'Fox', image: AssetPath.fox, audio: 'audio'),
+    CommonContentModel(
+        id: 2, title: 'Panda', image: AssetPath.panda, audio: 'audio'),
+    CommonContentModel(
+        id: 3, title: 'Zebra', image: AssetPath.zebra, audio: 'audio'),
+    CommonContentModel(
+        id: 4, title: 'Monkey', image: AssetPath.monkey, audio: 'audio'),
+    CommonContentModel(
+        id: 5, title: 'Kangaroo', image: AssetPath.kangaroo, audio: 'audio'),
+    CommonContentModel(id: 6, title: 'Bear', image: AssetPath.bear, audio: 'audio'),
+    CommonContentModel(
+        id: 7, title: 'Tiger', image: AssetPath.tiger, audio: 'audio'),
+    CommonContentModel(id: 8, title: 'Lion', image: AssetPath.lion, audio: 'audio'),
   ];
 
   // Birds
-  static List<BanglaFulModel> birds = [
-    BanglaFulModel(
-        id: 1, name: 'Peacock', image: AssetPath.peacock, audio: 'audio'),
-    BanglaFulModel(
-        id: 2, name: 'Magpie', image: AssetPath.magpie, audio: 'audio'),
-    BanglaFulModel(
-        id: 3, name: 'Vulture', image: AssetPath.vulture, audio: 'audio'),
-    BanglaFulModel(id: 4, name: 'Crow', image: AssetPath.crow, audio: 'audio'),
-    BanglaFulModel(
-        id: 5, name: 'Eagle', image: AssetPath.eagle, audio: 'audio'),
-    BanglaFulModel(
-        id: 6, name: 'Pigeon', image: AssetPath.pigeon, audio: 'audio'),
+  static const List<CommonContentModel> birds = [
+    CommonContentModel(
+        id: 1, title: 'Peacock', image: AssetPath.peacock, audio: 'audio'),
+    CommonContentModel(
+        id: 2, title: 'Magpie', image: AssetPath.magpie, audio: 'audio'),
+    CommonContentModel(
+        id: 3, title: 'Vulture', image: AssetPath.vulture, audio: 'audio'),
+    CommonContentModel(id: 4, title: 'Crow', image: AssetPath.crow, audio: 'audio'),
+    CommonContentModel(
+        id: 5, title: 'Eagle', image: AssetPath.eagle, audio: 'audio'),
+    CommonContentModel(
+        id: 6, title: 'Pigeon', image: AssetPath.pigeon, audio: 'audio'),
   ];
 }

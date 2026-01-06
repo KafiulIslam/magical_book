@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magical_book/features/bangla/models/common_content_model.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../bangla/models/bangla_ful_model.dart';
 
 class EnglishBirdCard extends StatelessWidget {
-  final BanglaFulModel bird;
+  final CommonContentModel bird;
   final int index;
 
   const EnglishBirdCard({
@@ -104,7 +104,7 @@ class EnglishBirdCard extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                     child: Center(
                       child: Text(
-                        bird.name,
+                        bird.title,
                         style: EnglishTypo.headline2.copyWith(
                           fontSize: 20.sp,
                           fontWeight: FontWeight.w900,
