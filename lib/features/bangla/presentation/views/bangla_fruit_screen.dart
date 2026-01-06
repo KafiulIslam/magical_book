@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/bangla_constants.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../widgets/fol_card.dart';
+import '../../../../core/widgets/common_image_text_card.dart';
+import '../../../../core/widgets/card_color_palettes.dart';
 
 class BanglaFruitScreen extends StatelessWidget {
   const BanglaFruitScreen({super.key});
@@ -42,7 +43,16 @@ class BanglaFruitScreen extends StatelessWidget {
           itemCount: BanglaConstants.banglaFolerNam.length,
           itemBuilder: (context, index) {
             final fruit = BanglaConstants.banglaFolerNam[index];
-            return FolCard(fruit: fruit, index: index);
+            return CommonImageTextCard(
+              item: fruit,
+              index: index,
+              textStyle: BanglaTypo.headline2,
+              fontSize: 22.sp,
+              colorPalette: CardColorPalettes.fruits,
+              errorIcon: Icons.apple,
+              imageFit: BoxFit.contain,
+              useFlexibleForText: false,
+            );
           },
         ),
       ),

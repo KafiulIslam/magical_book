@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/english_constant.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../widgets/english_day_card.dart';
+import '../../../../core/widgets/common_text_card.dart';
+import '../../../../core/widgets/card_color_palettes.dart';
 
 class EnglishDayScreen extends StatelessWidget {
   const EnglishDayScreen({super.key});
@@ -42,7 +43,13 @@ class EnglishDayScreen extends StatelessWidget {
           itemCount: EnglishConstants.englishDays.length,
           itemBuilder: (context, index) {
             final day = EnglishConstants.englishDays[index];
-            return EnglishDayCard(day: day, index: index);
+            return CommonTextCard(
+              item: day,
+              index: index,
+              textStyle: EnglishTypo.headline1,
+              fontSize: 20.sp,
+              colorPalette: CardColorPalettes.days7,
+            );
           },
         ),
       ),

@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/english_constant.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../widgets/english_body_part_card.dart';
+import '../../../../core/widgets/common_image_text_card.dart';
+import '../../../../core/widgets/card_color_palettes.dart';
 
 class EnglishBodyPartScreen extends StatelessWidget {
   const EnglishBodyPartScreen({super.key});
@@ -42,7 +43,16 @@ class EnglishBodyPartScreen extends StatelessWidget {
           itemCount: EnglishConstants.humanBody.length,
           itemBuilder: (context, index) {
             final bodyPart = EnglishConstants.humanBody[index];
-            return EnglishBodyPartCard(bodyPart: bodyPart, index: index);
+            return CommonImageTextCard(
+              item: bodyPart,
+              index: index,
+              textStyle: EnglishTypo.headline2,
+              fontSize: 20.sp,
+              colorPalette: CardColorPalettes.bodyParts,
+              errorIcon: Icons.accessibility,
+              imageFit: BoxFit.fill,
+              useFlexibleForText: false,
+            );
           },
         ),
       ),

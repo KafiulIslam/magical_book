@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
-import '../../../../core/constants/bangla_constants.dart';
+import '../../../../core/constants/english_constant.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../../core/widgets/common_image_text_card.dart';
+import '../widgets/figure_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
 
-class BanglaSeasonScreen extends StatelessWidget {
-  const BanglaSeasonScreen({super.key});
+class EnglishFigureScreen extends StatelessWidget {
+  const EnglishFigureScreen({super.key});
 
   int _getCrossAxisCount(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -25,8 +25,8 @@ class BanglaSeasonScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'রিতুর নাম',
-          style: BanglaTypo.headline1.copyWith(fontSize: 24.sp),
+          'Figures & Shapes',
+          style: EnglishTypo.headline1.copyWith(fontSize: 24.sp),
         ),
         backgroundColor: AppColors.background,
         elevation: 0,
@@ -38,20 +38,17 @@ class BanglaSeasonScreen extends StatelessWidget {
             crossAxisCount: _getCrossAxisCount(context),
             crossAxisSpacing: 16,
             mainAxisSpacing: 16,
-            childAspectRatio: 0.75, // Taller cards for images
+            childAspectRatio: 0.72, // Slightly taller cards to accommodate text
           ),
-          itemCount: BanglaConstants.banglaRitu.length,
+          itemCount: EnglishConstants.figures.length,
           itemBuilder: (context, index) {
-            final ritu = BanglaConstants.banglaRitu[index];
-            return CommonImageTextCard(
-              item: ritu,
+            final figure = EnglishConstants.figures[index];
+            return FigureCard(
+              figure: figure,
               index: index,
-              textStyle: BanglaTypo.headline2,
-              fontSize: 22.sp,
-              colorPalette: CardColorPalettes.seasons,
-              errorIcon: Icons.wb_sunny,
-              imageFit: BoxFit.cover,
-              useFlexibleForText: false,
+              textStyle: EnglishTypo.headline2,
+              fontSize: 20.sp,
+              colorPalette: CardColorPalettes.fruits, // Using fruits palette as it has 8 colors
             );
           },
         ),

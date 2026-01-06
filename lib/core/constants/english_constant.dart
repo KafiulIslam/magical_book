@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:magical_book/core/router/routes.dart';
 import 'package:magical_book/features/bangla/models/common_content_model.dart';
+import 'package:magical_book/features/english/model/figure_model.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../features/bangla/models/category.dart';
 import '../../features/bangla/models/day_month_model.dart';
@@ -205,6 +206,40 @@ class EnglishConstants {
         audio: 'audio'),
   ];
 
+  // Figures & Shape
+  static const List<FigureModel> figures = [
+    FigureModel(
+        id: 1, title: 'Circle',image: Icons.circle, audio: 'audio'),
+    FigureModel(id: 2, title: 'Square', image: Icons.square, audio: 'audio'),
+    FigureModel(
+        id: 3, title: 'Triangle', image: Icons.change_history_outlined, audio: 'audio'),
+    FigureModel(
+        id: 4, title: 'Rectangle', image: Icons.rectangle, audio: 'audio'),
+    // FigureModel(
+    //     id: 5, title: 'Rhombus', image: Icons.diamond, audio: 'audio'),
+    FigureModel(id: 6, title: 'Hexagon', image: Icons.hexagon, audio: 'audio'),
+    // FigureModel(
+    //     id: 7, title: 'Semi Circle', image: Icons.circl, audio: 'audio'),
+    FigureModel(
+        id: 8, title: 'Pentagon', image: Icons.pentagon, audio: 'audio'),
+    FigureModel(
+        id: 9,
+        title: 'Star',
+        image: Icons.star,
+        audio: 'audio'),
+
+     // FigureModel(id: 10, title: 'Oval', image: Icons.egg, audio: 'audio'),
+    // FigureModel(
+    //     id: 11, title: 'Cylinder', image: AssetPath.shuly, audio: 'audio'),
+    FigureModel(
+        id: 12, title: 'Heart', image: Icons.favorite_outlined, audio: 'audio'),
+    // FigureModel(
+    //     id: 13,
+    //     title: 'Cone',
+    //     image: AssetPath.krisnochura,
+    //     audio: 'audio'),
+  ];
+
   // flowers
   static const List<CommonContentModel> humanBody = [
     CommonContentModel(id: 1, title: 'Head', image: AssetPath.head, audio: 'audio'),
@@ -287,4 +322,5 @@ class EnglishConstants {
     CommonContentModel(
         id: 6, title: 'Pigeon', image: AssetPath.pigeon, audio: 'audio'),
   ];
+
 }

@@ -4,7 +4,8 @@ import 'package:gap/gap.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/bangla_constants.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../widgets/chora_card.dart';
+import '../../../../core/widgets/common_rhyme_card.dart';
+import '../../../../core/widgets/card_color_palettes.dart';
 
 class ChoraScreen extends StatelessWidget {
   const ChoraScreen({super.key});
@@ -38,7 +39,15 @@ class ChoraScreen extends StatelessWidget {
           separatorBuilder: (_, index) => const Gap(16),
           itemBuilder: (context, index) {
             final chora = BanglaConstants.banglaChora[index];
-            return ChoraCard(chora: chora, index: index);
+            return CommonRhymeCard(
+              title: chora.title,
+              image: chora.image,
+              index: index,
+              textStyle: BanglaTypo.headline3,
+              colorPalette: CardColorPalettes.days,
+              imageWidth: 120,
+              imageHeight: 125,
+            );
           },
         ),
       ),

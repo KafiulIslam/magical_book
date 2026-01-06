@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/bangla_constants.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../widgets/din_card.dart';
+import '../../../../core/widgets/common_text_card.dart';
+import '../../../../core/widgets/card_color_palettes.dart';
 
 class BanglaDayScreen extends StatelessWidget {
   const BanglaDayScreen({super.key});
@@ -42,7 +43,13 @@ class BanglaDayScreen extends StatelessWidget {
           itemCount: BanglaConstants.banglaDin.length,
           itemBuilder: (context, index) {
             final din = BanglaConstants.banglaDin[index];
-            return DinCard(din: din, index: index);
+            return CommonTextCard(
+              item: din,
+              index: index,
+              textStyle: BanglaTypo.headline1,
+              fontSize: 28.sp,
+              colorPalette: CardColorPalettes.days7,
+            );
           },
         ),
       ),

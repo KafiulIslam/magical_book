@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/english_constant.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../widgets/english_month_card.dart';
+import '../../../../core/widgets/common_text_card.dart';
+import '../../../../core/widgets/card_color_palettes.dart';
 
 class EnglishMonthScreen extends StatelessWidget {
   const EnglishMonthScreen({super.key});
@@ -42,7 +43,13 @@ class EnglishMonthScreen extends StatelessWidget {
           itemCount: EnglishConstants.englishMonths.length,
           itemBuilder: (context, index) {
             final month = EnglishConstants.englishMonths[index];
-            return EnglishMonthCard(month: month, index: index);
+            return CommonTextCard(
+              item: month,
+              index: index,
+              textStyle: EnglishTypo.headline1,
+              fontSize: 20.sp,
+              colorPalette: CardColorPalettes.months,
+            );
           },
         ),
       ),

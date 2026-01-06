@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:magical_book/features/bangla/presentation/widgets/borno_card.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/bangla_constants.dart';
 import '../../../../core/theme/app_typography.dart';
+import '../../../../core/widgets/common_alphabet_card.dart';
+import '../../../../core/widgets/card_color_palettes.dart';
 
 class BornoMalaScreen extends StatelessWidget {
   const BornoMalaScreen({super.key});
@@ -141,7 +142,11 @@ class BornoMalaScreen extends StatelessWidget {
       itemCount: letters.length,
       itemBuilder: (context, index) {
         final letter = letters[index];
-        return BornoCard(shoroborno: letter);
+        return CommonAlphabetCard(
+          letter: letter,
+          fontFamily: 'Kalpurush',
+          colorPalette: CardColorPalettes.alphabet,
+        );
       },
     );
   }

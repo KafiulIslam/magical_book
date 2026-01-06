@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/english_constant.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../widgets/english_fruit_card.dart';
+import '../../../../core/widgets/common_image_text_card.dart';
+import '../../../../core/widgets/card_color_palettes.dart';
 
 class EnglishFruitScreen extends StatelessWidget {
   const EnglishFruitScreen({super.key});
@@ -42,7 +43,16 @@ class EnglishFruitScreen extends StatelessWidget {
           itemCount: EnglishConstants.fruitsName.length,
           itemBuilder: (context, index) {
             final fruit = EnglishConstants.fruitsName[index];
-            return EnglishFruitCard(fruit: fruit, index: index);
+            return CommonImageTextCard(
+              item: fruit,
+              index: index,
+              textStyle: EnglishTypo.headline2,
+              fontSize: 20.sp,
+              colorPalette: CardColorPalettes.fruits,
+              errorIcon: Icons.apple,
+              imageFit: BoxFit.contain,
+              useFlexibleForText: true,
+            );
           },
         ),
       ),

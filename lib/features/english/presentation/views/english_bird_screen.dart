@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/english_constant.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../widgets/english_bird_card.dart';
+import '../../../../core/widgets/common_image_text_card.dart';
+import '../../../../core/widgets/card_color_palettes.dart';
 
 class EnglishBirdScreen extends StatelessWidget {
   const EnglishBirdScreen({super.key});
@@ -42,7 +43,16 @@ class EnglishBirdScreen extends StatelessWidget {
           itemCount: EnglishConstants.birds.length,
           itemBuilder: (context, index) {
             final bird = EnglishConstants.birds[index];
-            return EnglishBirdCard(bird: bird, index: index);
+            return CommonImageTextCard(
+              item: bird,
+              index: index,
+              textStyle: EnglishTypo.headline2,
+              fontSize: 20.sp,
+              colorPalette: CardColorPalettes.birds,
+              errorIcon: Icons.air_outlined,
+              imageFit: BoxFit.contain,
+              useFlexibleForText: true,
+            );
           },
         ),
       ),

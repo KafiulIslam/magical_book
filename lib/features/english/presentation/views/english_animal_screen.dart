@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/english_constant.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../widgets/english_animal_card.dart';
+import '../../../../core/widgets/common_image_text_card.dart';
+import '../../../../core/widgets/card_color_palettes.dart';
 
 class EnglishAnimalScreen extends StatelessWidget {
   const EnglishAnimalScreen({super.key});
@@ -42,7 +43,16 @@ class EnglishAnimalScreen extends StatelessWidget {
           itemCount: EnglishConstants.animals.length,
           itemBuilder: (context, index) {
             final animal = EnglishConstants.animals[index];
-            return EnglishAnimalCard(animal: animal, index: index);
+            return CommonImageTextCard(
+              item: animal,
+              index: index,
+              textStyle: EnglishTypo.headline2,
+              fontSize: 20.sp,
+              colorPalette: CardColorPalettes.animals,
+              errorIcon: Icons.pets,
+              imageFit: BoxFit.contain,
+              useFlexibleForText: true,
+            );
           },
         ),
       ),

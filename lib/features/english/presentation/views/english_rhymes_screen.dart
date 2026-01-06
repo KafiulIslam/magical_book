@@ -4,7 +4,8 @@ import 'package:gap/gap.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/english_constant.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../widgets/english_rhymes_card.dart';
+import '../../../../core/widgets/common_rhyme_card.dart';
+import '../../../../core/widgets/card_color_palettes.dart';
 
 class EnglishRhymesScreen extends StatelessWidget {
   const EnglishRhymesScreen({super.key});
@@ -27,7 +28,15 @@ class EnglishRhymesScreen extends StatelessWidget {
           separatorBuilder: (_, index) => const Gap(16),
           itemBuilder: (context, index) {
             final rhyme = EnglishConstants.englishRhymes[index];
-            return EnglishRhymesCard(rhyme: rhyme, index: index);
+            return CommonRhymeCard(
+              title: rhyme.title,
+              image: rhyme.image,
+              index: index,
+              textStyle: EnglishTypo.headline3,
+              colorPalette: CardColorPalettes.days,
+              imageWidth: 130,
+              imageHeight: 140,
+            );
           },
         ),
       ),

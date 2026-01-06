@@ -4,7 +4,8 @@ import 'package:gap/gap.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/english_constant.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../widgets/english_alphabet_card.dart';
+import '../../../../core/widgets/common_alphabet_card.dart';
+import '../../../../core/widgets/card_color_palettes.dart';
 
 class EnglishAlphabetScreen extends StatelessWidget {
   const EnglishAlphabetScreen({super.key});
@@ -132,7 +133,10 @@ class EnglishAlphabetScreen extends StatelessWidget {
       itemCount: letters.length,
       itemBuilder: (context, index) {
         final letter = letters[index];
-        return EnglishAlphabetCard(letter: letter);
+        return CommonAlphabetCard(
+          letter: letter,
+          colorPalette: CardColorPalettes.alphabet,
+        );
       },
     );
   }

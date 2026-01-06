@@ -21,6 +21,7 @@ import '../../features/english/presentation/views/english_day_screen.dart';
 import '../../features/english/presentation/views/english_month_screen.dart';
 import '../../features/english/presentation/views/english_animal_screen.dart';
 import '../../features/english/presentation/views/english_bird_screen.dart';
+import '../../features/english/presentation/views/english_figure_screen.dart';
 import '../../features/math/presentation/views/math_page.dart';
 
 class AppRouter {
@@ -144,6 +145,13 @@ class AppRouter {
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const EnglishFlowerScreen(),
+                ),
+              ),
+              GoRoute(
+                path: '/figures',
+                pageBuilder: (context, state) => fadeTransitionPage(
+                  state: state,
+                  child: const EnglishFigureScreen(),
                 ),
               ),
               GoRoute(

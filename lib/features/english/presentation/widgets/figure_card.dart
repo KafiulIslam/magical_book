@@ -1,29 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:magical_book/features/bangla/models/common_content_model.dart';
-import '../../../../core/constants/app_colors.dart';
-import '../../../../core/theme/app_typography.dart';
+import '../../model/figure_model.dart';
 
-class EnglishBirdCard extends StatelessWidget {
-  final CommonContentModel bird;
+/// Common widget for figure/shape cards (icon + text)
+/// Used by: EnglishFigureScreen
+class FigureCard extends StatelessWidget {
+  final FigureModel figure;
   final int index;
+  final TextStyle textStyle;
+  final double fontSize;
+  final List<List<Color>> colorPalette;
 
-  const EnglishBirdCard({
+  const FigureCard({
     super.key,
-    required this.bird,
+    required this.figure,
     required this.index,
+    required this.textStyle,
+    required this.fontSize,
+    required this.colorPalette,
   });
 
   List<Color> _getCardColors(int index) {
-    final colors = [
-      [AppColors.primary, AppColors.info],
-      [AppColors.action, AppColors.reward],
-      [AppColors.success, AppColors.primary],
-      [AppColors.reward, AppColors.action],
-      [AppColors.info, AppColors.success],
-      [AppColors.primary, AppColors.action],
-    ];
-    return colors[index % colors.length];
+    return colorPalette[index % colorPalette.length];
   }
 
   @override
@@ -46,7 +44,7 @@ class EnglishBirdCard extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: () {
-            // TODO: Play audio or show bird details
+            // TODO: Play audio or show figure details
           },
           borderRadius: BorderRadius.circular(24),
           child: Container(
@@ -65,48 +63,25 @@ class EnglishBirdCard extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Bird Image
+                // Icon
                 Expanded(
                   flex: 3,
-                  child: Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(16),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.white.withOpacity(0.2),
-                        border: Border.all(
-                          color: Colors.white.withOpacity(0.3),
-                          width: 2,
-                        ),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(18),
-                        child: Image.asset(
-                          bird.image,
-                          fit: BoxFit.contain,
-                          errorBuilder: (context, error, stackTrace) {
-                            return Icon(
-                              Icons.air_outlined,
-                              size: 60,
-                              color: Colors.white.withOpacity(0.7),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
+                  child: Icon(
+                    figure.image,
+                    size: 100.sp,
+                    color: Colors.white,
                   ),
                 ),
-                // Bird Name
+                // Figure Name
                 Flexible(
                   flex: 1,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                     child: Center(
                       child: Text(
-                        bird.title,
-                        style: EnglishTypo.headline2.copyWith(
-                          fontSize: 20.sp,
+                        figure.title,
+                        style: textStyle.copyWith(
+                          fontSize: fontSize,
                           fontWeight: FontWeight.w900,
                           color: Colors.white,
                           shadows: const [

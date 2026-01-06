@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/english_constant.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../widgets/english_flower_card.dart';
+import '../../../../core/widgets/common_image_text_card.dart';
+import '../../../../core/widgets/card_color_palettes.dart';
 
 class EnglishFlowerScreen extends StatelessWidget {
   const EnglishFlowerScreen({super.key});
@@ -42,7 +43,16 @@ class EnglishFlowerScreen extends StatelessWidget {
           itemCount: EnglishConstants.flowers.length,
           itemBuilder: (context, index) {
             final flower = EnglishConstants.flowers[index];
-            return EnglishFlowerCard(flower: flower, index: index);
+            return CommonImageTextCard(
+              item: flower,
+              index: index,
+              textStyle: EnglishTypo.headline2,
+              fontSize: 20.sp,
+              colorPalette: CardColorPalettes.flowers,
+              errorIcon: Icons.local_florist,
+              imageFit: BoxFit.cover,
+              useFlexibleForText: false,
+            );
           },
         ),
       ),

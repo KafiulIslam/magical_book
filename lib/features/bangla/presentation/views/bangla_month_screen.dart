@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/bangla_constants.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../widgets/mas_card.dart';
+import '../../../../core/widgets/common_text_card.dart';
+import '../../../../core/widgets/card_color_palettes.dart';
 
 class BanglaMonthScreen extends StatelessWidget {
   const BanglaMonthScreen({super.key});
@@ -42,7 +43,13 @@ class BanglaMonthScreen extends StatelessWidget {
           itemCount: BanglaConstants.banglaMas.length,
           itemBuilder: (context, index) {
             final mas = BanglaConstants.banglaMas[index];
-            return MasCard(mas: mas, index: index);
+            return CommonTextCard(
+              item: mas,
+              index: index,
+              textStyle: BanglaTypo.headline1,
+              fontSize: 28.sp,
+              colorPalette: CardColorPalettes.months,
+            );
           },
         ),
       ),
