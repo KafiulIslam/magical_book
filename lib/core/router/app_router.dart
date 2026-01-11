@@ -23,6 +23,7 @@ import '../../features/english/presentation/views/english_animal_screen.dart';
 import '../../features/english/presentation/views/english_bird_screen.dart';
 import '../../features/english/presentation/views/english_figure_screen.dart';
 import '../../features/math/presentation/views/math_page.dart';
+import '../../features/math/presentation/views/bangla_numbers_screen.dart';
 
 class AppRouter {
   static GoRouter get router => _router;
@@ -194,6 +195,15 @@ class AppRouter {
           GoRoute(
             path: Routes.math,
             builder: (context, state) => const MathPage(),
+            routes: [
+              GoRoute(
+                path: '/bangla-numbers',
+                pageBuilder: (context, state) => fadeTransitionPage(
+                  state: state,
+                  child: const BanglaNumbersScreen(),
+                ),
+              ),
+            ],
           ),
           GoRoute(
             path: Routes.arabic,

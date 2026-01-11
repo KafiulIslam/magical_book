@@ -36,4 +36,20 @@ class MathConstants {
       route: Routes.calculator,
     ),
   ];
+
+  // Bangla Numbers (০-৯)
+  static const List<String> banglaNumbers = <String>[
+    '০',
+    '১',
+    '২',
+    '৩',
+    '৪',
+    '৫',
+    '৬',
+    '৭',
+    '৮',
+    '৯',
+    '১০'
+  ];
+
 }
