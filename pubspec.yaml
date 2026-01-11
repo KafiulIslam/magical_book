@@ -58,6 +58,7 @@ flutter:
     - assets/images/bodyParts/
     - assets/images/animal/
     - assets/images/birds/
+    - assets/images/multiplication/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

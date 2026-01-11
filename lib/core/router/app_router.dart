@@ -24,6 +24,8 @@ import '../../features/english/presentation/views/english_bird_screen.dart';
 import '../../features/english/presentation/views/english_figure_screen.dart';
 import '../../features/math/presentation/views/math_page.dart';
 import '../../features/math/presentation/views/bangla_numbers_screen.dart';
+import '../../features/math/presentation/views/english_numbers_screen.dart';
+import '../../features/math/presentation/views/multiplication_table_screen.dart';
 
 class AppRouter {
   static GoRouter get router => _router;
@@ -201,6 +203,20 @@ class AppRouter {
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const BanglaNumbersScreen(),
+                ),
+              ),
+              GoRoute(
+                path: '/english-numbers',
+                pageBuilder: (context, state) => fadeTransitionPage(
+                  state: state,
+                  child: const EnglishNumbersScreen(),
+                ),
+              ),
+              GoRoute(
+                path: '/multiplication-table',
+                pageBuilder: (context, state) => fadeTransitionPage(
+                  state: state,
+                  child: const MultiplicationTableScreen(),
                 ),
               ),
             ],

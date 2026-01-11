@@ -85,5 +85,16 @@ class AssetPath{
   static const pigeon = "assets/images/birds/pigeon.png";
   static const vulture = "assets/images/birds/vulture.png";
 
+  // Multiplications
+  static const multiOne = "assets/images/multiplication/1.png";
+  static const multiTwo = "assets/images/multiplication/2.png";
+  static const multiThree = "assets/images/multiplication/3.png";
+  static const multiFour = "assets/images/multiplication/4.png";
+  static const multiFive = "assets/images/multiplication/5.png";
+  static const multiSix = "assets/images/multiplication/6.png";
+  static const multiSeven = "assets/images/multiplication/7.png";
+  static const multiEight = "assets/images/multiplication/8.png";
+  static const multiNine = "assets/images/multiplication/9.png";
+  static const multiTen = "assets/images/multiplication/10.png";
 
 }
