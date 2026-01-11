@@ -17,13 +17,13 @@ class MathConstants {
     Category(
       title: 'ইংরেজি সংখ্যা',
       subtitle: 'English Numbers',
-      icon: Icons.numbers,
+      icon: Icons.looks_one,
       color: AppColors.action,
       route: Routes.englishNumbers,
     ),
     Category(
       title: 'নামতা',
-      subtitle: 'Multiplication Table',
+      subtitle: 'Multiplication',
       icon: Icons.table_chart,
       color: AppColors.success,
       route: Routes.multiplicationTable,

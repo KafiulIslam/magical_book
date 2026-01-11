@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/math_constant.dart';
+import '../../../../core/router/routes.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../widgets/math_category_card.dart';
 
@@ -9,7 +12,10 @@ class MathPage extends StatelessWidget {
   const MathPage({super.key});
 
   int _getCrossAxisCount(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
+    final width = MediaQuery
+        .of(context)
+        .size
+        .width;
     if (width > 900) {
       return 4; // Large tablets/desktop
     } else if (width > 600) {
@@ -20,7 +26,10 @@ class MathPage extends StatelessWidget {
   }
 
   double _getChildAspectRatio(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
+    final width = MediaQuery
+        .of(context)
+        .size
+        .width;
     if (width > 900) {
       return 1.0; // Square cards for large screens
     } else if (width > 600) {
@@ -53,11 +62,69 @@ class MathPage extends StatelessWidget {
           itemCount: MathConstants.mathCategories.length,
           itemBuilder: (context, index) {
             final category = MathConstants.mathCategories[index];
-            return MathCategoryCard(category: category);
+            if (index == 0) {
+              return _buildFirstCard(context);
+            } else {
+              return MathCategoryCard(category: category);
+            }
           },
         ),
       ),
     );
   }
-}
 
+  Widget _buildFirstCard(BuildContext context) {
+    return Card(
+      elevation: 4,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: InkWell(
+        onTap: () => context.push(Routes.banglaNumbers),
+        borderRadius: BorderRadius.circular(20),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                AppColors.primary.withOpacity(0.1),
+                AppColors.primary.withOpacity(0.05),
+              ],
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(28),
+                  decoration: BoxDecoration(
+                    color: AppColors.primary.withOpacity(0.15),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Text('১',
+                      style: BanglaTypo.headline1.copyWith(fontSize: 20.sp)),
+                ),
+                const Gap(16),
+                Text(
+                  'বাংলা সংখ্যা',
+                  style: BanglaTypo.headline1.copyWith(fontSize: 20.sp),
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  'Bangla Numbers',
+                  style: EnglishTypo.bodyMedium
+                      .copyWith(color: AppColors.textSecondary),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
