@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
@@ -54,7 +55,7 @@ class MathCategoryCard extends StatelessWidget {
                     color: category.color,
                   ),
                 ),
-                const SizedBox(height: 16),
+                const Gap(16),
                 Text(
                   category.title,
                   style: BanglaTypo.headline1.copyWith(fontSize: 20.sp),

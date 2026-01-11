@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/math_constant.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../../core/widgets/common_multiplication_card.dart';
+import '../widgets/multiplication_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
 
 class MultiplicationTableScreen extends StatelessWidget {
@@ -43,16 +43,15 @@ class MultiplicationTableScreen extends StatelessWidget {
           itemCount: MathConstants.multiplicationList.length,
           itemBuilder: (context, index) {
             final multiplication = MathConstants.multiplicationList[index];
-            return CommonMultiplicationCard(
+            return MultiplicationCard(
               item: multiplication,
               index: index,
               textStyle: BanglaTypo.headline2,
               subtitleStyle: BanglaTypo.bodyLarge,
               titleFontSize: 28.sp,
-              subtitleFontSize: 14.sp,
+              subtitleFontSize: 20.sp,
               colorPalette: CardColorPalettes.fruits,
               errorIcon: Icons.table_chart,
-              imageFit: BoxFit.contain,
             );
           },
         ),
