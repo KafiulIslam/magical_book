@@ -1,51 +1,60 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/math_constant.dart';
+import '../../../../core/theme/app_typography.dart';
+import '../widgets/math_category_card.dart';
 
 class MathPage extends StatelessWidget {
   const MathPage({super.key});
+
+  int _getCrossAxisCount(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    if (width > 900) {
+      return 4; // Large tablets/desktop
+    } else if (width > 600) {
+      return 3; // Tablets
+    } else {
+      return 2; // Mobile phones
+    }
+  }
+
+  double _getChildAspectRatio(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    if (width > 900) {
+      return 1.0; // Square cards for large screens
+    } else if (width > 600) {
+      return 0.95; // Slightly taller for tablets
+    } else {
+      return 0.85; // Taller cards for mobile
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Math',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: AppColors.textPrimary,
-          ),
+        title: Text(
+          'গণিত',
+          style: BanglaTypo.headline1.copyWith(fontSize: 24.sp),
         ),
         backgroundColor: AppColors.background,
         elevation: 0,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.calculate,
-              size: 80,
-              color: AppColors.primary,
-            ),
-            const SizedBox(height: 24),
-            const Text(
-              'Learn Math',
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: AppColors.textPrimary,
-              ),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              'Explore numbers and calculations',
-              style: TextStyle(
-                fontSize: 18,
-                color: AppColors.textSecondary,
-              ),
-            ),
-          ],
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: _getCrossAxisCount(context),
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+            childAspectRatio: _getChildAspectRatio(context),
+          ),
+          itemCount: MathConstants.mathCategories.length,
+          itemBuilder: (context, index) {
+            final category = MathConstants.mathCategories[index];
+            return MathCategoryCard(category: category);
+          },
         ),
       ),
     );

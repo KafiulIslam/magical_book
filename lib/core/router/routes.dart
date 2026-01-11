@@ -26,4 +26,10 @@ class Routes {
   static const String englishMonths = '$english/months';
   static const String englishAnimals = '$english/animals';
   static const String englishBirds = '$english/birds';
+
+  //!======================== Math Routes ========================
+  static const String banglaNumbers = '$math/bangla-numbers';
+  static const String englishNumbers = '$math/english-numbers';
+  static const String multiplicationTable = '$math/multiplication-table';
+  static const String calculator = '$math/calculator';
 }
