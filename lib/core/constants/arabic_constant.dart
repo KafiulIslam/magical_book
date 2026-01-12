@@ -109,6 +109,8 @@ class ArabicConstants {
         id: 8, title: '৮', subTitle: 'সূরাতুল নাস', image: AssetPath.nas),
     MultiplicationModel(
         id: 9, title: '৯', subTitle: 'সূরাতুল নাসর', image: AssetPath.nasr),
+    MultiplicationModel(
+        id: 10, title: '১০', subTitle: 'সূরাতুল লাহাব', image: AssetPath.lahab),
   ];
 
 }

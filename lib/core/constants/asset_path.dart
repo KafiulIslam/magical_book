@@ -109,5 +109,6 @@ class AssetPath{
   static const kurais = "assets/images/surah/kurais.png";
   static const nas = "assets/images/surah/Nas.png";
   static const nasr = "assets/images/surah/Nasr.png";
+  static const lahab = "assets/images/surah/lahab.png";
 
 }
