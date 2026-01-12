@@ -1,6 +1,8 @@
 class AssetPath{
   AssetPath._();
 
+  static const history = "assets/svgs/history.svg";
+
   // bangla chora images
   static const ataGacheTotaPakhi = "assets/images/banglaChora/ata_gache_tota.png";
   static const ayCheleraAyMeyera = "assets/images/banglaChora/ay_chelera_ay_meyera.jpg";
