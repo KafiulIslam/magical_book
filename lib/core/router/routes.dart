@@ -32,4 +32,10 @@ class Routes {
   static const String englishNumbers = '$math/english-numbers';
   static const String multiplicationTable = '$math/multiplication-table';
   static const String calculator = '$math/calculator';
+
+  //!======================== Arabic Routes ========================
+  static const String arabicAlphabet = '$arabic/alphabet';
+  static const String arabicSurah = '$arabic/surah';
+  static const String arabicGhazal = '$arabic/ghazal';
+  static const String arabicHistory = '$arabic/history';
 }
