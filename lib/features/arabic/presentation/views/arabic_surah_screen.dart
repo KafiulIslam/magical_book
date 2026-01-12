@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/arabic_constant.dart';
 import '../../../../core/theme/app_typography.dart';
+import '../../../../core/router/routes.dart';
 import '../../../math/presentation/widgets/multiplication_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
 
@@ -59,6 +61,12 @@ class ArabicSurahScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 final surah = ArabicConstants.surahList[index];
                 return MultiplicationCard(
+                  onTap: () {
+                    context.push(
+                      Routes.surahDetails,
+                      extra: surah,
+                    );
+                  },
                   item: surah,
                   index: index,
                   textStyle: BanglaTypo.headline2,

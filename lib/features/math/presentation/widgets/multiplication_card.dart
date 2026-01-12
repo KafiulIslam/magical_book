@@ -11,18 +11,19 @@ class MultiplicationCard extends StatelessWidget {
   final double subtitleFontSize;
   final List<List<Color>> colorPalette;
   final IconData errorIcon;
+  final VoidCallback? onTap;
 
-  const MultiplicationCard({
-    super.key,
-    required this.item,
-    required this.index,
-    required this.textStyle,
-    required this.subtitleStyle,
-    required this.titleFontSize,
-    required this.subtitleFontSize,
-    required this.colorPalette,
-    required this.errorIcon,
-  });
+  const MultiplicationCard(
+      {super.key,
+      required this.item,
+      required this.index,
+      required this.textStyle,
+      required this.subtitleStyle,
+      required this.titleFontSize,
+      required this.subtitleFontSize,
+      required this.colorPalette,
+      required this.errorIcon,
+      this.onTap});
 
   List<Color> _getCardColors(int index) {
     return colorPalette[index % colorPalette.length];
@@ -33,9 +34,7 @@ class MultiplicationCard extends StatelessWidget {
     final cardColors = _getCardColors(index);
 
     return InkWell(
-      onTap: () {
-        // TODO: Navigate to multiplication table detail or play audio
-      },
+      onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),

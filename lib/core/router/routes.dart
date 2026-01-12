@@ -36,6 +36,7 @@ class Routes {
   //!======================== Arabic Routes ========================
   static const String arabicAlphabet = '$arabic/alphabet';
   static const String arabicSurah = '$arabic/surah';
+  static const String surahDetails = '$arabic/surah/details';
   static const String arabicGhazal = '$arabic/ghazal';
   static const String arabicHistory = '$arabic/history';
 }
