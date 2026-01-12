@@ -159,7 +159,7 @@ class ArabicPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: const EdgeInsets.all(24),
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     color: AppColors.reward.withOpacity(0.15),
                     shape: BoxShape.circle,
@@ -167,14 +167,14 @@ class ArabicPage extends StatelessWidget {
                   child: SvgPicture.asset(
                     AssetPath.history,
                     color: AppColors.reward,
-                    height: 44.h,
-                    width: 44.w,
+                    height: 32.h,
+                    width: 32.w,
                   ),
                 ),
                 const Gap(16),
                 Text(
                   'ইসলামিক ইতিহাস',
-                  style: BanglaTypo.headline1.copyWith(fontSize: 20.sp),
+                  style: BanglaTypo.headline1.copyWith(fontSize: 18.sp),
                   textAlign: TextAlign.center,
                 ),
                 Text(
