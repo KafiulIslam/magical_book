@@ -99,4 +99,15 @@ class AssetPath{
   static const multiNine = "assets/images/multiplication/9.png";
   static const multiTen = "assets/images/multiplication/10.png";
 
+  // Surah
+  static const asar = "assets/images/surah/Asar.png";
+  static const falaq = "assets/images/surah/falaq.png";
+  static const fatiha = "assets/images/surah/fatiha.png";
+  static const fil = "assets/images/surah/fil.png";
+  static const ikhlas = "assets/images/surah/Ikhlas.png";
+  static const kawsar = "assets/images/surah/kawsar.png";
+  static const kurais = "assets/images/surah/kurais.png";
+  static const nas = "assets/images/surah/Nas.png";
+  static const nasr = "assets/images/surah/Nasr.png";
+
 }
