@@ -152,62 +152,50 @@ class ArabicConstants {
         subTitle: 'মনের ঘরেতে রেখেছি যারে',
         image: AssetPath.monerGhore,
         audio: AudioPath.monerGhorete),
-
-    // need to work on it
     MultiplicationModel(
         id: 2,
         title: '২',
-        subTitle: 'মুহাম্মাদ নাবীনা',
-        image: AssetPath.muhammad,
-        audio: AudioPath.monerGhorete),
-    MultiplicationModel(
-        id: 3,
-        title: '৩',
         subTitle: 'কুরআন মধুরও বানী',
         image: AssetPath.quranModhur,
         audio: AudioPath.quranModhur),
     MultiplicationModel(
-        id: 4,
-        title: '৪',
+        id: 3,
+        title: '৩',
         subTitle: 'বাবা মানে হাজার বিকেল',
         image: AssetPath.babaMane,
-        audio: AudioPath.monerGhorete),
+        audio: AudioPath.babaMane),
+    MultiplicationModel(
+        id: 4,
+        title: '৪',
+        subTitle: 'আমি চাঁদকে বলি তুমি সুন্দর নও',
+        image: AssetPath.chadKBoli,
+        audio: AudioPath.chadKBoli),
+
     MultiplicationModel(
         id: 5,
         title: '৫',
-        subTitle: 'আমি চাঁদকে বলি তুমি সুন্দর নও',
-        image: AssetPath.chadKBoli,
-        audio: AudioPath.monerGhorete),
+        subTitle: 'ক্ষমা করে দাও, মাফ করে দাও',
+        image: AssetPath.khomaKoreDao,
+        audio: AudioPath.khomaKoreDao),
     MultiplicationModel(
         id: 6,
         title: '৬',
-        subTitle: 'হাজবি রাব্বি জাল্লাহ',
-        image: AssetPath.hasbiRabbi,
-        audio: AudioPath.monerGhorete),
+        subTitle: 'মেহেরবান তুমি মেহেরবান',
+        image: AssetPath.meherban,
+        audio: AudioPath.meherban),
+    // need to change image
     MultiplicationModel(
         id: 7,
         title: '৭',
-        subTitle: 'লা ইলাহা ইল্লালাহ',
-        image: AssetPath.laIlaha,
-        audio: AudioPath.monerGhorete),
+        subTitle: 'দুনিয়া সুন্দর',
+        image: AssetPath.duniaSundor,
+        audio: AudioPath.duniaSundor),
     MultiplicationModel(
         id: 8,
         title: '৮',
-        subTitle: 'মেহেরবান তুমি মেহেরবান',
-        image: AssetPath.meherban,
-        audio: AudioPath.monerGhorete),
-    MultiplicationModel(
-        id: 9,
-        title: '৯',
-        subTitle: 'দুনিয়া সুন্দর',
-        image: AssetPath.mustafa,
-        audio: AudioPath.monerGhorete),
-    MultiplicationModel(
-        id: 10,
-        title: '১০',
         subTitle: 'আল্লাহ তুমি অপরূপ',
-        image: AssetPath.rahman,
-        audio: AudioPath.monerGhorete),
+        image: AssetPath.allahOporup,
+        audio: AudioPath.allahTumi),
   ];
 
   // Surah List
@@ -861,4 +849,5 @@ class ArabicConstants {
       banglaMeaning: 'সর্বশ্রেষ্ঠ, গৌরবান্বিত',
     ),
   ];
+
 }

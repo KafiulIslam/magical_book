@@ -93,10 +93,10 @@ class _ArabicGojolScreenState extends State<ArabicGojolScreen> {
                 final gojol = ArabicConstants.gojolList[index];
                 return GojolCard(
                   onTap: () {
-                    context.push(
-                      Routes.surahDetails,
-                      extra: gojol,
-                    );
+                    // context.push(
+                    //   Routes.surahDetails,
+                    //   extra: gojol,
+                    // );
                   },
                   item: gojol,
                   index: index,

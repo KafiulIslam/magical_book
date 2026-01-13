@@ -116,19 +116,12 @@ class AssetPath {
   static const babaMane = "assets/images/gojol/father.jpg";
   static const chadKBoli = "assets/images/gojol/chad-boli.jpg";
   static const hasbiRabbi = "assets/images/gojol/hasbi-rabbi.png";
-  static const laIlaha = "assets/images/gojol/la-ilaha.png";
-  static const meherban = "assets/images/gojol/meherban.png";
+  static const khomaKoreDao = "assets/images/gojol/khoma-kore.jpg";
+  static const meherban = "assets/images/gojol/meherban.jpg";
   static const monerGhore = "assets/images/gojol/moner-ghorete.jpg";
   static const muhammad = "assets/images/gojol/muhammad.jpg";
-  static const mustafa = "assets/images/gojol/mustafa.png";
+  static const duniaSundor = "assets/images/gojol/dunia-sundor.jpg";
   static const quranModhur = "assets/images/gojol/quran-modhur.png";
-  static const rahman = "assets/images/gojol/Rahman.png";
-
-
-
-  // audio files
-
-  // Gojol
-  static const monerGhorete = "assets/audio/gojol/moner-ghore.mp4";
+  static const allahOporup = "assets/images/gojol/allah-oporup.jpg";
 
 }
