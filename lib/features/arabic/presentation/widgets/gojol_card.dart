@@ -48,10 +48,11 @@ class _GojolCardState extends State<GojolCard> {
   void _togglePlayStop() {
     if (widget.audioPlayerService.isPlayingAudio(widget.item.audio)) {
       widget.audioPlayerService.stop();
+      setState(() {});
     } else {
       widget.audioPlayerService.play(widget.item.audio);
+      setState(() {});
     }
-    setState(() {});
   }
 
   List<Color> _getCardColors(int index) {
@@ -131,29 +132,23 @@ class _GojolCardState extends State<GojolCard> {
               ],
             ),
             // Play/Stop Button in bottom right
-            Positioned(
-              bottom: 8,
-              right: 8,
-              child: Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  onTap: _togglePlayStop,
-                  borderRadius: BorderRadius.circular(20),
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.25),
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        color: Colors.white.withOpacity(0.5),
-                        width: 1.5,
-                      ),
-                    ),
-                    child: Icon(
-                      isPlaying ? Icons.stop : Icons.play_arrow,
-                      color: Colors.white,
-                      size: 24.sp,
-                    ),
+            Align(
+              alignment: Alignment.topRight,
+              child: InkWell(
+                onTap: _togglePlayStop,
+                borderRadius: BorderRadius.circular(20),
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  margin: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.35),
+                    borderRadius: BorderRadius.circular(8),
+
+                  ),
+                  child: Icon(
+                    isPlaying ? Icons.stop : Icons.play_arrow,
+                    color: Colors.white,
+                    size: 24.sp,
                   ),
                 ),
               ),
