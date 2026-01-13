@@ -1,4 +1,4 @@
-package com.example.magical_book
+package com.codertent.magical_book
 
 import io.flutter.embedding.android.FlutterActivity
 

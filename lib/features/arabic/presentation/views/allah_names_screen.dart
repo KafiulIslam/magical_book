@@ -3,12 +3,47 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/arabic_constant.dart';
+import '../../../../core/services/tts_service.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
 import '../widgets/allah_name_card.dart';
 
-class AllahNamesScreen extends StatelessWidget {
+class AllahNamesScreen extends StatefulWidget {
   const AllahNamesScreen({super.key});
+
+  @override
+  State<AllahNamesScreen> createState() => _AllahNamesScreenState();
+}
+
+class _AllahNamesScreenState extends State<AllahNamesScreen> {
+  final TtsService _ttsService = TtsService();
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeTts();
+  }
+
+  Future<void> _initializeTts() async {
+    await _ttsService.initialize();
+    // Listen to TTS state changes to update UI
+    _ttsService.setCompletionHandler(() {
+      if (mounted) {
+        setState(() {});
+      }
+    });
+    _ttsService.setErrorHandler((msg) {
+      if (mounted) {
+        setState(() {});
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _ttsService.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +80,7 @@ class AllahNamesScreen extends StatelessWidget {
                   name: name,
                   index: index,
                   colorPalette: CardColorPalettes.alphabet,
+                  ttsService: _ttsService,
                 );
               },
             ),
