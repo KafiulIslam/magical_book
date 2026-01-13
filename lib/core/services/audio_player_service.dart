@@ -8,15 +8,17 @@ class AudioPlayerService {
 
   final AudioPlayer _audioPlayer = AudioPlayer();
   String? _currentAudioPath;
+  String? _currentItemId; // Track by item ID for unique identification
   bool _isPlaying = false;
+  final List<VoidCallback> _stateChangeCallbacks = [];
 
-  /// Play audio from asset path
-  Future<void> play(String audioPath) async {
+  /// Play audio from asset path with optional item ID for unique identification
+  Future<void> play(String audioPath, {String? itemId}) async {
     if (audioPath.isEmpty) return;
 
     try {
-      // If the same audio is already playing, stop it
-      if (_isPlaying && _currentAudioPath == audioPath) {
+      // If the same item is already playing, stop it
+      if (_isPlaying && _currentItemId == itemId && itemId != null) {
         await stop();
         return;
       }
@@ -29,14 +31,16 @@ class AudioPlayerService {
       // Play the audio
       _isPlaying = true;
       _currentAudioPath = audioPath;
+      _currentItemId = itemId;
       // Remove 'assets/' prefix for AssetSource
-      final sourcePath = audioPath.startsWith('assets/')
-          ? audioPath.substring(7)
-          : audioPath;
+      final sourcePath =
+          audioPath.startsWith('assets/') ? audioPath.substring(7) : audioPath;
       await _audioPlayer.play(AssetSource(sourcePath));
+      _notifyStateChange();
     } catch (e) {
       _isPlaying = false;
       _currentAudioPath = null;
+      _currentItemId = null;
       // Silently handle errors - audio might not be available
     }
   }
@@ -47,12 +51,26 @@ class AudioPlayerService {
       await _audioPlayer.stop();
       _isPlaying = false;
       _currentAudioPath = null;
+      _currentItemId = null;
+      _notifyStateChange();
     }
   }
 
-  /// Check if a specific audio is currently playing
+  /// Notify all registered callbacks of state change
+  void _notifyStateChange() {
+    for (final callback in _stateChangeCallbacks) {
+      callback();
+    }
+  }
+
+  /// Check if a specific audio is currently playing (by audio path)
   bool isPlayingAudio(String audioPath) {
     return _isPlaying && _currentAudioPath == audioPath;
+  }
+
+  /// Check if a specific item is currently playing (by item ID)
+  bool isPlayingItem(String itemId) {
+    return _isPlaying && _currentItemId == itemId;
   }
 
   /// Check if any audio is currently playing
@@ -66,8 +84,22 @@ class AudioPlayerService {
     _audioPlayer.onPlayerComplete.listen((event) {
       _isPlaying = false;
       _currentAudioPath = null;
+      _currentItemId = null;
+      _notifyStateChange();
       callback?.call();
     });
+  }
+
+  /// Add state change callback (called when play/stop state changes)
+  void addStateChangeHandler(VoidCallback callback) {
+    if (!_stateChangeCallbacks.contains(callback)) {
+      _stateChangeCallbacks.add(callback);
+    }
+  }
+
+  /// Remove state change callback
+  void removeStateChangeHandler(VoidCallback callback) {
+    _stateChangeCallbacks.remove(callback);
   }
 
   /// Dispose resources
@@ -76,5 +108,6 @@ class AudioPlayerService {
     await _audioPlayer.dispose();
     _isPlaying = false;
     _currentAudioPath = null;
+    _currentItemId = null;
   }
 }

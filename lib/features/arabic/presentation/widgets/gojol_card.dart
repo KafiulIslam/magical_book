@@ -34,9 +34,17 @@ class GojolCard extends StatefulWidget {
 }
 
 class _GojolCardState extends State<GojolCard> {
+  void _onStateChanged() {
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
   @override
   void initState() {
     super.initState();
+    // Listen to state changes (play/stop) to update UI
+    widget.audioPlayerService.addStateChangeHandler(_onStateChanged);
     // Listen to audio completion to update UI
     widget.audioPlayerService.setCompletionHandler(() {
       if (mounted) {
@@ -45,12 +53,20 @@ class _GojolCardState extends State<GojolCard> {
     });
   }
 
-  void _togglePlayStop() {
-    if (widget.audioPlayerService.isPlayingAudio(widget.item.audio)) {
-      widget.audioPlayerService.stop();
-      setState(() {});
+  @override
+  void dispose() {
+    widget.audioPlayerService.removeStateChangeHandler(_onStateChanged);
+    super.dispose();
+  }
+
+  Future<void> _togglePlayStop() async {
+    final itemId = widget.item.id.toString();
+    if (widget.audioPlayerService.isPlayingItem(itemId)) {
+      await widget.audioPlayerService.stop();
     } else {
-      widget.audioPlayerService.play(widget.item.audio);
+      await widget.audioPlayerService.play(widget.item.audio, itemId: itemId);
+    }
+    if (mounted) {
       setState(() {});
     }
   }
@@ -62,8 +78,8 @@ class _GojolCardState extends State<GojolCard> {
   @override
   Widget build(BuildContext context) {
     final cardColors = _getCardColors(widget.index);
-    final isPlaying =
-        widget.audioPlayerService.isPlayingAudio(widget.item.audio);
+    final itemId = widget.item.id.toString();
+    final isPlaying = widget.audioPlayerService.isPlayingItem(itemId);
 
     return InkWell(
       onTap: widget.onTap,
@@ -143,7 +159,6 @@ class _GojolCardState extends State<GojolCard> {
                   decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.35),
                     borderRadius: BorderRadius.circular(8),
-
                   ),
                   child: Icon(
                     isPlaying ? Icons.stop : Icons.play_arrow,

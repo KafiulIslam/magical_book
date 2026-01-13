@@ -29,6 +29,12 @@ class _ArabicGojolScreenState extends State<ArabicGojolScreen> {
         setState(() {});
       }
     });
+    // Listen to state changes (play/stop) to update UI
+    _audioPlayerService.addStateChangeHandler(() {
+      if (mounted) {
+        setState(() {});
+      }
+    });
   }
 
   @override
