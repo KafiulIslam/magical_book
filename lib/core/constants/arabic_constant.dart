@@ -148,62 +148,64 @@ class ArabicConstants {
   static List<MultiplicationModel> gojolList = [
     MultiplicationModel(
         id: 1,
-        title: '৬',
+        title: '১',
         subTitle: 'মনের ঘরেতে রেখেছি যারে',
         image: AssetPath.monerGhore,
         audio: AudioPath.monerGhorete),
+
+    // need to work on it
     MultiplicationModel(
         id: 2,
-        title: '৭',
+        title: '২',
         subTitle: 'মুহাম্মাদ নাবীনা',
         image: AssetPath.muhammad,
         audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 3,
-        title: '৯',
+        title: '৩',
         subTitle: 'কুরআন মধুরও বানী',
         image: AssetPath.quranModhur,
-        audio: AudioPath.monerGhorete),
+        audio: AudioPath.quranModhur),
     MultiplicationModel(
         id: 4,
-        title: '১',
+        title: '৪',
         subTitle: 'বাবা মানে হাজার বিকেল',
         image: AssetPath.babaMane,
         audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 5,
-        title: '২',
+        title: '৫',
         subTitle: 'আমি চাঁদকে বলি তুমি সুন্দর নও',
         image: AssetPath.chadKBoli,
         audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 6,
-        title: '৩',
+        title: '৬',
         subTitle: 'হাজবি রাব্বি জাল্লাহ',
         image: AssetPath.hasbiRabbi,
         audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 7,
-        title: '৪',
+        title: '৭',
         subTitle: 'লা ইলাহা ইল্লালাহ',
         image: AssetPath.laIlaha,
         audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 8,
-        title: '৫',
+        title: '৮',
         subTitle: 'মেহেরবান তুমি মেহেরবান',
         image: AssetPath.meherban,
         audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 9,
-        title: '৮',
-        subTitle: 'মুস্তফা মুস্তফা',
+        title: '৯',
+        subTitle: 'দুনিয়া সুন্দর',
         image: AssetPath.mustafa,
         audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 10,
         title: '১০',
-        subTitle: 'রহমান ইয়া রহমান',
+        subTitle: 'আল্লাহ তুমি অপরূপ',
         image: AssetPath.rahman,
         audio: AudioPath.monerGhorete),
   ];

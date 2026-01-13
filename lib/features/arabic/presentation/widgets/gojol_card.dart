@@ -34,6 +34,7 @@ class GojolCard extends StatefulWidget {
 }
 
 class _GojolCardState extends State<GojolCard> {
+
   void _onStateChanged() {
     if (mounted) {
       setState(() {});
@@ -147,6 +148,7 @@ class _GojolCardState extends State<GojolCard> {
                 ),
               ],
             ),
+
             // Play/Stop Button in bottom right
             Align(
               alignment: Alignment.topRight,
