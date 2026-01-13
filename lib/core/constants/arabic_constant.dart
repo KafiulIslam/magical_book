@@ -142,4 +142,5 @@ class ArabicConstants {
         subTitle: 'রহমান ইয়া রহমান',
         image: AssetPath.rahman),
   ];
+
 }

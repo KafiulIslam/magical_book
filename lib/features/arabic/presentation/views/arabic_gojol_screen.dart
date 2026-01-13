@@ -8,6 +8,7 @@ import '../../../../core/theme/app_typography.dart';
 import '../../../../core/router/routes.dart';
 import '../../../math/presentation/widgets/multiplication_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
+import '../widgets/gojol_card.dart';
 
 class ArabicGojolScreen extends StatelessWidget {
   const ArabicGojolScreen({super.key});
@@ -60,7 +61,7 @@ class ArabicGojolScreen extends StatelessWidget {
               itemCount: ArabicConstants.gojolList.length,
               itemBuilder: (context, index) {
                 final gojol = ArabicConstants.gojolList[index];
-                return MultiplicationCard(
+                return GojolCard(
                   onTap: () {
                     context.push(
                       Routes.surahDetails,
