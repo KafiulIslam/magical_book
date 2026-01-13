@@ -60,8 +60,6 @@ class ArabicPage extends StatelessWidget {
             final category = ArabicConstants.arabicCategories[index];
             if (index == 0) {
               return _buildFirstCard(context);
-            } else if (index == 3) {
-              return _buildHistoryCard(context);
             } else {
               return ArabicCategoryCard(category: category);
             }
