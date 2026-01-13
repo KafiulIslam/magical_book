@@ -36,7 +36,7 @@ class ArabicConstants {
       subtitle: 'Names of Allah',
       icon: Icons.label_important_outline,
       color: AppColors.reward,
-      route: Routes.arabicHistory,
+      route: Routes.arabicAllahNames,
     ),
     // Category(
     //   title: 'ইসলামিক ইতিহাস',
@@ -808,5 +808,4 @@ class ArabicConstants {
       banglaMeaning: 'সর্বশ্রেষ্ঠ, গৌরবান্বিত',
     ),
   ];
-
 }
