@@ -4,14 +4,38 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/arabic_constant.dart';
+import '../../../../core/services/audio_player_service.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/router/routes.dart';
-import '../../../math/presentation/widgets/multiplication_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
 import '../widgets/gojol_card.dart';
 
-class ArabicGojolScreen extends StatelessWidget {
+class ArabicGojolScreen extends StatefulWidget {
   const ArabicGojolScreen({super.key});
+
+  @override
+  State<ArabicGojolScreen> createState() => _ArabicGojolScreenState();
+}
+
+class _ArabicGojolScreenState extends State<ArabicGojolScreen> {
+  final AudioPlayerService _audioPlayerService = AudioPlayerService();
+
+  @override
+  void initState() {
+    super.initState();
+    // Listen to audio completion to update UI
+    _audioPlayerService.setCompletionHandler(() {
+      if (mounted) {
+        setState(() {});
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _audioPlayerService.dispose();
+    super.dispose();
+  }
 
   int _getCrossAxisCount(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -76,6 +100,7 @@ class ArabicGojolScreen extends StatelessWidget {
                   subtitleFontSize: 20.sp,
                   colorPalette: CardColorPalettes.fruits,
                   errorIcon: Icons.music_note,
+                  audioPlayerService: _audioPlayerService,
                 );
               },
             ),

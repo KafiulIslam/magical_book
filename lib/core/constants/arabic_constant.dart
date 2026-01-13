@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:magical_book/core/constants/audio_path.dart';
 import 'package:magical_book/core/router/routes.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../features/bangla/models/category.dart';
@@ -82,25 +83,65 @@ class ArabicConstants {
   // Surah List
   static List<MultiplicationModel> surahList = [
     MultiplicationModel(
-        id: 1, title: '১', subTitle: 'সূরাতুল ফাতিহা', image: AssetPath.fatiha),
+        id: 1,
+        title: '১',
+        subTitle: 'সূরাতুল ফাতিহা',
+        image: AssetPath.fatiha,
+        audio: AudioPath.monerGhorete),
     MultiplicationModel(
-        id: 2, title: '২', subTitle: 'সূরাতুল আল-আসর', image: AssetPath.asar),
+        id: 2,
+        title: '২',
+        subTitle: 'সূরাতুল আল-আসর',
+        image: AssetPath.asar,
+        audio: AudioPath.monerGhorete),
     MultiplicationModel(
-        id: 3, title: '৩', subTitle: 'সূরাতুল ফালাক', image: AssetPath.falaq),
+        id: 3,
+        title: '৩',
+        subTitle: 'সূরাতুল ফালাক',
+        image: AssetPath.falaq,
+        audio: AudioPath.monerGhorete),
     MultiplicationModel(
-        id: 4, title: '৪', subTitle: 'সূরাতুল ফিল', image: AssetPath.fil),
+        id: 4,
+        title: '৪',
+        subTitle: 'সূরাতুল ফিল',
+        image: AssetPath.fil,
+        audio: AudioPath.monerGhorete),
     MultiplicationModel(
-        id: 5, title: '৫', subTitle: 'সূরাতুল ইখলাস', image: AssetPath.ikhlas),
+        id: 5,
+        title: '৫',
+        subTitle: 'সূরাতুল ইখলাস',
+        image: AssetPath.ikhlas,
+        audio: AudioPath.monerGhorete),
     MultiplicationModel(
-        id: 6, title: '৬', subTitle: 'সূরাতুল কাউসার', image: AssetPath.kawsar),
+        id: 6,
+        title: '৬',
+        subTitle: 'সূরাতুল কাউসার',
+        image: AssetPath.kawsar,
+        audio: AudioPath.monerGhorete),
     MultiplicationModel(
-        id: 7, title: '৭', subTitle: 'সূরাতুল কুরাইশ', image: AssetPath.kurais),
+        id: 7,
+        title: '৭',
+        subTitle: 'সূরাতুল কুরাইশ',
+        image: AssetPath.kurais,
+        audio: AudioPath.monerGhorete),
     MultiplicationModel(
-        id: 8, title: '৮', subTitle: 'সূরাতুল নাস', image: AssetPath.nas),
+        id: 8,
+        title: '৮',
+        subTitle: 'সূরাতুল নাস',
+        image: AssetPath.nas,
+        audio: AudioPath.monerGhorete),
     MultiplicationModel(
-        id: 9, title: '৯', subTitle: 'সূরাতুল নাসর', image: AssetPath.nasr),
+        id: 9,
+        title: '৯',
+        subTitle: 'সূরাতুল নাসর',
+        image: AssetPath.nasr,
+        audio: AudioPath.monerGhorete),
     MultiplicationModel(
-        id: 10, title: '১০', subTitle: 'সূরাতুল লাহাব', image: AssetPath.lahab),
+        id: 10,
+        title: '১০',
+        subTitle: 'সূরাতুল লাহাব',
+        image: AssetPath.lahab,
+        audio: AudioPath.monerGhorete),
   ];
 
   // Surah List
@@ -109,107 +150,117 @@ class ArabicConstants {
         id: 1,
         title: '৬',
         subTitle: 'মনের ঘরেতে রেখেছি যারে',
-        image: AssetPath.monerGhore),
+        image: AssetPath.monerGhore,
+        audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 2,
         title: '৭',
         subTitle: 'মুহাম্মাদ নাবীনা',
-        image: AssetPath.muhammad),
+        image: AssetPath.muhammad,
+        audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 3,
         title: '৯',
         subTitle: 'কুরআন মধুরও বানী',
-        image: AssetPath.quranModhur),
+        image: AssetPath.quranModhur,
+        audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 4,
         title: '১',
         subTitle: 'বাবা মানে হাজার বিকেল',
-        image: AssetPath.babaMane),
+        image: AssetPath.babaMane,
+        audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 5,
         title: '২',
         subTitle: 'আমি চাঁদকে বলি তুমি সুন্দর নও',
-        image: AssetPath.chadKBoli),
+        image: AssetPath.chadKBoli,
+        audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 6,
         title: '৩',
         subTitle: 'হাজবি রাব্বি জাল্লাহ',
-        image: AssetPath.hasbiRabbi),
+        image: AssetPath.hasbiRabbi,
+        audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 7,
         title: '৪',
         subTitle: 'লা ইলাহা ইল্লালাহ',
-        image: AssetPath.laIlaha),
+        image: AssetPath.laIlaha,
+        audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 8,
         title: '৫',
         subTitle: 'মেহেরবান তুমি মেহেরবান',
-        image: AssetPath.meherban),
+        image: AssetPath.meherban,
+        audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 9,
         title: '৮',
         subTitle: 'মুস্তফা মুস্তফা',
-        image: AssetPath.mustafa),
+        image: AssetPath.mustafa,
+        audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 10,
         title: '১০',
         subTitle: 'রহমান ইয়া রহমান',
-        image: AssetPath.rahman),
+        image: AssetPath.rahman,
+        audio: AudioPath.monerGhorete),
   ];
 
   // Surah List
-  static List<MultiplicationModel> historyList = [
-    MultiplicationModel(
-        id: 1,
-        title: '৬',
-        subTitle: 'মনের ঘরেতে রেখেছি যারে',
-        image: AssetPath.monerGhore),
-    MultiplicationModel(
-        id: 2,
-        title: '৭',
-        subTitle: 'মুহাম্মাদ নাবীনা',
-        image: AssetPath.muhammad),
-    MultiplicationModel(
-        id: 3,
-        title: '৯',
-        subTitle: 'কুরআন মধুরও বানী',
-        image: AssetPath.quranModhur),
-    MultiplicationModel(
-        id: 4,
-        title: '১',
-        subTitle: 'বাবা মানে হাজার বিকেল',
-        image: AssetPath.babaMane),
-    MultiplicationModel(
-        id: 5,
-        title: '২',
-        subTitle: 'আমি চাঁদকে বলি তুমি সুন্দর নও',
-        image: AssetPath.chadKBoli),
-    MultiplicationModel(
-        id: 6,
-        title: '৩',
-        subTitle: 'হাজবি রাব্বি জাল্লাহ',
-        image: AssetPath.hasbiRabbi),
-    MultiplicationModel(
-        id: 7,
-        title: '৪',
-        subTitle: 'লা ইলাহা ইল্লালাহ',
-        image: AssetPath.laIlaha),
-    MultiplicationModel(
-        id: 8,
-        title: '৫',
-        subTitle: 'মেহেরবান তুমি মেহেরবান',
-        image: AssetPath.meherban),
-    MultiplicationModel(
-        id: 9,
-        title: '৮',
-        subTitle: 'মুস্তফা মুস্তফা',
-        image: AssetPath.mustafa),
-    MultiplicationModel(
-        id: 10,
-        title: '১০',
-        subTitle: 'রহমান ইয়া রহমান',
-        image: AssetPath.rahman),
-  ];
+  // static List<MultiplicationModel> historyList = [
+  //   MultiplicationModel(
+  //       id: 1,
+  //       title: '৬',
+  //       subTitle: 'মনের ঘরেতে রেখেছি যারে',
+  //       image: AssetPath.monerGhore),
+  //   MultiplicationModel(
+  //       id: 2,
+  //       title: '৭',
+  //       subTitle: 'মুহাম্মাদ নাবীনা',
+  //       image: AssetPath.muhammad),
+  //   MultiplicationModel(
+  //       id: 3,
+  //       title: '৯',
+  //       subTitle: 'কুরআন মধুরও বানী',
+  //       image: AssetPath.quranModhur),
+  //   MultiplicationModel(
+  //       id: 4,
+  //       title: '১',
+  //       subTitle: 'বাবা মানে হাজার বিকেল',
+  //       image: AssetPath.babaMane),
+  //   MultiplicationModel(
+  //       id: 5,
+  //       title: '২',
+  //       subTitle: 'আমি চাঁদকে বলি তুমি সুন্দর নও',
+  //       image: AssetPath.chadKBoli),
+  //   MultiplicationModel(
+  //       id: 6,
+  //       title: '৩',
+  //       subTitle: 'হাজবি রাব্বি জাল্লাহ',
+  //       image: AssetPath.hasbiRabbi),
+  //   MultiplicationModel(
+  //       id: 7,
+  //       title: '৪',
+  //       subTitle: 'লা ইলাহা ইল্লালাহ',
+  //       image: AssetPath.laIlaha),
+  //   MultiplicationModel(
+  //       id: 8,
+  //       title: '৫',
+  //       subTitle: 'মেহেরবান তুমি মেহেরবান',
+  //       image: AssetPath.meherban),
+  //   MultiplicationModel(
+  //       id: 9,
+  //       title: '৮',
+  //       subTitle: 'মুস্তফা মুস্তফা',
+  //       image: AssetPath.mustafa),
+  //   MultiplicationModel(
+  //       id: 10,
+  //       title: '১০',
+  //       subTitle: 'রহমান ইয়া রহমান',
+  //       image: AssetPath.rahman),
+  // ];
 
   // 99 Names of Allah (Asma-ul-Husna)
   static const List<AllahNameModel> allahNames = [

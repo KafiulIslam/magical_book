@@ -1,13 +1,16 @@
-class AssetPath{
+class AssetPath {
   AssetPath._();
 
   static const history = "assets/svgs/history.svg";
 
   // bangla chora images
-  static const ataGacheTotaPakhi = "assets/images/banglaChora/ata_gache_tota.png";
-  static const ayCheleraAyMeyera = "assets/images/banglaChora/ay_chelera_ay_meyera.jpg";
+  static const ataGacheTotaPakhi =
+      "assets/images/banglaChora/ata_gache_tota.png";
+  static const ayCheleraAyMeyera =
+      "assets/images/banglaChora/ay_chelera_ay_meyera.jpg";
   static const hattiMatim = "assets/images/banglaChora/hatti-mattim.jpeg";
-  static const amPataJoraJora = "assets/images/banglaChora/am-pata-jora-jora.png";
+  static const amPataJoraJora =
+      "assets/images/banglaChora/am-pata-jora-jora.png";
   static const bakBakumPayra = "assets/images/banglaChora/bak_bakum_payra.jpg";
   static const talGach = "assets/images/banglaChora/tal_gach.jpg";
 
@@ -50,7 +53,6 @@ class AssetPath{
   static const teddy = "assets/images/rhymes/teddy.png";
   static const wiseOwl = "assets/images/rhymes/wise-owl.png";
 
-
   // body parts
   static const arm = "assets/images/bodyParts/arm.png";
   static const belly = "assets/images/bodyParts/belly.png";
@@ -67,7 +69,6 @@ class AssetPath{
   static const mouth = "assets/images/bodyParts/mouth.png";
   static const nose = "assets/images/bodyParts/nose.png";
   static const tongue = "assets/images/bodyParts/tongue.png";
-
 
   // animals
   static const bear = "assets/images/animal/bear.png";
@@ -111,7 +112,6 @@ class AssetPath{
   static const nasr = "assets/images/surah/Nasr.png";
   static const lahab = "assets/images/surah/lahab.png";
 
-
   // Gojol
   static const babaMane = "assets/images/gojol/father.jpg";
   static const chadKBoli = "assets/images/gojol/chad-boli.jpg";
@@ -123,5 +123,12 @@ class AssetPath{
   static const mustafa = "assets/images/gojol/mustafa.png";
   static const quranModhur = "assets/images/gojol/quran-modhur.png";
   static const rahman = "assets/images/gojol/Rahman.png";
+
+
+
+  // audio files
+
+  // Gojol
+  static const monerGhorete = "assets/audio/gojol/moner-ghore.mp4";
 
 }

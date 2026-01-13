@@ -4,6 +4,7 @@ import 'package:magical_book/core/router/routes.dart';
 import 'package:magical_book/features/math/model/multiplication_model.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../features/bangla/models/category.dart';
+import 'audio_path.dart';
 
 // Contains all constant values and lists related to Math feature
 class MathConstants {
@@ -76,52 +77,52 @@ class MathConstants {
         id: 1,
         title: '১',
         subTitle: 'একের ঘরের নামতা',
-        image: AssetPath.multiOne),
+        image: AssetPath.multiOne, audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 2,
         title: '২',
         subTitle: 'দুইয়ের ঘরের নামতা',
-        image: AssetPath.multiTwo),
+        image: AssetPath.multiTwo, audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 3,
         title: '৩',
         subTitle: 'তিনের ঘরের নামতা',
-        image: AssetPath.multiThree),
+        image: AssetPath.multiThree, audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 4,
         title: '৪',
         subTitle: 'চারের ঘরের নামতা',
-        image: AssetPath.multiFive),
+        image: AssetPath.multiFive, audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 5,
         title: '৫',
         subTitle: 'পাঁচের ঘরের নামতা',
-        image: AssetPath.multiFive),
+        image: AssetPath.multiFive, audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 6,
         title: '৬',
         subTitle: 'ছয়ের ঘরের নামতা',
-        image: AssetPath.multiSix),
+        image: AssetPath.multiSix, audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 7,
         title: '৭',
         subTitle: 'সাতের ঘরের নামতা',
-        image: AssetPath.multiSeven),
+        image: AssetPath.multiSeven, audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 8,
         title: '৮',
         subTitle: 'আটের ঘরের নামতা',
-        image: AssetPath.multiEight),
+        image: AssetPath.multiEight, audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 9,
         title: '৯',
         subTitle: 'নয়ের ঘরের নামতা',
-        image: AssetPath.multiNine),
+        image: AssetPath.multiNine, audio: AudioPath.monerGhorete),
     MultiplicationModel(
         id: 10,
         title: '১০',
         subTitle: 'দশের ঘরের নামতা',
-        image: AssetPath.multiTen),
+        image: AssetPath.multiTen, audio: AudioPath.monerGhorete),
   ];
 
 }

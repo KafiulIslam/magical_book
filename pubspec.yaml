@@ -34,6 +34,8 @@ dependencies:
   # utls
   # Text-to-Speech
   flutter_tts: ^4.0.2
+  # Audio Player
+  audioplayers: ^6.1.0
 
 
   # Navigation
@@ -72,6 +74,7 @@ flutter:
     - assets/images/multiplication/
     - assets/images/surah/
     - assets/images/gojol/
+    - assets/audio/gojol/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
