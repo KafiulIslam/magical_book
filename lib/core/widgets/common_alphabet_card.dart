@@ -38,7 +38,7 @@ class CommonAlphabetCard extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          // TODO: Add sound or interaction for children
+
         },
         borderRadius: BorderRadius.circular(24),
         child: Container(

@@ -7,7 +7,6 @@ import '../../../../core/constants/arabic_constant.dart';
 import '../../../../core/constants/audio_path.dart';
 import '../../../../core/services/audio_player_service.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../../core/widgets/common_alphabet_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
 import '../widgets/arabic_alphabet_card.dart';
 
@@ -122,8 +121,9 @@ class _ArabicAlphabetScreenState extends State<ArabicAlphabetScreen> {
       itemBuilder: (context, index) {
         final letter = letters[index];
         return ArabicAlphabetCard(
-          letter: letter.letter,
+          letterModel: letter,
           colorPalette: CardColorPalettes.alphabet,
+          audioPlayerService: _audioPlayerService,
         );
       },
     );
