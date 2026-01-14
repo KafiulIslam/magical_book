@@ -1,14 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:magical_book/features/arabic/model/arabic_alphabet_model.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/arabic_constant.dart';
+import '../../../../core/constants/audio_path.dart';
+import '../../../../core/services/audio_player_service.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/common_alphabet_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
 
-class ArabicAlphabetScreen extends StatelessWidget {
+class ArabicAlphabetScreen extends StatefulWidget {
   const ArabicAlphabetScreen({super.key});
+
+  @override
+  State<ArabicAlphabetScreen> createState() => _ArabicAlphabetScreenState();
+}
+
+class _ArabicAlphabetScreenState extends State<ArabicAlphabetScreen> {
+  static const String _alphabetItemId = 'arabic_alphabet_full';
+  final AudioPlayerService _audioPlayerService = AudioPlayerService();
+
+  @override
+  void initState() {
+    super.initState();
+    // Update UI when playback completes
+    _audioPlayerService.setCompletionHandler(() {
+      if (mounted) setState(() {});
+    });
+    // Update UI when play/stop state changes
+    _audioPlayerService.addStateChangeHandler(() {
+      if (mounted) setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _audioPlayerService.dispose();
+    super.dispose();
+  }
 
   int _getCrossAxisCount(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -23,12 +53,27 @@ class ArabicAlphabetScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isPlaying =
+        _audioPlayerService.isPlayingItem(_alphabetItemId);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
           'আরবি বর্নমালা',
           style: BanglaTypo.headline1.copyWith(fontSize: 24.sp),
         ),
+        actions: [
+          IconButton(
+            onPressed: _togglePlayStop,
+            icon: Icon(
+              isPlaying ? Icons.stop_circle : Icons.play_circle_fill,
+              color: AppColors.primary,
+              size: 34.sp,
+            ),
+            tooltip: isPlaying ? 'Stop' : 'Play',
+          ),
+          const Gap(8)
+        ],
         backgroundColor: AppColors.background,
         elevation: 0,
       ),
@@ -37,13 +82,6 @@ class ArabicAlphabetScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Alphabet Section
-            // _buildHeader(
-            //   title: 'আরবি বর্নমালা',
-            //   subtitle: 'Arabic Alphabet - Learn Arabic Letters',
-            //   gradientColors: [AppColors.primary, AppColors.info],
-            //   emoji: '✨',
-            // ),
              const Gap(16),
             _buildLetterGrid(
               context,
@@ -55,72 +93,21 @@ class ArabicAlphabetScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader({
-    required String title,
-    required String subtitle,
-    required List<Color> gradientColors,
-    required String emoji,
-  }) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: gradientColors,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: gradientColors[0].withOpacity(0.3),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
-            spreadRadius: 2,
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            title,
-            style: BanglaTypo.headline2.copyWith(
-              fontSize: 26.sp,
-              fontWeight: FontWeight.w900,
-              color: Colors.white,
-              shadows: const [
-                Shadow(
-                  color: Colors.black26,
-                  blurRadius: 6,
-                  offset: Offset(2, 2),
-                ),
-              ],
-            ),
-          ),
-          const Gap(4),
-          Text(
-            subtitle,
-            textAlign: TextAlign.center,
-            style: EnglishTypo.bodyLarge.copyWith(
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-              shadows: const [
-                Shadow(
-                  color: Colors.black26,
-                  blurRadius: 4,
-                  offset: Offset(1, 1),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
+  Future<void> _togglePlayStop() async {
+
+    final isPlaying = _audioPlayerService.isPlayingItem(_alphabetItemId);
+    if (isPlaying) {
+      await _audioPlayerService.stop();
+    } else {
+      await _audioPlayerService.play(
+        AudioPath.allArabicAlphabet,
+        itemId: _alphabetItemId,
+      );
+    }
+    if (mounted) setState(() {});
   }
 
-  Widget _buildLetterGrid(BuildContext context, List<String> letters) {
+  Widget _buildLetterGrid(BuildContext context, List<ArabicAlphabetModel> letters) {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -134,11 +121,12 @@ class ArabicAlphabetScreen extends StatelessWidget {
       itemBuilder: (context, index) {
         final letter = letters[index];
         return CommonAlphabetCard(
-          letter: letter,
+          letter: letter.letter,
           fontFamily: 'NotoSansArabic',
           colorPalette: CardColorPalettes.alphabet,
         );
       },
     );
   }
+
 }

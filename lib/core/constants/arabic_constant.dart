@@ -5,6 +5,7 @@ import '../../../core/constants/app_colors.dart';
 import '../../features/bangla/models/category.dart';
 import '../../features/math/model/multiplication_model.dart';
 import '../../features/arabic/model/allah_name_model.dart';
+import '../../features/arabic/model/arabic_alphabet_model.dart';
 import 'asset_path.dart';
 
 // Contains all constant values and lists related to Arabic feature
@@ -49,35 +50,158 @@ class ArabicConstants {
   ];
 
   // List of Arabic alphabet (ا to ي)
-  static const List<String> arabicAlphabet = <String>[
-    'ا', // Alif
-    'ب', // Ba
-    'ت', // Ta
-    'ث', // Tha
-    'ج', // Jim
-    'ح', // Ha
-    'خ', // Kha
-    'د', // Dal
-    'ذ', // Dhal
-    'ر', // Ra
-    'ز', // Zay
-    'س', // Sin
-    'ش', // Shin
-    'ص', // Sad
-    'ض', // Dad
-    'ط', // Ta
-    'ظ', // Za
-    'ع', // Ayn
-    'غ', // Ghayn
-    'ف', // Fa
-    'ق', // Qaf
-    'ك', // Kaf
-    'ل', // Lam
-    'م', // Mim
-    'ن', // Nun
-    'ه', // Ha
-    'و', // Waw
-    'ي', // Ya
+  static const List<ArabicAlphabetModel> arabicAlphabet = <ArabicAlphabetModel>[
+    ArabicAlphabetModel(
+      id: 1,
+      letter: 'ا',
+      audioPath: AudioPath.alif,
+    ), // Alif
+    ArabicAlphabetModel(
+      id: 2,
+      letter: 'ب',
+      audioPath: AudioPath.ba,
+    ), // Ba
+    ArabicAlphabetModel(
+      id: 3,
+      letter: 'ت',
+      audioPath: AudioPath.ta,
+    ), // Ta
+    ArabicAlphabetModel(
+      id: 4,
+      letter: 'ث',
+      audioPath: AudioPath.cha,
+    ), // Tha
+    ArabicAlphabetModel(
+      id: 5,
+      letter: 'ج',
+      audioPath: AudioPath.jim,
+    ), // Jim
+    ArabicAlphabetModel(
+      id: 6,
+      letter: 'ح',
+      audioPath: AudioPath.ha,
+    ), // Ha
+    ArabicAlphabetModel(
+      id: 7,
+      letter: 'خ',
+      audioPath: AudioPath.kho,
+    ), // Kha
+    ArabicAlphabetModel(
+      id: 8,
+      letter: 'د',
+      audioPath: AudioPath.dal,
+    ), // Dal
+    ArabicAlphabetModel(
+      id: 9,
+      letter: 'ذ',
+      audioPath: AudioPath.jal,
+    ), // Dhal
+    ArabicAlphabetModel(
+      id: 10,
+      letter: 'ر',
+      audioPath: AudioPath.ro,
+    ), // Ra
+    ArabicAlphabetModel(
+      id: 11,
+      letter: 'ز',
+      audioPath: AudioPath.ja,
+    ), // Zay
+    ArabicAlphabetModel(
+      id: 12,
+      letter: 'س',
+      audioPath:AudioPath.sin,
+    ), // Sin
+    ArabicAlphabetModel(
+      id: 13,
+      letter: 'ش',
+      audioPath: AudioPath.shin,
+    ), // Shin
+    ArabicAlphabetModel(
+      id: 14,
+      letter: 'ص',
+      audioPath: AudioPath.soad,
+    ), // Sad
+    ArabicAlphabetModel(
+      id: 15,
+      letter: 'ض',
+      audioPath: AudioPath.doat,
+    ), // Dad (using dal as closest match)
+    ArabicAlphabetModel(
+      id: 16,
+      letter: 'ط',
+      audioPath: AudioPath.tow,
+    ), // Ta
+    ArabicAlphabetModel(
+      id: 17,
+      letter: 'ظ',
+      audioPath: AudioPath.jow,
+    ), // Za (using doat as closest match)
+    ArabicAlphabetModel(
+      id: 18,
+      letter: 'ع',
+      audioPath: AudioPath.ayen,
+    ), // Ayn
+    ArabicAlphabetModel(
+      id: 19,
+      letter: 'غ',
+      audioPath: AudioPath.goyen,
+    ), // Ghayn
+    ArabicAlphabetModel(
+      id: 20,
+      letter: 'ف',
+      audioPath: AudioPath.fa,
+    ), // Fa
+    ArabicAlphabetModel(
+      id: 21,
+      letter: 'ق',
+      audioPath: AudioPath.kof,
+    ), // Qaf
+    ArabicAlphabetModel(
+      id: 22,
+      letter: 'ك',
+      audioPath: AudioPath.kaf,
+    ), // Kaf
+    ArabicAlphabetModel(
+      id: 23,
+      letter: 'ل',
+      audioPath: AudioPath.lam,
+    ), // Lam
+    ArabicAlphabetModel(
+      id: 24,
+      letter: 'م',
+      audioPath: AudioPath.mim,
+    ), // Mim
+    ArabicAlphabetModel(
+      id: 25,
+      letter: 'ن',
+      audioPath: AudioPath.nun,
+    ), // Nun
+    ArabicAlphabetModel(
+      id: 26,
+      letter: 'و',
+      audioPath: AudioPath.wow,
+    ), // wow
+
+    ArabicAlphabetModel(
+      id: 27,
+      letter: 'ه',
+      audioPath: AudioPath.ha,
+    ), // W// aw
+    ArabicAlphabetModel(
+      id: 28,
+      letter: 'لا',
+      audioPath: AudioPath.lamAlif,
+    ), //
+    ArabicAlphabetModel(
+      id: 29,
+      letter: 'ء',
+      audioPath: AudioPath.hamza,
+    ), //
+    ArabicAlphabetModel(
+      id: 30,
+      letter: 'ي',
+      audioPath: AudioPath.ya,
+    ), // Ya
   ];
 
   // Surah List
@@ -849,5 +973,4 @@ class ArabicConstants {
       banglaMeaning: 'সর্বশ্রেষ্ঠ, গৌরবান্বিত',
     ),
   ];
-
 }
