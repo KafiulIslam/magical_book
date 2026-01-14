@@ -9,6 +9,7 @@ import '../../../../core/services/audio_player_service.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/common_alphabet_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
+import '../widgets/arabic_alphabet_card.dart';
 
 class ArabicAlphabetScreen extends StatefulWidget {
   const ArabicAlphabetScreen({super.key});
@@ -120,9 +121,8 @@ class _ArabicAlphabetScreenState extends State<ArabicAlphabetScreen> {
       itemCount: letters.length,
       itemBuilder: (context, index) {
         final letter = letters[index];
-        return CommonAlphabetCard(
+        return ArabicAlphabetCard(
           letter: letter.letter,
-          fontFamily: 'NotoSansArabic',
           colorPalette: CardColorPalettes.alphabet,
         );
       },
