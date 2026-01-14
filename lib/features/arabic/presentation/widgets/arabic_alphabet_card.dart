@@ -73,6 +73,7 @@ class _ArabicAlphabetCardState extends State<ArabicAlphabetCard> {
     final isPlaying = widget.audioPlayerService.isPlayingItem(itemId);
 
     return InkWell(
+      splashColor: Colors.transparent,
       onTap: _togglePlayStop,
       child: Container(
         alignment: Alignment.center,
