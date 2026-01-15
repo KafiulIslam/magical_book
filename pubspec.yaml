@@ -76,6 +76,7 @@ flutter:
     - assets/images/gojol/
     - assets/audio/gojol/
     - assets/audio/alphabet/
+    - assets/audio/surah/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

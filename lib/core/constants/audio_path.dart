@@ -12,7 +12,8 @@ class AudioPath {
   static const khomaKoreDao = "assets/audio/gojol/khoma-kore-dao.m4a";
 
   // all arabic alphabet
-  static const allArabicAlphabet = "assets/audio/alphabet/all-arabic-alphabet.m4a";
+  static const allArabicAlphabet =
+      "assets/audio/alphabet/all-arabic-alphabet.m4a";
   static const alif = "assets/audio/alphabet/alif.m4a";
   static const ayen = "assets/audio/alphabet/ayen.m4a";
   static const ba = "assets/audio/alphabet/ba.m4a";
@@ -43,5 +44,15 @@ class AudioPath {
   static const wow = "assets/audio/alphabet/wow.m4a";
   static const ya = "assets/audio/alphabet/ya.m4a";
 
-
+  // surah audio path
+  static const alAsr = "assets/audio/surah/al-asr.mp3";
+  static const falaq = "assets/audio/surah/falaq.mp3";
+  static const fil = "assets/audio/surah/fil.mp3";
+  static const ikhlas = "assets/audio/surah/ikhlas.mp3";
+  static const kausar = "assets/audio/surah/kausar.mp3";
+  static const lahab = "assets/audio/surah/lahab.mp3";
+  static const nas = "assets/audio/surah/nas.mp3";
+  static const nasr = "assets/audio/surah/nasr.mp3";
+  static const qurais = "assets/audio/surah/qurais.mp3";
+  static const fatiha = "assets/audio/surah/surah-fatiha.mp3";
 }

@@ -10,6 +10,7 @@ import 'asset_path.dart';
 
 // Contains all constant values and lists related to Arabic feature
 class ArabicConstants {
+
   // List of Arabic learning categories
   static const List<Category> arabicCategories = [
     Category(
@@ -211,61 +212,61 @@ class ArabicConstants {
         title: '১',
         subTitle: 'সূরাতুল ফাতিহা',
         image: AssetPath.fatiha,
-        audio: AudioPath.monerGhorete),
+        audio: AudioPath.fatiha),
     MultiplicationModel(
         id: 2,
         title: '২',
         subTitle: 'সূরাতুল আল-আসর',
         image: AssetPath.asar,
-        audio: AudioPath.monerGhorete),
+        audio: AudioPath.alAsr),
     MultiplicationModel(
         id: 3,
         title: '৩',
         subTitle: 'সূরাতুল ফালাক',
         image: AssetPath.falaq,
-        audio: AudioPath.monerGhorete),
+        audio: AudioPath.falaq),
     MultiplicationModel(
         id: 4,
         title: '৪',
         subTitle: 'সূরাতুল ফিল',
         image: AssetPath.fil,
-        audio: AudioPath.monerGhorete),
+        audio: AudioPath.fil),
     MultiplicationModel(
         id: 5,
         title: '৫',
         subTitle: 'সূরাতুল ইখলাস',
         image: AssetPath.ikhlas,
-        audio: AudioPath.monerGhorete),
+        audio: AudioPath.ikhlas),
     MultiplicationModel(
         id: 6,
         title: '৬',
         subTitle: 'সূরাতুল কাউসার',
         image: AssetPath.kawsar,
-        audio: AudioPath.monerGhorete),
+        audio: AudioPath.kausar),
     MultiplicationModel(
         id: 7,
         title: '৭',
         subTitle: 'সূরাতুল কুরাইশ',
         image: AssetPath.kurais,
-        audio: AudioPath.monerGhorete),
+        audio: AudioPath.qurais),
     MultiplicationModel(
         id: 8,
         title: '৮',
         subTitle: 'সূরাতুল নাস',
         image: AssetPath.nas,
-        audio: AudioPath.monerGhorete),
+        audio: AudioPath.nas),
     MultiplicationModel(
         id: 9,
         title: '৯',
         subTitle: 'সূরাতুল নাসর',
         image: AssetPath.nasr,
-        audio: AudioPath.monerGhorete),
+        audio: AudioPath.nasr),
     MultiplicationModel(
         id: 10,
         title: '১০',
         subTitle: 'সূরাতুল লাহাব',
         image: AssetPath.lahab,
-        audio: AudioPath.monerGhorete),
+        audio: AudioPath.lahab),
   ];
 
   // Surah List
