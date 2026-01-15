@@ -28,22 +28,24 @@ class _ArabicAlphabetCardState extends State<ArabicAlphabetCard> {
     }
   }
 
+  void _onCompleted() {
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     // Listen to state changes (play/stop) to update UI
     widget.audioPlayerService.addStateChangeHandler(_onStateChanged);
-    // Listen to audio completion to update UI
-    widget.audioPlayerService.setCompletionHandler(() {
-      if (mounted) {
-        setState(() {});
-      }
-    });
+    widget.audioPlayerService.addCompletionHandler(_onCompleted);
   }
 
   @override
   void dispose() {
     widget.audioPlayerService.removeStateChangeHandler(_onStateChanged);
+    widget.audioPlayerService.removeCompletionHandler(_onCompleted);
     super.dispose();
   }
 
@@ -69,8 +71,6 @@ class _ArabicAlphabetCardState extends State<ArabicAlphabetCard> {
   @override
   Widget build(BuildContext context) {
     final cardColors = _getCardColors(widget.letterModel.letter.hashCode);
-    final itemId = widget.letterModel.id.toString();
-    final isPlaying = widget.audioPlayerService.isPlayingItem(itemId);
 
     return InkWell(
       splashColor: Colors.transparent,

@@ -24,24 +24,29 @@ class AllahNameCard extends StatefulWidget {
 }
 
 class _AllahNameCardState extends State<AllahNameCard> {
+  void _onTtsStateChanged() {
+    if (mounted) setState(() {});
+  }
+
   @override
   void initState() {
     super.initState();
-    // Listen to TTS completion to update UI
-    widget.ttsService.setCompletionHandler(() {
-      if (mounted) {
-        setState(() {});
-      }
-    });
+    widget.ttsService.addStateChangeHandler(_onTtsStateChanged);
   }
 
-  void _togglePlayStop() {
+  @override
+  void dispose() {
+    widget.ttsService.removeStateChangeHandler(_onTtsStateChanged);
+    super.dispose();
+  }
+
+  Future<void> _togglePlayStop() async {
     if (widget.ttsService.isSpeakingText(widget.name.banglaPronunciation)) {
-      widget.ttsService.stop();
+      await widget.ttsService.stop();
     } else {
-      widget.ttsService.speak(widget.name.banglaPronunciation);
+
+      await widget.ttsService.speak(widget.name.banglaPronunciation);
     }
-    setState(() {});
   }
 
   List<Color> _getCardColors(int index) {

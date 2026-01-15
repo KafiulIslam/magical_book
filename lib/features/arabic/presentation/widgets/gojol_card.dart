@@ -41,22 +41,24 @@ class _GojolCardState extends State<GojolCard> {
     }
   }
 
+  void _onCompleted() {
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     // Listen to state changes (play/stop) to update UI
     widget.audioPlayerService.addStateChangeHandler(_onStateChanged);
-    // Listen to audio completion to update UI
-    widget.audioPlayerService.setCompletionHandler(() {
-      if (mounted) {
-        setState(() {});
-      }
-    });
+    widget.audioPlayerService.addCompletionHandler(_onCompleted);
   }
 
   @override
   void dispose() {
     widget.audioPlayerService.removeStateChangeHandler(_onStateChanged);
+    widget.audioPlayerService.removeCompletionHandler(_onCompleted);
     super.dispose();
   }
 

@@ -18,6 +18,10 @@ class AllahNamesScreen extends StatefulWidget {
 class _AllahNamesScreenState extends State<AllahNamesScreen> {
   final TtsService _ttsService = TtsService();
 
+  void _onTtsStateChanged() {
+    if (mounted) setState(() {});
+  }
+
   @override
   void initState() {
     super.initState();
@@ -26,22 +30,12 @@ class _AllahNamesScreenState extends State<AllahNamesScreen> {
 
   Future<void> _initializeTts() async {
     await _ttsService.initialize();
-    // Listen to TTS state changes to update UI
-    _ttsService.setCompletionHandler(() {
-      if (mounted) {
-        setState(() {});
-      }
-    });
-    _ttsService.setErrorHandler((msg) {
-      if (mounted) {
-        setState(() {});
-      }
-    });
+    _ttsService.addStateChangeHandler(_onTtsStateChanged);
   }
 
   @override
   void dispose() {
-    _ttsService.dispose();
+    _ttsService.removeStateChangeHandler(_onTtsStateChanged);
     super.dispose();
   }
 

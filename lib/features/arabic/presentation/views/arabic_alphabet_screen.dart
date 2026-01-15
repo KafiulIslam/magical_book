@@ -21,22 +21,19 @@ class _ArabicAlphabetScreenState extends State<ArabicAlphabetScreen> {
   static const String _alphabetItemId = 'arabic_alphabet_full';
   final AudioPlayerService _audioPlayerService = AudioPlayerService();
 
+  void _onAudioStateChanged() {
+    if (mounted) setState(() {});
+  }
+
   @override
   void initState() {
     super.initState();
-    // Update UI when playback completes
-    _audioPlayerService.setCompletionHandler(() {
-      if (mounted) setState(() {});
-    });
-    // Update UI when play/stop state changes
-    _audioPlayerService.addStateChangeHandler(() {
-      if (mounted) setState(() {});
-    });
+    _audioPlayerService.addStateChangeHandler(_onAudioStateChanged);
   }
 
   @override
   void dispose() {
-    _audioPlayerService.dispose();
+    _audioPlayerService.removeStateChangeHandler(_onAudioStateChanged);
     super.dispose();
   }
 
@@ -53,8 +50,7 @@ class _ArabicAlphabetScreenState extends State<ArabicAlphabetScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isPlaying =
-        _audioPlayerService.isPlayingItem(_alphabetItemId);
+    final isPlaying = _audioPlayerService.isPlayingItem(_alphabetItemId);
 
     return Scaffold(
       appBar: AppBar(
@@ -82,7 +78,7 @@ class _ArabicAlphabetScreenState extends State<ArabicAlphabetScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             const Gap(16),
+            const Gap(16),
             _buildLetterGrid(
               context,
               ArabicConstants.arabicAlphabet,
@@ -94,7 +90,6 @@ class _ArabicAlphabetScreenState extends State<ArabicAlphabetScreen> {
   }
 
   Future<void> _togglePlayStop() async {
-
     final isPlaying = _audioPlayerService.isPlayingItem(_alphabetItemId);
     if (isPlaying) {
       await _audioPlayerService.stop();
@@ -107,7 +102,8 @@ class _ArabicAlphabetScreenState extends State<ArabicAlphabetScreen> {
     if (mounted) setState(() {});
   }
 
-  Widget _buildLetterGrid(BuildContext context, List<ArabicAlphabetModel> letters) {
+  Widget _buildLetterGrid(
+      BuildContext context, List<ArabicAlphabetModel> letters) {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -128,5 +124,4 @@ class _ArabicAlphabetScreenState extends State<ArabicAlphabetScreen> {
       },
     );
   }
-
 }

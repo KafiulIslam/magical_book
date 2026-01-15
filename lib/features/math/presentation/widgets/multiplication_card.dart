@@ -39,18 +39,21 @@ class _MultiplicationCardState extends State<MultiplicationCard> {
     if (mounted) setState(() {});
   }
 
+  void _onCompleted() {
+    if (mounted) setState(() {});
+  }
+
   @override
   void initState() {
     super.initState();
     _audioPlayerService.addStateChangeHandler(_onStateChanged);
-    _audioPlayerService.setCompletionHandler(() {
-      if (mounted) setState(() {});
-    });
+    _audioPlayerService.addCompletionHandler(_onCompleted);
   }
 
   @override
   void dispose() {
     _audioPlayerService.removeStateChangeHandler(_onStateChanged);
+    _audioPlayerService.removeCompletionHandler(_onCompleted);
     super.dispose();
   }
 
@@ -137,55 +140,55 @@ class _MultiplicationCardState extends State<MultiplicationCard> {
                   ),
                 ),
 
-            // Flexible(
-            //   flex: 1,
-            //   child: Padding(
-            //     padding:
-            //         const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-            //     child: Column(
-            //       mainAxisAlignment: MainAxisAlignment.center,
-            //       children: [
-            //         Text(
-            //           item.title,
-            //           style: textStyle.copyWith(
-            //             fontSize: titleFontSize,
-            //             fontWeight: FontWeight.w900,
-            //             color: Colors.white,
-            //             shadows: const [
-            //               Shadow(
-            //                 color: Colors.black26,
-            //                 blurRadius: 6,
-            //                 offset: Offset(2, 2),
-            //               ),
-            //             ],
-            //           ),
-            //           textAlign: TextAlign.center,
-            //           maxLines: 1,
-            //           overflow: TextOverflow.ellipsis,
-            //         ),
-            //         const SizedBox(height: 4),
-            //         Text(
-            //           item.subTitle,
-            //           style: subtitleStyle.copyWith(
-            //             fontSize: subtitleFontSize,
-            //             fontWeight: FontWeight.w600,
-            //             color: Colors.white.withOpacity(0.9),
-            //             shadows: const [
-            //               Shadow(
-            //                 color: Colors.black26,
-            //                 blurRadius: 4,
-            //                 offset: Offset(1, 1),
-            //               ),
-            //             ],
-            //           ),
-            //           textAlign: TextAlign.center,
-            //           maxLines: 2,
-            //           overflow: TextOverflow.ellipsis,
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
+                // Flexible(
+                //   flex: 1,
+                //   child: Padding(
+                //     padding:
+                //         const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                //     child: Column(
+                //       mainAxisAlignment: MainAxisAlignment.center,
+                //       children: [
+                //         Text(
+                //           item.title,
+                //           style: textStyle.copyWith(
+                //             fontSize: titleFontSize,
+                //             fontWeight: FontWeight.w900,
+                //             color: Colors.white,
+                //             shadows: const [
+                //               Shadow(
+                //                 color: Colors.black26,
+                //                 blurRadius: 6,
+                //                 offset: Offset(2, 2),
+                //               ),
+                //             ],
+                //           ),
+                //           textAlign: TextAlign.center,
+                //           maxLines: 1,
+                //           overflow: TextOverflow.ellipsis,
+                //         ),
+                //         const SizedBox(height: 4),
+                //         Text(
+                //           item.subTitle,
+                //           style: subtitleStyle.copyWith(
+                //             fontSize: subtitleFontSize,
+                //             fontWeight: FontWeight.w600,
+                //             color: Colors.white.withOpacity(0.9),
+                //             shadows: const [
+                //               Shadow(
+                //                 color: Colors.black26,
+                //                 blurRadius: 4,
+                //                 offset: Offset(1, 1),
+                //               ),
+                //             ],
+                //           ),
+                //           textAlign: TextAlign.center,
+                //           maxLines: 2,
+                //           overflow: TextOverflow.ellipsis,
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
               ],
             ),
             // Play/Stop button (top-right)

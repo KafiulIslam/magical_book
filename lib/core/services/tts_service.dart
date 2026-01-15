@@ -10,14 +10,17 @@ class TtsService {
   bool _isInitialized = false;
   bool _isSpeaking = false;
   String? _currentText;
+  final List<VoidCallback> _stateChangeCallbacks = [];
+  final List<VoidCallback> _completionCallbacks = [];
 
   /// Initialize TTS service
   Future<void> initialize() async {
     if (_isInitialized) return;
 
     try {
-      // Set language to Bangla (Bangladesh)
-      await _flutterTts.setLanguage('bn-BD');
+      // Make completion callbacks reliable across platforms.
+      // (On some platforms completion won't fire unless this is enabled.)
+      await _flutterTts.awaitSpeakCompletion(true);
 
       // Set speech rate (0.0 to 1.0)
       await _flutterTts.setSpeechRate(0.5);
@@ -28,28 +31,36 @@ class TtsService {
       // Set pitch (0.5 to 2.0)
       await _flutterTts.setPitch(1.0);
 
+      // Best-effort: Set language to Bangla (Bangladesh), then fallback.
+      try {
+        await _flutterTts.setLanguage('bn-BD');
+      } catch (_) {
+        try {
+          await _flutterTts.setLanguage('bn-IN');
+        } catch (_) {
+          // Use default language if Bangla is not available
+        }
+      }
+
       // Set completion handler
       _flutterTts.setCompletionHandler(() {
         _isSpeaking = false;
         _currentText = null;
+        _notifyStateChange();
+        _notifyCompletion();
       });
 
       // Set error handler
       _flutterTts.setErrorHandler((msg) {
         _isSpeaking = false;
         _currentText = null;
+        _notifyStateChange();
       });
 
       _isInitialized = true;
     } catch (e) {
-      // If bn-BD is not available, try bn-IN or default
-      try {
-        await _flutterTts.setLanguage('bn-IN');
-        _isInitialized = true;
-      } catch (e2) {
-        // Use default language if Bangla is not available
-        _isInitialized = true;
-      }
+      // Even if initialization fails partially, mark initialized to avoid loops.
+      _isInitialized = true;
     }
   }
 
@@ -77,10 +88,12 @@ class TtsService {
       // Speak the text
       _isSpeaking = true;
       _currentText = text;
+      _notifyStateChange();
       await _flutterTts.speak(text);
     } catch (e) {
       _isSpeaking = false;
       _currentText = null;
+      _notifyStateChange();
       // Silently handle errors - TTS might not be available on all devices
     }
   }
@@ -91,6 +104,19 @@ class TtsService {
       await _flutterTts.stop();
       _isSpeaking = false;
       _currentText = null;
+      _notifyStateChange();
+    }
+  }
+
+  void _notifyStateChange() {
+    for (final callback in _stateChangeCallbacks) {
+      callback();
+    }
+  }
+
+  void _notifyCompletion() {
+    for (final callback in _completionCallbacks) {
+      callback();
     }
   }
 
@@ -104,11 +130,9 @@ class TtsService {
 
   /// Set completion handler callback
   void setCompletionHandler(VoidCallback? callback) {
-    _flutterTts.setCompletionHandler(() {
-      _isSpeaking = false;
-      _currentText = null;
-      callback?.call();
-    });
+    // Backward-compatible behavior: treat this as "add" (without duplicates).
+    if (callback == null) return;
+    addCompletionHandler(callback);
   }
 
   /// Set error handler callback
@@ -116,14 +140,39 @@ class TtsService {
     _flutterTts.setErrorHandler((msg) {
       _isSpeaking = false;
       _currentText = null;
+      _notifyStateChange();
       callback?.call(msg);
     });
   }
 
+  /// Add completion callback (called when speech finishes)
+  void addCompletionHandler(VoidCallback callback) {
+    if (!_completionCallbacks.contains(callback)) {
+      _completionCallbacks.add(callback);
+    }
+  }
+
+  /// Remove completion callback
+  void removeCompletionHandler(VoidCallback callback) {
+    _completionCallbacks.remove(callback);
+  }
+
+  /// Add state change callback (called when speak/stop state changes)
+  void addStateChangeHandler(VoidCallback callback) {
+    if (!_stateChangeCallbacks.contains(callback)) {
+      _stateChangeCallbacks.add(callback);
+    }
+  }
+
+  /// Remove state change callback
+  void removeStateChangeHandler(VoidCallback callback) {
+    _stateChangeCallbacks.remove(callback);
+  }
+
   /// Dispose resources
   Future<void> dispose() async {
-    await _flutterTts.stop();
-    _isSpeaking = false;
-    _currentText = null;
+    // This service is a singleton shared across the whole app.
+    // Do NOT dispose plugin resources from individual screens.
+    await stop();
   }
 }

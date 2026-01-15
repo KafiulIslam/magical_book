@@ -4,13 +4,22 @@ import 'package:audioplayers/audioplayers.dart';
 class AudioPlayerService {
   static final AudioPlayerService _instance = AudioPlayerService._internal();
   factory AudioPlayerService() => _instance;
-  AudioPlayerService._internal();
+  AudioPlayerService._internal() {
+    _audioPlayer.onPlayerComplete.listen((event) {
+      _isPlaying = false;
+      _currentAudioPath = null;
+      _currentItemId = null;
+      _notifyStateChange();
+      _notifyCompletion();
+    });
+  }
 
   final AudioPlayer _audioPlayer = AudioPlayer();
   String? _currentAudioPath;
   String? _currentItemId; // Track by item ID for unique identification
   bool _isPlaying = false;
   final List<VoidCallback> _stateChangeCallbacks = [];
+  final List<VoidCallback> _completionCallbacks = [];
 
   /// Play audio from asset path with optional item ID for unique identification
   Future<void> play(String audioPath, {String? itemId}) async {
@@ -56,6 +65,12 @@ class AudioPlayerService {
     }
   }
 
+  void _notifyCompletion() {
+    for (final callback in _completionCallbacks) {
+      callback();
+    }
+  }
+
   /// Notify all registered callbacks of state change
   void _notifyStateChange() {
     for (final callback in _stateChangeCallbacks) {
@@ -81,13 +96,21 @@ class AudioPlayerService {
 
   /// Set completion handler callback
   void setCompletionHandler(VoidCallback? callback) {
-    _audioPlayer.onPlayerComplete.listen((event) {
-      _isPlaying = false;
-      _currentAudioPath = null;
-      _currentItemId = null;
-      _notifyStateChange();
-      callback?.call();
-    });
+    // Backward-compatible behavior: treat this as "add" (without duplicates).
+    if (callback == null) return;
+    addCompletionHandler(callback);
+  }
+
+  /// Add completion callback (called when the current audio finishes)
+  void addCompletionHandler(VoidCallback callback) {
+    if (!_completionCallbacks.contains(callback)) {
+      _completionCallbacks.add(callback);
+    }
+  }
+
+  /// Remove completion callback
+  void removeCompletionHandler(VoidCallback callback) {
+    _completionCallbacks.remove(callback);
   }
 
   /// Add state change callback (called when play/stop state changes)
@@ -104,10 +127,8 @@ class AudioPlayerService {
 
   /// Dispose resources
   Future<void> dispose() async {
-    await _audioPlayer.stop();
-    await _audioPlayer.dispose();
-    _isPlaying = false;
-    _currentAudioPath = null;
-    _currentItemId = null;
+    // This service is a singleton shared across the whole app.
+    // Do NOT dispose the underlying AudioPlayer from individual screens.
+    await stop();
   }
 }

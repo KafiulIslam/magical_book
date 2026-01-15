@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/arabic_constant.dart';
 import '../../../../core/services/audio_player_service.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../../core/router/routes.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
 import '../widgets/gojol_card.dart';
 
@@ -20,26 +18,19 @@ class ArabicGojolScreen extends StatefulWidget {
 class _ArabicGojolScreenState extends State<ArabicGojolScreen> {
   final AudioPlayerService _audioPlayerService = AudioPlayerService();
 
+  void _onAudioStateChanged() {
+    if (mounted) setState(() {});
+  }
+
   @override
   void initState() {
     super.initState();
-    // Listen to audio completion to update UI
-    _audioPlayerService.setCompletionHandler(() {
-      if (mounted) {
-        setState(() {});
-      }
-    });
-    // Listen to state changes (play/stop) to update UI
-    _audioPlayerService.addStateChangeHandler(() {
-      if (mounted) {
-        setState(() {});
-      }
-    });
+    _audioPlayerService.addStateChangeHandler(_onAudioStateChanged);
   }
 
   @override
   void dispose() {
-    _audioPlayerService.dispose();
+    _audioPlayerService.removeStateChangeHandler(_onAudioStateChanged);
     super.dispose();
   }
 
