@@ -4,11 +4,26 @@ import 'package:gap/gap.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/math_constant.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../../core/widgets/common_alphabet_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
+import '../../../../core/services/tts_service.dart';
+import '../widgets/math_number_card.dart';
 
-class BanglaNumbersScreen extends StatelessWidget {
+class BanglaNumbersScreen extends StatefulWidget {
   const BanglaNumbersScreen({super.key});
+
+  @override
+  State<BanglaNumbersScreen> createState() => _BanglaNumbersScreenState();
+}
+
+class _BanglaNumbersScreenState extends State<BanglaNumbersScreen> {
+  late final TtsService _ttsService;
+
+  @override
+  void initState() {
+    super.initState();
+    _ttsService = TtsService();
+    _ttsService.initialize();
+  }
 
   int _getCrossAxisCount(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -54,7 +69,7 @@ class BanglaNumbersScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [AppColors.primary, AppColors.info],
@@ -119,10 +134,11 @@ class BanglaNumbersScreen extends StatelessWidget {
       itemCount: MathConstants.banglaNumbers.length,
       itemBuilder: (context, index) {
         final number = MathConstants.banglaNumbers[index];
-        return CommonAlphabetCard(
+        return MathNumberCard(
           letter: number,
           fontFamily: 'Kalpurush',
           colorPalette: CardColorPalettes.alphabet,
+          ttsService: _ttsService,
         );
       },
     );
