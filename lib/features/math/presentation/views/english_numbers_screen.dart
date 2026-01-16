@@ -4,11 +4,26 @@ import 'package:gap/gap.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/math_constant.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../../core/widgets/common_alphabet_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
+import '../../../../core/services/tts_service.dart';
+import '../widgets/math_number_card.dart';
 
-class EnglishNumbersScreen extends StatelessWidget {
+class EnglishNumbersScreen extends StatefulWidget {
   const EnglishNumbersScreen({super.key});
+
+  @override
+  State<EnglishNumbersScreen> createState() => _EnglishNumbersScreenState();
+}
+
+class _EnglishNumbersScreenState extends State<EnglishNumbersScreen> {
+  late final TtsService _ttsService;
+
+  @override
+  void initState() {
+    super.initState();
+    _ttsService = TtsService();
+    _ttsService.initialize();
+  }
 
   int _getCrossAxisCount(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -119,9 +134,10 @@ class EnglishNumbersScreen extends StatelessWidget {
       itemCount: MathConstants.englishNumbers.length,
       itemBuilder: (context, index) {
         final number = MathConstants.englishNumbers[index];
-        return CommonAlphabetCard(
+        return MathNumberCard(
           letter: number,
           colorPalette: CardColorPalettes.alphabet,
+          ttsService: _ttsService,
         );
       },
     );

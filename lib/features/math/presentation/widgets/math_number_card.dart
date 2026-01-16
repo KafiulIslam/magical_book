@@ -39,11 +39,39 @@ class _MathNumberCardState extends State<MathNumberCard> {
     super.dispose();
   }
 
+  /// Convert English number to word for better TTS pronunciation
+  String _numberToWord(String number) {
+    const numberWords = {
+      '0': 'zero',
+      '1': 'one',
+      '2': 'two',
+      '3': 'three',
+      '4': 'four',
+      '5': 'five',
+      '6': 'six',
+      '7': 'seven',
+      '8': 'eight',
+      '9': 'nine',
+      '10': 'ten',
+    };
+    return numberWords[number] ?? number;
+  }
+
+  /// Check if the number is English (contains only ASCII digits)
+  bool _isEnglishNumber(String text) {
+    return RegExp(r'^[0-9]+$').hasMatch(text);
+  }
+
   Future<void> _togglePlayStop() async {
-    if (widget.ttsService.isSpeakingText(widget.letter)) {
+    // Convert English number to word for better pronunciation
+    final textToSpeak = _isEnglishNumber(widget.letter)
+        ? _numberToWord(widget.letter)
+        : widget.letter;
+
+    if (widget.ttsService.isSpeakingText(textToSpeak)) {
       await widget.ttsService.stop();
     } else {
-      await widget.ttsService.speak(widget.letter);
+      await widget.ttsService.speak(textToSpeak);
     }
   }
 
@@ -54,7 +82,6 @@ class _MathNumberCardState extends State<MathNumberCard> {
   @override
   Widget build(BuildContext context) {
     final cardColors = _getCardColors(widget.letter.hashCode);
-    final isPlaying = widget.ttsService.isSpeakingText(widget.letter);
 
     return Container(
       alignment: Alignment.center,

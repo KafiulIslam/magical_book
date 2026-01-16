@@ -64,6 +64,38 @@ class TtsService {
     }
   }
 
+  /// Check if text contains only English/ASCII characters
+  bool _isEnglishText(String text) {
+    return text.runes.every((rune) => rune < 128);
+  }
+
+  /// Set language based on text content
+  Future<void> _setLanguageForText(String text) async {
+    if (_isEnglishText(text)) {
+      // Set to English
+      try {
+        await _flutterTts.setLanguage('en-US');
+      } catch (_) {
+        try {
+          await _flutterTts.setLanguage('en-GB');
+        } catch (_) {
+          // Use default if English is not available
+        }
+      }
+    } else {
+      // Set to Bangla
+      try {
+        await _flutterTts.setLanguage('bn-BD');
+      } catch (_) {
+        try {
+          await _flutterTts.setLanguage('bn-IN');
+        } catch (_) {
+          // Use default language if Bangla is not available
+        }
+      }
+    }
+  }
+
   /// Speak the given text
   Future<void> speak(String text) async {
     if (text.isEmpty) return;
@@ -84,6 +116,9 @@ class TtsService {
       if (_isSpeaking) {
         await _flutterTts.stop();
       }
+
+      // Set language based on text content
+      await _setLanguageForText(text);
 
       // Speak the text
       _isSpeaking = true;
