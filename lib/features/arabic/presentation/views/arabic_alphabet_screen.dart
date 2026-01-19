@@ -104,24 +104,27 @@ class _ArabicAlphabetScreenState extends State<ArabicAlphabetScreen> {
 
   Widget _buildLetterGrid(
       BuildContext context, List<ArabicAlphabetModel> letters) {
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: _getCrossAxisCount(context),
-        crossAxisSpacing: 12,
-        mainAxisSpacing: 12,
-        childAspectRatio: 0.9, // Slightly wider for better visibility
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: GridView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: _getCrossAxisCount(context),
+          crossAxisSpacing: 12,
+          mainAxisSpacing: 12,
+          childAspectRatio: 0.9, // Slightly wider for better visibility
+        ),
+        itemCount: letters.length,
+        itemBuilder: (context, index) {
+          final letter = letters[index];
+          return ArabicAlphabetCard(
+            letterModel: letter,
+            colorPalette: CardColorPalettes.alphabet,
+            audioPlayerService: _audioPlayerService,
+          );
+        },
       ),
-      itemCount: letters.length,
-      itemBuilder: (context, index) {
-        final letter = letters[index];
-        return ArabicAlphabetCard(
-          letterModel: letter,
-          colorPalette: CardColorPalettes.alphabet,
-          audioPlayerService: _audioPlayerService,
-        );
-      },
     );
   }
 }
