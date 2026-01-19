@@ -1,89 +1,127 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../core/services/tts_service.dart';
 
 /// Common widget for alphabet/letter cards (large text-only)
 /// Used by: BornoCard, EnglishAlphabetCard
-class CommonAlphabetCard extends StatelessWidget {
+class CommonAlphabetCard extends StatefulWidget {
   final String letter;
   final String? fontFamily;
   final List<List<Color>> colorPalette;
+  final TtsService? ttsService;
 
   const CommonAlphabetCard({
     super.key,
     required this.letter,
     this.fontFamily,
     required this.colorPalette,
+    this.ttsService,
   });
 
+  @override
+  State<CommonAlphabetCard> createState() => _CommonAlphabetCardState();
+}
+
+class _CommonAlphabetCardState extends State<CommonAlphabetCard> {
+  void _onTtsStateChanged() {
+    if (mounted) setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.ttsService != null) {
+      widget.ttsService!.addStateChangeHandler(_onTtsStateChanged);
+      widget.ttsService!.addCompletionHandler(_onTtsStateChanged);
+    }
+  }
+
+  @override
+  void dispose() {
+    if (widget.ttsService != null) {
+      widget.ttsService!.removeStateChangeHandler(_onTtsStateChanged);
+      widget.ttsService!.removeCompletionHandler(_onTtsStateChanged);
+    }
+    super.dispose();
+  }
+
+  Future<void> _togglePlayStop() async {
+    if (widget.ttsService == null) return;
+
+    if (widget.ttsService!.isSpeakingText(widget.letter)) {
+      await widget.ttsService!.stop();
+    } else {
+      await widget.ttsService!.speak(widget.letter);
+    }
+  }
+
   List<Color> _getCardColors(int index) {
-    return colorPalette[index % colorPalette.length];
+    return widget.colorPalette[index % widget.colorPalette.length];
   }
 
   @override
   Widget build(BuildContext context) {
-    final cardColors = _getCardColors(letter.hashCode);
+    final cardColors = _getCardColors(widget.letter.hashCode);
+    final isPlaying = widget.ttsService != null
+        ? widget.ttsService!.isSpeakingText(widget.letter)
+        : false;
 
-    return Container(
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(24),
-        boxShadow: [
-          BoxShadow(
-            color: cardColors[0].withOpacity(0.3),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
-            spreadRadius: 2,
-          ),
-        ],
-      ),
-      child: InkWell(
-        onTap: () {
-
-        },
-        borderRadius: BorderRadius.circular(24),
-        child: Container(
+    return InkWell(
+      onTap: _togglePlayStop,
+      child: Container(
           alignment: Alignment.center,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(24),
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                cardColors[0],
-                cardColors[1],
-              ],
-            ),
-            border: Border.all(
-              color: Colors.white.withOpacity(0.3),
-              width: 2,
-            ),
+            boxShadow: [
+              BoxShadow(
+                color: cardColors[0].withOpacity(0.3),
+                blurRadius: 12,
+                offset: const Offset(0, 4),
+                spreadRadius: 2,
+              ),
+            ],
           ),
-          child: Center(
-            child: Text(
-              letter,
-              style: TextStyle(
-                fontFamily: fontFamily,
-                fontSize: 72.sp,
-                fontWeight: FontWeight.w900,
-                color: Colors.white,
-                height: 1.0,
-                letterSpacing: 0,
-                shadows: const [
-                  Shadow(
-                    color: Colors.black26,
-                    blurRadius: 8,
-                    offset: Offset(2, 2),
-                  ),
+          child: Container(
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(24),
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  cardColors[0],
+                  cardColors[1],
                 ],
               ),
-              textAlign: TextAlign.center,
-              maxLines: 1,
-              overflow: TextOverflow.visible,
+              border: Border.all(
+                color: Colors.white.withOpacity(0.3),
+                width: 2,
+              ),
             ),
-          ),
-        ),
-      ),
+            child: Center(
+              child: Text(
+                widget.letter,
+                style: TextStyle(
+                  fontFamily: widget.fontFamily,
+                  fontSize: 72.sp,
+                  fontWeight: FontWeight.w900,
+                  color: Colors.white,
+                  height: 1.0,
+                  letterSpacing: 0,
+                  shadows: const [
+                    Shadow(
+                      color: Colors.black26,
+                      blurRadius: 8,
+                      offset: Offset(2, 2),
+                    ),
+                  ],
+                ),
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                overflow: TextOverflow.visible,
+              ),
+            ),
+          )),
     );
   }
 }
-

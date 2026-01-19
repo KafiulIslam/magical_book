@@ -6,9 +6,44 @@ import '../../../../core/constants/english_constant.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/common_alphabet_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
+import '../../../../core/services/tts_service.dart';
 
-class EnglishAlphabetScreen extends StatelessWidget {
+class EnglishAlphabetScreen extends StatefulWidget {
   const EnglishAlphabetScreen({super.key});
+
+  @override
+  State<EnglishAlphabetScreen> createState() => _EnglishAlphabetScreenState();
+}
+
+class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
+  final TtsService _ttsService = TtsService();
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeTts();
+  }
+
+  Future<void> _initializeTts() async {
+    await _ttsService.initialize();
+    _ttsService.addStateChangeHandler(() {
+      if (mounted) setState(() {});
+    });
+    _ttsService.addCompletionHandler(() {
+      if (mounted) setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _ttsService.removeStateChangeHandler(() {
+      if (mounted) setState(() {});
+    });
+    _ttsService.removeCompletionHandler(() {
+      if (mounted) setState(() {});
+    });
+    super.dispose();
+  }
 
   int _getCrossAxisCount(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -136,6 +171,7 @@ class EnglishAlphabetScreen extends StatelessWidget {
         return CommonAlphabetCard(
           letter: letter,
           colorPalette: CardColorPalettes.alphabet,
+          ttsService: _ttsService,
         );
       },
     );
