@@ -77,52 +77,52 @@ class MathConstants {
         id: 1,
         title: '১',
         subTitle: 'একের ঘরের নামতা',
-        image: AssetPath.multiOne, audio: AudioPath.monerGhorete),
+        image: AssetPath.multiOne, audio: AudioPath.multiple1),
     MultiplicationModel(
         id: 2,
         title: '২',
         subTitle: 'দুইয়ের ঘরের নামতা',
-        image: AssetPath.multiTwo, audio: AudioPath.monerGhorete),
+        image: AssetPath.multiTwo, audio: AudioPath.multiple2),
     MultiplicationModel(
         id: 3,
         title: '৩',
         subTitle: 'তিনের ঘরের নামতা',
-        image: AssetPath.multiThree, audio: AudioPath.monerGhorete),
+        image: AssetPath.multiThree, audio: AudioPath.multiple3),
     MultiplicationModel(
         id: 4,
         title: '৪',
         subTitle: 'চারের ঘরের নামতা',
-        image: AssetPath.multiFive, audio: AudioPath.monerGhorete),
+        image: AssetPath.multiFive, audio: AudioPath.multiple4),
     MultiplicationModel(
         id: 5,
         title: '৫',
         subTitle: 'পাঁচের ঘরের নামতা',
-        image: AssetPath.multiFive, audio: AudioPath.monerGhorete),
+        image: AssetPath.multiFive, audio: AudioPath.multiple5),
     MultiplicationModel(
         id: 6,
         title: '৬',
         subTitle: 'ছয়ের ঘরের নামতা',
-        image: AssetPath.multiSix, audio: AudioPath.monerGhorete),
+        image: AssetPath.multiSix, audio: AudioPath.multiple6),
     MultiplicationModel(
         id: 7,
         title: '৭',
         subTitle: 'সাতের ঘরের নামতা',
-        image: AssetPath.multiSeven, audio: AudioPath.monerGhorete),
+        image: AssetPath.multiSeven, audio: AudioPath.multiple7),
     MultiplicationModel(
         id: 8,
         title: '৮',
         subTitle: 'আটের ঘরের নামতা',
-        image: AssetPath.multiEight, audio: AudioPath.monerGhorete),
+        image: AssetPath.multiEight, audio: AudioPath.multiple8),
     MultiplicationModel(
         id: 9,
         title: '৯',
         subTitle: 'নয়ের ঘরের নামতা',
-        image: AssetPath.multiNine, audio: AudioPath.monerGhorete),
+        image: AssetPath.multiNine, audio: AudioPath.multiple9),
     MultiplicationModel(
         id: 10,
         title: '১০',
         subTitle: 'দশের ঘরের নামতা',
-        image: AssetPath.multiTen, audio: AudioPath.monerGhorete),
+        image: AssetPath.multiTen, audio: AudioPath.multiple10),
   ];
 
 }

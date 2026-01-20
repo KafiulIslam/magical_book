@@ -16,15 +16,15 @@ class MultiplicationCard extends StatefulWidget {
 
   const MultiplicationCard(
       {super.key,
-      required this.item,
-      required this.index,
-      required this.textStyle,
-      required this.subtitleStyle,
-      required this.titleFontSize,
-      required this.subtitleFontSize,
-      required this.colorPalette,
-      required this.errorIcon,
-      this.onTap});
+        required this.item,
+        required this.index,
+        required this.textStyle,
+        required this.subtitleStyle,
+        required this.titleFontSize,
+        required this.subtitleFontSize,
+        required this.colorPalette,
+        required this.errorIcon,
+        this.onTap});
 
   @override
   State<MultiplicationCard> createState() => _MultiplicationCardState();
@@ -116,7 +116,7 @@ class _MultiplicationCardState extends State<MultiplicationCard> {
                   flex: 1,
                   child: Padding(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                     child: Center(
                       child: Text(
                         widget.item.subTitle,
@@ -139,56 +139,6 @@ class _MultiplicationCardState extends State<MultiplicationCard> {
                     ),
                   ),
                 ),
-
-                // Flexible(
-                //   flex: 1,
-                //   child: Padding(
-                //     padding:
-                //         const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-                //     child: Column(
-                //       mainAxisAlignment: MainAxisAlignment.center,
-                //       children: [
-                //         Text(
-                //           item.title,
-                //           style: textStyle.copyWith(
-                //             fontSize: titleFontSize,
-                //             fontWeight: FontWeight.w900,
-                //             color: Colors.white,
-                //             shadows: const [
-                //               Shadow(
-                //                 color: Colors.black26,
-                //                 blurRadius: 6,
-                //                 offset: Offset(2, 2),
-                //               ),
-                //             ],
-                //           ),
-                //           textAlign: TextAlign.center,
-                //           maxLines: 1,
-                //           overflow: TextOverflow.ellipsis,
-                //         ),
-                //         const SizedBox(height: 4),
-                //         Text(
-                //           item.subTitle,
-                //           style: subtitleStyle.copyWith(
-                //             fontSize: subtitleFontSize,
-                //             fontWeight: FontWeight.w600,
-                //             color: Colors.white.withOpacity(0.9),
-                //             shadows: const [
-                //               Shadow(
-                //                 color: Colors.black26,
-                //                 blurRadius: 4,
-                //                 offset: Offset(1, 1),
-                //               ),
-                //             ],
-                //           ),
-                //           textAlign: TextAlign.center,
-                //           maxLines: 2,
-                //           overflow: TextOverflow.ellipsis,
-                //         ),
-                //       ],
-                //     ),
-                //   ),
-                // ),
               ],
             ),
             // Play/Stop button (top-right)

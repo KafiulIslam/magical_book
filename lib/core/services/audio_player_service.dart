@@ -43,7 +43,7 @@ class AudioPlayerService {
       _currentItemId = itemId;
       // Remove 'assets/' prefix for AssetSource
       final sourcePath =
-          audioPath.startsWith('assets/') ? audioPath.substring(7) : audioPath;
+      audioPath.startsWith('assets/') ? audioPath.substring(7) : audioPath;
       await _audioPlayer.play(AssetSource(sourcePath));
       _notifyStateChange();
     } catch (e) {

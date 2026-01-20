@@ -55,4 +55,17 @@ class AudioPath {
   static const nasr = "assets/audio/surah/nasr.mp3";
   static const qurais = "assets/audio/surah/qurais.mp3";
   static const fatiha = "assets/audio/surah/surah-fatiha.mp3";
+
+  // multiplication audio path
+  static const multiple1 = "assets/audio/multiplication/multi-1.MP3";
+  static const multiple2 = "assets/audio/multiplication/multi-2.MP3";
+  static const multiple3 = "assets/audio/multiplication/multi-3.MP3";
+  static const multiple4 = "assets/audio/multiplication/multi-4.MP3";
+  static const multiple5 = "assets/audio/multiplication/multi-5.MP3";
+  static const multiple6 = "assets/audio/multiplication/multi-6.MP3";
+  static const multiple7 = "assets/audio/multiplication/multi-7.MP3";
+  static const multiple8 = "assets/audio/multiplication/multi-8.MP3";
+  static const multiple9 = "assets/audio/multiplication/multi-9.MP3";
+  static const multiple10 = "assets/audio/multiplication/multi-10.MP3";
+
 }

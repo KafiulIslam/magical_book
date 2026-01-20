@@ -9,6 +9,7 @@ import '../../../../core/router/routes.dart';
 import '../../../math/presentation/widgets/multiplication_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
 
+
 class ArabicSurahScreen extends StatelessWidget {
   const ArabicSurahScreen({super.key});
 
