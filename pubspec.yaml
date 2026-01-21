@@ -78,6 +78,7 @@ flutter:
     - assets/audio/alphabet/
     - assets/audio/surah/
     - assets/audio/multiplication/
+    - assets/audio/rhymes/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

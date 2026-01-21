@@ -68,4 +68,15 @@ class AudioPath {
   static const multiple9 = "assets/audio/multiplication/multi-9.MP3";
   static const multiple10 = "assets/audio/multiplication/multi-10.MP3";
 
+  // Rhymes audio path
+  static const blueBoy = "assets/audio/rhymes/blue-boy.MP3";
+  static const brush = "assets/audio/rhymes/brush.MP3";
+  static const jackJill = "assets/audio/rhymes/jack-jill.MP3";
+  static const pussyCat = "assets/audio/rhymes/pussy-cat.MP3";
+  static const rainRain = "assets/audio/rhymes/rain-rain.MP3";
+  static const rainBow = "assets/audio/rhymes/rainbow.MP3";
+  static const roses = "assets/audio/rhymes/roses.MP3";
+  static const teddy = "assets/audio/rhymes/teddy.MP3";
+  static const wiseWolf = "assets/audio/rhymes/wise-wolf.MP3";
+
 }

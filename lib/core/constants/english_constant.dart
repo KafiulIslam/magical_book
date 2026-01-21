@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:magical_book/core/constants/audio_path.dart';
 import 'package:magical_book/core/router/routes.dart';
 import 'package:magical_book/features/bangla/models/common_content_model.dart';
 import 'package:magical_book/features/english/model/figure_model.dart';
@@ -120,44 +121,44 @@ class EnglishConstants {
         id: 1,
         title: 'Rain Rain Go Away',
         image: AssetPath.rainRain,
-        audio: 'audio'),
+        audio: AudioPath.rainRain),
     const RhymesModel(
         id: 2,
         title: 'Brush, Brush, Brush Your Teeth',
         image: AssetPath.brush,
-        audio: 'audio'),
+        audio: AudioPath.brush),
     const RhymesModel(
-        id: 3, title: 'Pussy Cat', image: AssetPath.pussyCat, audio: 'audio'),
+        id: 3, title: 'Pussy Cat', image: AssetPath.pussyCat, audio: AudioPath.pussyCat),
     const RhymesModel(
         id: 4,
         title: 'Rainbow Fish',
         image: AssetPath.rainbowFish,
-        audio: 'audio'),
+        audio: AudioPath.rainBow),
     const RhymesModel(
         id: 5,
         title: 'Roses are red',
         image: AssetPath.redRose,
-        audio: 'audio'),
+        audio: AudioPath.roses),
     const RhymesModel(
         id: 6,
         title: 'Teddy Bear, Teddy Bear',
         image: AssetPath.teddy,
-        audio: 'audio'),
+        audio: AudioPath.teddy),
     const RhymesModel(
         id: 7,
         title: 'A wise old owl',
         image: AssetPath.wiseOwl,
-        audio: 'audio'),
+        audio: AudioPath.wiseWolf),
     const RhymesModel(
         id: 8,
         title: 'Little boy blue',
         image: AssetPath.blueBoy,
-        audio: 'audio'),
+        audio: AudioPath.blueBoy),
     const RhymesModel(
         id: 9,
         title: 'Jack and jill',
         image: AssetPath.jackJill,
-        audio: 'audio'),
+        audio: AudioPath.jackJill),
   ];
 
   // fruits name
