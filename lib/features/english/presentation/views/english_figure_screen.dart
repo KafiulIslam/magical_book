@@ -3,11 +3,39 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/english_constant.dart';
 import '../../../../core/theme/app_typography.dart';
+import '../../../../core/services/tts_service.dart';
 import '../widgets/figure_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
 
-class EnglishFigureScreen extends StatelessWidget {
+class EnglishFigureScreen extends StatefulWidget {
   const EnglishFigureScreen({super.key});
+
+  @override
+  State<EnglishFigureScreen> createState() => _EnglishFigureScreenState();
+}
+
+class _EnglishFigureScreenState extends State<EnglishFigureScreen> {
+  late final TtsService _ttsService;
+
+  void _onTtsStateChanged() {
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _ttsService = TtsService();
+    _ttsService.initialize();
+    _ttsService.addStateChangeHandler(_onTtsStateChanged);
+  }
+
+  @override
+  void dispose() {
+    _ttsService.removeStateChangeHandler(_onTtsStateChanged);
+    super.dispose();
+  }
 
   int _getCrossAxisCount(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -49,6 +77,7 @@ class EnglishFigureScreen extends StatelessWidget {
               textStyle: EnglishTypo.headline2,
               fontSize: 20.sp,
               colorPalette: CardColorPalettes.fruits, // Using fruits palette as it has 8 colors
+              ttsService: _ttsService,
             );
           },
         ),
