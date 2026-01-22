@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import '../../core/services/audio_player_service.dart';
 import '../../features/bangla/models/common_content_model.dart';
 
 /// Common widget for image + text cards
 /// Used by: FolCard, FulCard, RituCard, EnglishFruitCard, EnglishFlowerCard,
 ///          EnglishAnimalCard, EnglishBirdCard, EnglishBodyPartCard
-class CommonImageTextCard extends StatelessWidget {
+class CommonImageTextCard extends StatefulWidget {
   final CommonContentModel item;
   final int index;
   final TextStyle textStyle;
@@ -13,6 +14,7 @@ class CommonImageTextCard extends StatelessWidget {
   final IconData errorIcon;
   final BoxFit imageFit;
   final bool useFlexibleForText;
+  final AudioPlayerService? audioPlayerService; // Optional audio service
 
   const CommonImageTextCard({
     super.key,
@@ -24,15 +26,69 @@ class CommonImageTextCard extends StatelessWidget {
     required this.errorIcon,
     this.imageFit = BoxFit.contain,
     this.useFlexibleForText = true,
+    this.audioPlayerService, // Optional parameter
   });
 
+  @override
+  State<CommonImageTextCard> createState() => _CommonImageTextCardState();
+}
+
+class _CommonImageTextCardState extends State<CommonImageTextCard> {
+  void _onStateChanged() {
+    if (mounted) setState(() {});
+  }
+
+  void _onCompleted() {
+    if (mounted) setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // Only register handlers if audio service is provided
+    if (widget.audioPlayerService != null) {
+      widget.audioPlayerService!.addStateChangeHandler(_onStateChanged);
+      widget.audioPlayerService!.addCompletionHandler(_onCompleted);
+    }
+  }
+
+  @override
+  void dispose() {
+    // Only remove handlers if audio service was provided
+    if (widget.audioPlayerService != null) {
+      widget.audioPlayerService!.removeStateChangeHandler(_onStateChanged);
+      widget.audioPlayerService!.removeCompletionHandler(_onCompleted);
+    }
+    super.dispose();
+  }
+
+  Future<void> _togglePlayStop() async {
+    // Only play audio if service is provided and audio path is not empty
+    if (widget.audioPlayerService == null || widget.item.audio.isEmpty) {
+      return;
+    }
+
+    final itemId = 'body_part_${widget.item.id}';
+    if (widget.audioPlayerService!.isPlayingItem(itemId)) {
+      await widget.audioPlayerService!.stop();
+    } else {
+      await widget.audioPlayerService!.play(
+        widget.item.audio,
+        itemId: itemId,
+      );
+    }
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
   List<Color> _getCardColors(int index) {
-    return colorPalette[index % colorPalette.length];
+    return widget.colorPalette[index % widget.colorPalette.length];
   }
 
   @override
   Widget build(BuildContext context) {
-    final cardColors = _getCardColors(index);
+    final cardColors = _getCardColors(widget.index);
 
     return Container(
       decoration: BoxDecoration(
@@ -49,9 +105,10 @@ class CommonImageTextCard extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: () {
-            // TODO: Play audio or show details
-          },
+          onTap:
+              widget.audioPlayerService != null && widget.item.audio.isNotEmpty
+                  ? _togglePlayStop
+                  : null,
           borderRadius: BorderRadius.circular(24),
           child: Container(
             decoration: BoxDecoration(
@@ -87,11 +144,11 @@ class CommonImageTextCard extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(18),
                         child: Image.asset(
-                          item.image,
-                          fit: imageFit,
+                          widget.item.image,
+                          fit: widget.imageFit,
                           errorBuilder: (context, error, stackTrace) {
                             return Icon(
-                              errorIcon,
+                              widget.errorIcon,
                               size: 60,
                               color: Colors.white.withOpacity(0.7),
                             );
@@ -102,16 +159,17 @@ class CommonImageTextCard extends StatelessWidget {
                   ),
                 ),
                 // Text
-                if (useFlexibleForText)
+                if (widget.useFlexibleForText)
                   Flexible(
                     flex: 1,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 8),
                       child: Center(
                         child: Text(
-                          item.title,
-                          style: textStyle.copyWith(
-                            fontSize: fontSize,
+                          widget.item.title,
+                          style: widget.textStyle.copyWith(
+                            fontSize: widget.fontSize,
                             fontWeight: FontWeight.w900,
                             color: Colors.white,
                             shadows: const [
@@ -133,9 +191,9 @@ class CommonImageTextCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Text(
-                      item.title,
-                      style: textStyle.copyWith(
-                        fontSize: fontSize,
+                      widget.item.title,
+                      style: widget.textStyle.copyWith(
+                        fontSize: widget.fontSize,
                         fontWeight: FontWeight.w900,
                         color: Colors.white,
                         shadows: const [
@@ -159,4 +217,3 @@ class CommonImageTextCard extends StatelessWidget {
     );
   }
 }
-

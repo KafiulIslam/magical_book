@@ -243,26 +243,26 @@ class EnglishConstants {
 
   // flowers
   static const List<CommonContentModel> humanBody = [
-    CommonContentModel(id: 1, title: 'Head', image: AssetPath.head, audio: 'audio'),
-    CommonContentModel(id: 2, title: 'Eye', image: AssetPath.eye, audio: 'audio'),
-    CommonContentModel(id: 3, title: 'Ear', image: AssetPath.ear, audio: 'audio'),
-    CommonContentModel(id: 3, title: 'Hand', image: AssetPath.hand, audio: 'audio'),
+    CommonContentModel(id: 1, title: 'Head', image: AssetPath.head, audio: AudioPath.head),
+    CommonContentModel(id: 2, title: 'Eye', image: AssetPath.eye, audio: AudioPath.eye),
+    CommonContentModel(id: 3, title: 'Ear', image: AssetPath.ear, audio: AudioPath.ear),
+    CommonContentModel(id: 3, title: 'Hand', image: AssetPath.hand, audio: AudioPath.hand),
     CommonContentModel(
-        id: 4, title: 'Mouth', image: AssetPath.mouth, audio: 'audio'),
-    CommonContentModel(id: 5, title: 'Nose', image: AssetPath.nose, audio: 'audio'),
-    CommonContentModel(id: 8, title: 'Leg', image: AssetPath.leg, audio: 'audio'),
-    CommonContentModel(id: 6, title: 'Feet', image: AssetPath.feet, audio: 'audio'),
-    CommonContentModel(id: 7, title: 'Arm', image: AssetPath.arm, audio: 'audio'),
-    CommonContentModel(id: 8, title: 'Hair', image: AssetPath.hair, audio: 'audio'),
+        id: 4, title: 'Mouth', image: AssetPath.mouth, audio: AudioPath.mouth),
+    CommonContentModel(id: 5, title: 'Nose', image: AssetPath.nose, audio: AudioPath.nose),
+    CommonContentModel(id: 8, title: 'Leg', image: AssetPath.leg, audio: AudioPath.leg),
+    CommonContentModel(id: 6, title: 'Feet', image: AssetPath.feet, audio: AudioPath.feet),
+    CommonContentModel(id: 7, title: 'Arm', image: AssetPath.arm, audio: AudioPath.arm),
+    CommonContentModel(id: 8, title: 'Hair', image: AssetPath.hair, audio: AudioPath.hair),
     CommonContentModel(
-        id: 8, title: 'Forehead', image: AssetPath.forehead, audio: 'audio'),
+        id: 8, title: 'Forehead', image: AssetPath.forehead, audio: AudioPath.foreHead),
     CommonContentModel(
-        id: 9, title: 'Finger', image: AssetPath.finger, audio: 'audio'),
-    CommonContentModel(id: 10, title: 'Knee', image: AssetPath.knee, audio: 'audio'),
+        id: 9, title: 'Finger', image: AssetPath.finger, audio: AudioPath.finger),
+    CommonContentModel(id: 10, title: 'Knee', image: AssetPath.knee, audio: AudioPath.knee),
     CommonContentModel(
-        id: 11, title: 'Belly', image: AssetPath.belly, audio: 'audio'),
+        id: 11, title: 'Belly', image: AssetPath.belly, audio: AudioPath.belly),
     CommonContentModel(
-        id: 12, title: 'Tongue', image: AssetPath.tongue, audio: 'audio'),
+        id: 12, title: 'Tongue', image: AssetPath.tongue, audio: AudioPath.tounge),
   ];
 
   // English Days

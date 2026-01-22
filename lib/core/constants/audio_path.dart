@@ -79,4 +79,23 @@ class AudioPath {
   static const teddy = "assets/audio/rhymes/teddy.MP3";
   static const wiseWolf = "assets/audio/rhymes/wise-wolf.MP3";
 
+  // Body path audio path
+  static const bodyPartFullAudio = "assets/audio/bodyParts/body-part-full.MP3";
+  static const arm = "assets/audio/bodyParts/arm.MP3";
+  static const belly = "assets/audio/bodyParts/belly.MP3";
+  static const ear = "assets/audio/bodyParts/ear.MP3";
+  static const eye = "assets/audio/bodyParts/eye.MP3";
+  static const feet = "assets/audio/bodyParts/feet.MP3";
+  static const finger = "assets/audio/bodyParts/finger.MP3";
+  static const foreHead = "assets/audio/bodyParts/fore-head.MP3";
+  static const hair = "assets/audio/bodyParts/hair.MP3";
+  static const hand = "assets/audio/bodyParts/hand.MP3";
+  static const head = "assets/audio/bodyParts/head.MP3";
+  static const knee = "assets/audio/bodyParts/knee.MP3";
+  static const leg = "assets/audio/bodyParts/leg.MP3";
+  static const mouth = "assets/audio/bodyParts/mouth.MP3";
+  static const nose = "assets/audio/bodyParts/nose.MP3";
+  static const tounge = "assets/audio/bodyParts/tounge.MP3";
+
+
 }

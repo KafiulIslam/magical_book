@@ -3,11 +3,46 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/english_constant.dart';
 import '../../../../core/theme/app_typography.dart';
+import '../../../../core/services/audio_player_service.dart';
 import '../../../../core/widgets/common_image_text_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
 
-class EnglishBodyPartScreen extends StatelessWidget {
+class EnglishBodyPartScreen extends StatefulWidget {
   const EnglishBodyPartScreen({super.key});
+
+  @override
+  State<EnglishBodyPartScreen> createState() => _EnglishBodyPartScreenState();
+}
+
+class _EnglishBodyPartScreenState extends State<EnglishBodyPartScreen> {
+  late final AudioPlayerService _audioPlayerService;
+
+  void _onStateChanged() {
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  void _onCompleted() {
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _audioPlayerService = AudioPlayerService();
+    _audioPlayerService.addStateChangeHandler(_onStateChanged);
+    _audioPlayerService.addCompletionHandler(_onCompleted);
+  }
+
+  @override
+  void dispose() {
+    _audioPlayerService.removeStateChangeHandler(_onStateChanged);
+    _audioPlayerService.removeCompletionHandler(_onCompleted);
+    super.dispose();
+  }
 
   int _getCrossAxisCount(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -22,38 +57,46 @@ class EnglishBodyPartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Body Parts',
-          style: EnglishTypo.headline1.copyWith(fontSize: 24.sp),
-        ),
-        backgroundColor: AppColors.background,
-        elevation: 0,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: _getCrossAxisCount(context),
-            crossAxisSpacing: 16,
-            mainAxisSpacing: 16,
-            childAspectRatio: 0.72, // Slightly taller cards to accommodate text
+    return PopScope(
+      onPopInvoked: (didPop) {
+        if (didPop) {
+          _audioPlayerService.stop();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Body Parts',
+            style: EnglishTypo.headline1.copyWith(fontSize: 24.sp),
           ),
-          itemCount: EnglishConstants.humanBody.length,
-          itemBuilder: (context, index) {
-            final bodyPart = EnglishConstants.humanBody[index];
-            return CommonImageTextCard(
-              item: bodyPart,
-              index: index,
-              textStyle: EnglishTypo.headline2,
-              fontSize: 20.sp,
-              colorPalette: CardColorPalettes.bodyParts,
-              errorIcon: Icons.accessibility,
-              imageFit: BoxFit.fill,
-              useFlexibleForText: false,
-            );
-          },
+          backgroundColor: AppColors.background,
+          elevation: 0,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: _getCrossAxisCount(context),
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
+              childAspectRatio: 0.72, // Slightly taller cards to accommodate text
+            ),
+            itemCount: EnglishConstants.humanBody.length,
+            itemBuilder: (context, index) {
+              final bodyPart = EnglishConstants.humanBody[index];
+              return CommonImageTextCard(
+                item: bodyPart,
+                index: index,
+                textStyle: EnglishTypo.headline2,
+                fontSize: 20.sp,
+                colorPalette: CardColorPalettes.bodyParts,
+                errorIcon: Icons.accessibility,
+                imageFit: BoxFit.fill,
+                useFlexibleForText: false,
+                audioPlayerService: _audioPlayerService,
+              );
+            },
+          ),
         ),
       ),
     );
