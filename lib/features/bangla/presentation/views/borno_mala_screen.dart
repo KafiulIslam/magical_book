@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:magical_book/features/bangla/models/common_content_model.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/bangla_constants.dart';
 import '../../../../core/theme/app_typography.dart';
@@ -76,9 +77,9 @@ class BornoMalaScreen extends StatelessWidget {
   }) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(12),
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -93,43 +94,62 @@ class BornoMalaScreen extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: Row(
         children: [
-          Text(
-            title,
-            style: BanglaTypo.headline2.copyWith(
-              fontSize: 26.sp,
-              fontWeight: FontWeight.w900,
-              color: Colors.white,
-              shadows: [
-                const Shadow(
-                  color: Colors.black26,
-                  blurRadius: 6,
-                  offset: Offset(2, 2),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: BanglaTypo.headline2.copyWith(
+                    fontSize: 26.sp,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white,
+                    shadows: [
+                      const Shadow(
+                        color: Colors.black26,
+                        blurRadius: 6,
+                        offset: Offset(2, 2),
+                      ),
+                    ],
+                  ),
                 ),
+                Text(subtitle,
+                    textAlign: TextAlign.center,
+                    style: EnglishTypo.bodyLarge.copyWith(
+                      color: Colors.white,
+                      shadows: [
+                        const Shadow(
+                          color: Colors.black26,
+                          blurRadius: 4,
+                          offset: Offset(1, 1),
+                        ),
+                      ],
+                    )),
               ],
             ),
           ),
-          const Gap(4),
-          Text(subtitle,
-              textAlign: TextAlign.center,
-              style: EnglishTypo.bodyLarge.copyWith(
+          Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.white.withOpacity(0.3)),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.play_arrow_rounded,
                 color: Colors.white,
-                shadows: [
-                  const Shadow(
-                    color: Colors.black26,
-                    blurRadius: 4,
-                    offset: Offset(1, 1),
-                  ),
-                ],
-              )),
+                size: 24.sp,
+              ),
+            ),
+          )
         ],
       ),
     );
   }
 
-  Widget _buildLetterGrid(BuildContext context, List<String> letters) {
+  Widget _buildLetterGrid(
+      BuildContext context, List<CommonContentModel> letters) {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -143,7 +163,7 @@ class BornoMalaScreen extends StatelessWidget {
       itemBuilder: (context, index) {
         final letter = letters[index];
         return CommonAlphabetCard(
-          letter: letter,
+          letter: letter.title,
           fontFamily: 'Kalpurush',
           colorPalette: CardColorPalettes.alphabet,
         );

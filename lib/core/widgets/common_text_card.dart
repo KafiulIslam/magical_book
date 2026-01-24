@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import '../../core/services/tts_service.dart';
 import '../../features/bangla/models/day_month_model.dart';
 
 /// Common widget for text-only cards (Days/Months)
 /// Used by: MasCard, DinCard, EnglishMonthCard, EnglishDayCard
-class CommonTextCard extends StatelessWidget {
+class CommonTextCard extends StatefulWidget {
   final DayMonthModel item;
   final int index;
   final TextStyle textStyle;
   final double fontSize;
   final List<List<Color>> colorPalette;
+  final TtsService? ttsService; // Optional TTS service
 
   const CommonTextCard({
     super.key,
@@ -17,15 +19,59 @@ class CommonTextCard extends StatelessWidget {
     required this.textStyle,
     required this.fontSize,
     required this.colorPalette,
+    this.ttsService, // Optional parameter
   });
 
+  @override
+  State<CommonTextCard> createState() => _CommonTextCardState();
+}
+
+class _CommonTextCardState extends State<CommonTextCard> {
+  void _onTtsStateChanged() {
+    if (mounted) setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // Only register handler if TTS service is provided
+    if (widget.ttsService != null) {
+      widget.ttsService!.addStateChangeHandler(_onTtsStateChanged);
+    }
+  }
+
+  @override
+  void dispose() {
+    // Only remove handler if TTS service was provided
+    if (widget.ttsService != null) {
+      widget.ttsService!.removeStateChangeHandler(_onTtsStateChanged);
+    }
+    super.dispose();
+  }
+
+  Future<void> _togglePlayStop() async {
+    // Only play audio if service is provided
+    if (widget.ttsService == null) {
+      return;
+    }
+
+    if (widget.ttsService!.isSpeakingText(widget.item.name)) {
+      await widget.ttsService!.stop();
+    } else {
+      await widget.ttsService!.speak(widget.item.name);
+    }
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
   List<Color> _getCardColors(int index) {
-    return colorPalette[index % colorPalette.length];
+    return widget.colorPalette[index % widget.colorPalette.length];
   }
 
   @override
   Widget build(BuildContext context) {
-    final cardColors = _getCardColors(index);
+    final cardColors = _getCardColors(widget.index);
 
     return Container(
       decoration: BoxDecoration(
@@ -42,9 +88,7 @@ class CommonTextCard extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: () {
-            // TODO: Play audio or show details
-          },
+          onTap: widget.ttsService != null ? _togglePlayStop : null,
           borderRadius: BorderRadius.circular(24),
           child: Container(
             decoration: BoxDecoration(
@@ -63,9 +107,9 @@ class CommonTextCard extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  item.name,
-                  style: textStyle.copyWith(
-                    fontSize: fontSize,
+                  widget.item.name,
+                  style: widget.textStyle.copyWith(
+                    fontSize: widget.fontSize,
                     fontWeight: FontWeight.w900,
                     color: Colors.white,
                     shadows: const [
@@ -88,4 +132,3 @@ class CommonTextCard extends StatelessWidget {
     );
   }
 }
-

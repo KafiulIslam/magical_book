@@ -80,6 +80,7 @@ flutter:
     - assets/audio/multiplication/
     - assets/audio/rhymes/
     - assets/audio/bodyParts/
+    - assets/audio/bornoMala/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

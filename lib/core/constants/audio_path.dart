@@ -97,5 +97,19 @@ class AudioPath {
   static const nose = "assets/audio/bodyParts/nose.MP3";
   static const tounge = "assets/audio/bodyParts/tounge.MP3";
 
+  // bangla Bornomala path audio path
+  static const shoroBorno = "assets/audio/bornoMala/shoro-borno.MP3";
+  static const shoroO = "assets/audio/bornoMala/shoroO.MP3";
+  static const shoroA = "assets/audio/bornoMala/shoroA.MP3";
+  static const roshE = "assets/audio/bornoMala/Rosh-E.MP3";
+  static const dirE = "assets/audio/bornoMala/dir-E.MP3";
+  static const roshU = "assets/audio/bornoMala/rosh-u.MP3";
+  static const dirU = "assets/audio/bornoMala/dir-u.MP3";
+  static const ree = "assets/audio/bornoMala/reee.MP3";
+  static const aaa = "assets/audio/bornoMala/AAA.MP3";
+  static const oi = "assets/audio/bornoMala/oi.MP3";
+  static const ooo = "assets/audio/bornoMala/OOO.MP3";
+  static const ou = "assets/audio/bornoMala/Ou.MP3";
+
 
 }

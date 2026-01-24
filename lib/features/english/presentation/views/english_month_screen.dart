@@ -3,11 +3,39 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/english_constant.dart';
 import '../../../../core/theme/app_typography.dart';
+import '../../../../core/services/tts_service.dart';
 import '../../../../core/widgets/common_text_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
 
-class EnglishMonthScreen extends StatelessWidget {
+class EnglishMonthScreen extends StatefulWidget {
   const EnglishMonthScreen({super.key});
+
+  @override
+  State<EnglishMonthScreen> createState() => _EnglishMonthScreenState();
+}
+
+class _EnglishMonthScreenState extends State<EnglishMonthScreen> {
+  late final TtsService _ttsService;
+
+  void _onTtsStateChanged() {
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _ttsService = TtsService();
+    _ttsService.initialize();
+    _ttsService.addStateChangeHandler(_onTtsStateChanged);
+  }
+
+  @override
+  void dispose() {
+    _ttsService.removeStateChangeHandler(_onTtsStateChanged);
+    super.dispose();
+  }
 
   int _getCrossAxisCount(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -49,6 +77,7 @@ class EnglishMonthScreen extends StatelessWidget {
               textStyle: EnglishTypo.headline1,
               fontSize: 20.sp,
               colorPalette: CardColorPalettes.months,
+              ttsService: _ttsService,
             );
           },
         ),
