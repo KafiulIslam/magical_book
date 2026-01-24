@@ -111,5 +111,8 @@ class AudioPath {
   static const ooo = "assets/audio/bornoMala/OOO.MP3";
   static const ou = "assets/audio/bornoMala/Ou.MP3";
 
+  // bangla banjon bornomala path audio path
+  static const banjonBorno = "assets/audio/bornoMala/banjon/banjon-borno.MP3";
+
 
 }

@@ -85,7 +85,7 @@ class _BornoMalaScreenState extends State<BornoMalaScreen> {
               subtitle: 'Byanjonborno - Learn Bangla Consonants',
               gradientColors: [AppColors.action, AppColors.reward],
               emoji: '🎯',
-              audioPath: '', // Add audio path when available
+              audioPath: AudioPath.banjonBorno, // Add audio path when available
             ),
             const Gap(16),
             _buildLetterGrid(
