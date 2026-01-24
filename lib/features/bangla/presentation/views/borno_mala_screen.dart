@@ -148,7 +148,7 @@ class _BornoMalaScreenState extends State<BornoMalaScreen> {
                   ),
                 ),
                 Text(subtitle,
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                     style: EnglishTypo.bodyLarge.copyWith(
                       color: Colors.white,
                       shadows: [

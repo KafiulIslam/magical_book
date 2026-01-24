@@ -19,7 +19,6 @@ class TtsService {
 
     try {
       // Make completion callbacks reliable across platforms.
-      // (On some platforms completion won't fire unless this is enabled.)
       await _flutterTts.awaitSpeakCompletion(true);
 
       // Set speech rate (0.0 to 1.0)
@@ -30,17 +29,6 @@ class TtsService {
 
       // Set pitch (0.5 to 2.0)
       await _flutterTts.setPitch(1.0);
-
-      // Best-effort: Set language to Bangla (Bangladesh), then fallback.
-      try {
-        await _flutterTts.setLanguage('bn-BD');
-      } catch (_) {
-        try {
-          await _flutterTts.setLanguage('bn-IN');
-        } catch (_) {
-          // Use default language if Bangla is not available
-        }
-      }
 
       // Set completion handler
       _flutterTts.setCompletionHandler(() {
@@ -59,8 +47,53 @@ class TtsService {
 
       _isInitialized = true;
     } catch (e) {
-      // Even if initialization fails partially, mark initialized to avoid loops.
       _isInitialized = true;
+    }
+  }
+
+  /// Try to set a female voice for the given language
+  Future<void> _setFemaleVoice(String languageCode) async {
+    try {
+      List<dynamic> voices = await _flutterTts.getVoices;
+      
+      // Filter voices for the current language
+      var langVoices = voices.where((voice) => 
+        voice['locale'].toString().toLowerCase().contains(languageCode.toLowerCase().replaceAll('-', '_')) ||
+        voice['locale'].toString().toLowerCase().contains(languageCode.toLowerCase().replaceAll('_', '-'))
+      ).toList();
+
+      if (langVoices.isEmpty) return;
+
+      // Look for voices with 'female' in their name
+      var femaleVoice = langVoices.firstWhere(
+        (voice) => voice['name'].toString().toLowerCase().contains('female'),
+        orElse: () => null,
+      );
+
+      // On some platforms (like iOS), we can try to find specific female names if 'female' tag is missing
+      if (femaleVoice == null) {
+        femaleVoice = langVoices.firstWhere(
+          (voice) => 
+            voice['name'].toString().toLowerCase().contains('samantha') || 
+            voice['name'].toString().toLowerCase().contains('victoria') ||
+            voice['name'].toString().toLowerCase().contains('kanya') || // Thai female
+            voice['name'].toString().toLowerCase().contains('niloufar'), // Persian female
+          orElse: () => null,
+        );
+      }
+
+      // If still no female voice found, just pick the second one if it exists (often voices come in pairs M/F)
+      if (femaleVoice == null && langVoices.length > 1) {
+        femaleVoice = langVoices[1];
+      } else if (femaleVoice == null) {
+        femaleVoice = langVoices.first;
+      }
+
+      if (femaleVoice != null) {
+        await _flutterTts.setVoice({"name": femaleVoice["name"], "locale": femaleVoice["locale"]});
+      }
+    } catch (e) {
+      // Silently fail if voice setting fails
     }
   }
 
@@ -69,15 +102,17 @@ class TtsService {
     return text.runes.every((rune) => rune < 128);
   }
 
-  /// Set language based on text content
+  /// Set language and female voice based on text content
   Future<void> _setLanguageForText(String text) async {
     if (_isEnglishText(text)) {
       // Set to English
       try {
         await _flutterTts.setLanguage('en-US');
+        await _setFemaleVoice('en-US');
       } catch (_) {
         try {
           await _flutterTts.setLanguage('en-GB');
+          await _setFemaleVoice('en-GB');
         } catch (_) {
           // Use default if English is not available
         }
@@ -86,9 +121,11 @@ class TtsService {
       // Set to Bangla
       try {
         await _flutterTts.setLanguage('bn-BD');
+        await _setFemaleVoice('bn-BD');
       } catch (_) {
         try {
           await _flutterTts.setLanguage('bn-IN');
+          await _setFemaleVoice('bn-IN');
         } catch (_) {
           // Use default language if Bangla is not available
         }

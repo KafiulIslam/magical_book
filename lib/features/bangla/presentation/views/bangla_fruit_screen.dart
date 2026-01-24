@@ -3,11 +3,39 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/bangla_constants.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../../core/widgets/common_image_text_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
+import '../../../../core/services/tts_service.dart';
+import '../widgets/bangla_fruit_card.dart';
 
-class BanglaFruitScreen extends StatelessWidget {
+class BanglaFruitScreen extends StatefulWidget {
   const BanglaFruitScreen({super.key});
+
+  @override
+  State<BanglaFruitScreen> createState() => _BanglaFruitScreenState();
+}
+
+class _BanglaFruitScreenState extends State<BanglaFruitScreen> {
+  late final TtsService _ttsService;
+
+  void _onTtsStateChanged() {
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _ttsService = TtsService();
+    _ttsService.initialize();
+    _ttsService.addStateChangeHandler(_onTtsStateChanged);
+  }
+
+  @override
+  void dispose() {
+    _ttsService.removeStateChangeHandler(_onTtsStateChanged);
+    super.dispose();
+  }
 
   int _getCrossAxisCount(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -43,7 +71,7 @@ class BanglaFruitScreen extends StatelessWidget {
           itemCount: BanglaConstants.banglaFolerNam.length,
           itemBuilder: (context, index) {
             final fruit = BanglaConstants.banglaFolerNam[index];
-            return CommonImageTextCard(
+            return BanglaFruitCard(
               item: fruit,
               index: index,
               textStyle: BanglaTypo.headline2,
@@ -52,6 +80,7 @@ class BanglaFruitScreen extends StatelessWidget {
               errorIcon: Icons.apple,
               imageFit: BoxFit.contain,
               useFlexibleForText: false,
+              ttsService: _ttsService,
             );
           },
         ),
