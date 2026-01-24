@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:magical_book/core/constants/audio_path.dart';
 import 'package:magical_book/core/router/routes.dart';
 import 'package:magical_book/features/bangla/models/common_content_model.dart';
 import '../../../core/constants/app_colors.dart';
@@ -65,17 +66,17 @@ class BanglaConstants {
   // List of Bangla shoroborno (Vowels)
 
   static const List<CommonContentModel> banglaShorobornos = <CommonContentModel>[
-    CommonContentModel(id: 1, title: 'অ', image: '', audio: 'audio'),
-    CommonContentModel(id: 2, title: 'আ', image: '', audio: 'audio'),
-    CommonContentModel(id: 3, title: 'ই', image: '', audio: 'audio'),
-    CommonContentModel(id: 4, title: 'ঈ', image: '', audio: 'audio'),
-    CommonContentModel(id: 5, title: 'উ', image: '', audio: 'audio'),
-    CommonContentModel(id: 6, title: 'ঊ', image: '', audio: 'audio'),
-    CommonContentModel(id: 7, title: 'ঋ', image: '', audio: 'audio'),
-    CommonContentModel(id: 8, title: 'এ', image: '', audio: 'audio'),
-    CommonContentModel(id: 9, title: 'ঐ', image: '', audio: 'audio'),
-    CommonContentModel(id: 10, title: 'ও', image: '', audio: 'audio'),
-    CommonContentModel(id: 11, title: 'ঔ', image: '', audio: 'audio'),
+    CommonContentModel(id: 1, title: 'অ', image: '', audio: AudioPath.shoroO),
+    CommonContentModel(id: 2, title: 'আ', image: '', audio: AudioPath.shoroA),
+    CommonContentModel(id: 3, title: 'ই', image: '', audio: AudioPath.roshE),
+    CommonContentModel(id: 4, title: 'ঈ', image: '', audio: AudioPath.dirE),
+    CommonContentModel(id: 5, title: 'উ', image: '', audio: AudioPath.roshU),
+    CommonContentModel(id: 6, title: 'ঊ', image: '', audio: AudioPath.dirU),
+    CommonContentModel(id: 7, title: 'ঋ', image: '', audio: AudioPath.ree),
+    CommonContentModel(id: 8, title: 'এ', image: '', audio: AudioPath.aaa),
+    CommonContentModel(id: 9, title: 'ঐ', image: '', audio: AudioPath.oi),
+    CommonContentModel(id: 10, title: 'ও', image: '', audio: AudioPath.ooo),
+    CommonContentModel(id: 11, title: 'ঔ', image: '', audio: AudioPath.oi),
   ];
 
   // static const List<String> banglaShorobornos = <String>[

@@ -2,14 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:magical_book/features/bangla/models/common_content_model.dart';
+import 'package:magical_book/features/bangla/presentation/widgets/borno_mala_card.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/bangla_constants.dart';
+import '../../../../core/constants/audio_path.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../../core/widgets/common_alphabet_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
+import '../../../../core/services/audio_player_service.dart';
 
-class BornoMalaScreen extends StatelessWidget {
+class BornoMalaScreen extends StatefulWidget {
   const BornoMalaScreen({super.key});
+
+  @override
+  State<BornoMalaScreen> createState() => _BornoMalaScreenState();
+}
+
+class _BornoMalaScreenState extends State<BornoMalaScreen> {
+  final AudioPlayerService _audioPlayerService = AudioPlayerService();
+
+  void _onStateChanged() {
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _audioPlayerService.addStateChangeHandler(_onStateChanged);
+  }
+
+  @override
+  void dispose() {
+    _audioPlayerService.removeStateChangeHandler(_onStateChanged);
+    super.dispose();
+  }
 
   int _getCrossAxisCount(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -44,6 +71,7 @@ class BornoMalaScreen extends StatelessWidget {
               subtitle: 'Shoroborno - Learn Bangla Vowels',
               gradientColors: [AppColors.primary, AppColors.info],
               emoji: '✨',
+              audioPath: AudioPath.shoroBorno,
             ),
             const Gap(16),
             _buildLetterGrid(
@@ -57,6 +85,7 @@ class BornoMalaScreen extends StatelessWidget {
               subtitle: 'Byanjonborno - Learn Bangla Consonants',
               gradientColors: [AppColors.action, AppColors.reward],
               emoji: '🎯',
+              audioPath: '', // Add audio path when available
             ),
             const Gap(16),
             _buildLetterGrid(
@@ -74,7 +103,10 @@ class BornoMalaScreen extends StatelessWidget {
     required String subtitle,
     required List<Color> gradientColors,
     required String emoji,
+    required String audioPath,
   }) {
+    final bool isPlaying = _audioPlayerService.isPlayingAudio(audioPath);
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -130,19 +162,29 @@ class BornoMalaScreen extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: Colors.white.withOpacity(0.3)),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Icon(
-                Icons.play_arrow_rounded,
-                color: Colors.white,
-                size: 24.sp,
+          if (audioPath.isNotEmpty)
+            InkWell(
+              onTap: () async {
+                if (isPlaying) {
+                  await _audioPlayerService.stop();
+                } else {
+                  await _audioPlayerService.play(audioPath);
+                }
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.white.withOpacity(0.3)),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(
+                    isPlaying ? Icons.pause : Icons.play_arrow_rounded,
+                    color: Colors.white,
+                    size: 24.sp,
+                  ),
+                ),
               ),
-            ),
-          )
+            )
         ],
       ),
     );
@@ -162,10 +204,11 @@ class BornoMalaScreen extends StatelessWidget {
       itemCount: letters.length,
       itemBuilder: (context, index) {
         final letter = letters[index];
-        return CommonAlphabetCard(
+        return BornoMalaCard(
           letter: letter.title,
           fontFamily: 'Kalpurush',
           colorPalette: CardColorPalettes.alphabet,
+          audioPath: letter.audio,
         );
       },
     );
