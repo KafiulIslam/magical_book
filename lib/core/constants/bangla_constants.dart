@@ -65,7 +65,8 @@ class BanglaConstants {
   // bangla borno mala
   // List of Bangla shoroborno (Vowels)
 
-  static const List<CommonContentModel> banglaShorobornos = <CommonContentModel>[
+  static const List<CommonContentModel> banglaShorobornos =
+      <CommonContentModel>[
     CommonContentModel(id: 1, title: 'অ', image: '', audio: AudioPath.shoroO),
     CommonContentModel(id: 2, title: 'আ', image: '', audio: AudioPath.shoroA),
     CommonContentModel(id: 3, title: 'ই', image: '', audio: AudioPath.roshE),
@@ -76,113 +77,60 @@ class BanglaConstants {
     CommonContentModel(id: 8, title: 'এ', image: '', audio: AudioPath.aaa),
     CommonContentModel(id: 9, title: 'ঐ', image: '', audio: AudioPath.oi),
     CommonContentModel(id: 10, title: 'ও', image: '', audio: AudioPath.ooo),
-    CommonContentModel(id: 11, title: 'ঔ', image: '', audio: AudioPath.oi),
+    CommonContentModel(id: 11, title: 'ঔ', image: '', audio: AudioPath.ou),
   ];
-
-  // static const List<String> banglaShorobornos = <String>[
-  //   'অ',
-  //   'আ',
-  //   'ই',
-  //   'ঈ',
-  //   'উ',
-  //   'ঊ',
-  //   'ঋ',
-  //   'এ',
-  //   'ঐ',
-  //   'ও',
-  //   'ঔ',
-  // ];
-
 
   // List of Bangla byanjonborno (Consonants)
-  static const List<CommonContentModel> banglaByanjonbornos = <CommonContentModel>[
-    CommonContentModel(id: 1, title: 'ক', image: '', audio: 'audio'),
-    CommonContentModel(id: 2, title: 'খ', image: '', audio: 'audio'),
-    CommonContentModel(id: 3, title: 'গ', image: '', audio: 'audio'),
-    CommonContentModel(id: 4, title: 'ঘ', image: '', audio: 'audio'),
-    CommonContentModel(id: 5, title: 'ঙ', image: '', audio: 'audio'),
-    CommonContentModel(id: 6, title: 'চ', image: '', audio: 'audio'),
-    CommonContentModel(id: 7, title: 'ছ', image: '', audio: 'audio'),
-    CommonContentModel(id: 8, title: 'জ', image: '', audio: 'audio'),
-    CommonContentModel(id: 9, title: 'ঝ', image: '', audio: 'audio'),
-    CommonContentModel(id: 10, title: 'ঞ', image: '', audio: 'audio'),
-    CommonContentModel(id: 11, title: 'ট', image: '', audio: 'audio'),
-    CommonContentModel(id: 1, title: 'ঠ', image: '', audio: 'audio'),
-    CommonContentModel(id: 2, title: 'ড', image: '', audio: 'audio'),
-    CommonContentModel(id: 3, title: 'ঢ', image: '', audio: 'audio'),
-    CommonContentModel(id: 4, title: 'ণ', image: '', audio: 'audio'),
-    CommonContentModel(id: 5, title: 'ত', image: '', audio: 'audio'),
-    CommonContentModel(id: 6, title: 'থ', image: '', audio: 'audio'),
-    CommonContentModel(id: 7, title: 'দ', image: '', audio: 'audio'),
-    CommonContentModel(id: 8, title: 'ধ', image: '', audio: 'audio'),
-    CommonContentModel(id: 9, title: 'ন', image: '', audio: 'audio'),
-    CommonContentModel(id: 10, title: 'প', image: '', audio: 'audio'),
-    CommonContentModel(id: 11, title: 'ফ', image: '', audio: 'audio'),
-    CommonContentModel(id: 1, title: 'ব', image: '', audio: 'audio'),
-    CommonContentModel(id: 2, title: 'ভ', image: '', audio: 'audio'),
-    CommonContentModel(id: 3, title: 'ম', image: '', audio: 'audio'),
-    CommonContentModel(id: 4, title: 'য', image: '', audio: 'audio'),
-    CommonContentModel(id: 5, title: 'র', image: '', audio: 'audio'),
-    CommonContentModel(id: 6, title: 'ল', image: '', audio: 'audio'),
-    CommonContentModel(id: 7, title: 'শ', image: '', audio: 'audio'),
-    CommonContentModel(id: 8, title: 'ষ', image: '', audio: 'audio'),
-    CommonContentModel(id: 9, title: 'স', image: '', audio: 'audio'),
-    CommonContentModel(id: 10, title: 'হ', image: '', audio: 'audio'),
-    CommonContentModel(id: 11, title: 'ড়', image: '', audio: 'audio'),
-    CommonContentModel(id: 1, title: 'ঢ়', image: '', audio: 'audio'),
-    CommonContentModel(id: 2, title: 'য়', image: '', audio: 'audio'),
-    CommonContentModel(id: 3, title: 'ৎ', image: '', audio: 'audio'),
-    CommonContentModel(id: 4, title: 'ং', image: '', audio: 'audio'),
-    CommonContentModel(id: 5, title: 'ঃ', image: '', audio: 'audio'),
-    CommonContentModel(id: 6, title: 'ঁ', image: '', audio: 'audio'),
+  static const List<CommonContentModel> banglaByanjonbornos =
+      <CommonContentModel>[
+    CommonContentModel(id: 1, title: 'ক', image: '', audio: AudioPath.ko),
+    CommonContentModel(id: 2, title: 'খ', image: '', audio: AudioPath.khoBanjo),
+    CommonContentModel(id: 3, title: 'গ', image: '', audio: AudioPath.go),
+    CommonContentModel(id: 4, title: 'ঘ', image: '', audio: AudioPath.gho),
+    CommonContentModel(id: 5, title: 'ঙ', image: '', audio: AudioPath.umo),
+    CommonContentModel(id: 6, title: 'চ', image: '', audio: AudioPath.cho),
+    CommonContentModel(id: 7, title: 'ছ', image: '', audio: AudioPath.chho),
+    CommonContentModel(id: 8, title: 'জ', image: '', audio: AudioPath.borgioJo),
+    CommonContentModel(id: 9, title: 'ঝ', image: '', audio: AudioPath.jho),
+     CommonContentModel(id: 10, title: 'ঞ', image: '', audio: AudioPath.iyo),
+    CommonContentModel(id: 11, title: 'ট', image: '', audio: AudioPath.to),
+    CommonContentModel(id: 12, title: 'ঠ', image: '', audio: AudioPath.tho),
+    CommonContentModel(id: 13, title: 'ড', image: '', audio: AudioPath.Do),
+    CommonContentModel(id: 14, title: 'ঢ', image: '', audio: AudioPath.dho),
+    CommonContentModel(
+        id: 15, title: 'ণ', image: '', audio: AudioPath.mordhunno),
+    CommonContentModel(id: 16, title: 'ত', image: '', audio: AudioPath.towBanjon),
+    CommonContentModel(id: 17, title: 'থ', image: '', audio: AudioPath.thow),
+    CommonContentModel(id: 18, title: 'দ', image: '', audio: AudioPath.doo),
+    CommonContentModel(id: 19, title: 'ধ', image: '', audio: AudioPath.dhoo),
+    CommonContentModel(id: 20, title: 'ন', image: '', audio: AudioPath.duntonno),
+    CommonContentModel(id: 21, title: 'প', image: '', audio: AudioPath.po),
+    CommonContentModel(id: 22, title: 'ফ', image: '', audio: AudioPath.fo),
+    CommonContentModel(id: 23, title: 'ব', image: '', audio: AudioPath.bo),
+    CommonContentModel(id: 24, title: 'ভ', image: '', audio: AudioPath.vo),
+    CommonContentModel(id: 25, title: 'ম', image: '', audio: AudioPath.mo),
+    CommonContentModel(
+        id: 26, title: 'য', image: '', audio: AudioPath.untostoZo),
+    CommonContentModel(id: 27, title: 'র', image: '', audio: AudioPath.roo),
+    CommonContentModel(id: 28, title: 'ল', image: '', audio: AudioPath.lo),
+    CommonContentModel(
+        id: 29, title: 'শ', image: '', audio: AudioPath.telebosso),
+    CommonContentModel(
+        id: 30, title: 'ষ', image: '', audio: AudioPath.mordhunnoso),
+    CommonContentModel(id: 31, title: 'স', image: '', audio: AudioPath.duntosso),
+    CommonContentModel(id: 32, title: 'হ', image: '', audio: AudioPath.ho),
+    CommonContentModel(id: 33, title: 'ড়', image: '', audio: AudioPath.doRo),
+    CommonContentModel(id: 34, title: 'ঢ়', image: '', audio: AudioPath.dhoRo),
+    CommonContentModel(
+        id: 35, title: 'য়', image: '', audio: AudioPath.untostoO),
+    CommonContentModel(
+        id: 36, title: 'ৎ', image: '', audio: AudioPath.khondotto),
+    CommonContentModel(id: 37, title: 'ং', image: '', audio: AudioPath.unishar),
+    CommonContentModel(id: 38, title: 'ঃ', image: '', audio: AudioPath.bisorgo),
+    CommonContentModel(id: 39, title: 'ঁ', image: '', audio: AudioPath.chondro),
   ];
 
-  // static const List<String> banglaByanjonbornos = <String>[
-  //   'ক',
-  //   'খ',
-  //   'গ',
-  //   'ঘ',
-  //   'ঙ',
-  //   'চ',
-  //   'ছ',
-  //   'জ',
-  //   'ঝ',
-  //   'ঞ',
-  //   'ট',
-  //   'ঠ',
-  //   'ড',
-  //   'ঢ',
-  //   'ণ',
-  //   'ত',
-  //   'থ',
-  //   'দ',
-  //   'ধ',
-  //   'ন',
-  //   'প',
-  //   'ফ',
-  //
-  //
-  //   'ব',
-  //   'ভ',
-  //   'ম',
-  //   'য',
-  //   'র',
-  //   'ল',
-  //   'শ',
-  //   'ষ',
-  //   'স',
-  //   'হ',
-  //   'ড়',
-  //
-  //   'ঢ়',
-  //   'য়',
-  //   'ৎ',
-  //   'ং',
-  //   'ঃ',
-  //   'ঁ',
-  // ];
-
-  // bangla chora
+  // bangla chora list
   static List<CommonContentModel> banglaChora = [
     const CommonContentModel(
         id: 1,

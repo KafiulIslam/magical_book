@@ -64,6 +64,7 @@ class _BornoMalaCardState extends State<BornoMalaCard> {
 
     return InkWell(
       onTap: _togglePlayStop,
+      splashColor: Colors.transparent,
       child: Container(
           alignment: Alignment.center,
           decoration: BoxDecoration(
