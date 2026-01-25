@@ -114,5 +114,45 @@ class AudioPath {
   // bangla banjon bornomala path audio path
   static const banjonBorno = "assets/audio/bornoMala/banjon/banjon-borno.MP3";
 
+  static const ko = "assets/audio/bornoMala/banjon/ko.MP3";
+  static const khoBanjo = "assets/audio/bornoMala/banjon/kho.MP3";
+  static const go = "assets/audio/bornoMala/banjon/go.MP3";
+  static const gho = "assets/audio/bornoMala/banjon/gho.MP3";
+  static const umo = "assets/audio/bornoMala/banjon/umo.MP3";
+  static const cho = "assets/audio/bornoMala/banjon/cho.MP3";
+  static const chho = "assets/audio/bornoMala/banjon/chho.MP3";
+  static const borgioJo = "assets/audio/bornoMala/banjon/borgio-jo.MP3";
+  static const jho = "assets/audio/bornoMala/banjon/jho.MP3";
+  static const iyo = "assets/audio/bornoMala/banjon/iyo.MP3";
+  static const to = "assets/audio/bornoMala/banjon/to.MP3";
+  static const tho = "assets/audio/bornoMala/banjon/tho.MP3";
+  static const Do = "assets/audio/bornoMala/banjon/do.MP3";
+  static const dho = "assets/audio/bornoMala/banjon/dho.MP3";
+  static const mordhunno = "assets/audio/bornoMala/banjon/mordhunno.MP3";
+  static const towBanjon = "assets/audio/bornoMala/banjon/tow.MP3";
+  static const thow = "assets/audio/bornoMala/banjon/thow.MP3";
+  static const doo = "assets/audio/bornoMala/banjon/doo.MP3";
+  static const dhoo = "assets/audio/bornoMala/banjon/dhoo.MP3";
+  static const duntonno = "assets/audio/bornoMala/banjon/no.MP3";
+  static const po = "assets/audio/bornoMala/banjon/po.MP3";
+  static const fo = "assets/audio/bornoMala/banjon/fo.MP3";
+  static const bo = "assets/audio/bornoMala/banjon/bo.MP3";
+  static const vo = "assets/audio/bornoMala/banjon/vo.MP3";
+  static const mo = "assets/audio/bornoMala/banjon/mo.MP3";
+  static const untostoZo = "assets/audio/bornoMala/banjon/untosto-zo.MP3";
+  static const roo = "assets/audio/bornoMala/banjon/roo.MP3";
+  static const lo = "assets/audio/bornoMala/banjon/lo.MP3";
+  static const telebosso = "assets/audio/bornoMala/banjon/telebosso.MP3";
+  static const mordhunnoso = "assets/audio/bornoMala/banjon/mordhunnoso.MP3";
+  static const duntosso = "assets/audio/bornoMala/banjon/duntosso.MP3";
+  static const ho = "assets/audio/bornoMala/banjon/ho.MP3";
+  static const doRo = "assets/audio/bornoMala/banjon/do-ro.MP3";
+  static const dhoRo = "assets/audio/bornoMala/banjon/dho-ro.MP3";
+  static const untostoO = "assets/audio/bornoMala/banjon/untosto-o.MP3";
+  static const khondotto = "assets/audio/bornoMala/banjon/khondot-tow.MP3";
+  static const unishar = "assets/audio/bornoMala/banjon/unishar.MP3";
+  static const bisorgo = "assets/audio/bornoMala/banjon/bisorgo.MP3";
+  static const chondro = "assets/audio/bornoMala/banjon/chondro.MP3";
+
 
 }
