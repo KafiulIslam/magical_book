@@ -131,37 +131,37 @@ class BanglaConstants {
   ];
 
   // bangla chora list
-  static List<CommonContentModel> banglaChora = [
+  static List<CommonContentModel> banglaChora =  [
     const CommonContentModel(
         id: 1,
         title: 'আতা গাছে তোতা পাখী',
         image: AssetPath.ataGacheTotaPakhi,
-        audio: 'audio'),
+        audio: AudioPath.ataGacheTota),
     const CommonContentModel(
         id: 2,
         title: 'আয় ছেলেরা আয় মেয়েরা',
         image: AssetPath.ayCheleraAyMeyera,
-        audio: 'audio'),
+        audio: AudioPath.ayChelere),
     const CommonContentModel(
-        id: 1,
+        id: 3,
         title: 'হাট্টিমাটিম টিম',
         image: AssetPath.hattiMatim,
-        audio: 'audio'),
+        audio: AudioPath.hattiMatim),
     const CommonContentModel(
-        id: 1,
+        id: 4,
         title: 'আম পাতা জোড়া জোড়া',
         image: AssetPath.amPataJoraJora,
-        audio: 'audio'),
+        audio: AudioPath.amPata),
     const CommonContentModel(
-        id: 1,
+        id: 5,
         title: 'বাক বাকুম পায়রা',
         image: AssetPath.bakBakumPayra,
-        audio: 'audio'),
+        audio: AudioPath.bakBakum),
     const CommonContentModel(
-        id: 1,
+        id: 6,
         title: 'ঐ দেখা যায় তালগাছ',
         image: AssetPath.talGach,
-        audio: 'audio'),
+        audio: AudioPath.talGach),
   ];
 
   // bangla foler nam

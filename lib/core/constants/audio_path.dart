@@ -154,5 +154,13 @@ class AudioPath {
   static const bisorgo = "assets/audio/bornoMala/banjon/bisorgo.MP3";
   static const chondro = "assets/audio/bornoMala/banjon/chondro.MP3";
 
+  // bangla poem list
+  static const amPata = "assets/audio/banglaPoem/am-pata.MP3";
+  static const ataGacheTota = "assets/audio/banglaPoem/ata_gache_tota.MP3";
+  static const ayChelere = "assets/audio/banglaPoem/ay-chelera.MP3";
+  static const bakBakum = "assets/audio/banglaPoem/bak-bakum.MP3";
+  static const hattiMatim = "assets/audio/banglaPoem/hatti-matim.MP3";
+  static const talGach = "assets/audio/banglaPoem/talgach.MP3";
+
 
 }
