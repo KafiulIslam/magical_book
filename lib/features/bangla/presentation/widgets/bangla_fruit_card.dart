@@ -130,6 +130,7 @@ class _BanglaFruitCardState extends State<BanglaFruitCard> {
         color: Colors.transparent,
         child: InkWell(
           onTap: _handleTap,
+          splashColor: Colors.transparent,
           borderRadius: BorderRadius.circular(24),
           child: Container(
             decoration: BoxDecoration(
