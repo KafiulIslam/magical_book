@@ -1,13 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magical_book/features/bangla/presentation/widgets/bangla_fruit_card.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/english_constant.dart';
+import '../../../../core/services/tts_service.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../../core/widgets/common_image_text_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
 
-class EnglishAnimalScreen extends StatelessWidget {
+class EnglishAnimalScreen extends StatefulWidget {
   const EnglishAnimalScreen({super.key});
+
+  @override
+  State<EnglishAnimalScreen> createState() => _EnglishAnimalScreenState();
+}
+
+class _EnglishAnimalScreenState extends State<EnglishAnimalScreen> {
+
+  late final TtsService _ttsService;
+
+  void _onTtsStateChanged() {
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _ttsService = TtsService();
+    _ttsService.initialize();
+    _ttsService.addStateChangeHandler(_onTtsStateChanged);
+  }
+
+  @override
+  void dispose() {
+    _ttsService.removeStateChangeHandler(_onTtsStateChanged);
+    super.dispose();
+  }
 
   int _getCrossAxisCount(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -43,7 +72,7 @@ class EnglishAnimalScreen extends StatelessWidget {
           itemCount: EnglishConstants.animals.length,
           itemBuilder: (context, index) {
             final animal = EnglishConstants.animals[index];
-            return CommonImageTextCard(
+            return BanglaFruitCard(
               item: animal,
               index: index,
               textStyle: EnglishTypo.headline2,
@@ -52,6 +81,7 @@ class EnglishAnimalScreen extends StatelessWidget {
               errorIcon: Icons.pets,
               imageFit: BoxFit.contain,
               useFlexibleForText: true,
+              ttsService: _ttsService,
             );
           },
         ),
