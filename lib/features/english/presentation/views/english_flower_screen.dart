@@ -2,12 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/english_constant.dart';
+import '../../../../core/services/tts_service.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../../core/widgets/common_image_text_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
+import '../../../bangla/presentation/widgets/bangla_fruit_card.dart';
 
-class EnglishFlowerScreen extends StatelessWidget {
+class EnglishFlowerScreen extends StatefulWidget {
   const EnglishFlowerScreen({super.key});
+
+  @override
+  State<EnglishFlowerScreen> createState() => _EnglishFlowerScreenState();
+}
+
+class _EnglishFlowerScreenState extends State<EnglishFlowerScreen> {
+
+  late final TtsService _ttsService;
+
+  void _onTtsStateChanged() {
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _ttsService = TtsService();
+    _ttsService.initialize();
+    _ttsService.addStateChangeHandler(_onTtsStateChanged);
+  }
+
+  @override
+  void dispose() {
+    _ttsService.removeStateChangeHandler(_onTtsStateChanged);
+    super.dispose();
+  }
 
   int _getCrossAxisCount(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -43,7 +72,7 @@ class EnglishFlowerScreen extends StatelessWidget {
           itemCount: EnglishConstants.flowers.length,
           itemBuilder: (context, index) {
             final flower = EnglishConstants.flowers[index];
-            return CommonImageTextCard(
+            return BanglaFruitCard(
               item: flower,
               index: index,
               textStyle: EnglishTypo.headline2,
@@ -52,6 +81,7 @@ class EnglishFlowerScreen extends StatelessWidget {
               errorIcon: Icons.local_florist,
               imageFit: BoxFit.cover,
               useFlexibleForText: false,
+              ttsService: _ttsService,
             );
           },
         ),
