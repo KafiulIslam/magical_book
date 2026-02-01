@@ -1,4 +1,4 @@
-package com.codertent.magical_book
+package com.codertent.shishupath
 
 import io.flutter.embedding.android.FlutterActivity
 

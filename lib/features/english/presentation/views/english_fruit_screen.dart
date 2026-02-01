@@ -75,7 +75,7 @@ class _EnglishFruitScreenState extends State<EnglishFruitScreen> {
             return BanglaFruitCard(
               item: fruit,
               index: index,
-              textStyle: BanglaTypo.headline2,
+              textStyle: EnglishTypo.headline2,
               fontSize: 20.sp,
               colorPalette: CardColorPalettes.fruits,
               errorIcon: Icons.apple,

@@ -2,12 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/english_constant.dart';
+import '../../../../core/services/tts_service.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../../core/widgets/common_image_text_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
+import '../../../bangla/presentation/widgets/bangla_fruit_card.dart';
 
-class EnglishBirdScreen extends StatelessWidget {
+class EnglishBirdScreen extends StatefulWidget {
   const EnglishBirdScreen({super.key});
+
+  @override
+  State<EnglishBirdScreen> createState() => _EnglishBirdScreenState();
+}
+
+class _EnglishBirdScreenState extends State<EnglishBirdScreen> {
+
+  late final TtsService _ttsService;
+
+  void _onTtsStateChanged() {
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _ttsService = TtsService();
+    _ttsService.initialize();
+    _ttsService.addStateChangeHandler(_onTtsStateChanged);
+  }
+
+  @override
+  void dispose() {
+    _ttsService.removeStateChangeHandler(_onTtsStateChanged);
+    super.dispose();
+  }
 
   int _getCrossAxisCount(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -43,7 +72,7 @@ class EnglishBirdScreen extends StatelessWidget {
           itemCount: EnglishConstants.birds.length,
           itemBuilder: (context, index) {
             final bird = EnglishConstants.birds[index];
-            return CommonImageTextCard(
+            return BanglaFruitCard(
               item: bird,
               index: index,
               textStyle: EnglishTypo.headline2,
@@ -52,6 +81,7 @@ class EnglishBirdScreen extends StatelessWidget {
               errorIcon: Icons.air_outlined,
               imageFit: BoxFit.contain,
               useFlexibleForText: true,
+              ttsService: _ttsService,
             );
           },
         ),
