@@ -52,6 +52,9 @@ class _MultiplicationCardState extends State<MultiplicationCard> {
 
   @override
   void dispose() {
+    if (_audioPlayerService.isPlayingItem(_itemId)) {
+      _audioPlayerService.stop();
+    }
     _audioPlayerService.removeStateChangeHandler(_onStateChanged);
     _audioPlayerService.removeCompletionHandler(_onCompleted);
     super.dispose();

@@ -30,6 +30,7 @@ class _ArabicGojolScreenState extends State<ArabicGojolScreen> {
 
   @override
   void dispose() {
+    _audioPlayerService.stop();
     _audioPlayerService.removeStateChangeHandler(_onAudioStateChanged);
     super.dispose();
   }

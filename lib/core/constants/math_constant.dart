@@ -92,7 +92,7 @@ class MathConstants {
         id: 4,
         title: '৪',
         subTitle: 'চারের ঘরের নামতা',
-        image: AssetPath.multiFive, audio: AudioPath.multiple4),
+        image: AssetPath.multiFour, audio: AudioPath.multiple4),
     MultiplicationModel(
         id: 5,
         title: '৫',
