@@ -8,7 +8,7 @@ import '../../models/category.dart';
 class BanglaCategoryCard extends StatelessWidget {
   final Category category;
 
-  const BanglaCategoryCard({
+  const BanglaCategoryCard({super.key,
     required this.category,
   });
 

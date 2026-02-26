@@ -49,11 +49,6 @@ class DashboardPage extends StatelessWidget {
     return 0; // Default to first index if no match
   }
 
-  static String _getCurrentTitle(BuildContext context) {
-    final index = _getCurrentIndex(context);
-    return _titles[index];
-  }
-
   static void _onItemTapped(BuildContext context, int index) {
     if (index < 0 || index >= _routes.length) return;
     context.go(_routes[index]);

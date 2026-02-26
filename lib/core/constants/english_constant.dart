@@ -165,24 +165,24 @@ class EnglishConstants {
   // fruits name
   static const List<CommonContentModel> fruitsName = [
     CommonContentModel(
-        id: 1, title: 'Mango', image: AssetPath.mango, audio: 'audio'),
+        id: 1, title: 'Mango', image: AssetPath.mango, audio: AudioPath.fruitMango),
     CommonContentModel(
-        id: 3, title: 'Apple', image: AssetPath.apple, audio: 'audio'),
+        id: 3, title: 'Apple', image: AssetPath.apple, audio: AudioPath.fruitApple),
     CommonContentModel(
-        id: 2, title: 'Banana', image: AssetPath.banana, audio: 'audio'),
+        id: 2, title: 'Banana', image: AssetPath.banana, audio: AudioPath.fruitBanana),
     CommonContentModel(
-        id: 4, title: 'Orange', image: AssetPath.orange, audio: 'audio'),
+        id: 4, title: 'Orange', image: AssetPath.orange, audio: AudioPath.fruitOrange),
     CommonContentModel(
         id: 5,
         title: 'Water Melon',
         image: AssetPath.waterMelon,
-        audio: 'audio'),
+        audio: AudioPath.fruitWatermelon),
     CommonContentModel(
-        id: 6, title: 'Pine Apple', image: AssetPath.pineApple, audio: 'audio'),
+        id: 6, title: 'Pine Apple', image: AssetPath.pineApple, audio: AudioPath.fruitPineApple),
     CommonContentModel(
-        id: 7, title: 'Grapes', image: AssetPath.grape, audio: 'audio'),
+        id: 7, title: 'Grapes', image: AssetPath.grape, audio: AudioPath.fruitGrapes),
     CommonContentModel(
-        id: 8, title: 'Jack Fruit', image: AssetPath.jackFruit, audio: 'audio'),
+        id: 8, title: 'Jack Fruit', image: AssetPath.jackFruit, audio: AudioPath.fruitJackFruit),
   ];
 
   // flowers

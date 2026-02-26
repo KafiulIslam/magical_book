@@ -92,7 +92,8 @@ class _BanglaFruitCardState extends State<BanglaFruitCard> {
       if (widget.ttsService!.isSpeakingText(widget.item.title)) {
         await widget.ttsService!.stop();
       } else {
-        await widget.ttsService!.speak(widget.item.title);
+         await widget.ttsService!.speak(widget.item.title);
+
       }
     }
 

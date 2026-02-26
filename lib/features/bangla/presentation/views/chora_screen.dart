@@ -24,17 +24,6 @@ class _ChoraScreenState extends State<ChoraScreen> {
     super.dispose();
   }
 
-  int _getCrossAxisCount(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    if (width > 900) {
-      return 2; // Large tablets/desktop
-    } else if (width > 600) {
-      return 2; // Tablets
-    } else {
-      return 1; // Mobile phones - single column for better readability
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return PopScope(

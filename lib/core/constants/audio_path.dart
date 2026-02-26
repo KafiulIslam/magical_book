@@ -97,6 +97,7 @@ class AudioPath {
   static const nose = "assets/audio/bodyParts/nose.MP3";
   static const tounge = "assets/audio/bodyParts/tounge.MP3";
 
+
   // bangla Bornomala path audio path
   static const shoroBorno = "assets/audio/bornoMala/shoro-borno.MP3";
   static const shoroO = "assets/audio/bornoMala/shoroO.MP3";
@@ -191,4 +192,15 @@ class AudioPath {
   static const englishX = "assets/audio/engAlphabet/X.MP3";
   static const englishY = "assets/audio/engAlphabet/Y.MP3";
   static const englishZ = "assets/audio/engAlphabet/Z.MP3";
+
+  // Fruits audio path
+  static const fruitApple = "assets/audio/fruits/apple.MP3";
+  static const fruitBanana = "assets/audio/fruits/banana.MP3";
+  static const fruitGrapes = "assets/audio/fruits/grapes.MP3";
+  static const fruitJackFruit = "assets/audio/fruits/jack-fruit.MP3";
+  static const fruitMango = "assets/audio/fruits/mango.MP3";
+  static const fruitOrange = "assets/audio/fruits/orange.MP3";
+  static const fruitPineApple = "assets/audio/fruits/pine-apple.MP3";
+  static const fruitWatermelon = "assets/audio/fruits/watermelon.MP3";
+
 }

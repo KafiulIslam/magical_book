@@ -55,11 +55,11 @@ class TtsService {
   Future<void> _setFemaleVoice(String languageCode) async {
     try {
       List<dynamic> voices = await _flutterTts.getVoices;
-      
+
       // Filter voices for the current language
-      var langVoices = voices.where((voice) => 
-        voice['locale'].toString().toLowerCase().contains(languageCode.toLowerCase().replaceAll('-', '_')) ||
-        voice['locale'].toString().toLowerCase().contains(languageCode.toLowerCase().replaceAll('_', '-'))
+      var langVoices = voices.where((voice) =>
+          voice['locale'].toString().toLowerCase().contains(languageCode.toLowerCase().replaceAll('-', '_')) ||
+          voice['locale'].toString().toLowerCase().contains(languageCode.toLowerCase().replaceAll('_', '-'))
       ).toList();
 
       if (langVoices.isEmpty) return;
@@ -73,11 +73,11 @@ class TtsService {
       // On some platforms (like iOS), we can try to find specific female names if 'female' tag is missing
       if (femaleVoice == null) {
         femaleVoice = langVoices.firstWhere(
-          (voice) => 
-            voice['name'].toString().toLowerCase().contains('samantha') || 
-            voice['name'].toString().toLowerCase().contains('victoria') ||
-            voice['name'].toString().toLowerCase().contains('kanya') || // Thai female
-            voice['name'].toString().toLowerCase().contains('niloufar'), // Persian female
+          (voice) =>
+              voice['name'].toString().toLowerCase().contains('samantha') ||
+              voice['name'].toString().toLowerCase().contains('victoria') ||
+              voice['name'].toString().toLowerCase().contains('kanya') ||
+              voice['name'].toString().toLowerCase().contains('niloufar'),
           orElse: () => null,
         );
       }
