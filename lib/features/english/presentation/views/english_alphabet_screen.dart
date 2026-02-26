@@ -8,7 +8,6 @@ import '../../../../core/services/audio_player_service.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/common_alphabet_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
-import '../../../../core/services/tts_service.dart';
 
 class EnglishAlphabetScreen extends StatefulWidget {
   const EnglishAlphabetScreen({super.key});
@@ -20,12 +19,9 @@ class EnglishAlphabetScreen extends StatefulWidget {
 class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
   static const String _headerAudioItemId = 'english_alphabet_header';
 
-  final TtsService _ttsService = TtsService();
   final AudioPlayerService _audioPlayerService = AudioPlayerService();
 
-  void _onTtsStateChanged() {
-    if (mounted) setState(() {});
-  }
+
 
   void _onAudioStateChanged() {
     if (mounted) setState(() {});
@@ -34,24 +30,16 @@ class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
   @override
   void initState() {
     super.initState();
-    _initializeTts();
     _audioPlayerService.addStateChangeHandler(_onAudioStateChanged);
     _audioPlayerService.addCompletionHandler(_onAudioStateChanged);
   }
 
-  Future<void> _initializeTts() async {
-    await _ttsService.initialize();
-    _ttsService.addStateChangeHandler(_onTtsStateChanged);
-    _ttsService.addCompletionHandler(_onTtsStateChanged);
-  }
 
   @override
   void dispose() {
     _audioPlayerService.stop();
     _audioPlayerService.removeStateChangeHandler(_onAudioStateChanged);
     _audioPlayerService.removeCompletionHandler(_onAudioStateChanged);
-    _ttsService.removeStateChangeHandler(_onTtsStateChanged);
-    _ttsService.removeCompletionHandler(_onTtsStateChanged);
     super.dispose();
   }
 
@@ -91,10 +79,7 @@ class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
               audioPath: AudioPath.englishAllAlphabet,
             ),
             const Gap(16),
-            _buildLetterGrid(
-              context,
-              EnglishConstants.englishAlphabet,
-            ),
+            _buildLetterGrid(context),
           ],
         ),
       ),
@@ -200,7 +185,8 @@ class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
     );
   }
 
-  Widget _buildLetterGrid(BuildContext context, List<String> letters) {
+  Widget _buildLetterGrid(BuildContext context) {
+    const letters = EnglishConstants.englishAlphabet;
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -212,11 +198,12 @@ class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
       ),
       itemCount: letters.length,
       itemBuilder: (context, index) {
-        final letter = letters[index];
+        final item = letters[index];
         return CommonAlphabetCard(
-          letter: letter,
+          letter: item.letter,
           colorPalette: CardColorPalettes.alphabet,
-          ttsService: _ttsService,
+          audioPath: item.audioPath,
+          audioPlayerService: _audioPlayerService,
         );
       },
     );

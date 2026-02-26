@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:magical_book/core/constants/audio_path.dart';
 import 'package:magical_book/core/router/routes.dart';
 import 'package:magical_book/features/bangla/models/common_content_model.dart';
+import 'package:magical_book/features/english/model/english_alphabet_model.dart';
 import 'package:magical_book/features/english/model/figure_model.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../features/bangla/models/category.dart';
@@ -85,34 +86,34 @@ class EnglishConstants {
     ),
   ];
 
-  // List of English alphabet (A to Z)
-  static const List<String> englishAlphabet = <String>[
-    'A',
-    'B',
-    'C',
-    'D',
-    'E',
-    'F',
-    'G',
-    'H',
-    'I',
-    'J',
-    'K',
-    'L',
-    'M',
-    'N',
-    'O',
-    'P',
-    'Q',
-    'R',
-    'S',
-    'T',
-    'U',
-    'V',
-    'W',
-    'X',
-    'Y',
-    'Z',
+  // List of English alphabet (A to Z) with audio paths
+  static const List<EnglishAlphabetModel> englishAlphabet = [
+    EnglishAlphabetModel(letter: 'A', audioPath: AudioPath.englishA),
+    EnglishAlphabetModel(letter: 'B', audioPath: AudioPath.englishB),
+    EnglishAlphabetModel(letter: 'C', audioPath: AudioPath.englishC),
+    EnglishAlphabetModel(letter: 'D', audioPath: AudioPath.englishD),
+    EnglishAlphabetModel(letter: 'E', audioPath: AudioPath.englishE),
+    EnglishAlphabetModel(letter: 'F', audioPath: AudioPath.englishF),
+    EnglishAlphabetModel(letter: 'G', audioPath: AudioPath.englishG),
+    EnglishAlphabetModel(letter: 'H', audioPath: AudioPath.englishH),
+    EnglishAlphabetModel(letter: 'I', audioPath: AudioPath.englishI),
+    EnglishAlphabetModel(letter: 'J', audioPath: AudioPath.englishJ),
+    EnglishAlphabetModel(letter: 'K', audioPath: AudioPath.englishK),
+    EnglishAlphabetModel(letter: 'L', audioPath: AudioPath.englishL),
+    EnglishAlphabetModel(letter: 'M', audioPath: AudioPath.englishM),
+    EnglishAlphabetModel(letter: 'N', audioPath: AudioPath.englishN),
+    EnglishAlphabetModel(letter: 'O', audioPath: AudioPath.englishO),
+    EnglishAlphabetModel(letter: 'P', audioPath: AudioPath.englishP),
+    EnglishAlphabetModel(letter: 'Q', audioPath: AudioPath.englishQ),
+    EnglishAlphabetModel(letter: 'R', audioPath: AudioPath.englishR),
+    EnglishAlphabetModel(letter: 'S', audioPath: AudioPath.englishS),
+    EnglishAlphabetModel(letter: 'T', audioPath: AudioPath.englishT),
+    EnglishAlphabetModel(letter: 'U', audioPath: AudioPath.englishU),
+    EnglishAlphabetModel(letter: 'V', audioPath: AudioPath.englishV),
+    EnglishAlphabetModel(letter: 'W', audioPath: AudioPath.englishW),
+    EnglishAlphabetModel(letter: 'X', audioPath: AudioPath.englishX),
+    EnglishAlphabetModel(letter: 'Y', audioPath: AudioPath.englishY),
+    EnglishAlphabetModel(letter: 'Z', audioPath: AudioPath.englishZ),
   ];
 
   // English Rhymes

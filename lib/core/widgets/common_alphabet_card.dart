@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../core/services/audio_player_service.dart';
 import '../../core/services/tts_service.dart';
 
 /// Common widget for alphabet/letter cards (large text-only)
 /// Used by: BornoCard, EnglishAlphabetCard
+/// When [audioPath] and [audioPlayerService] are provided, plays asset audio; otherwise uses [ttsService] if provided.
 class CommonAlphabetCard extends StatefulWidget {
   final String letter;
   final String? fontFamily;
   final List<List<Color>> colorPalette;
   final TtsService? ttsService;
+  final String? audioPath;
+  final AudioPlayerService? audioPlayerService;
 
   const CommonAlphabetCard({
     super.key,
@@ -16,6 +20,8 @@ class CommonAlphabetCard extends StatefulWidget {
     this.fontFamily,
     required this.colorPalette,
     this.ttsService,
+    this.audioPath,
+    this.audioPlayerService,
   });
 
   @override
@@ -23,7 +29,13 @@ class CommonAlphabetCard extends StatefulWidget {
 }
 
 class _CommonAlphabetCardState extends State<CommonAlphabetCard> {
+  String get _itemId => 'english_letter_${widget.letter}';
+
   void _onTtsStateChanged() {
+    if (mounted) setState(() {});
+  }
+
+  void _onAudioStateChanged() {
     if (mounted) setState(() {});
   }
 
@@ -34,10 +46,22 @@ class _CommonAlphabetCardState extends State<CommonAlphabetCard> {
       widget.ttsService!.addStateChangeHandler(_onTtsStateChanged);
       widget.ttsService!.addCompletionHandler(_onTtsStateChanged);
     }
+    if (widget.audioPlayerService != null) {
+      widget.audioPlayerService!.addStateChangeHandler(_onAudioStateChanged);
+      widget.audioPlayerService!.addCompletionHandler(_onAudioStateChanged);
+    }
   }
 
   @override
   void dispose() {
+    if (widget.audioPlayerService != null &&
+        widget.audioPlayerService!.isPlayingItem(_itemId)) {
+      widget.audioPlayerService!.stop();
+    }
+    if (widget.audioPlayerService != null) {
+      widget.audioPlayerService!.removeStateChangeHandler(_onAudioStateChanged);
+      widget.audioPlayerService!.removeCompletionHandler(_onAudioStateChanged);
+    }
     if (widget.ttsService != null) {
       widget.ttsService!.removeStateChangeHandler(_onTtsStateChanged);
       widget.ttsService!.removeCompletionHandler(_onTtsStateChanged);
@@ -46,8 +70,19 @@ class _CommonAlphabetCardState extends State<CommonAlphabetCard> {
   }
 
   Future<void> _togglePlayStop() async {
+    if (widget.audioPath != null && widget.audioPlayerService != null) {
+      if (widget.audioPlayerService!.isPlayingItem(_itemId)) {
+        await widget.audioPlayerService!.stop();
+      } else {
+        await widget.audioPlayerService!.play(
+          widget.audioPath!,
+          itemId: _itemId,
+        );
+      }
+      if (mounted) setState(() {});
+      return;
+    }
     if (widget.ttsService == null) return;
-
     if (widget.ttsService!.isSpeakingText(widget.letter)) {
       await widget.ttsService!.stop();
     } else {
@@ -62,9 +97,11 @@ class _CommonAlphabetCardState extends State<CommonAlphabetCard> {
   @override
   Widget build(BuildContext context) {
     final cardColors = _getCardColors(widget.letter.hashCode);
-    final isPlaying = widget.ttsService != null
-        ? widget.ttsService!.isSpeakingText(widget.letter)
-        : false;
+    final isPlaying = widget.audioPath != null && widget.audioPlayerService != null
+        ? widget.audioPlayerService!.isPlayingItem(_itemId)
+        : (widget.ttsService != null
+            ? widget.ttsService!.isSpeakingText(widget.letter)
+            : false);
 
     return InkWell(
       onTap: _togglePlayStop,
@@ -94,8 +131,8 @@ class _CommonAlphabetCardState extends State<CommonAlphabetCard> {
                 ],
               ),
               border: Border.all(
-                color: Colors.white.withOpacity(0.3),
-                width: 2,
+                color: isPlaying ? Colors.white : Colors.white.withOpacity(0.3),
+                width: isPlaying ? 3 : 2,
               ),
             ),
             child: Center(
