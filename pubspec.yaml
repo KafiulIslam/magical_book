@@ -83,6 +83,7 @@ flutter:
     - assets/audio/bornoMala/
     - assets/audio/bornoMala/banjon/
     - assets/audio/banglaPoem/
+    - assets/audio/engAlphabet/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

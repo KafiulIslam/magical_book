@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/audio_path.dart';
 import '../../../../core/constants/english_constant.dart';
+import '../../../../core/services/audio_player_service.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/common_alphabet_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
@@ -16,32 +18,40 @@ class EnglishAlphabetScreen extends StatefulWidget {
 }
 
 class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
+  static const String _headerAudioItemId = 'english_alphabet_header';
+
   final TtsService _ttsService = TtsService();
+  final AudioPlayerService _audioPlayerService = AudioPlayerService();
+
+  void _onTtsStateChanged() {
+    if (mounted) setState(() {});
+  }
+
+  void _onAudioStateChanged() {
+    if (mounted) setState(() {});
+  }
 
   @override
   void initState() {
     super.initState();
     _initializeTts();
+    _audioPlayerService.addStateChangeHandler(_onAudioStateChanged);
+    _audioPlayerService.addCompletionHandler(_onAudioStateChanged);
   }
 
   Future<void> _initializeTts() async {
     await _ttsService.initialize();
-    _ttsService.addStateChangeHandler(() {
-      if (mounted) setState(() {});
-    });
-    _ttsService.addCompletionHandler(() {
-      if (mounted) setState(() {});
-    });
+    _ttsService.addStateChangeHandler(_onTtsStateChanged);
+    _ttsService.addCompletionHandler(_onTtsStateChanged);
   }
 
   @override
   void dispose() {
-    _ttsService.removeStateChangeHandler(() {
-      if (mounted) setState(() {});
-    });
-    _ttsService.removeCompletionHandler(() {
-      if (mounted) setState(() {});
-    });
+    _audioPlayerService.stop();
+    _audioPlayerService.removeStateChangeHandler(_onAudioStateChanged);
+    _audioPlayerService.removeCompletionHandler(_onAudioStateChanged);
+    _ttsService.removeStateChangeHandler(_onTtsStateChanged);
+    _ttsService.removeCompletionHandler(_onTtsStateChanged);
     super.dispose();
   }
 
@@ -78,6 +88,7 @@ class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
               subtitle: 'A to Z - Learn English Alphabet',
               gradientColors: [AppColors.primary, AppColors.info],
               emoji: '✨',
+              audioPath: AudioPath.englishAllAlphabet,
             ),
             const Gap(16),
             _buildLetterGrid(
@@ -90,17 +101,30 @@ class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
     );
   }
 
+  Future<void> _toggleHeaderAudio(String audioPath) async {
+    final isPlaying = _audioPlayerService.isPlayingItem(_headerAudioItemId);
+    if (isPlaying) {
+      await _audioPlayerService.stop();
+    } else {
+      await _audioPlayerService.play(audioPath, itemId: _headerAudioItemId);
+    }
+    if (mounted) setState(() {});
+  }
+
   Widget _buildHeader({
     required String title,
     required String subtitle,
     required List<Color> gradientColors,
     required String emoji,
+    required String audioPath,
   }) {
+    final bool isPlaying = _audioPlayerService.isPlayingItem(_headerAudioItemId);
+
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(12),
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -115,41 +139,62 @@ class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
           ),
         ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: Row(
         children: [
-          Text(
-            title,
-            style: EnglishTypo.headline2.copyWith(
-              fontSize: 26.sp,
-              fontWeight: FontWeight.w900,
-              color: Colors.white,
-              shadows: const [
-                Shadow(
-                  color: Colors.black26,
-                  blurRadius: 6,
-                  offset: Offset(2, 2),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: BanglaTypo.headline2.copyWith(
+                    fontSize: 26.sp,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white,
+                    shadows: [
+                      const Shadow(
+                        color: Colors.black26,
+                        blurRadius: 6,
+                        offset: Offset(2, 2),
+                      ),
+                    ],
+                  ),
                 ),
+                Text(subtitle,
+                    textAlign: TextAlign.start,
+                    style: EnglishTypo.bodyLarge.copyWith(
+                      color: Colors.white,
+                      shadows: [
+                        const Shadow(
+                          color: Colors.black26,
+                          blurRadius: 4,
+                          offset: Offset(1, 1),
+                        ),
+                      ],
+                    )),
               ],
             ),
           ),
-          const Gap(4),
-          Text(
-            subtitle,
-            textAlign: TextAlign.center,
-            style: EnglishTypo.bodyLarge.copyWith(
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-              shadows: const [
-                Shadow(
-                  color: Colors.black26,
-                  blurRadius: 4,
-                  offset: Offset(1, 1),
+          if (audioPath.isNotEmpty)
+            Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () => _toggleHeaderAudio(audioPath),
+                borderRadius: BorderRadius.circular(8),
+                child: Container(
+                  padding: const EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.white.withOpacity(0.3),
+                  ),
+                  child: Icon(
+                    isPlaying ? Icons.stop_rounded : Icons.play_arrow_rounded,
+                    color: Colors.white,
+                    size: 24.sp,
+                  ),
                 ),
-              ],
+              ),
             ),
-          ),
         ],
       ),
     );
@@ -176,4 +221,5 @@ class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
       },
     );
   }
+
 }

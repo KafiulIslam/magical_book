@@ -163,4 +163,32 @@ class AudioPath {
   static const talGach = "assets/audio/banglaPoem/talgach.MP3";
 
 
+  // English Alphabet path audio path
+  static const englishAllAlphabet = "assets/audio/engAlphabet/A - Z.MP3";
+  static const englishA = "assets/audio/engAlphabet/a.MP3";
+  static const englishB = "assets/audio/engAlphabet/b.MP3";
+  static const englishC = "assets/audio/engAlphabet/c.MP3";
+  static const englishD = "assets/audio/engAlphabet/d.MP3";
+  static const englishE = "assets/audio/engAlphabet/e.MP3";
+  static const englishF = "assets/audio/engAlphabet/f.MP3";
+  static const englishG = "assets/audio/engAlphabet/g.MP3";
+  static const englishH = "assets/audio/engAlphabet/h.MP3";
+  static const englishI = "assets/audio/engAlphabet/i.MP3";
+  static const englishJ = "assets/audio/engAlphabet/j.MP3";
+  static const englishK = "assets/audio/engAlphabet/k.MP3";
+  static const englishL = "assets/audio/engAlphabet/L.MP3";
+  static const englishM = "assets/audio/engAlphabet/M.MP3";
+  static const englishN = "assets/audio/engAlphabet/N.MP3";
+  static const englishO = "assets/audio/engAlphabet/O.MP3";
+  static const englishP = "assets/audio/engAlphabet/P.MP3";
+  static const englishQ = "assets/audio/engAlphabet/Q.MP3";
+  static const englishR = "assets/audio/engAlphabet/R.MP3";
+  static const englishS = "assets/audio/engAlphabet/S.MP3";
+  static const englishT = "assets/audio/engAlphabet/T.MP3";
+  static const englishU = "assets/audio/engAlphabet/U.MP3";
+  static const englishV = "assets/audio/engAlphabet/V.MP3";
+  static const englishW = "assets/audio/engAlphabet/W.MP3";
+  static const englishX = "assets/audio/engAlphabet/X.MP3";
+  static const englishY = "assets/audio/engAlphabet/Y.MP3";
+  static const englishZ = "assets/audio/engAlphabet/Z.MP3";
 }
