@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/english_constant.dart';
-import '../../../../core/services/tts_service.dart';
+import '../../../../core/services/audio_player_service.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
-import '../../../bangla/presentation/widgets/bangla_fruit_card.dart';
+import '../widgets/english_flower_card.dart';
 
 class EnglishFlowerScreen extends StatefulWidget {
   const EnglishFlowerScreen({super.key});
@@ -15,26 +15,24 @@ class EnglishFlowerScreen extends StatefulWidget {
 }
 
 class _EnglishFlowerScreenState extends State<EnglishFlowerScreen> {
+  final AudioPlayerService _audioPlayerService = AudioPlayerService();
 
-  late final TtsService _ttsService;
-
-  void _onTtsStateChanged() {
-    if (mounted) {
-      setState(() {});
-    }
+  void _onAudioStateChanged() {
+    if (mounted) setState(() {});
   }
 
   @override
   void initState() {
     super.initState();
-    _ttsService = TtsService();
-    _ttsService.initialize();
-    _ttsService.addStateChangeHandler(_onTtsStateChanged);
+    _audioPlayerService.addStateChangeHandler(_onAudioStateChanged);
+    _audioPlayerService.addCompletionHandler(_onAudioStateChanged);
   }
 
   @override
   void dispose() {
-    _ttsService.removeStateChangeHandler(_onTtsStateChanged);
+    _audioPlayerService.stop();
+    _audioPlayerService.removeStateChangeHandler(_onAudioStateChanged);
+    _audioPlayerService.removeCompletionHandler(_onAudioStateChanged);
     super.dispose();
   }
 
@@ -72,7 +70,7 @@ class _EnglishFlowerScreenState extends State<EnglishFlowerScreen> {
           itemCount: EnglishConstants.flowers.length,
           itemBuilder: (context, index) {
             final flower = EnglishConstants.flowers[index];
-            return BanglaFruitCard(
+            return EnglishFlowerCard(
               item: flower,
               index: index,
               textStyle: EnglishTypo.headline2,
@@ -81,7 +79,7 @@ class _EnglishFlowerScreenState extends State<EnglishFlowerScreen> {
               errorIcon: Icons.local_florist,
               imageFit: BoxFit.cover,
               useFlexibleForText: false,
-              ttsService: _ttsService,
+              audioPlayerService: _audioPlayerService,
             );
           },
         ),
