@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-
+import 'package:magical_book/features/bangla/models/common_content_model.dart';
 import '../../../../core/services/audio_player_service.dart';
-import '../../../../core/services/tts_service.dart';
-import '../../models/common_content_model.dart';
 
-/// Common widget for image + text cards (TTS or optional pre-recorded audio)
-/// Used by: FolCard, FulCard, RituCard, BanglaFruitScreen, EnglishFlowerCard,
-///          EnglishAnimalCard, EnglishBirdCard, EnglishBodyPartCard
-class BanglaFruitCard extends StatefulWidget {
+/// English fruit card with pre-recorded audio only (no TTS).
+/// Used by: EnglishFruitScreen
+class EnglishFruitCard extends StatefulWidget {
   final CommonContentModel item;
   final int index;
   final TextStyle textStyle;
@@ -16,10 +13,9 @@ class BanglaFruitCard extends StatefulWidget {
   final IconData errorIcon;
   final BoxFit imageFit;
   final bool useFlexibleForText;
-  final AudioPlayerService? audioPlayerService; // Optional audio service
-  final TtsService? ttsService; // Optional TTS service
+  final AudioPlayerService audioPlayerService;
 
-  const BanglaFruitCard({
+  const EnglishFruitCard({
     super.key,
     required this.item,
     required this.index,
@@ -27,17 +23,18 @@ class BanglaFruitCard extends StatefulWidget {
     required this.fontSize,
     required this.colorPalette,
     required this.errorIcon,
+    required this.audioPlayerService,
     this.imageFit = BoxFit.contain,
     this.useFlexibleForText = true,
-    this.audioPlayerService,
-    this.ttsService,
   });
 
   @override
-  State<BanglaFruitCard> createState() => _BanglaFruitCardState();
+  State<EnglishFruitCard> createState() => _EnglishFruitCardState();
 }
 
-class _BanglaFruitCardState extends State<BanglaFruitCard> {
+class _EnglishFruitCardState extends State<EnglishFruitCard> {
+  String get _itemId => 'fruit_${widget.item.id}';
+
   void _onStateChanged() {
     if (mounted) setState(() {});
   }
@@ -49,56 +46,28 @@ class _BanglaFruitCardState extends State<BanglaFruitCard> {
   @override
   void initState() {
     super.initState();
-    // Register handlers for audio service
-    if (widget.audioPlayerService != null) {
-      widget.audioPlayerService!.addStateChangeHandler(_onStateChanged);
-      widget.audioPlayerService!.addCompletionHandler(_onCompleted);
-    }
-    // Register handlers for TTS service
-    if (widget.ttsService != null) {
-      widget.ttsService!.addStateChangeHandler(_onStateChanged);
-      widget.ttsService!.addCompletionHandler(_onCompleted);
-    }
+    widget.audioPlayerService.addStateChangeHandler(_onStateChanged);
+    widget.audioPlayerService.addCompletionHandler(_onCompleted);
   }
 
   @override
   void dispose() {
-    if (widget.audioPlayerService != null) {
-      widget.audioPlayerService!.removeStateChangeHandler(_onStateChanged);
-      widget.audioPlayerService!.removeCompletionHandler(_onCompleted);
+    if (widget.audioPlayerService.isPlayingItem(_itemId)) {
+      widget.audioPlayerService.stop();
     }
-    if (widget.ttsService != null) {
-      widget.ttsService!.removeStateChangeHandler(_onStateChanged);
-      widget.ttsService!.removeCompletionHandler(_onCompleted);
-    }
+    widget.audioPlayerService.removeStateChangeHandler(_onStateChanged);
+    widget.audioPlayerService.removeCompletionHandler(_onCompleted);
     super.dispose();
   }
 
   Future<void> _handleTap() async {
-    // Priority 1: Pre-recorded audio
-    if (widget.audioPlayerService != null && widget.item.audio.isNotEmpty) {
-      final itemId = 'fruit_${widget.item.id}';
-      if (widget.audioPlayerService!.isPlayingItem(itemId)) {
-        await widget.audioPlayerService!.stop();
-      } else {
-        await widget.audioPlayerService!.play(
-          widget.item.audio,
-          itemId: itemId,
-        );
-      }
+    if (widget.item.audio.isEmpty) return;
+    if (widget.audioPlayerService.isPlayingItem(_itemId)) {
+      await widget.audioPlayerService.stop();
+    } else {
+      await widget.audioPlayerService.play(widget.item.audio, itemId: _itemId);
     }
-    // Priority 2: TTS
-    else if (widget.ttsService != null) {
-      if (widget.ttsService!.isSpeakingText(widget.item.title)) {
-        await widget.ttsService!.stop();
-      } else {
-        await widget.ttsService!.speak(widget.item.title);
-      }
-    }
-
-    if (mounted) {
-      setState(() {});
-    }
+    if (mounted) setState(() {});
   }
 
   List<Color> _getCardColors(int index) {
@@ -108,12 +77,7 @@ class _BanglaFruitCardState extends State<BanglaFruitCard> {
   @override
   Widget build(BuildContext context) {
     final cardColors = _getCardColors(widget.index);
-    final isPlaying = (widget.audioPlayerService != null &&
-            widget.item.audio.isNotEmpty &&
-            widget.audioPlayerService!
-                .isPlayingItem('fruit_${widget.item.id}')) ||
-        (widget.ttsService != null &&
-            widget.ttsService!.isSpeakingText(widget.item.title));
+    final isPlaying = widget.audioPlayerService.isPlayingItem(_itemId);
 
     return Container(
       decoration: BoxDecoration(
@@ -149,7 +113,6 @@ class _BanglaFruitCardState extends State<BanglaFruitCard> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Image
                 Expanded(
                   flex: 3,
                   child: Container(
@@ -181,7 +144,6 @@ class _BanglaFruitCardState extends State<BanglaFruitCard> {
                     ),
                   ),
                 ),
-                // Text
                 if (widget.useFlexibleForText)
                   Flexible(
                     flex: 1,

@@ -92,18 +92,20 @@ class BanglaConstants {
     CommonContentModel(id: 7, title: 'ছ', image: '', audio: AudioPath.chho),
     CommonContentModel(id: 8, title: 'জ', image: '', audio: AudioPath.borgioJo),
     CommonContentModel(id: 9, title: 'ঝ', image: '', audio: AudioPath.jho),
-     CommonContentModel(id: 10, title: 'ঞ', image: '', audio: AudioPath.iyo),
+    CommonContentModel(id: 10, title: 'ঞ', image: '', audio: AudioPath.iyo),
     CommonContentModel(id: 11, title: 'ট', image: '', audio: AudioPath.to),
     CommonContentModel(id: 12, title: 'ঠ', image: '', audio: AudioPath.tho),
     CommonContentModel(id: 13, title: 'ড', image: '', audio: AudioPath.Do),
     CommonContentModel(id: 14, title: 'ঢ', image: '', audio: AudioPath.dho),
     CommonContentModel(
         id: 15, title: 'ণ', image: '', audio: AudioPath.mordhunno),
-    CommonContentModel(id: 16, title: 'ত', image: '', audio: AudioPath.towBanjon),
+    CommonContentModel(
+        id: 16, title: 'ত', image: '', audio: AudioPath.towBanjon),
     CommonContentModel(id: 17, title: 'থ', image: '', audio: AudioPath.thow),
     CommonContentModel(id: 18, title: 'দ', image: '', audio: AudioPath.doo),
     CommonContentModel(id: 19, title: 'ধ', image: '', audio: AudioPath.dhoo),
-    CommonContentModel(id: 20, title: 'ন', image: '', audio: AudioPath.duntonno),
+    CommonContentModel(
+        id: 20, title: 'ন', image: '', audio: AudioPath.duntonno),
     CommonContentModel(id: 21, title: 'প', image: '', audio: AudioPath.po),
     CommonContentModel(id: 22, title: 'ফ', image: '', audio: AudioPath.fo),
     CommonContentModel(id: 23, title: 'ব', image: '', audio: AudioPath.bo),
@@ -117,7 +119,8 @@ class BanglaConstants {
         id: 29, title: 'শ', image: '', audio: AudioPath.telebosso),
     CommonContentModel(
         id: 30, title: 'ষ', image: '', audio: AudioPath.mordhunnoso),
-    CommonContentModel(id: 31, title: 'স', image: '', audio: AudioPath.duntosso),
+    CommonContentModel(
+        id: 31, title: 'স', image: '', audio: AudioPath.duntosso),
     CommonContentModel(id: 32, title: 'হ', image: '', audio: AudioPath.ho),
     CommonContentModel(id: 33, title: 'ড়', image: '', audio: AudioPath.doRo),
     CommonContentModel(id: 34, title: 'ঢ়', image: '', audio: AudioPath.dhoRo),
@@ -131,7 +134,7 @@ class BanglaConstants {
   ];
 
   // bangla chora list
-  static List<CommonContentModel> banglaChora =  [
+  static List<CommonContentModel> banglaChora = [
     const CommonContentModel(
         id: 1,
         title: 'আতা গাছে তোতা পাখী',

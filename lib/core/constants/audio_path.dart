@@ -203,4 +203,14 @@ class AudioPath {
   static const fruitPineApple = "assets/audio/fruits/pine-apple.MP3";
   static const fruitWatermelon = "assets/audio/fruits/watermelon.MP3";
 
+  // Flowers audio path
+  static const flowerHibiscus = "assets/audio/flowers/hibiscus.MP3";
+  static const flowerMarigold = "assets/audio/flowers/marigold.MP3";
+  static const flowerParijat = "assets/audio/flowers/parijat.MP3";
+  static const flowerRose = "assets/audio/flowers/rose.MP3";
+  static const flowerSunFlower = "assets/audio/flowers/sun-flower.MP3";
+  static const flowerWaterLily = "assets/audio/flowers/water-lily.MP3";
+  static const flowerSpanishCherry = "assets/audio/flowers/spanish-chery.MP3";
+  static const flowerFlamBoyant = "assets/audio/flowers/flamboyant.MP3";
+
 }

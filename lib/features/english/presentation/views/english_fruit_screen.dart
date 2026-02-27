@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:magical_book/features/bangla/presentation/widgets/bangla_fruit_card.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/english_constant.dart';
-import '../../../../core/services/tts_service.dart';
+import '../../../../core/services/audio_player_service.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
+import '../widgets/english_fruit_card.dart';
 
 class EnglishFruitScreen extends StatefulWidget {
   const EnglishFruitScreen({super.key});
@@ -15,26 +15,24 @@ class EnglishFruitScreen extends StatefulWidget {
 }
 
 class _EnglishFruitScreenState extends State<EnglishFruitScreen> {
+  final AudioPlayerService _audioPlayerService = AudioPlayerService();
 
-  late final TtsService _ttsService;
-
-  void _onTtsStateChanged() {
-    if (mounted) {
-      setState(() {});
-    }
+  void _onAudioStateChanged() {
+    if (mounted) setState(() {});
   }
 
   @override
   void initState() {
     super.initState();
-    _ttsService = TtsService();
-    _ttsService.initialize();
-    _ttsService.addStateChangeHandler(_onTtsStateChanged);
+    _audioPlayerService.addStateChangeHandler(_onAudioStateChanged);
+    _audioPlayerService.addCompletionHandler(_onAudioStateChanged);
   }
 
   @override
   void dispose() {
-    _ttsService.removeStateChangeHandler(_onTtsStateChanged);
+    _audioPlayerService.stop();
+    _audioPlayerService.removeStateChangeHandler(_onAudioStateChanged);
+    _audioPlayerService.removeCompletionHandler(_onAudioStateChanged);
     super.dispose();
   }
 
@@ -67,12 +65,13 @@ class _EnglishFruitScreenState extends State<EnglishFruitScreen> {
             crossAxisCount: _getCrossAxisCount(context),
             crossAxisSpacing: 16,
             mainAxisSpacing: 16,
-            childAspectRatio: 0.72, // Slightly taller cards to accommodate longer text
+            childAspectRatio:
+                0.72, // Slightly taller cards to accommodate longer text
           ),
           itemCount: EnglishConstants.fruitsName.length,
           itemBuilder: (context, index) {
             final fruit = EnglishConstants.fruitsName[index];
-            return BanglaFruitCard(
+            return EnglishFruitCard(
               item: fruit,
               index: index,
               textStyle: EnglishTypo.headline2,
@@ -81,7 +80,7 @@ class _EnglishFruitScreenState extends State<EnglishFruitScreen> {
               errorIcon: Icons.apple,
               imageFit: BoxFit.contain,
               useFlexibleForText: true,
-              ttsService: _ttsService,
+              audioPlayerService: _audioPlayerService,
             );
           },
         ),
@@ -89,4 +88,3 @@ class _EnglishFruitScreenState extends State<EnglishFruitScreen> {
     );
   }
 }
-

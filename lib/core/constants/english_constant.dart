@@ -129,7 +129,10 @@ class EnglishConstants {
         image: AssetPath.brush,
         audio: AudioPath.brush),
     const RhymesModel(
-        id: 3, title: 'Pussy Cat', image: AssetPath.pussyCat, audio: AudioPath.pussyCat),
+        id: 3,
+        title: 'Pussy Cat',
+        image: AssetPath.pussyCat,
+        audio: AudioPath.pussyCat),
     const RhymesModel(
         id: 4,
         title: 'Rainbow Fish',
@@ -165,56 +168,101 @@ class EnglishConstants {
   // fruits name
   static const List<CommonContentModel> fruitsName = [
     CommonContentModel(
-        id: 1, title: 'Mango', image: AssetPath.mango, audio: AudioPath.fruitMango),
+        id: 1,
+        title: 'Mango',
+        image: AssetPath.mango,
+        audio: AudioPath.fruitMango),
     CommonContentModel(
-        id: 3, title: 'Apple', image: AssetPath.apple, audio: AudioPath.fruitApple),
+        id: 3,
+        title: 'Apple',
+        image: AssetPath.apple,
+        audio: AudioPath.fruitApple),
     CommonContentModel(
-        id: 2, title: 'Banana', image: AssetPath.banana, audio: AudioPath.fruitBanana),
+        id: 2,
+        title: 'Banana',
+        image: AssetPath.banana,
+        audio: AudioPath.fruitBanana),
     CommonContentModel(
-        id: 4, title: 'Orange', image: AssetPath.orange, audio: AudioPath.fruitOrange),
+        id: 4,
+        title: 'Orange',
+        image: AssetPath.orange,
+        audio: AudioPath.fruitOrange),
     CommonContentModel(
         id: 5,
         title: 'Water Melon',
         image: AssetPath.waterMelon,
         audio: AudioPath.fruitWatermelon),
     CommonContentModel(
-        id: 6, title: 'Pine Apple', image: AssetPath.pineApple, audio: AudioPath.fruitPineApple),
+        id: 6,
+        title: 'Pine Apple',
+        image: AssetPath.pineApple,
+        audio: AudioPath.fruitPineApple),
     CommonContentModel(
-        id: 7, title: 'Grapes', image: AssetPath.grape, audio: AudioPath.fruitGrapes),
+        id: 7,
+        title: 'Grapes',
+        image: AssetPath.grape,
+        audio: AudioPath.fruitGrapes),
     CommonContentModel(
-        id: 8, title: 'Jack Fruit', image: AssetPath.jackFruit, audio: AudioPath.fruitJackFruit),
+        id: 8,
+        title: 'Jack Fruit',
+        image: AssetPath.jackFruit,
+        audio: AudioPath.fruitJackFruit),
   ];
 
   // flowers
   static const List<CommonContentModel> flowers = [
     CommonContentModel(
-        id: 1, title: 'Water Lily', image: AssetPath.shapla, audio: 'audio'),
-    CommonContentModel(id: 2, title: 'Rose', image: AssetPath.golap, audio: 'audio'),
+        id: 1,
+        title: 'Water Lily',
+        image: AssetPath.shapla,
+        audio: AudioPath.flowerWaterLily),
     CommonContentModel(
-        id: 3, title: 'Hibiscus', image: AssetPath.joba, audio: 'audio'),
+        id: 2,
+        title: 'Rose',
+        image: AssetPath.golap,
+        audio: AudioPath.flowerRose),
     CommonContentModel(
-        id: 4, title: 'Marigold', image: AssetPath.gadha, audio: 'audio'),
+        id: 3,
+        title: 'Hibiscus',
+        image: AssetPath.joba,
+        audio: AudioPath.flowerHibiscus),
     CommonContentModel(
-        id: 5, title: 'Sun Flower', image: AssetPath.surjo, audio: 'audio'),
+        id: 4,
+        title: 'Marigold',
+        image: AssetPath.gadha,
+        audio: AudioPath.flowerMarigold),
+    CommonContentModel(
+        id: 5,
+        title: 'Sun Flower',
+        image: AssetPath.surjo,
+        audio: AudioPath.flowerSunFlower),
     // BanglaFulModel(id: 6, name: 'বেলি', image: AssetPath.surjo, audio: 'audio'),
     CommonContentModel(
-        id: 7, title: 'Parijat', image: AssetPath.shuly, audio: 'audio'),
+        id: 7,
+        title: 'Parijat',
+        image: AssetPath.shuly,
+        audio: AudioPath.flowerParijat),
     CommonContentModel(
-        id: 8, title: 'Spanish Cherry', image: AssetPath.bokul, audio: 'audio'),
+        id: 8,
+        title: 'Spanish Cherry',
+        image: AssetPath.bokul,
+        audio: AudioPath.flowerSpanishCherry),
     CommonContentModel(
         id: 9,
         title: 'Flamboyant',
         image: AssetPath.krisnochura,
-        audio: 'audio'),
+        audio: AudioPath.flowerFlamBoyant),
   ];
 
   // Figures & Shape
   static const List<FigureModel> figures = [
-    FigureModel(
-        id: 1, title: 'Circle',image: Icons.circle, audio: 'audio'),
+    FigureModel(id: 1, title: 'Circle', image: Icons.circle, audio: 'audio'),
     FigureModel(id: 2, title: 'Square', image: Icons.square, audio: 'audio'),
     FigureModel(
-        id: 3, title: 'Triangle', image: Icons.change_history_outlined, audio: 'audio'),
+        id: 3,
+        title: 'Triangle',
+        image: Icons.change_history_outlined,
+        audio: 'audio'),
     FigureModel(
         id: 4, title: 'Rectangle', image: Icons.rectangle, audio: 'audio'),
     // FigureModel(
@@ -224,13 +272,9 @@ class EnglishConstants {
     //     id: 7, title: 'Semi Circle', image: Icons.circl, audio: 'audio'),
     FigureModel(
         id: 8, title: 'Pentagon', image: Icons.pentagon, audio: 'audio'),
-    FigureModel(
-        id: 9,
-        title: 'Star',
-        image: Icons.star,
-        audio: 'audio'),
+    FigureModel(id: 9, title: 'Star', image: Icons.star, audio: 'audio'),
 
-     // FigureModel(id: 10, title: 'Oval', image: Icons.egg, audio: 'audio'),
+    // FigureModel(id: 10, title: 'Oval', image: Icons.egg, audio: 'audio'),
     // FigureModel(
     //     id: 11, title: 'Cylinder', image: AssetPath.shuly, audio: 'audio'),
     FigureModel(
@@ -244,26 +288,45 @@ class EnglishConstants {
 
   // flowers
   static const List<CommonContentModel> humanBody = [
-    CommonContentModel(id: 1, title: 'Head', image: AssetPath.head, audio: AudioPath.head),
-    CommonContentModel(id: 2, title: 'Eye', image: AssetPath.eye, audio: AudioPath.eye),
-    CommonContentModel(id: 3, title: 'Ear', image: AssetPath.ear, audio: AudioPath.ear),
-    CommonContentModel(id: 3, title: 'Hand', image: AssetPath.hand, audio: AudioPath.hand),
+    CommonContentModel(
+        id: 1, title: 'Head', image: AssetPath.head, audio: AudioPath.head),
+    CommonContentModel(
+        id: 2, title: 'Eye', image: AssetPath.eye, audio: AudioPath.eye),
+    CommonContentModel(
+        id: 3, title: 'Ear', image: AssetPath.ear, audio: AudioPath.ear),
+    CommonContentModel(
+        id: 3, title: 'Hand', image: AssetPath.hand, audio: AudioPath.hand),
     CommonContentModel(
         id: 4, title: 'Mouth', image: AssetPath.mouth, audio: AudioPath.mouth),
-    CommonContentModel(id: 5, title: 'Nose', image: AssetPath.nose, audio: AudioPath.nose),
-    CommonContentModel(id: 8, title: 'Leg', image: AssetPath.leg, audio: AudioPath.leg),
-    CommonContentModel(id: 6, title: 'Feet', image: AssetPath.feet, audio: AudioPath.feet),
-    CommonContentModel(id: 7, title: 'Arm', image: AssetPath.arm, audio: AudioPath.arm),
-    CommonContentModel(id: 8, title: 'Hair', image: AssetPath.hair, audio: AudioPath.hair),
     CommonContentModel(
-        id: 8, title: 'Forehead', image: AssetPath.forehead, audio: AudioPath.foreHead),
+        id: 5, title: 'Nose', image: AssetPath.nose, audio: AudioPath.nose),
     CommonContentModel(
-        id: 9, title: 'Finger', image: AssetPath.finger, audio: AudioPath.finger),
-    CommonContentModel(id: 10, title: 'Knee', image: AssetPath.knee, audio: AudioPath.knee),
+        id: 8, title: 'Leg', image: AssetPath.leg, audio: AudioPath.leg),
+    CommonContentModel(
+        id: 6, title: 'Feet', image: AssetPath.feet, audio: AudioPath.feet),
+    CommonContentModel(
+        id: 7, title: 'Arm', image: AssetPath.arm, audio: AudioPath.arm),
+    CommonContentModel(
+        id: 8, title: 'Hair', image: AssetPath.hair, audio: AudioPath.hair),
+    CommonContentModel(
+        id: 8,
+        title: 'Forehead',
+        image: AssetPath.forehead,
+        audio: AudioPath.foreHead),
+    CommonContentModel(
+        id: 9,
+        title: 'Finger',
+        image: AssetPath.finger,
+        audio: AudioPath.finger),
+    CommonContentModel(
+        id: 10, title: 'Knee', image: AssetPath.knee, audio: AudioPath.knee),
     CommonContentModel(
         id: 11, title: 'Belly', image: AssetPath.belly, audio: AudioPath.belly),
     CommonContentModel(
-        id: 12, title: 'Tongue', image: AssetPath.tongue, audio: AudioPath.tounge),
+        id: 12,
+        title: 'Tongue',
+        image: AssetPath.tongue,
+        audio: AudioPath.tounge),
   ];
 
   // English Days
@@ -294,8 +357,9 @@ class EnglishConstants {
   ];
 
   // Animals
-  static const  List<CommonContentModel> animals = [
-    CommonContentModel(id: 1, title: 'Fox', image: AssetPath.fox, audio: 'audio'),
+  static const List<CommonContentModel> animals = [
+    CommonContentModel(
+        id: 1, title: 'Fox', image: AssetPath.fox, audio: 'audio'),
     CommonContentModel(
         id: 2, title: 'Panda', image: AssetPath.panda, audio: 'audio'),
     CommonContentModel(
@@ -304,10 +368,12 @@ class EnglishConstants {
         id: 4, title: 'Monkey', image: AssetPath.monkey, audio: 'audio'),
     CommonContentModel(
         id: 5, title: 'Kangaroo', image: AssetPath.kangaroo, audio: 'audio'),
-    CommonContentModel(id: 6, title: 'Bear', image: AssetPath.bear, audio: 'audio'),
+    CommonContentModel(
+        id: 6, title: 'Bear', image: AssetPath.bear, audio: 'audio'),
     CommonContentModel(
         id: 7, title: 'Tiger', image: AssetPath.tiger, audio: 'audio'),
-    CommonContentModel(id: 8, title: 'Lion', image: AssetPath.lion, audio: 'audio'),
+    CommonContentModel(
+        id: 8, title: 'Lion', image: AssetPath.lion, audio: 'audio'),
   ];
 
   // Birds
@@ -318,11 +384,11 @@ class EnglishConstants {
         id: 2, title: 'Magpie', image: AssetPath.magpie, audio: 'audio'),
     CommonContentModel(
         id: 3, title: 'Vulture', image: AssetPath.vulture, audio: 'audio'),
-    CommonContentModel(id: 4, title: 'Crow', image: AssetPath.crow, audio: 'audio'),
+    CommonContentModel(
+        id: 4, title: 'Crow', image: AssetPath.crow, audio: 'audio'),
     CommonContentModel(
         id: 5, title: 'Eagle', image: AssetPath.eagle, audio: 'audio'),
     CommonContentModel(
         id: 6, title: 'Pigeon', image: AssetPath.pigeon, audio: 'audio'),
   ];
-
 }
