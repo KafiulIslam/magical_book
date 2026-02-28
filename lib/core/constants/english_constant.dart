@@ -12,6 +12,7 @@ import 'asset_path.dart';
 
 // Contains all constant values and lists related to English feature
 class EnglishConstants {
+
   // List of English learning categories
   static const List<Category> englishCategories = [
     Category(
@@ -359,21 +360,21 @@ class EnglishConstants {
   // Animals
   static const List<CommonContentModel> animals = [
     CommonContentModel(
-        id: 1, title: 'Fox', image: AssetPath.fox, audio: 'audio'),
+        id: 1, title: 'Fox', image: AssetPath.fox, audio: AudioPath.animalFox),
     CommonContentModel(
-        id: 2, title: 'Panda', image: AssetPath.panda, audio: 'audio'),
+        id: 2, title: 'Panda', image: AssetPath.panda, audio: AudioPath.animalPanda),
     CommonContentModel(
-        id: 3, title: 'Zebra', image: AssetPath.zebra, audio: 'audio'),
+        id: 3, title: 'Zebra', image: AssetPath.zebra, audio: AudioPath.animalZebra),
     CommonContentModel(
-        id: 4, title: 'Monkey', image: AssetPath.monkey, audio: 'audio'),
+        id: 4, title: 'Monkey', image: AssetPath.monkey, audio: AudioPath.animalMonkey),
     CommonContentModel(
-        id: 5, title: 'Kangaroo', image: AssetPath.kangaroo, audio: 'audio'),
+        id: 5, title: 'Kangaroo', image: AssetPath.kangaroo, audio: AudioPath.animalKangaroo),
     CommonContentModel(
-        id: 6, title: 'Bear', image: AssetPath.bear, audio: 'audio'),
+        id: 6, title: 'Bear', image: AssetPath.bear, audio: AudioPath.animalBear),
     CommonContentModel(
-        id: 7, title: 'Tiger', image: AssetPath.tiger, audio: 'audio'),
+        id: 7, title: 'Tiger', image: AssetPath.tiger, audio: AudioPath.animalTiger),
     CommonContentModel(
-        id: 8, title: 'Lion', image: AssetPath.lion, audio: 'audio'),
+        id: 8, title: 'Lion', image: AssetPath.lion, audio: AudioPath.animalLion),
   ];
 
   // Birds
