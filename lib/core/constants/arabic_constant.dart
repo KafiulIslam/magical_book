@@ -41,13 +41,6 @@ class ArabicConstants {
       color: AppColors.reward,
       route: Routes.arabicAllahNames,
     ),
-    // Category(
-    //   title: 'ইসলামিক ইতিহাস',
-    //   subtitle: 'Islamic History',
-    //   icon: Icons.history,
-    //   color: AppColors.reward,
-    //   route: Routes.arabicHistory,
-    // ),
   ];
 
   // List of Arabic alphabet (ا to ي)
@@ -322,60 +315,6 @@ class ArabicConstants {
         image: AssetPath.allahOporup,
         audio: AudioPath.allahTumi),
   ];
-
-  // Surah List
-  // static List<MultiplicationModel> historyList = [
-  //   MultiplicationModel(
-  //       id: 1,
-  //       title: '৬',
-  //       subTitle: 'মনের ঘরেতে রেখেছি যারে',
-  //       image: AssetPath.monerGhore),
-  //   MultiplicationModel(
-  //       id: 2,
-  //       title: '৭',
-  //       subTitle: 'মুহাম্মাদ নাবীনা',
-  //       image: AssetPath.muhammad),
-  //   MultiplicationModel(
-  //       id: 3,
-  //       title: '৯',
-  //       subTitle: 'কুরআন মধুরও বানী',
-  //       image: AssetPath.quranModhur),
-  //   MultiplicationModel(
-  //       id: 4,
-  //       title: '১',
-  //       subTitle: 'বাবা মানে হাজার বিকেল',
-  //       image: AssetPath.babaMane),
-  //   MultiplicationModel(
-  //       id: 5,
-  //       title: '২',
-  //       subTitle: 'আমি চাঁদকে বলি তুমি সুন্দর নও',
-  //       image: AssetPath.chadKBoli),
-  //   MultiplicationModel(
-  //       id: 6,
-  //       title: '৩',
-  //       subTitle: 'হাজবি রাব্বি জাল্লাহ',
-  //       image: AssetPath.hasbiRabbi),
-  //   MultiplicationModel(
-  //       id: 7,
-  //       title: '৪',
-  //       subTitle: 'লা ইলাহা ইল্লালাহ',
-  //       image: AssetPath.laIlaha),
-  //   MultiplicationModel(
-  //       id: 8,
-  //       title: '৫',
-  //       subTitle: 'মেহেরবান তুমি মেহেরবান',
-  //       image: AssetPath.meherban),
-  //   MultiplicationModel(
-  //       id: 9,
-  //       title: '৮',
-  //       subTitle: 'মুস্তফা মুস্তফা',
-  //       image: AssetPath.mustafa),
-  //   MultiplicationModel(
-  //       id: 10,
-  //       title: '১০',
-  //       subTitle: 'রহমান ইয়া রহমান',
-  //       image: AssetPath.rahman),
-  // ];
 
   // 99 Names of Allah (Asma-ul-Husna)
   static const List<AllahNameModel> allahNames = [

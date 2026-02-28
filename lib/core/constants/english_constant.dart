@@ -237,7 +237,6 @@ class EnglishConstants {
         title: 'Sun Flower',
         image: AssetPath.surjo,
         audio: AudioPath.flowerSunFlower),
-    // BanglaFulModel(id: 6, name: 'বেলি', image: AssetPath.surjo, audio: 'audio'),
     CommonContentModel(
         id: 7,
         title: 'Parijat',
@@ -266,25 +265,12 @@ class EnglishConstants {
         audio: 'audio'),
     FigureModel(
         id: 4, title: 'Rectangle', image: Icons.rectangle, audio: 'audio'),
-    // FigureModel(
-    //     id: 5, title: 'Rhombus', image: Icons.diamond, audio: 'audio'),
     FigureModel(id: 6, title: 'Hexagon', image: Icons.hexagon, audio: 'audio'),
-    // FigureModel(
-    //     id: 7, title: 'Semi Circle', image: Icons.circl, audio: 'audio'),
     FigureModel(
         id: 8, title: 'Pentagon', image: Icons.pentagon, audio: 'audio'),
     FigureModel(id: 9, title: 'Star', image: Icons.star, audio: 'audio'),
-
-    // FigureModel(id: 10, title: 'Oval', image: Icons.egg, audio: 'audio'),
-    // FigureModel(
-    //     id: 11, title: 'Cylinder', image: AssetPath.shuly, audio: 'audio'),
     FigureModel(
         id: 12, title: 'Heart', image: Icons.favorite_outlined, audio: 'audio'),
-    // FigureModel(
-    //     id: 13,
-    //     title: 'Cone',
-    //     image: AssetPath.krisnochura,
-    //     audio: 'audio'),
   ];
 
   // flowers

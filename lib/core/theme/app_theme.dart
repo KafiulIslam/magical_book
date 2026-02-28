@@ -51,17 +51,6 @@ class AppTheme {
       ),
     ),
 
-    //Cards (surface usage)
-    // cardTheme: CardTheme(
-    //   color: AppColors.surface,
-    //   elevation: 3,
-    //   shadowColor: AppColors.shadow,
-    //   shape: RoundedRectangleBorder(
-    //     borderRadius: BorderRadius.circular(20),
-    //   ),
-    //   margin: const EdgeInsets.all(8),
-    // ),
-
     // Progress indicators
     progressIndicatorTheme: const ProgressIndicatorThemeData(
       color: AppColors.success,

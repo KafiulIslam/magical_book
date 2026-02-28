@@ -53,14 +53,7 @@ class AppRouter {
 
   static final _router = GoRouter(
     initialLocation: Routes.dashboard,
-    redirect: (context, state) {
-      //! Uncomment the following lines if you want to redirect to login if access token is not present
-      // if (!AppSharedPreferences.sharedPreferences
-      //     .containsKey(AppStrings.accessToken)) {
-      //   return Routes.userLogin;
-      // }
-      return null;
-    },
+    redirect: (context, state) => null,
     routes: [
       GoRoute(
         path: Routes.dashboard,

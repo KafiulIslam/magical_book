@@ -21,8 +21,6 @@ class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
 
   final AudioPlayerService _audioPlayerService = AudioPlayerService();
 
-
-
   void _onAudioStateChanged() {
     if (mounted) setState(() {});
   }
@@ -33,7 +31,6 @@ class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
     _audioPlayerService.addStateChangeHandler(_onAudioStateChanged);
     _audioPlayerService.addCompletionHandler(_onAudioStateChanged);
   }
-
 
   @override
   void dispose() {
