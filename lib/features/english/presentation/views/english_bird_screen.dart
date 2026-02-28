@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/english_constant.dart';
-import '../../../../core/services/tts_service.dart';
+import '../../../../core/services/audio_player_service.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
-import '../../../bangla/presentation/widgets/bangla_fruit_card.dart';
+import '../widgets/english_bird_card.dart';
 
 class EnglishBirdScreen extends StatefulWidget {
   const EnglishBirdScreen({super.key});
@@ -15,26 +15,24 @@ class EnglishBirdScreen extends StatefulWidget {
 }
 
 class _EnglishBirdScreenState extends State<EnglishBirdScreen> {
+  final AudioPlayerService _audioPlayerService = AudioPlayerService();
 
-  late final TtsService _ttsService;
-
-  void _onTtsStateChanged() {
-    if (mounted) {
-      setState(() {});
-    }
+  void _onAudioStateChanged() {
+    if (mounted) setState(() {});
   }
 
   @override
   void initState() {
     super.initState();
-    _ttsService = TtsService();
-    _ttsService.initialize();
-    _ttsService.addStateChangeHandler(_onTtsStateChanged);
+    _audioPlayerService.addStateChangeHandler(_onAudioStateChanged);
+    _audioPlayerService.addCompletionHandler(_onAudioStateChanged);
   }
 
   @override
   void dispose() {
-    _ttsService.removeStateChangeHandler(_onTtsStateChanged);
+    _audioPlayerService.stop();
+    _audioPlayerService.removeStateChangeHandler(_onAudioStateChanged);
+    _audioPlayerService.removeCompletionHandler(_onAudioStateChanged);
     super.dispose();
   }
 
@@ -72,7 +70,7 @@ class _EnglishBirdScreenState extends State<EnglishBirdScreen> {
           itemCount: EnglishConstants.birds.length,
           itemBuilder: (context, index) {
             final bird = EnglishConstants.birds[index];
-            return BanglaFruitCard(
+            return EnglishBirdCard(
               item: bird,
               index: index,
               textStyle: EnglishTypo.headline2,
@@ -81,7 +79,7 @@ class _EnglishBirdScreenState extends State<EnglishBirdScreen> {
               errorIcon: Icons.air_outlined,
               imageFit: BoxFit.contain,
               useFlexibleForText: true,
-              ttsService: _ttsService,
+              audioPlayerService: _audioPlayerService,
             );
           },
         ),

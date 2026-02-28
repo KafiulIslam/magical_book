@@ -380,16 +380,16 @@ class EnglishConstants {
   // Birds
   static const List<CommonContentModel> birds = [
     CommonContentModel(
-        id: 1, title: 'Peacock', image: AssetPath.peacock, audio: 'audio'),
+        id: 1, title: 'Peacock', image: AssetPath.peacock, audio: AudioPath.birdPeacock),
     CommonContentModel(
-        id: 2, title: 'Magpie', image: AssetPath.magpie, audio: 'audio'),
+        id: 2, title: 'Magpie', image: AssetPath.magpie, audio: AudioPath.birdMagpie),
     CommonContentModel(
-        id: 3, title: 'Vulture', image: AssetPath.vulture, audio: 'audio'),
+        id: 3, title: 'Vulture', image: AssetPath.vulture, audio: AudioPath.birdVulture),
     CommonContentModel(
-        id: 4, title: 'Crow', image: AssetPath.crow, audio: 'audio'),
+        id: 4, title: 'Crow', image: AssetPath.crow, audio: AudioPath.birdCrow),
     CommonContentModel(
-        id: 5, title: 'Eagle', image: AssetPath.eagle, audio: 'audio'),
+        id: 5, title: 'Eagle', image: AssetPath.eagle, audio: AudioPath.birdEagle),
     CommonContentModel(
-        id: 6, title: 'Pigeon', image: AssetPath.pigeon, audio: 'audio'),
+        id: 6, title: 'Pigeon', image: AssetPath.pigeon, audio: AudioPath.birdPigeon),
   ];
 }

@@ -223,4 +223,12 @@ class AudioPath {
   static const animalTiger = "assets/audio/animal/tiger.MP3";
   static const animalZebra = "assets/audio/animal/zebra.MP3";
 
+  // Birds audio path
+  static const birdCrow = "assets/audio/birds/crow.MP3";
+  static const birdEagle = "assets/audio/birds/eagle.MP3";
+  static const birdMagpie = "assets/audio/birds/magpie.MP3";
+  static const birdPeacock = "assets/audio/birds/peacock.MP3";
+  static const birdPigeon = "assets/audio/birds/piegon.MP3";
+  static const birdVulture = "assets/audio/birds/vulture.MP3";
+
 }
