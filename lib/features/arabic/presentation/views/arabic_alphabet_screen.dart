@@ -4,8 +4,10 @@ import 'package:gap/gap.dart';
 import 'package:magical_book/features/arabic/model/arabic_alphabet_model.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/arabic_constant.dart';
+import '../../../../core/constants/audio_feature_keys.dart';
 import '../../../../core/constants/audio_path.dart';
 import '../../../../core/services/audio_player_service.dart';
+import '../../../../core/services/audio_toggle_service.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
 import '../widgets/arabic_alphabet_card.dart';
@@ -20,6 +22,7 @@ class ArabicAlphabetScreen extends StatefulWidget {
 class _ArabicAlphabetScreenState extends State<ArabicAlphabetScreen> {
   static const String _alphabetItemId = 'arabic_alphabet_full';
   final AudioPlayerService _audioPlayerService = AudioPlayerService();
+  final AudioToggleService _audioToggleService = AudioToggleService();
 
   void _onAudioStateChanged() {
     if (mounted) setState(() {});
@@ -29,11 +32,14 @@ class _ArabicAlphabetScreenState extends State<ArabicAlphabetScreen> {
   void initState() {
     super.initState();
     _audioPlayerService.addStateChangeHandler(_onAudioStateChanged);
+    _audioToggleService.initialize();
+    _audioToggleService.addStateChangeHandler(_onAudioStateChanged);
   }
 
   @override
   void dispose() {
     _audioPlayerService.removeStateChangeHandler(_onAudioStateChanged);
+    _audioToggleService.removeStateChangeHandler(_onAudioStateChanged);
     super.dispose();
   }
 
@@ -50,6 +56,8 @@ class _ArabicAlphabetScreenState extends State<ArabicAlphabetScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isGlobalEnabled =
+        _audioToggleService.isFeatureEnabled(AudioFeatureKeys.arabicAlphabet);
     final isPlaying = _audioPlayerService.isPlayingItem(_alphabetItemId);
 
     return Scaffold(
@@ -60,7 +68,22 @@ class _ArabicAlphabetScreenState extends State<ArabicAlphabetScreen> {
         ),
         actions: [
           IconButton(
-            onPressed: _togglePlayStop,
+            onPressed: () async {
+              final enabled = await _audioToggleService.toggleFeature(
+                AudioFeatureKeys.arabicAlphabet,
+              );
+              if (!enabled) {
+                await _audioPlayerService.stop();
+              }
+            },
+            icon: Icon(
+              isGlobalEnabled ? Icons.volume_up : Icons.volume_off,
+              color: AppColors.primary,
+              size: 28.sp,
+            ),
+          ),
+          IconButton(
+            onPressed: !isGlobalEnabled ? null : _togglePlayStop,
             icon: Icon(
               isPlaying ? Icons.stop_circle : Icons.play_circle_fill,
               color: AppColors.primary,
@@ -90,6 +113,9 @@ class _ArabicAlphabetScreenState extends State<ArabicAlphabetScreen> {
   }
 
   Future<void> _togglePlayStop() async {
+    if (!_audioToggleService.isFeatureEnabled(AudioFeatureKeys.arabicAlphabet)) {
+      return;
+    }
     final isPlaying = _audioPlayerService.isPlayingItem(_alphabetItemId);
     if (isPlaying) {
       await _audioPlayerService.stop();
