@@ -10,6 +10,7 @@ import '../../../../core/services/audio_player_service.dart';
 import '../../../../core/services/audio_toggle_service.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
+import '../../../../core/widgets/listen_pick_quiz_screen.dart';
 import '../widgets/arabic_alphabet_card.dart';
 
 class ArabicAlphabetScreen extends StatefulWidget {
@@ -67,6 +68,15 @@ class _ArabicAlphabetScreenState extends State<ArabicAlphabetScreen> {
           style: BanglaTypo.headline1.copyWith(fontSize: 24.sp),
         ),
         actions: [
+          IconButton(
+            onPressed: _openQuiz,
+            icon: Icon(
+              Icons.quiz_outlined,
+              color: AppColors.primary,
+              size: 26.sp,
+            ),
+            tooltip: 'Quiz',
+          ),
           IconButton(
             onPressed: () async {
               final enabled = await _audioToggleService.toggleFeature(
@@ -150,6 +160,29 @@ class _ArabicAlphabetScreenState extends State<ArabicAlphabetScreen> {
             audioPlayerService: _audioPlayerService,
           );
         },
+      ),
+    );
+  }
+
+  void _openQuiz() {
+    final items = ArabicConstants.arabicAlphabet
+        .map(
+          (letter) => ListenPickQuizItem(
+            id: 'ar_${letter.id}_${letter.letter}',
+            label: letter.letter,
+            audioPath: letter.audioPath,
+          ),
+        )
+        .toList();
+
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => ListenPickQuizScreen(
+          title: 'Arabic Alphabet Quiz',
+          items: items,
+          colorPalette: CardColorPalettes.alphabet,
+          useRtlLayout: true,
+        ),
       ),
     );
   }

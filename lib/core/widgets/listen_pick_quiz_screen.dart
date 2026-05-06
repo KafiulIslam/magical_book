@@ -24,12 +24,14 @@ class ListenPickQuizScreen extends StatefulWidget {
   final String title;
   final List<ListenPickQuizItem> items;
   final List<List<Color>> colorPalette;
+  final bool useRtlLayout;
 
   const ListenPickQuizScreen({
     super.key,
     required this.title,
     required this.items,
     required this.colorPalette,
+    this.useRtlLayout = false,
   });
 
   @override
@@ -268,43 +270,48 @@ class _ListenPickQuizScreenState extends State<ListenPickQuizScreen> {
             ),
             const SizedBox(height: 10),
             Expanded(
-              child: GridView.builder(
-                itemCount: widget.items.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  childAspectRatio: 1.05,
-                ),
-                itemBuilder: (context, index) {
-                  final item = widget.items[index];
-                  final colors = widget.colorPalette[index % widget.colorPalette.length];
-                  return InkWell(
-                    onTap: () => _onSelect(item),
-                    borderRadius: BorderRadius.circular(18),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(18),
-                        gradient: LinearGradient(colors: colors),
-                        border: Border.all(
-                          color: _borderColorFor(item),
-                          width: 3,
-                        ),
-                      ),
-                      child: Center(
-                        child: Text(
-                          item.label,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w800,
-                            fontSize: 24,
+              child: Directionality(
+                textDirection:
+                    widget.useRtlLayout ? TextDirection.rtl : TextDirection.ltr,
+                child: GridView.builder(
+                  itemCount: widget.items.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    childAspectRatio: 1.05,
+                  ),
+                  itemBuilder: (context, index) {
+                    final item = widget.items[index];
+                    final colors =
+                        widget.colorPalette[index % widget.colorPalette.length];
+                    return InkWell(
+                      onTap: () => _onSelect(item),
+                      borderRadius: BorderRadius.circular(18),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(18),
+                          gradient: LinearGradient(colors: colors),
+                          border: Border.all(
+                            color: _borderColorFor(item),
+                            width: 3,
                           ),
-                          textAlign: TextAlign.center,
+                        ),
+                        child: Center(
+                          child: Text(
+                            item.label,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w800,
+                              fontSize: 24,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
             ),
           ],
