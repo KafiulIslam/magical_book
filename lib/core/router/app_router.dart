@@ -7,6 +7,7 @@ import '../../features/arabic/presentation/views/arabic_alphabet_screen.dart';
 import '../../features/arabic/presentation/views/arabic_surah_screen.dart';
 import '../../features/arabic/presentation/views/arabic_gojol_screen.dart';
 import '../../features/arabic/presentation/views/allah_names_screen.dart';
+import '../../features/arabic/presentation/views/arabic_months_name_screen.dart';
 import '../../features/arabic/presentation/views/surah_details_screen.dart';
 import '../../features/math/model/multiplication_model.dart';
 import '../../features/bangla/presentation/views/bangla_page.dart';
@@ -270,6 +271,13 @@ class AppRouter {
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const AllahNamesScreen(),
+                ),
+              ),
+              GoRoute(
+                path: '/months-names',
+                pageBuilder: (context, state) => fadeTransitionPage(
+                  state: state,
+                  child: const ArabicMonthsNameScreen(),
                 ),
               ),
             ],

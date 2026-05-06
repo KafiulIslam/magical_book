@@ -6,6 +6,7 @@ import '../../features/bangla/models/category.dart';
 import '../../features/math/model/multiplication_model.dart';
 import '../../features/arabic/model/allah_name_model.dart';
 import '../../features/arabic/model/arabic_alphabet_model.dart';
+import '../../features/arabic/model/arabic_month_model.dart';
 import 'asset_path.dart';
 
 // Contains all constant values and lists related to Arabic feature
@@ -40,6 +41,89 @@ class ArabicConstants {
       icon: Icons.label_important_outline,
       color: AppColors.reward,
       route: Routes.arabicAllahNames,
+    ),
+    Category(
+      title: 'আরবি মাসের নাম',
+      subtitle: 'Arabic Months (Hijri)',
+      icon: Icons.calendar_month,
+      color: AppColors.info,
+      route: Routes.arabicMonthsNames,
+    ),
+  ];
+
+  /// Twelve Hijri (Islamic calendar) months
+  static const List<ArabicMonthModel> arabicMonthsNames = [
+    ArabicMonthModel(
+      id: 1,
+      arabicName: 'المُحرَّم',
+      transliteration: 'Muharram',
+      banglaName: 'মুহাররম',
+    ),
+    ArabicMonthModel(
+      id: 2,
+      arabicName: 'صَفَر',
+      transliteration: 'Safar',
+      banglaName: 'সফর',
+    ),
+    ArabicMonthModel(
+      id: 3,
+      arabicName: 'رَبِيع ٱلْأَوَّل',
+      transliteration: "Rabi' al-Awwal",
+      banglaName: 'রবিউল আওয়াল',
+    ),
+    ArabicMonthModel(
+      id: 4,
+      arabicName: 'رَبِيع ٱلْآخِر',
+      transliteration: "Rabi' al-Akhir",
+      banglaName: 'রবিউস সানি',
+    ),
+    ArabicMonthModel(
+      id: 5,
+      arabicName: 'جُمَادَىٰ ٱلْأُولَىٰ',
+      transliteration: 'Jumada al-Ula',
+      banglaName: 'জমাদিউল আওয়াল',
+    ),
+    ArabicMonthModel(
+      id: 6,
+      arabicName: 'جُمَادَىٰ ٱلْآخِرَة',
+      transliteration: 'Jumada al-Akhira',
+      banglaName: 'জমাদিউস সানি',
+    ),
+    ArabicMonthModel(
+      id: 7,
+      arabicName: 'رَجَب',
+      transliteration: 'Rajab',
+      banglaName: 'রজব',
+    ),
+    ArabicMonthModel(
+      id: 8,
+      arabicName: 'شَعْبَان',
+      transliteration: "Sha'ban",
+      banglaName: 'শাবান',
+    ),
+    ArabicMonthModel(
+      id: 9,
+      arabicName: 'رَمَضَان',
+      transliteration: 'Ramadan',
+      banglaName: 'রমজান',
+    ),
+    ArabicMonthModel(
+      id: 10,
+      arabicName: 'شَوَّال',
+      transliteration: 'Shawwal',
+      banglaName: 'শাওয়াল',
+    ),
+    ArabicMonthModel(
+      id: 11,
+      arabicName: 'ذُو ٱلْقَعْدَة',
+      transliteration: "Dhu al-Qa'dah",
+      banglaName: 'জিলকদ',
+    ),
+    ArabicMonthModel(
+      id: 12,
+      arabicName: 'ذُو ٱلْحِجَّة',
+      transliteration: 'Dhu al-Hijjah',
+      banglaName: 'জিলহজ',
     ),
   ];
 
@@ -262,7 +346,7 @@ class ArabicConstants {
         audio: AudioPath.lahab),
   ];
 
-  // Surah List
+  // Gajal List
   static List<MultiplicationModel> gojolList = [
     MultiplicationModel(
         id: 1,

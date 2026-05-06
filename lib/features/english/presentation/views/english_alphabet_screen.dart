@@ -3,11 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/audio_path.dart';
+import '../../../../core/constants/audio_feature_keys.dart';
 import '../../../../core/constants/english_constant.dart';
 import '../../../../core/services/audio_player_service.dart';
+import '../../../../core/services/audio_toggle_service.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/common_alphabet_card.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
+import '../../../../core/widgets/listen_pick_quiz_screen.dart';
 
 class EnglishAlphabetScreen extends StatefulWidget {
   const EnglishAlphabetScreen({super.key});
@@ -20,6 +23,7 @@ class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
   static const String _headerAudioItemId = 'english_alphabet_header';
 
   final AudioPlayerService _audioPlayerService = AudioPlayerService();
+  final AudioToggleService _audioToggleService = AudioToggleService();
 
   void _onAudioStateChanged() {
     if (mounted) setState(() {});
@@ -30,6 +34,8 @@ class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
     super.initState();
     _audioPlayerService.addStateChangeHandler(_onAudioStateChanged);
     _audioPlayerService.addCompletionHandler(_onAudioStateChanged);
+    _audioToggleService.initialize();
+    _audioToggleService.addStateChangeHandler(_onAudioStateChanged);
   }
 
   @override
@@ -37,6 +43,7 @@ class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
     _audioPlayerService.stop();
     _audioPlayerService.removeStateChangeHandler(_onAudioStateChanged);
     _audioPlayerService.removeCompletionHandler(_onAudioStateChanged);
+    _audioToggleService.removeStateChangeHandler(_onAudioStateChanged);
     super.dispose();
   }
 
@@ -53,12 +60,36 @@ class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isGlobalEnabled =
+        _audioToggleService.isFeatureEnabled(AudioFeatureKeys.englishAlphabet);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
           'Alphabet',
           style: EnglishTypo.headline1.copyWith(fontSize: 24.sp),
         ),
+        actions: [
+          IconButton(
+            onPressed: _openQuiz,
+            icon: const Icon(Icons.quiz_outlined, color: AppColors.primary),
+          ),
+          IconButton(
+            onPressed: () async {
+              final enabled = await _audioToggleService.toggleFeature(
+                AudioFeatureKeys.englishAlphabet,
+              );
+              if (!enabled) {
+                await _audioPlayerService.stop();
+              }
+            },
+            icon: Icon(
+              isGlobalEnabled ? Icons.volume_up : Icons.volume_off,
+              color: AppColors.primary,
+              size: 26.sp,
+            ),
+          ),
+        ],
         backgroundColor: AppColors.background,
         elevation: 0,
       ),
@@ -83,7 +114,32 @@ class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
     );
   }
 
+  void _openQuiz() {
+    final items = EnglishConstants.englishAlphabet
+        .map(
+          (e) => ListenPickQuizItem(
+            id: e.letter,
+            label: e.letter,
+            audioPath: e.audioPath,
+          ),
+        )
+        .toList();
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => ListenPickQuizScreen(
+          title: 'Alphabet Quiz',
+          items: items,
+          colorPalette: CardColorPalettes.alphabet,
+        ),
+      ),
+    );
+  }
+
   Future<void> _toggleHeaderAudio(String audioPath) async {
+    if (!_audioToggleService
+        .isFeatureEnabled(AudioFeatureKeys.englishAlphabet)) {
+      return;
+    }
     final isPlaying = _audioPlayerService.isPlayingItem(_headerAudioItemId);
     if (isPlaying) {
       await _audioPlayerService.stop();
@@ -100,6 +156,8 @@ class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
     required String emoji,
     required String audioPath,
   }) {
+    final isGlobalEnabled =
+        _audioToggleService.isFeatureEnabled(AudioFeatureKeys.englishAlphabet);
     final bool isPlaying = _audioPlayerService.isPlayingItem(_headerAudioItemId);
 
     return Container(
@@ -161,7 +219,7 @@ class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
             Material(
               color: Colors.transparent,
               child: InkWell(
-                onTap: () => _toggleHeaderAudio(audioPath),
+                onTap: !isGlobalEnabled ? null : () => _toggleHeaderAudio(audioPath),
                 borderRadius: BorderRadius.circular(8),
                 child: Container(
                   padding: const EdgeInsets.all(8.0),
@@ -170,7 +228,9 @@ class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
                     color: Colors.white.withOpacity(0.3),
                   ),
                   child: Icon(
-                    isPlaying ? Icons.stop_rounded : Icons.play_arrow_rounded,
+                    isGlobalEnabled
+                        ? (isPlaying ? Icons.stop_rounded : Icons.play_arrow_rounded)
+                        : Icons.volume_off,
                     color: Colors.white,
                     size: 24.sp,
                   ),
@@ -201,6 +261,8 @@ class _EnglishAlphabetScreenState extends State<EnglishAlphabetScreen> {
           colorPalette: CardColorPalettes.alphabet,
           audioPath: item.audioPath,
           audioPlayerService: _audioPlayerService,
+          featureKey: AudioFeatureKeys.englishAlphabet,
+          cardId: item.letter,
         );
       },
     );

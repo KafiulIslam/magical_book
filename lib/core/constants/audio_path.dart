@@ -231,4 +231,9 @@ class AudioPath {
   static const birdPigeon = "assets/audio/birds/piegon.MP3";
   static const birdVulture = "assets/audio/birds/vulture.MP3";
 
+
+  // Others
+  static const correctAnswer = "assets/audio/others/correct.mp3";
+  static const wrongAnswer = "assets/audio/others/wrong.mp3";
+
 }

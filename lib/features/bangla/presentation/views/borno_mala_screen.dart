@@ -6,9 +6,12 @@ import 'package:magical_book/features/bangla/presentation/widgets/borno_mala_car
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/bangla_constants.dart';
 import '../../../../core/constants/audio_path.dart';
+import '../../../../core/constants/audio_feature_keys.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
 import '../../../../core/services/audio_player_service.dart';
+import '../../../../core/services/audio_toggle_service.dart';
+import '../../../../core/widgets/listen_pick_quiz_screen.dart';
 
 class BornoMalaScreen extends StatefulWidget {
   const BornoMalaScreen({super.key});
@@ -19,6 +22,7 @@ class BornoMalaScreen extends StatefulWidget {
 
 class _BornoMalaScreenState extends State<BornoMalaScreen> {
   final AudioPlayerService _audioPlayerService = AudioPlayerService();
+  final AudioToggleService _audioToggleService = AudioToggleService();
 
   void _onStateChanged() {
     if (mounted) {
@@ -30,11 +34,14 @@ class _BornoMalaScreenState extends State<BornoMalaScreen> {
   void initState() {
     super.initState();
     _audioPlayerService.addStateChangeHandler(_onStateChanged);
+    _audioToggleService.initialize();
+    _audioToggleService.addStateChangeHandler(_onStateChanged);
   }
 
   @override
   void dispose() {
     _audioPlayerService.removeStateChangeHandler(_onStateChanged);
+    _audioToggleService.removeStateChangeHandler(_onStateChanged);
     super.dispose();
   }
 
@@ -51,12 +58,34 @@ class _BornoMalaScreenState extends State<BornoMalaScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isGlobalEnabled =
+        _audioToggleService.isFeatureEnabled(AudioFeatureKeys.banglaBornoMala);
     return Scaffold(
       appBar: AppBar(
         title: Text(
           'বর্ণমালা',
           style: BanglaTypo.headline1.copyWith(fontSize: 24.sp),
         ),
+        actions: [
+          IconButton(
+            onPressed: _openQuiz,
+            icon: const Icon(Icons.quiz_outlined, color: AppColors.primary),
+          ),
+          IconButton(
+            onPressed: () async {
+              final enabled = await _audioToggleService.toggleFeature(
+                AudioFeatureKeys.banglaBornoMala,
+              );
+              if (!enabled) {
+                await _audioPlayerService.stop();
+              }
+            },
+            icon: Icon(
+              isGlobalEnabled ? Icons.volume_up : Icons.volume_off,
+              color: AppColors.primary,
+            ),
+          ),
+        ],
         backgroundColor: AppColors.background,
         elevation: 0,
       ),
@@ -98,6 +127,31 @@ class _BornoMalaScreenState extends State<BornoMalaScreen> {
     );
   }
 
+  void _openQuiz() {
+    final letters = [
+      ...BanglaConstants.banglaShorobornos,
+      ...BanglaConstants.banglaByanjonbornos,
+    ];
+    final items = letters
+        .map(
+          (e) => ListenPickQuizItem(
+            id: 'bn_${e.id}_${e.title}',
+            label: e.title,
+            audioPath: e.audio,
+          ),
+        )
+        .toList();
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => ListenPickQuizScreen(
+          title: 'বর্ণমালা কুইজ',
+          items: items,
+          colorPalette: CardColorPalettes.alphabet,
+        ),
+      ),
+    );
+  }
+
   Widget _buildHeader({
     required String title,
     required String subtitle,
@@ -105,6 +159,8 @@ class _BornoMalaScreenState extends State<BornoMalaScreen> {
     required String emoji,
     required String audioPath,
   }) {
+    final isGlobalEnabled =
+        _audioToggleService.isFeatureEnabled(AudioFeatureKeys.banglaBornoMala);
     final bool isPlaying = _audioPlayerService.isPlayingAudio(audioPath);
 
     return Container(
@@ -164,7 +220,9 @@ class _BornoMalaScreenState extends State<BornoMalaScreen> {
           ),
           if (audioPath.isNotEmpty)
             InkWell(
-              onTap: () async {
+              onTap: !isGlobalEnabled
+                  ? null
+                  : () async {
                 if (isPlaying) {
                   await _audioPlayerService.stop();
                 } else {
@@ -178,7 +236,9 @@ class _BornoMalaScreenState extends State<BornoMalaScreen> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Icon(
-                    isPlaying ? Icons.pause : Icons.play_arrow_rounded,
+                    isGlobalEnabled
+                        ? (isPlaying ? Icons.pause : Icons.play_arrow_rounded)
+                        : Icons.volume_off,
                     color: Colors.white,
                     size: 24.sp,
                   ),
@@ -209,6 +269,8 @@ class _BornoMalaScreenState extends State<BornoMalaScreen> {
           fontFamily: 'Kalpurush',
           colorPalette: CardColorPalettes.alphabet,
           audioPath: letter.audio,
+          featureKey: AudioFeatureKeys.banglaBornoMala,
+          cardId: letter.id.toString(),
         );
       },
     );

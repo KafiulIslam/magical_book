@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/audio_feature_keys.dart';
 import '../../../../core/constants/math_constant.dart';
+import '../../../../core/services/audio_toggle_service.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
 import '../../../../core/services/tts_service.dart';
+import '../../../../core/widgets/listen_pick_quiz_screen.dart';
 import '../widgets/math_number_card.dart';
 
 class BanglaNumbersScreen extends StatefulWidget {
@@ -17,12 +20,25 @@ class BanglaNumbersScreen extends StatefulWidget {
 
 class _BanglaNumbersScreenState extends State<BanglaNumbersScreen> {
   late final TtsService _ttsService;
+  final AudioToggleService _audioToggleService = AudioToggleService();
+
+  void _onStateChanged() {
+    if (mounted) setState(() {});
+  }
 
   @override
   void initState() {
     super.initState();
     _ttsService = TtsService();
     _ttsService.initialize();
+    _audioToggleService.initialize();
+    _audioToggleService.addStateChangeHandler(_onStateChanged);
+  }
+
+  @override
+  void dispose() {
+    _audioToggleService.removeStateChangeHandler(_onStateChanged);
+    super.dispose();
   }
 
   int _getCrossAxisCount(BuildContext context) {
@@ -38,12 +54,29 @@ class _BanglaNumbersScreenState extends State<BanglaNumbersScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isGlobalEnabled =
+        _audioToggleService.isFeatureEnabled(AudioFeatureKeys.banglaNumbers);
     return Scaffold(
       appBar: AppBar(
         title: Text(
           'বাংলা সংখ্যা',
           style: BanglaTypo.headline1.copyWith(fontSize: 24.sp),
         ),
+        actions: [
+          IconButton(
+            onPressed: _openQuiz,
+            icon: const Icon(Icons.quiz_outlined, color: AppColors.primary),
+          ),
+          IconButton(
+            onPressed: () => _audioToggleService.toggleFeature(
+              AudioFeatureKeys.banglaNumbers,
+            ),
+            icon: Icon(
+              isGlobalEnabled ? Icons.volume_up : Icons.volume_off,
+              color: AppColors.primary,
+            ),
+          ),
+        ],
         backgroundColor: AppColors.background,
         elevation: 0,
       ),
@@ -58,6 +91,27 @@ class _BanglaNumbersScreenState extends State<BanglaNumbersScreen> {
             // Numbers Grid
             _buildNumbersGrid(context),
           ],
+        ),
+      ),
+    );
+  }
+
+  void _openQuiz() {
+    final items = MathConstants.banglaNumbers
+        .map(
+          (number) => ListenPickQuizItem(
+            id: 'bn_num_$number',
+            label: number,
+            speakText: number,
+          ),
+        )
+        .toList();
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => ListenPickQuizScreen(
+          title: 'বাংলা সংখ্যা কুইজ',
+          items: items,
+          colorPalette: CardColorPalettes.alphabet,
         ),
       ),
     );
@@ -139,6 +193,8 @@ class _BanglaNumbersScreenState extends State<BanglaNumbersScreen> {
           fontFamily: 'Kalpurush',
           colorPalette: CardColorPalettes.alphabet,
           ttsService: _ttsService,
+          featureKey: AudioFeatureKeys.banglaNumbers,
+          cardId: number,
         );
       },
     );

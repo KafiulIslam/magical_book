@@ -39,5 +39,6 @@ class Routes {
   static const String surahDetails = '$arabic/surah/details';
   static const String arabicGhazal = '$arabic/ghazal';
   static const String arabicAllahNames = '$arabic/allah-names';
+  static const String arabicMonthsNames = '$arabic/months-names';
   static const String arabicHistory = '$arabic/history';
 }

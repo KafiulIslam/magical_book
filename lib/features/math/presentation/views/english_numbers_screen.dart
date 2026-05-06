@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/audio_feature_keys.dart';
 import '../../../../core/constants/math_constant.dart';
+import '../../../../core/services/audio_toggle_service.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/widgets/card_color_palettes.dart';
 import '../../../../core/services/tts_service.dart';
+import '../../../../core/widgets/listen_pick_quiz_screen.dart';
 import '../widgets/math_number_card.dart';
 
 class EnglishNumbersScreen extends StatefulWidget {
@@ -17,12 +20,25 @@ class EnglishNumbersScreen extends StatefulWidget {
 
 class _EnglishNumbersScreenState extends State<EnglishNumbersScreen> {
   late final TtsService _ttsService;
+  final AudioToggleService _audioToggleService = AudioToggleService();
+
+  void _onStateChanged() {
+    if (mounted) setState(() {});
+  }
 
   @override
   void initState() {
     super.initState();
     _ttsService = TtsService();
     _ttsService.initialize();
+    _audioToggleService.initialize();
+    _audioToggleService.addStateChangeHandler(_onStateChanged);
+  }
+
+  @override
+  void dispose() {
+    _audioToggleService.removeStateChangeHandler(_onStateChanged);
+    super.dispose();
   }
 
   int _getCrossAxisCount(BuildContext context) {
@@ -38,12 +54,29 @@ class _EnglishNumbersScreenState extends State<EnglishNumbersScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isGlobalEnabled =
+        _audioToggleService.isFeatureEnabled(AudioFeatureKeys.englishNumbers);
     return Scaffold(
       appBar: AppBar(
         title: Text(
           'English Numbers',
           style: EnglishTypo.headline1.copyWith(fontSize: 24.sp),
         ),
+        actions: [
+          IconButton(
+            onPressed: _openQuiz,
+            icon: const Icon(Icons.quiz_outlined, color: AppColors.primary),
+          ),
+          IconButton(
+            onPressed: () => _audioToggleService.toggleFeature(
+              AudioFeatureKeys.englishNumbers,
+            ),
+            icon: Icon(
+              isGlobalEnabled ? Icons.volume_up : Icons.volume_off,
+              color: AppColors.primary,
+            ),
+          ),
+        ],
         backgroundColor: AppColors.background,
         elevation: 0,
       ),
@@ -58,6 +91,44 @@ class _EnglishNumbersScreenState extends State<EnglishNumbersScreen> {
             // Numbers Grid
             _buildNumbersGrid(context),
           ],
+        ),
+      ),
+    );
+  }
+
+  String _numberToWord(String number) {
+    const numberWords = {
+      '0': 'zero',
+      '1': 'one',
+      '2': 'two',
+      '3': 'three',
+      '4': 'four',
+      '5': 'five',
+      '6': 'six',
+      '7': 'seven',
+      '8': 'eight',
+      '9': 'nine',
+      '10': 'ten',
+    };
+    return numberWords[number] ?? number;
+  }
+
+  void _openQuiz() {
+    final items = MathConstants.englishNumbers
+        .map(
+          (number) => ListenPickQuizItem(
+            id: 'en_num_$number',
+            label: number,
+            speakText: _numberToWord(number),
+          ),
+        )
+        .toList();
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => ListenPickQuizScreen(
+          title: 'English Number Quiz',
+          items: items,
+          colorPalette: CardColorPalettes.alphabet,
         ),
       ),
     );
@@ -138,6 +209,8 @@ class _EnglishNumbersScreenState extends State<EnglishNumbersScreen> {
           letter: number,
           colorPalette: CardColorPalettes.alphabet,
           ttsService: _ttsService,
+          featureKey: AudioFeatureKeys.englishNumbers,
+          cardId: number,
         );
       },
     );
