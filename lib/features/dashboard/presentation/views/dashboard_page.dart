@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/router/routes.dart';
 import '../../../../core/theme/app_typography.dart';
+import '../../../../core/widgets/ad_banner_widget.dart';
 
 class DashboardPage extends StatelessWidget {
   final Widget child;
@@ -59,7 +60,12 @@ class DashboardPage extends StatelessWidget {
     final currentIndex = _getCurrentIndex(context);
 
     return Scaffold(
-      body: child,
+      body: Column(
+        children: [
+          Expanded(child: child),
+          const AdBannerWidget(),
+        ],
+      ),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           boxShadow: [

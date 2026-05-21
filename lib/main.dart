@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'core/services/admob_service.dart';
 import 'core/theme/app_theme.dart';
 import 'core/router/app_router.dart';
 
 void main() async {
-
-  //initialize flutter project
   WidgetsFlutterBinding.ensureInitialized();
 
-  // make the UI responsive
   await ScreenUtil.ensureScreenSize();
+  await AdMobService.instance.initialize();
 
   runApp(
     const ProviderScope(
