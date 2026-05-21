@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/services/audio_player_service.dart';
 import '../../../../core/services/audio_toggle_service.dart';
 import '../../../../core/services/tts_service.dart';
 
@@ -12,6 +13,7 @@ class MathNumberCard extends StatefulWidget {
   final TtsService ttsService;
   final String featureKey;
   final String cardId;
+  final String? audioPath;
 
   const MathNumberCard({
     super.key,
@@ -21,6 +23,7 @@ class MathNumberCard extends StatefulWidget {
     required this.ttsService,
     required this.featureKey,
     required this.cardId,
+    this.audioPath,
   });
 
   @override
@@ -28,24 +31,36 @@ class MathNumberCard extends StatefulWidget {
 }
 
 class _MathNumberCardState extends State<MathNumberCard> {
+  final AudioPlayerService _audioPlayerService = AudioPlayerService();
   final AudioToggleService _audioToggleService = AudioToggleService();
 
-  void _onTtsStateChanged() {
+  void _onStateChanged() {
     if (mounted) setState(() {});
   }
+
+  bool get _hasAudio =>
+      widget.audioPath != null && widget.audioPath!.isNotEmpty;
 
   @override
   void initState() {
     super.initState();
-    widget.ttsService.addStateChangeHandler(_onTtsStateChanged);
+    widget.ttsService.addStateChangeHandler(_onStateChanged);
+    if (_hasAudio) {
+      _audioPlayerService.addStateChangeHandler(_onStateChanged);
+      _audioPlayerService.addCompletionHandler(_onStateChanged);
+    }
     _audioToggleService.initialize();
-    _audioToggleService.addStateChangeHandler(_onTtsStateChanged);
+    _audioToggleService.addStateChangeHandler(_onStateChanged);
   }
 
   @override
   void dispose() {
-    widget.ttsService.removeStateChangeHandler(_onTtsStateChanged);
-    _audioToggleService.removeStateChangeHandler(_onTtsStateChanged);
+    widget.ttsService.removeStateChangeHandler(_onStateChanged);
+    if (_hasAudio) {
+      _audioPlayerService.removeStateChangeHandler(_onStateChanged);
+      _audioPlayerService.removeCompletionHandler(_onStateChanged);
+    }
+    _audioToggleService.removeStateChangeHandler(_onStateChanged);
     super.dispose();
   }
 
@@ -76,6 +91,19 @@ class _MathNumberCardState extends State<MathNumberCard> {
     if (!_audioToggleService.isPlayable(widget.featureKey, widget.cardId)) {
       return;
     }
+
+    if (_hasAudio) {
+      if (_audioPlayerService.isPlayingAudio(widget.audioPath!)) {
+        await _audioPlayerService.stop();
+      } else {
+        await _audioPlayerService.play(
+          widget.audioPath!,
+          itemId: widget.cardId,
+        );
+      }
+      return;
+    }
+
     // Convert English number to word for better pronunciation
     final textToSpeak = _isEnglishNumber(widget.letter)
         ? _numberToWord(widget.letter)
@@ -100,7 +128,9 @@ class _MathNumberCardState extends State<MathNumberCard> {
     final textToSpeak = _isEnglishNumber(widget.letter)
         ? _numberToWord(widget.letter)
         : widget.letter;
-    final isPlaying = widget.ttsService.isSpeakingText(textToSpeak);
+    final isPlaying = _hasAudio
+        ? _audioPlayerService.isPlayingAudio(widget.audioPath!)
+        : widget.ttsService.isSpeakingText(textToSpeak);
 
     return Container(
       alignment: Alignment.center,

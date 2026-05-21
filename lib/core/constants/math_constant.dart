@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:magical_book/core/constants/asset_path.dart';
 import 'package:magical_book/core/router/routes.dart';
+import 'package:magical_book/features/math/model/bangla_number_model.dart';
 import 'package:magical_book/features/math/model/multiplication_model.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../features/bangla/models/category.dart';
@@ -42,18 +43,18 @@ class MathConstants {
   ];
 
   // Bangla Numbers (০-১০)
-  static const List<String> banglaNumbers = <String>[
-    '০',
-    '১',
-    '২',
-    '৩',
-    '৪',
-    '৫',
-    '৬',
-    '৭',
-    '৮',
-    '৯',
-    '১০'
+  static const List<BanglaNumberModel> banglaNumbers = <BanglaNumberModel>[
+    BanglaNumberModel(id: 0, number: '০', audio: AudioPath.songkhaShunno),
+    BanglaNumberModel(id: 1, number: '১', audio: AudioPath.songkhaEk),
+    BanglaNumberModel(id: 2, number: '২', audio: AudioPath.songkhaDui),
+    BanglaNumberModel(id: 3, number: '৩', audio: AudioPath.songkhaTin),
+    BanglaNumberModel(id: 4, number: '৪', audio: AudioPath.songkhaChar),
+    BanglaNumberModel(id: 5, number: '৫', audio: AudioPath.songkhaPach),
+    BanglaNumberModel(id: 6, number: '৬', audio: AudioPath.songkhaChoy),
+    BanglaNumberModel(id: 7, number: '৭', audio: AudioPath.songkhaSat),
+    BanglaNumberModel(id: 8, number: '৮', audio: AudioPath.songkhaAt),
+    BanglaNumberModel(id: 9, number: '৯', audio: AudioPath.songkhaNoy),
+    BanglaNumberModel(id: 10, number: '১০', audio: AudioPath.songkhaDosh),
   ];
 
   // English Numbers (0-10)

@@ -232,6 +232,21 @@ class AudioPath {
   static const birdVulture = "assets/audio/birds/vulture.MP3";
 
 
+  // Math Audio Path
+  static const banglaSongkha = "assets/audio/math/banglaSongkha/bangla-songkha-full.MP3";
+  static const songkhaShunno = "assets/audio/math/banglaSongkha/shunno.MP3";
+  static const songkhaEk = "assets/audio/math/banglaSongkha/ek.MP3";
+  static const songkhaDui = "assets/audio/math/banglaSongkha/dui.MP3";
+  static const songkhaTin = "assets/audio/math/banglaSongkha/tin.MP3";
+  static const songkhaChar = "assets/audio/math/banglaSongkha/char.MP3";
+  static const songkhaPach = "assets/audio/math/banglaSongkha/pach.MP3";
+  static const songkhaChoy = "assets/audio/math/banglaSongkha/choy.MP3";
+  static const songkhaSat = "assets/audio/math/banglaSongkha/sat.MP3";
+  static const songkhaAt = "assets/audio/math/banglaSongkha/at.MP3";
+  static const songkhaNoy = "assets/audio/math/banglaSongkha/noy.MP3";
+  static const songkhaDosh = "assets/audio/math/banglaSongkha/dosh.MP3";
+
+
   // Others
   static const correctAnswer = "assets/audio/others/correct.mp3";
   static const wrongAnswer = "assets/audio/others/wrong.mp3";
