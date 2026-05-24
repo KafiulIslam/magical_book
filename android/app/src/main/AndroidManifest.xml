@@ -4,10 +4,9 @@
         android:label="Shishu Path"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-        <!-- Replace with your AdMob App ID before release -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-6871786334119508~7611803840"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

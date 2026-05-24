@@ -13,20 +13,22 @@ class AdMobConstants {
   // App IDs (must match AndroidManifest.xml and ios/Runner/Info.plist)
   // ---------------------------------------------------------------------------
 
-  /// Google sample App ID for Android testing.
-  static const androidAppId = 'ca-app-pub-3940256099942544~3347511713';
+  static const androidAppId = 'ca-app-pub-6871786334119508~7611803840';
 
-  /// Google sample App ID for iOS testing.
+  /// Replace when iOS app is registered in AdMob.
   static const iosAppId = 'ca-app-pub-3940256099942544~1458002511';
 
   // ---------------------------------------------------------------------------
-  // Production ad unit IDs — replace with values from AdMob console
+  // Production ad unit IDs (Android)
   // ---------------------------------------------------------------------------
 
-  static const productionBannerAndroid = 'ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY';
-  static const productionBannerIos = 'ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY';
+  static const productionBannerAndroid =
+      'ca-app-pub-6871786334119508/9283892443';
   static const productionInterstitialAndroid =
-      'ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY';
+      'ca-app-pub-6871786334119508/4386411683';
+
+  /// Replace when iOS ad units are created in AdMob.
+  static const productionBannerIos = 'ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY';
   static const productionInterstitialIos =
       'ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY';
 
