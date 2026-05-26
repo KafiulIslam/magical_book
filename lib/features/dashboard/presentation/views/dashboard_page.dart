@@ -3,15 +3,29 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/router/routes.dart';
+import '../../../../core/services/ad_preload_service.dart';
+import '../../../../core/services/admob_service.dart';
 import '../../../../core/theme/app_typography.dart';
 
-class DashboardPage extends StatelessWidget {
+class DashboardPage extends StatefulWidget {
   final Widget child;
 
   const DashboardPage({
     super.key,
     required this.child,
   });
+
+  @override
+  State<DashboardPage> createState() => _DashboardPageState();
+}
+
+class _DashboardPageState extends State<DashboardPage> {
+  @override
+  void initState() {
+    super.initState();
+    AdMobService.instance.initialize();
+    AdPreloadService.instance.warmAll();
+  }
 
   static final List<String> _routes = [
     Routes.bangla,
@@ -21,10 +35,6 @@ class DashboardPage extends StatelessWidget {
   ];
 
   static final List<String> _titles = [
-    // 'বাংলা',
-    // 'English',
-    // 'Math',
-    // 'عربي',
     'Bangla',
     'English',
     'Math',
@@ -40,13 +50,13 @@ class DashboardPage extends StatelessWidget {
 
   static int _getCurrentIndex(BuildContext context) {
     final currentPath = GoRouterState.of(context).uri.path;
-    // Check if current path starts with any route (for nested routes)
     for (int i = 0; i < _routes.length; i++) {
-      if (currentPath == _routes[i] || currentPath.startsWith('${_routes[i]}/')) {
+      if (currentPath == _routes[i] ||
+          currentPath.startsWith('${_routes[i]}/')) {
         return i;
       }
     }
-    return 0; // Default to first index if no match
+    return 0;
   }
 
   static void _onItemTapped(BuildContext context, int index) {
@@ -59,7 +69,7 @@ class DashboardPage extends StatelessWidget {
     final currentIndex = _getCurrentIndex(context);
 
     return Scaffold(
-      body: child,
+      body: widget.child,
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           boxShadow: [

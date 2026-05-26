@@ -6,10 +6,12 @@ import 'ad_banner_widget.dart';
 /// Banner is only used on main category screens (Families policy).
 class HomeTabBody extends StatelessWidget {
   final Widget child;
+  final String bannerSlotId;
 
   const HomeTabBody({
     super.key,
     required this.child,
+    required this.bannerSlotId,
   });
 
   @override
@@ -17,9 +19,9 @@ class HomeTabBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const Padding(
-          padding: EdgeInsets.fromLTRB(16, 8, 16, 0),
-          child: AdBannerWidget(),
+        Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: AdBannerWidget(slotId: bannerSlotId),
         ),
         const SizedBox(height: 16),
         Expanded(child: child),

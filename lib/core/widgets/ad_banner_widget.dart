@@ -1,94 +1,95 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-import '../services/admob_service.dart';
-import '../services/banner_ad_service.dart';
+import '../constants/admob_constants.dart';
+import '../services/ad_preload_service.dart';
 
 /// Adaptive banner for main tab home screens only (Families policy).
 class AdBannerWidget extends StatefulWidget {
-  const AdBannerWidget({super.key});
+  const AdBannerWidget({
+    super.key,
+    required this.slotId,
+  });
+
+  /// Pre-load slot — must match [AdPreloadService] slot ids.
+  final String slotId;
 
   @override
   State<AdBannerWidget> createState() => _AdBannerWidgetState();
 }
 
 class _AdBannerWidgetState extends State<AdBannerWidget> {
-  final _bannerService = BannerAdService.instance;
   BannerAd? _bannerAd;
+  bool _loaded = false;
+  bool _loadStarted = false;
 
   @override
   void initState() {
     super.initState();
-    _bannerService.addListener(_onBannerUpdated);
-    AdMobService.instance.initializeInBackground();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _loadBanner());
   }
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _requestBanner();
-  }
+  Future<void> _loadBanner() async {
+    if (_loadStarted || !mounted) return;
+    _loadStarted = true;
 
-  int _bannerWidth(BuildContext context) {
-    return (MediaQuery.sizeOf(context).width - 32).truncate();
-  }
-
-  void _requestBanner() {
-    if (_bannerAd != null) return;
-
-    final width = _bannerWidth(context);
-    final ready = _bannerService.takeBanner(width);
-    if (ready != null) {
-      _attachBanner(ready);
+    final preloaded = AdPreloadService.instance.consume(widget.slotId);
+    if (preloaded != null) {
+      _bannerAd = preloaded;
+      if (mounted) setState(() => _loaded = true);
       return;
     }
 
-    _bannerService.preload(width);
-  }
+    final width = MediaQuery.sizeOf(context).width.truncate();
+    final adSize =
+        await AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(width) ??
+            AdSize.banner;
 
-  void _onBannerUpdated() {
-    if (!mounted || _bannerAd != null) return;
+    if (!mounted) return;
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted || _bannerAd != null) return;
-      _requestBanner();
-    });
-  }
+    _bannerAd = BannerAd(
+      adUnitId: AdMobConstants.bannerAdUnitId,
+      size: adSize,
+      request: const AdRequest(),
+      listener: BannerAdListener(
+        onAdLoaded: (_) {
+          if (!mounted || _bannerAd == null) return;
+          setState(() => _loaded = true);
+        },
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+          if (_bannerAd == ad) _bannerAd = null;
+          _loadStarted = false;
+          if (mounted) setState(() => _loaded = false);
+        },
+      ),
+    );
 
-  void _attachBanner(BannerAd banner) {
-    setState(() => _bannerAd = banner);
+    await _bannerAd!.load();
   }
 
   @override
   void dispose() {
-    _bannerService.removeListener(_onBannerUpdated);
     _bannerAd?.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final banner = _bannerAd;
-
-    if (banner != null) {
-      return Center(
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(color: Colors.grey.shade300),
-            borderRadius: BorderRadius.circular(4),
-          ),
-          child: SizedBox(
-            width: banner.size.width.toDouble(),
-            height: banner.size.height.toDouble(),
-            child: AdWidget(ad: banner),
-          ),
-        ),
-      );
+    final ad = _bannerAd;
+    if (!_loaded || ad == null) {
+      return const SizedBox.shrink();
     }
 
-    return const SizedBox(
-      height: BannerAdService.placeholderHeight,
+    final height = ad.size.height.toDouble();
+    if (height <= 0) {
+      return const SizedBox.shrink();
+    }
+
+    return SizedBox(
+      width: double.infinity,
+      height: height,
+      child: AdWidget(ad: ad),
     );
   }
 }
