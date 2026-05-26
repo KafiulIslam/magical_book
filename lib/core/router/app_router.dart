@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:magical_book/core/router/routes.dart';
-import 'package:magical_book/core/widgets/interstitial_exit_wrapper.dart';
 import 'package:magical_book/features/bangla/presentation/views/chora_screen.dart';
 import '../../features/arabic/presentation/views/arabic_page.dart';
 import '../../features/arabic/presentation/views/arabic_alphabet_screen.dart';
@@ -46,7 +45,7 @@ class AppRouter {
   }) {
     return CustomTransitionPage(
       key: state.pageKey,
-      child: InterstitialExitWrapper(child: child),
+      child: child,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return FadeTransition(opacity: animation, child: child);
       },

@@ -9,7 +9,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await ScreenUtil.ensureScreenSize();
-  await AdMobService.instance.initialize();
+  AdMobService.instance.initializeInBackground();
 
   runApp(
     const ProviderScope(

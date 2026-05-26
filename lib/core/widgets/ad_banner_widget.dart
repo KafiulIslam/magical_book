@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-import '../constants/admob_constants.dart';
 import '../services/admob_service.dart';
+import '../services/banner_ad_service.dart';
 
-/// Adaptive banner anchored above the bottom navigation bar.
+/// Adaptive banner for main tab home screens only (Families policy).
 class AdBannerWidget extends StatefulWidget {
   const AdBannerWidget({super.key});
 
@@ -13,73 +13,82 @@ class AdBannerWidget extends StatefulWidget {
 }
 
 class _AdBannerWidgetState extends State<AdBannerWidget> {
+  final _bannerService = BannerAdService.instance;
   BannerAd? _bannerAd;
-  bool _isLoaded = false;
-  bool _isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _bannerService.addListener(_onBannerUpdated);
+    AdMobService.instance.initializeInBackground();
+  }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (!_isLoading && _bannerAd == null) {
-      _loadBanner();
-    }
+    _requestBanner();
   }
 
-  Future<void> _loadBanner() async {
-    if (!AdMobService.instance.isInitialized || _isLoading) return;
+  int _bannerWidth(BuildContext context) {
+    return (MediaQuery.sizeOf(context).width - 32).truncate();
+  }
 
-    _isLoading = true;
-    final width = MediaQuery.sizeOf(context).width.truncate();
-    final size =
-        await AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(width);
-    if (size == null || !mounted) {
-      _isLoading = false;
+  void _requestBanner() {
+    if (_bannerAd != null) return;
+
+    final width = _bannerWidth(context);
+    final ready = _bannerService.takeBanner(width);
+    if (ready != null) {
+      _attachBanner(ready);
       return;
     }
 
-    final banner = BannerAd(
-      adUnitId: AdMobConstants.bannerAdUnitId,
-      size: size,
-      request: const AdRequest(),
-      listener: BannerAdListener(
-        onAdLoaded: (ad) {
-          if (mounted) {
-            setState(() {
-              _bannerAd = ad as BannerAd;
-              _isLoaded = true;
-              _isLoading = false;
-            });
-          }
-        },
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-          _isLoading = false;
-        },
-      ),
-    );
+    _bannerService.preload(width);
+  }
 
-    await banner.load();
+  void _onBannerUpdated() {
+    if (!mounted || _bannerAd != null) return;
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || _bannerAd != null) return;
+      _requestBanner();
+    });
+  }
+
+  void _attachBanner(BannerAd banner) {
+    setState(() => _bannerAd = banner);
   }
 
   @override
   void dispose() {
+    _bannerService.removeListener(_onBannerUpdated);
     _bannerAd?.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    if (!_isLoaded || _bannerAd == null) {
-      return const SizedBox.shrink();
+    final banner = _bannerAd;
+
+    if (banner != null) {
+      return Center(
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: Colors.grey.shade300),
+            borderRadius: BorderRadius.circular(4),
+          ),
+          child: SizedBox(
+            width: banner.size.width.toDouble(),
+            height: banner.size.height.toDouble(),
+            child: AdWidget(ad: banner),
+          ),
+        ),
+      );
     }
 
-    return ColoredBox(
-      color: Colors.white,
-      child: SizedBox(
-        width: _bannerAd!.size.width.toDouble(),
-        height: _bannerAd!.size.height.toDouble(),
-        child: AdWidget(ad: _bannerAd!),
-      ),
+    return const SizedBox(
+      height: BannerAdService.placeholderHeight,
     );
   }
 }

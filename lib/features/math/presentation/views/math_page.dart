@@ -6,6 +6,7 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/math_constant.dart';
 import '../../../../core/router/routes.dart';
 import '../../../../core/theme/app_typography.dart';
+import '../../../../core/widgets/home_tab_body.dart';
 import '../widgets/math_category_card.dart';
 
 class MathPage extends StatelessWidget {
@@ -50,9 +51,10 @@ class MathPage extends StatelessWidget {
         backgroundColor: AppColors.background,
         elevation: 0,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: GridView.builder(
+      body: HomeTabBody(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+          child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: _getCrossAxisCount(context),
             crossAxisSpacing: 8,
@@ -68,6 +70,7 @@ class MathPage extends StatelessWidget {
               return MathCategoryCard(category: category);
             }
           },
+        ),
         ),
       ),
     );
