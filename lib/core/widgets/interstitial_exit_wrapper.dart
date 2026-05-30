@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../services/interstitial_ad_service.dart';
+import 'interstitial_gate.dart';
 
-/// Shows an interstitial (when ready) before popping a detail screen.
+/// Intercepts back from a lesson/detail screen and may show an interstitial
+/// before returning to the home tab (Families: natural break only).
 class InterstitialExitWrapper extends StatelessWidget {
   final Widget child;
 
@@ -15,9 +16,9 @@ class InterstitialExitWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
-      onPopInvokedWithResult: (didPop, result) async {
+      onPopInvokedWithResult: (didPop, result) {
         if (didPop) return;
-        await InterstitialAdService.instance.handleBackNavigation(context);
+        InterstitialGate.runAfterOptionalAdThenPop(context);
       },
       child: child,
     );

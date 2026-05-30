@@ -1,22 +1,25 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../constants/admob_constants.dart';
+import 'admob_service.dart';
 
-/// Loads and shows interstitial ads at natural navigation breaks.
+/// Loads and caches one interstitial at a time for natural navigation breaks.
 class InterstitialAdService {
   InterstitialAdService._();
 
   static final InterstitialAdService instance = InterstitialAdService._();
 
+  static const _maxLoadAttempts = 3;
+
   InterstitialAd? _interstitialAd;
   bool _isLoading = false;
-  DateTime? _lastShownAt;
+  int _loadAttempts = 0;
 
   bool get isReady => _interstitialAd != null;
 
   void preload() {
+    if (!AdMobService.instance.isInitialized) return;
     if (_isLoading || _interstitialAd != null) return;
 
     _isLoading = true;
@@ -27,47 +30,27 @@ class InterstitialAdService {
         onAdLoaded: (ad) {
           _interstitialAd = ad;
           _isLoading = false;
+          _loadAttempts = 0;
         },
         onAdFailedToLoad: (error) {
           _interstitialAd = null;
           _isLoading = false;
+          _loadAttempts++;
+          if (kDebugMode) {
+            debugPrint('Interstitial load failed: ${error.message}');
+          }
+          if (_loadAttempts <= _maxLoadAttempts) {
+            preload();
+          }
         },
       ),
     );
   }
 
-  bool _canShow() {
-    if (_interstitialAd == null) return false;
-    if (_lastShownAt == null) return true;
-    return DateTime.now().difference(_lastShownAt!) >=
-        AdMobConstants.interstitialCooldown;
-  }
-
-  /// Intercepts back navigation: show ad if ready, then pop.
-  Future<void> handleBackNavigation(BuildContext context) async {
-    if (!_canShow()) {
-      if (context.mounted) context.pop();
-      preload();
-      return;
-    }
-
-    final ad = _interstitialAd!;
+  /// Removes and returns the cached ad when it is about to be shown.
+  InterstitialAd? takeReadyAd() {
+    final ad = _interstitialAd;
     _interstitialAd = null;
-
-    ad.fullScreenContentCallback = FullScreenContentCallback(
-      onAdDismissedFullScreenContent: (dismissedAd) {
-        dismissedAd.dispose();
-        _lastShownAt = DateTime.now();
-        preload();
-        if (context.mounted) context.pop();
-      },
-      onAdFailedToShowFullScreenContent: (failedAd, error) {
-        failedAd.dispose();
-        preload();
-        if (context.mounted) context.pop();
-      },
-    );
-
-    ad.show();
+    return ad;
   }
 }

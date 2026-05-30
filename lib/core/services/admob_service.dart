@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'ad_preload_service.dart';
+import 'interstitial_ad_service.dart';
 
 /// Initializes Google Mobile Ads with child-directed settings for Shishu Path.
 class AdMobService {
@@ -42,6 +43,7 @@ class AdMobService {
       }
 
       AdPreloadService.instance.warmAll();
+      InterstitialAdService.instance.preload();
     } catch (e) {
       if (kDebugMode) {
         debugPrint('AdMob init failed: $e');
