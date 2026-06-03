@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:magical_book/core/router/routes.dart';
-import 'package:magical_book/core/widgets/interstitial_exit_wrapper.dart';
+import 'package:magical_book/core/widgets/interstitial_on_enter_wrapper.dart';
 import 'package:magical_book/features/bangla/presentation/views/chora_screen.dart';
 import '../../features/arabic/presentation/views/arabic_page.dart';
 import '../../features/arabic/presentation/views/arabic_alphabet_screen.dart';
@@ -43,10 +43,15 @@ class AppRouter {
   static Page<dynamic> fadeTransitionPage({
     required GoRouterState state,
     required Widget child,
+    bool showInterstitialOnEnter = false,
   }) {
+    final pageChild = showInterstitialOnEnter
+        ? InterstitialOnEnterWrapper(child: child)
+        : child;
+
     return CustomTransitionPage(
       key: state.pageKey,
-      child: InterstitialExitWrapper(child: child),
+      child: pageChild,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return FadeTransition(opacity: animation, child: child);
       },
@@ -74,6 +79,7 @@ class AppRouter {
                   path: '/borno-mala',
                   pageBuilder: (context, state) => fadeTransitionPage(
                     state: state,
+                    showInterstitialOnEnter: true,
                     child: const BornoMalaScreen(),
                   ),
                 ),
@@ -81,6 +87,7 @@ class AppRouter {
                   path: '/chora',
                   pageBuilder: (context, state) => fadeTransitionPage(
                     state: state,
+                    showInterstitialOnEnter: true,
                     child: const ChoraScreen(),
                   ),
                 ),
@@ -102,6 +109,7 @@ class AppRouter {
                   path: '/ritur-nam',
                   pageBuilder: (context, state) => fadeTransitionPage(
                     state: state,
+                    showInterstitialOnEnter: true,
                     child: const BanglaSeasonScreen(),
                   ),
                 ),
@@ -128,6 +136,7 @@ class AppRouter {
                 path: '/alphabet',
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
+                  showInterstitialOnEnter: true,
                   child: const EnglishAlphabetScreen(),
                 ),
               ),
@@ -135,6 +144,7 @@ class AppRouter {
                 path: '/rhymes',
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
+                  showInterstitialOnEnter: true,
                   child: const EnglishRhymesScreen(),
                 ),
               ),
@@ -163,6 +173,7 @@ class AppRouter {
                 path: '/body-parts',
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
+                  showInterstitialOnEnter: true,
                   child: const EnglishBodyPartScreen(),
                 ),
               ),
@@ -170,6 +181,7 @@ class AppRouter {
                 path: '/days',
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
+                  showInterstitialOnEnter: true,
                   child: const EnglishDayScreen(),
                 ),
               ),
@@ -177,6 +189,7 @@ class AppRouter {
                 path: '/months',
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
+                  showInterstitialOnEnter: true,
                   child: const EnglishMonthScreen(),
                 ),
               ),
@@ -204,6 +217,7 @@ class AppRouter {
                 path: '/bangla-numbers',
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
+                  showInterstitialOnEnter: true,
                   child: const BanglaNumbersScreen(),
                 ),
               ),
@@ -211,6 +225,7 @@ class AppRouter {
                 path: '/english-numbers',
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
+                  showInterstitialOnEnter: true,
                   child: const EnglishNumbersScreen(),
                 ),
               ),
@@ -225,6 +240,7 @@ class AppRouter {
                 path: '/calculator',
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
+                  showInterstitialOnEnter: true,
                   child: const CalculatorScreen(),
                 ),
               ),
@@ -238,6 +254,7 @@ class AppRouter {
                 path: '/alphabet',
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
+                  showInterstitialOnEnter: true,
                   child: const ArabicAlphabetScreen(),
                 ),
               ),
@@ -245,6 +262,7 @@ class AppRouter {
                 path: '/surah',
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
+                  showInterstitialOnEnter: true,
                   child: const ArabicSurahScreen(),
                 ),
                 routes: [
@@ -254,6 +272,7 @@ class AppRouter {
                       final surah = state.extra as MultiplicationModel;
                       return fadeTransitionPage(
                         state: state,
+                        showInterstitialOnEnter: true,
                         child: SurahDetailsScreen(surah: surah),
                       );
                     },
@@ -271,6 +290,7 @@ class AppRouter {
                 path: '/allah-names',
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
+                  showInterstitialOnEnter: true,
                   child: const AllahNamesScreen(),
                 ),
               ),

@@ -43,7 +43,7 @@ class AdMobConstants {
   static const testInterstitialIos = 'ca-app-pub-3940256099942544/4411468910';
 
   /// Minimum gap between interstitial impressions (kids app best practice).
-  static const interstitialCooldown = Duration(seconds: 90);
+  static const interstitialCooldown = Duration(seconds: 60);
 
   static String get bannerAdUnitId {
     if (kDebugMode) {

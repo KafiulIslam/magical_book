@@ -8,7 +8,7 @@ import '../constants/admob_constants.dart';
 import 'admob_service.dart';
 
 /// Pre-loads one banner per home tab so each screen can show an ad instantly.
-class AdPreloadService {
+class AdPreloadService extends ChangeNotifier {
   AdPreloadService._();
 
   static final AdPreloadService instance = AdPreloadService._();
@@ -20,28 +20,45 @@ class AdPreloadService {
 
   static const List<String> slots = [bangla, english, math, arabic];
 
+  /// Reserved height while a banner is loading (avoids layout jump).
+  static const double placeholderHeight = 50;
+
+  static const _maxLoadAttempts = 5;
+  static const _retryDelay = Duration(seconds: 3);
+
   final Map<String, BannerAd?> _readyAds = {};
   final Set<String> _loadingSlots = {};
+  final Map<String, int> _loadAttempts = {};
+
+  bool isReady(String slot) => _readyAds[slot] != null;
 
   /// Starts warming all home tab slots. Safe to call multiple times.
   void warmAll() {
     if (!AdMobService.instance.isInitialized) return;
     for (final slot in slots) {
-      _warmSlot(slot);
+      warmSlot(slot);
     }
   }
 
-  /// Returns a pre-loaded ad for [slot] if ready; always starts loading a replacement.
-  BannerAd? consume(String slot) {
-    final ad = _readyAds.remove(slot);
-    _loadingSlots.remove(slot);
+  void warmSlot(String slot) {
     _warmSlot(slot);
+  }
+
+  /// Returns a ready pre-loaded ad for [slot], or null.
+  BannerAd? takeIfReady(String slot) {
+    final ad = _readyAds.remove(slot);
+    if (ad != null) {
+      _loadingSlots.remove(slot);
+      _loadAttempts.remove(slot);
+      warmSlot(slot);
+    }
     return ad;
   }
 
   void _warmSlot(String slot) {
     if (_readyAds.containsKey(slot) || _loadingSlots.contains(slot)) return;
     if (!AdMobService.instance.isInitialized) return;
+
     _loadingSlots.add(slot);
     unawaited(_loadForSlot(slot));
   }
@@ -51,6 +68,7 @@ class AdPreloadService {
       final view = WidgetsBinding.instance.platformDispatcher.views.firstOrNull;
       if (view == null) {
         _loadingSlots.remove(slot);
+        _scheduleRetry(slot);
         return;
       }
 
@@ -72,6 +90,8 @@ class AdPreloadService {
           onAdLoaded: (_) {
             _readyAds[slot] = ad;
             _loadingSlots.remove(slot);
+            _loadAttempts[slot] = 0;
+            notifyListeners();
           },
           onAdFailedToLoad: (failedAd, error) {
             failedAd.dispose();
@@ -79,16 +99,32 @@ class AdPreloadService {
             if (kDebugMode) {
               debugPrint('Banner preload [$slot] failed: ${error.message}');
             }
+            _scheduleRetry(slot);
+            notifyListeners();
           },
         ),
       );
-      await ad.load();
+
+      ad.load();
     } catch (e) {
       _loadingSlots.remove(slot);
       if (kDebugMode) {
         debugPrint('Banner preload [$slot] error: $e');
       }
+      _scheduleRetry(slot);
     }
+  }
+
+  void _scheduleRetry(String slot) {
+    final attempts = (_loadAttempts[slot] ?? 0) + 1;
+    _loadAttempts[slot] = attempts;
+    if (attempts > _maxLoadAttempts) return;
+
+    Future.delayed(_retryDelay, () {
+      if (!AdMobService.instance.isInitialized) return;
+      if (_readyAds.containsKey(slot)) return;
+      _warmSlot(slot);
+    });
   }
 
   void disposeAll() {
@@ -97,5 +133,6 @@ class AdPreloadService {
     }
     _readyAds.clear();
     _loadingSlots.clear();
+    _loadAttempts.clear();
   }
 }

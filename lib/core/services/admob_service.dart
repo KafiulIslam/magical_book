@@ -7,7 +7,7 @@ import 'ad_preload_service.dart';
 import 'interstitial_ad_service.dart';
 
 /// Initializes Google Mobile Ads with child-directed settings for Shishu Path.
-class AdMobService {
+class AdMobService extends ChangeNotifier {
   AdMobService._();
 
   static final AdMobService instance = AdMobService._();
@@ -39,11 +39,12 @@ class AdMobService {
       _initialized = true;
 
       if (kDebugMode) {
-        debugPrint('AdMob initialized (test ad units in debug mode).');
+        debugPrint('AdMob initialized.');
       }
 
       AdPreloadService.instance.warmAll();
       InterstitialAdService.instance.preload();
+      notifyListeners();
     } catch (e) {
       if (kDebugMode) {
         debugPrint('AdMob init failed: $e');

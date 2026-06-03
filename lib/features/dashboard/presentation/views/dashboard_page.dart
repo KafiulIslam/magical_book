@@ -3,9 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/router/routes.dart';
-import '../../../../core/services/ad_preload_service.dart';
 import '../../../../core/services/admob_service.dart';
-import '../../../../core/services/interstitial_ad_service.dart';
 import '../../../../core/theme/app_typography.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -25,8 +23,6 @@ class _DashboardPageState extends State<DashboardPage> {
   void initState() {
     super.initState();
     AdMobService.instance.initialize();
-    AdPreloadService.instance.warmAll();
-    InterstitialAdService.instance.preload();
   }
 
   static final List<String> _routes = [

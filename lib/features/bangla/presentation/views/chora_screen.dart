@@ -27,7 +27,7 @@ class _ChoraScreenState extends State<ChoraScreen> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      onPopInvoked: (didPop) {
+      onPopInvokedWithResult: (didPop, result) {
         if (didPop) {
           _audioPlayerService.stop();
         }
