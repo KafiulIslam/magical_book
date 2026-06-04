@@ -19,10 +19,7 @@ class HomeTabBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 8),
-          child: AdBannerWidget(slotId: bannerSlotId),
-        ),
+        AdBannerWidget(slotId: bannerSlotId),
         const SizedBox(height: 16),
         Expanded(child: child),
       ],
