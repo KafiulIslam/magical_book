@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../../core/services/ad_preload_service.dart';
-import '../../../../core/widgets/home_tab_body.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/bangla_constants.dart';
 import '../../../../core/router/routes.dart';
@@ -43,11 +41,9 @@ class BanglaPage extends StatelessWidget {
           style: BanglaTypo.headline1.copyWith(fontSize: 24.sp),
         ),
       ),
-      body: HomeTabBody(
-        bannerSlotId: AdPreloadService.bangla,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-          child: GridView.builder(
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+        child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: _getCrossAxisCount(context),
             crossAxisSpacing: 8,
@@ -63,7 +59,6 @@ class BanglaPage extends StatelessWidget {
               return BanglaCategoryCard(category: category);
             }
           },
-        ),
         ),
       ),
     );
@@ -125,5 +120,4 @@ class BanglaPage extends StatelessWidget {
       ),
     );
   }
-
 }

@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-import 'ad_preload_service.dart';
 import 'interstitial_ad_service.dart';
 
 /// Initializes Google Mobile Ads with child-directed settings for Shishu Path.
@@ -26,15 +25,14 @@ class AdMobService extends ChangeNotifier {
 
   Future<void> _initialize() async {
     try {
-      await MobileAds.instance.initialize();
-
       await MobileAds.instance.updateRequestConfiguration(
         RequestConfiguration(
           tagForChildDirectedTreatment: TagForChildDirectedTreatment.yes,
-          maxAdContentRating: MaxAdContentRating.g,
           tagForUnderAgeOfConsent: TagForUnderAgeOfConsent.yes,
+          maxAdContentRating: MaxAdContentRating.g,
         ),
       );
+      await MobileAds.instance.initialize();
 
       _initialized = true;
 
@@ -42,7 +40,6 @@ class AdMobService extends ChangeNotifier {
         debugPrint('AdMob initialized.');
       }
 
-      AdPreloadService.instance.warmAll();
       InterstitialAdService.instance.preload();
       notifyListeners();
     } catch (e) {

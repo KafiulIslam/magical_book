@@ -5,6 +5,7 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/router/routes.dart';
 import '../../../../core/services/admob_service.dart';
 import '../../../../core/theme/app_typography.dart';
+import '../../../../core/widgets/ad_banner_widget.dart';
 
 class DashboardPage extends StatefulWidget {
   final Widget child;
@@ -57,6 +58,11 @@ class _DashboardPageState extends State<DashboardPage> {
     return 0;
   }
 
+  static bool _isHomeRoot(BuildContext context) {
+    final path = GoRouterState.of(context).uri.path;
+    return _routes.contains(path);
+  }
+
   static void _onItemTapped(BuildContext context, int index) {
     if (index < 0 || index >= _routes.length) return;
     context.go(_routes[index]);
@@ -67,7 +73,12 @@ class _DashboardPageState extends State<DashboardPage> {
     final currentIndex = _getCurrentIndex(context);
 
     return Scaffold(
-      body: widget.child,
+      body: Column(
+        children: [
+          Expanded(child: widget.child),
+          if (_isHomeRoot(context)) const AdBannerWidget(),
+        ],
+      ),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           boxShadow: [

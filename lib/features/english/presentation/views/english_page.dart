@@ -3,8 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/english_constant.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../../core/services/ad_preload_service.dart';
-import '../../../../core/widgets/home_tab_body.dart';
 import '../widgets/english_category_card.dart';
 
 class EnglishPage extends StatelessWidget {
@@ -43,11 +41,9 @@ class EnglishPage extends StatelessWidget {
         backgroundColor: AppColors.background,
         elevation: 0,
       ),
-      body: HomeTabBody(
-        bannerSlotId: AdPreloadService.english,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-          child: GridView.builder(
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+        child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: _getCrossAxisCount(context),
             crossAxisSpacing: 8,
@@ -59,7 +55,6 @@ class EnglishPage extends StatelessWidget {
             final category = EnglishConstants.englishCategories[index];
             return EnglishCategoryCard(category: category);
           },
-        ),
         ),
       ),
     );

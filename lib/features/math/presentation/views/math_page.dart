@@ -6,18 +6,13 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/math_constant.dart';
 import '../../../../core/router/routes.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../../core/services/ad_preload_service.dart';
-import '../../../../core/widgets/home_tab_body.dart';
 import '../widgets/math_category_card.dart';
 
 class MathPage extends StatelessWidget {
   const MathPage({super.key});
 
   int _getCrossAxisCount(BuildContext context) {
-    final width = MediaQuery
-        .of(context)
-        .size
-        .width;
+    final width = MediaQuery.of(context).size.width;
     if (width > 900) {
       return 4; // Large tablets/desktop
     } else if (width > 600) {
@@ -28,10 +23,7 @@ class MathPage extends StatelessWidget {
   }
 
   double _getChildAspectRatio(BuildContext context) {
-    final width = MediaQuery
-        .of(context)
-        .size
-        .width;
+    final width = MediaQuery.of(context).size.width;
     if (width > 900) {
       return 1.0; // Square cards for large screens
     } else if (width > 600) {
@@ -52,11 +44,9 @@ class MathPage extends StatelessWidget {
         backgroundColor: AppColors.background,
         elevation: 0,
       ),
-      body: HomeTabBody(
-        bannerSlotId: AdPreloadService.math,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-          child: GridView.builder(
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+        child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: _getCrossAxisCount(context),
             crossAxisSpacing: 8,
@@ -72,7 +62,6 @@ class MathPage extends StatelessWidget {
               return MathCategoryCard(category: category);
             }
           },
-        ),
         ),
       ),
     );

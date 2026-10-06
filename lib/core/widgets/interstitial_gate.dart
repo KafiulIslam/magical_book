@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
@@ -7,9 +9,36 @@ import '../services/ad_throttle_service.dart';
 import '../services/admob_service.dart';
 import '../services/interstitial_ad_service.dart';
 
-/// Shows an interstitial only when allowed; navigation never waits on an ad.
+/// Shows one interstitial at a lesson exit when an ad is ready and the cooldown
+/// has passed. Leaving the lesson continues immediately when no ad is ready.
 class InterstitialGate {
   InterstitialGate._();
+
+  static bool _exitInProgress = false;
+
+  /// Lesson back/tab change: show a ready interstitial, then allow the pop.
+  static Future<bool> onLessonExit(
+    BuildContext context,
+    GoRouterState state,
+  ) async {
+    if (_exitInProgress) return false;
+    _exitInProgress = true;
+    try {
+      final done = Completer<void>();
+      runAfterOptionalAd(
+        after: () {
+          if (!done.isCompleted) done.complete();
+        },
+      );
+      await done.future.timeout(
+        const Duration(seconds: 45),
+        onTimeout: () {},
+      );
+      return true;
+    } finally {
+      _exitInProgress = false;
+    }
+  }
 
   static void runAfterOptionalAd({
     required VoidCallback after,
