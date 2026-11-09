@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:magical_book/core/router/routes.dart';
-import 'package:magical_book/core/services/interstitial_ad_service.dart';
-import 'package:magical_book/core/widgets/interstitial_gate.dart';
 import 'package:magical_book/features/bangla/presentation/views/chora_screen.dart';
 import '../../features/arabic/presentation/views/arabic_page.dart';
 import '../../features/arabic/presentation/views/arabic_alphabet_screen.dart';
@@ -41,15 +39,13 @@ class AppRouter {
   static GoRouter get router => _router;
 
   /// Helper method to create a fade transition page.
-  /// The interstitial is preloaded here and shown from [onExit] when the
-  /// child leaves the lesson.
   static Page<dynamic> fadeTransitionPage({
     required GoRouterState state,
     required Widget child,
   }) {
     return CustomTransitionPage(
       key: state.pageKey,
-      child: _LessonInterstitialPreload(child: child),
+      child: child,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return FadeTransition(opacity: animation, child: child);
       },
@@ -75,7 +71,6 @@ class AppRouter {
               routes: [
                 GoRoute(
                   path: '/borno-mala',
-                  onExit: InterstitialGate.onLessonExit,
                   pageBuilder: (context, state) => fadeTransitionPage(
                     state: state,
                     child: const BornoMalaScreen(),
@@ -83,7 +78,6 @@ class AppRouter {
                 ),
                 GoRoute(
                   path: '/chora',
-                  onExit: InterstitialGate.onLessonExit,
                   pageBuilder: (context, state) => fadeTransitionPage(
                     state: state,
                     child: const ChoraScreen(),
@@ -91,7 +85,6 @@ class AppRouter {
                 ),
                 GoRoute(
                   path: '/foler-nam',
-                  onExit: InterstitialGate.onLessonExit,
                   pageBuilder: (context, state) => fadeTransitionPage(
                     state: state,
                     child: const BanglaFruitScreen(),
@@ -99,7 +92,6 @@ class AppRouter {
                 ),
                 GoRoute(
                   path: '/fuler-nam',
-                  onExit: InterstitialGate.onLessonExit,
                   pageBuilder: (context, state) => fadeTransitionPage(
                     state: state,
                     child: const BanglaFlowerScreen(),
@@ -107,7 +99,6 @@ class AppRouter {
                 ),
                 GoRoute(
                   path: '/ritur-nam',
-                  onExit: InterstitialGate.onLessonExit,
                   pageBuilder: (context, state) => fadeTransitionPage(
                     state: state,
                     child: const BanglaSeasonScreen(),
@@ -115,7 +106,6 @@ class AppRouter {
                 ),
                 GoRoute(
                   path: '/maser-nam',
-                  onExit: InterstitialGate.onLessonExit,
                   pageBuilder: (context, state) => fadeTransitionPage(
                     state: state,
                     child: const BanglaMonthScreen(),
@@ -123,7 +113,6 @@ class AppRouter {
                 ),
                 GoRoute(
                   path: '/diner-nam',
-                  onExit: InterstitialGate.onLessonExit,
                   pageBuilder: (context, state) => fadeTransitionPage(
                     state: state,
                     child: const BanglaDayScreen(),
@@ -136,7 +125,6 @@ class AppRouter {
             routes: [
               GoRoute(
                 path: '/alphabet',
-                onExit: InterstitialGate.onLessonExit,
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const EnglishAlphabetScreen(),
@@ -144,7 +132,6 @@ class AppRouter {
               ),
               GoRoute(
                 path: '/rhymes',
-                onExit: InterstitialGate.onLessonExit,
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const EnglishRhymesScreen(),
@@ -152,7 +139,6 @@ class AppRouter {
               ),
               GoRoute(
                 path: '/fruits',
-                onExit: InterstitialGate.onLessonExit,
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const EnglishFruitScreen(),
@@ -160,7 +146,6 @@ class AppRouter {
               ),
               GoRoute(
                 path: '/flowers',
-                onExit: InterstitialGate.onLessonExit,
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const EnglishFlowerScreen(),
@@ -168,7 +153,6 @@ class AppRouter {
               ),
               GoRoute(
                 path: '/figures',
-                onExit: InterstitialGate.onLessonExit,
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const EnglishFigureScreen(),
@@ -176,7 +160,6 @@ class AppRouter {
               ),
               GoRoute(
                 path: '/body-parts',
-                onExit: InterstitialGate.onLessonExit,
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const EnglishBodyPartScreen(),
@@ -184,7 +167,6 @@ class AppRouter {
               ),
               GoRoute(
                 path: '/days',
-                onExit: InterstitialGate.onLessonExit,
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const EnglishDayScreen(),
@@ -192,7 +174,6 @@ class AppRouter {
               ),
               GoRoute(
                 path: '/months',
-                onExit: InterstitialGate.onLessonExit,
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const EnglishMonthScreen(),
@@ -200,7 +181,6 @@ class AppRouter {
               ),
               GoRoute(
                 path: '/animals',
-                onExit: InterstitialGate.onLessonExit,
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const EnglishAnimalScreen(),
@@ -208,7 +188,6 @@ class AppRouter {
               ),
               GoRoute(
                 path: '/birds',
-                onExit: InterstitialGate.onLessonExit,
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const EnglishBirdScreen(),
@@ -222,7 +201,6 @@ class AppRouter {
             routes: [
               GoRoute(
                 path: '/bangla-numbers',
-                onExit: InterstitialGate.onLessonExit,
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const BanglaNumbersScreen(),
@@ -230,7 +208,6 @@ class AppRouter {
               ),
               GoRoute(
                 path: '/english-numbers',
-                onExit: InterstitialGate.onLessonExit,
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const EnglishNumbersScreen(),
@@ -238,7 +215,6 @@ class AppRouter {
               ),
               GoRoute(
                 path: '/multiplication-table',
-                onExit: InterstitialGate.onLessonExit,
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const MultiplicationTableScreen(),
@@ -246,7 +222,6 @@ class AppRouter {
               ),
               GoRoute(
                 path: '/calculator',
-                onExit: InterstitialGate.onLessonExit,
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const CalculatorScreen(),
@@ -260,7 +235,6 @@ class AppRouter {
             routes: [
               GoRoute(
                 path: '/alphabet',
-                onExit: InterstitialGate.onLessonExit,
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const ArabicAlphabetScreen(),
@@ -268,7 +242,6 @@ class AppRouter {
               ),
               GoRoute(
                 path: '/surah',
-                onExit: InterstitialGate.onLessonExit,
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const ArabicSurahScreen(),
@@ -276,7 +249,6 @@ class AppRouter {
                 routes: [
                   GoRoute(
                     path: '/details',
-                    onExit: InterstitialGate.onLessonExit,
                     pageBuilder: (context, state) {
                       final surah = state.extra as MultiplicationModel;
                       return fadeTransitionPage(
@@ -289,7 +261,6 @@ class AppRouter {
               ),
               GoRoute(
                 path: '/ghazal',
-                onExit: InterstitialGate.onLessonExit,
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const ArabicGojolScreen(),
@@ -297,7 +268,6 @@ class AppRouter {
               ),
               GoRoute(
                 path: '/allah-names',
-                onExit: InterstitialGate.onLessonExit,
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const AllahNamesScreen(),
@@ -305,7 +275,6 @@ class AppRouter {
               ),
               GoRoute(
                 path: '/months-names',
-                onExit: InterstitialGate.onLessonExit,
                 pageBuilder: (context, state) => fadeTransitionPage(
                   state: state,
                   child: const ArabicMonthsNameScreen(),
@@ -317,27 +286,4 @@ class AppRouter {
       ),
     ],
   );
-}
-
-/// Loads the next interstitial while a lesson is open, so it can show on exit.
-class _LessonInterstitialPreload extends StatefulWidget {
-  const _LessonInterstitialPreload({required this.child});
-
-  final Widget child;
-
-  @override
-  State<_LessonInterstitialPreload> createState() =>
-      _LessonInterstitialPreloadState();
-}
-
-class _LessonInterstitialPreloadState
-    extends State<_LessonInterstitialPreload> {
-  @override
-  void initState() {
-    super.initState();
-    InterstitialAdService.instance.preload();
-  }
-
-  @override
-  Widget build(BuildContext context) => widget.child;
 }
