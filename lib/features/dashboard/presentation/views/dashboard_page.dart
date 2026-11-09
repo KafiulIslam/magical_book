@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/router/routes.dart';
+import '../../../../core/services/app_update_checker.dart';
 import '../../../../core/theme/app_typography.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -18,6 +19,15 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      AppUpdateChecker.promptIfUpdateAvailable(context);
+    });
+  }
+
   static final List<String> _routes = [
     Routes.bangla,
     Routes.english,
