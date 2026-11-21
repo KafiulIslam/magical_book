@@ -51,14 +51,14 @@ class ArabicCategoryCard extends StatelessWidget {
                   ),
                   child: Icon(
                     category.icon,
-                    size: 40.sp,
+                    size: 30.sp,
                     color: category.color,
                   ),
                 ),
                 const Gap(16),
                 Text(
                   category.title,
-                  style: BanglaTypo.headline1.copyWith(fontSize: 20.sp),
+                  style: BanglaTypo.headline1.copyWith(fontSize: 18.sp),
                   textAlign: TextAlign.center,
                 ),
                 Text(

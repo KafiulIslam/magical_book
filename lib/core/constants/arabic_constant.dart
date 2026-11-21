@@ -400,6 +400,7 @@ class ArabicConstants {
         audio: AudioPath.allahTumi),
   ];
 
+
   // 99 Names of Allah (Asma-ul-Husna)
   static const List<AllahNameModel> allahNames = [
     AllahNameModel(
